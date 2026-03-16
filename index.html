@@ -167,8 +167,8 @@
                     <h2 id="label-prev" style="font-size: 1.2rem; letter-spacing: 2px;">H&K_ARCHIVE</h2>
                 </div>
                 <div class="price-tag">
-                    <span class="old-price">₹999</span>
-                    <span class="new-price">₹499</span>
+                    <span class="old-price">₹399</span>
+                    <span class="new-price">₹199</span>
                 </div>
                 <input type="text" id="label-input" class="input-box" placeholder="CUSTOMIZE LABEL..." oninput="document.getElementById('label-prev').innerText = this.value || 'H&K_ARCHIVE'">
                 <button class="btn-add" onclick="addToBag('Elite Candle', 499)">ADD TO ARCHIVE</button>
@@ -192,17 +192,24 @@
                 <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">PRIVACY_PROTOCOL</h3>
                 <div class="info-block">
                     <b>Data Collection</b>
-                    H&K logs identifiers (Name, WhatsApp) strictly for order fulfillment. 
-                    <b>Transmission</b>
-                    Data is synced with our secure archive and transmitted via WhatsApp encryption.
+                    H&K logs user-provided identifiers (Name, Contact Number) strictly for order fulfillment during this Trial Launch Phase. 
+                    <b>Transmission Security</b>
+                    All checkout data is transmitted via end-to-end encrypted WhatsApp gateways. We do not store financial records or passwords on our internal servers.
+                    <b>Third-Party Access</b>
+                    Your information is never sold or shared with external marketing agencies. Data is used solely by the H&K team to coordinate handcrafted production and regional delivery.
+                    
+                    <b>User Rights</b>
+                    As a user of our Trial Phase, you may request the deletion of your order logs at any time by contacting us directly through our official support channel.
                 </div>
             </div>
 
             <div id="tab-about" class="tab-pane">
                 <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">THE_VISION</h3>
                 <div class="info-block">
-                    <p><b>Trial Launch Theory:</b> testing scalability via handcrafted production.</p>
-                    <div class="quote">"No compromise with your experiences."</div>
+                    <p><b>Trial Launch Theory:</b> testing scalability via handcrafted production. Access is curated to maintain quality control.</p>
+                    <p style="margin-top: 8px;"><b>Region Restrictions:</b> Deliveries are currently localized in jaipur to ensure fragile items arrive intact.</p>
+                    <div class="quote">"We are a small team and thus may have delays, but there is no compromise with your experiences."</div>
+                    <div class="quote" style="border-color: #444;">"The imperfection in our products are proof that they are purely handcrafted and support local workers."</div>
                 </div>
             </div>
 
@@ -317,7 +324,7 @@
             } catch (e) {
                 // Fallback to just WhatsApp if email fails
                 const waMsg = `*H&K MANUAL ORDER*%0A*Name:* ${name}%0A*Items:* ${items}%0A*Total:* ${total}`;
-                window.open(`https://wa.me/9001962723?text=${waMsg}`);
+                window.open(`https://wa.me/9782145263?text=${waMsg}`);
             } finally {
                 btn.innerText = "TRANSMIT VIA WHATSAPP";
                 btn.disabled = false;
