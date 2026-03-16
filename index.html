@@ -324,7 +324,7 @@
             } catch (e) {
                 // Fallback to just WhatsApp if email fails
                 const waMsg = `*H&K MANUAL ORDER*%0A*Name:* ${name}%0A*Items:* ${items}%0A*Total:* ${total}`;
-                window.open(`https://wa.me/+91 9782145263?text=${encodeURLcomponent(waMsg)}`;
+                window.open(`https://wa.me/+91 9782145263?text=${encodeURLcomponent(waMsg)}`);
             } finally {
                 btn.innerText = "TRANSMIT VIA WHATSAPP";
                 btn.disabled = false;
