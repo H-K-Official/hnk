@@ -317,14 +317,14 @@
                 });
 
                 const waMsg = `*H&K ORDER PROTOCOL*%0A*ID:* ${orderId}%0A*Name:* ${name}%0A*Items:* ${items}%0A*Total:* ${total}`;
-                window.open(`https://wa.me/9001962723?text=${waMsg}`);
+                window.open(`https://wa.me/+91 9782145263?text=${waMsg}`);
                 
                 document.getElementById('checkout-modal').style.display = 'none';
                 alert("Order Logged. Opening WhatsApp for confirmation...");
             } catch (e) {
                 // Fallback to just WhatsApp if email fails
                 const waMsg = `*H&K MANUAL ORDER*%0A*Name:* ${name}%0A*Items:* ${items}%0A*Total:* ${total}`;
-                window.open(`https://wa.me/9782145263?text=${waMsg}`);
+                window.open(`https://wa.me/+91 9782145263?text=${waMsg}`);
             } finally {
                 btn.innerText = "TRANSMIT VIA WHATSAPP";
                 btn.disabled = false;
