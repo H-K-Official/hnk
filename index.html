@@ -1,386 +1,671 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>H&K | Elite Trial Launch</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+
         :root {
+
             --bg: #121212;
+
             --panel: #1a1a1a;
+
             --accent-gold: #D4AF37;
+
             --text-primary: #f8f9fa;
+
             --text-muted: #6c757d;
+
             --border: rgba(255, 255, 255, 0.08);
+
         }
+
+
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         
+
         body {
+
             font-family: 'Inter', sans-serif;
+
             background-color: var(--bg);
+
             color: var(--text-primary);
+
             min-height: 100vh;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             padding: 20px;
+
         }
+
+
 
         .sale-banner {
+
             position: fixed;
+
             top: 0; width: 100%;
+
             background: var(--accent-gold);
+
             color: #000;
+
             text-align: center;
+
             padding: 8px;
+
             font-weight: 800;
+
             font-size: 0.7rem;
+
             letter-spacing: 2px;
+
             z-index: 1000;
+
             text-transform: uppercase;
+
         }
+
+
 
         .container {
+
             width: 100%;
+
             max-width: 1200px;
+
             height: 90vh; 
+
             background: var(--panel);
+
             display: grid;
+
             grid-template-columns: 220px 1fr 280px;
+
             border: 1px solid var(--border);
+
             border-radius: 20px;
+
             overflow: hidden;
+
             box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+
             margin-top: 20px;
+
         }
 
+
+
         .sidebar {
+
             background: #151515;
+
             padding: 30px 15px;
+
             border-right: 1px solid var(--border);
+
             display: flex;
+
             flex-direction: column;
+
             overflow-y: auto;
+
         }
+
+
 
         .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 4px; margin-bottom: 40px; color: var(--accent-gold); text-align: center; }
 
+
+
         .nav-btn {
+
             background: transparent; border: none; color: var(--text-muted);
+
             padding: 12px 15px; text-align: left; cursor: pointer;
+
             font-family: inherit; font-size: 0.75rem; font-weight: 600;
+
             transition: 0.3s; border-radius: 8px; margin-bottom: 5px;
+
             width: 100%;
+
         }
+
+
 
         .nav-btn:hover, .nav-btn.active { background: rgba(255,255,255,0.05); color: #fff; }
 
+
+
         .main-content { 
+
             padding: 30px; 
+
             overflow-y: auto; 
+
             display: flex; 
+
             flex-direction: column; 
+
             align-items: center; 
+
             background: radial-gradient(circle at center, #1e1e1e 0%, #1a1a1a 100%);
+
         }
+
         
+
         .tab-pane { width: 100%; display: none; animation: fadeIn 0.4s ease; }
+
         .tab-pane.active { display: flex; flex-direction: column; align-items: center; }
+
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+
+
         .preview-card {
+
             width: 100%;
+
             max-width: 300px; 
+
             aspect-ratio: 1/1.1;
+
             background: #1c1c1c;
+
             border: 1px solid var(--border); border-radius: 15px;
+
             display: flex; flex-direction: column; align-items: center; justify-content: center;
+
             margin-bottom: 20px; position: relative;
+
         }
+
+
 
         .price-tag { display: flex; align-items: center; gap: 10px; margin: 15px 0; }
+
         .old-price { text-decoration: line-through; color: var(--text-muted); font-size: 0.8rem; }
+
         .new-price { font-size: 1.6rem; font-weight: 800; color: var(--accent-gold); }
 
+
+
         .input-box {
+
             width: 100%; max-width: 350px; background: #222; border: 1px solid var(--border);
+
             padding: 12px; color: #fff; border-radius: 8px; text-align: center; margin-bottom: 15px;
+
             font-size: 0.9rem;
+
         }
+
+
 
         .btn-add {
+
             background: var(--accent-gold); color: #000; padding: 12px 30px;
+
             border-radius: 50px; font-weight: 800; border: none; cursor: pointer;
+
             transition: 0.3s; text-transform: uppercase; font-size: 0.75rem;
+
         }
+
+
 
         .right-bar { background: #141414; padding: 20px; border-left: 1px solid var(--border); display: flex; flex-direction: column; }
+
         .section-header { font-size: 0.6rem; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; }
 
+
+
         .suggestion-item {
+
             background: #1d1d1d; padding: 10px; border-radius: 8px; margin-bottom: 8px;
+
             cursor: pointer; border: 1px solid transparent; transition: 0.2s;
+
         }
+
         .suggestion-item:hover { border-color: var(--accent-gold); }
 
+
+
         .info-block { text-align: left; width: 100%; max-width: 500px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
         .info-block b { color: var(--accent-gold); display: block; margin-top: 15px; margin-bottom: 5px; }
+
         .quote { font-style: italic; border-left: 2px solid var(--accent-gold); padding-left: 12px; margin: 15px 0; color: #ccc; }
 
+
+
         @media (max-width: 900px) {
+
             .container { grid-template-columns: 1fr; height: auto; max-height: none; overflow: visible; }
+
             .sidebar, .right-bar { display: none; }
+
             body { overflow-y: auto; padding-top: 50px; }
+
         }
 
+
+
         .modal {
+
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+
             background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
+
         }
+
         .modal-content { background: #111; padding: 30px; border-radius: 15px; border: 1px solid var(--accent-gold); width: 100%; max-width: 400px; text-align: center; }
+
     </style>
+
 </head>
+
 <body>
+
+
 
     <div class="sale-banner">WEDDING SEASON EXCLUSIVE — 50% OFF AUTOMATICALLY APPLIED</div>
 
+
+
     <div class="container">
+
         <div class="sidebar">
+
             <div class="logo">H&K</div>
+
             <button class="nav-btn active" onclick="switchTab('candles', this)">[ CANDLES ]</button>
+
             <button class="nav-btn" onclick="switchTab('acc', this)">[ ACCESSORIES ]</button>
+
             <button class="nav-btn" onclick="switchTab('coming', this)">[ WEAR ]</button>
+
             
+
             <div style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 15px;">
+
                 <button class="nav-btn" style="font-size: 0.65rem" onclick="switchTab('about', this)">ABOUT_US</button>
+
                 <button class="nav-btn" style="font-size: 0.65rem" onclick="switchTab('privacy', this)">PRIVACY</button>
+
             </div>
+
         </div>
+
+
 
         <div class="main-content">
+
             <div id="tab-candles" class="tab-pane active">
+
                 <div class="preview-card">
+
                     <span style="font-size: 0.5rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 10px;">HANDCRAFTED_ELITE</span>
+
                     <h2 id="label-prev" style="font-size: 1.2rem; letter-spacing: 2px;">H&K_ARCHIVE</h2>
+
                 </div>
+
                 <div class="price-tag">
+
                     <span class="old-price">₹399</span>
+
                     <span class="new-price">₹199</span>
+
                 </div>
+
                 <input type="text" id="label-input" class="input-box" placeholder="CUSTOMIZE LABEL..." oninput="document.getElementById('label-prev').innerText = this.value || 'H&K_ARCHIVE'">
+
                 <button class="btn-add" onclick="addToBag('Elite Candle', 199)">ADD TO ARCHIVE</button>
+
             </div>
+
+
 
             <div id="tab-acc" class="tab-pane">
+
                 <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">ESSENTIALS</h3>
+
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 500px;">
+
                     <div class="suggestion-item" style="text-align:center" onclick="addToBag('Canvas Tote', 199)">
+
                         <div style="font-size: 0.7rem;">CANVAS_TOTE</div>
+
                         <div style="font-size: 0.6rem; color: var(--accent-gold);">₹199</div>
+
                     </div>
+
                     <div class="suggestion-item" style="text-align:center" onclick="addToBag('Founder Keylink', 149)">
+
                         <div style="font-size: 0.7rem;">KEYLINK</div>
+
                         <div style="font-size: 0.6rem; color: var(--accent-gold);">₹149</div>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <div id="tab-privacy" class="tab-pane">
+
                 <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">PRIVACY_PROTOCOL</h3>
+
                 <div class="info-block">
+
                     <b>Data Collection</b>
+
                     H&K logs user-provided identifiers (Name, Contact Number) strictly for order fulfillment during this Trial Launch Phase. 
+
                     <b>Transmission Security</b>
+
                     All checkout data is transmitted via end-to-end encrypted WhatsApp gateways. We do not store financial records or passwords on our internal servers.
+
                     <b>Third-Party Access</b>
+
                     Your information is never sold or shared with external marketing agencies. Data is used solely by the H&K team to coordinate handcrafted production and regional delivery.
+
                     
+
                     <b>User Rights</b>
+
                     As a user of our Trial Phase, you may request the deletion of your order logs at any time by contacting us directly through our official support channel.
+
                 </div>
+
             </div>
-            <div id="tab-founder's_blog" class="tab-pane">
-                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">PRIVACY_PROTOCOL</h3>
-                <div class="info-block">
-                    <b>ARCHIVE_001</b>
-                    Most brands chase the 'perfect' scent. We chased the memory of a Jaipur afternoon.
 
-When we (H&K) started Phase_01, we sat in a small room with 10kg of soy wax along with couple of artists from local bazar who sat beside discussing their struggle against exploitation and a vision of 'Affordable Elite.' We didn't want a corporate logo; we wanted a stamp of authenticity.
 
-Our first drop, the Citrus and Orchid  Archive, is a tribute to the raw energy of local markets. It’s messy, it’s handcrafted, and it’s ours. From the large farms of west India to your table top, the journey was not easy and definitely had hurdles yet we worked together to give this form of art the stage it deserved since long time.
-
-If your candle has a slight ripple on the surface, don't call it a defect. Call it proof that a human hand poured it. That is the H&K signature."
-
-— H. Agarwal & K. Dadheech     Founders, H&K 
-                    <b>ARCHIVE_002</b>
-                    shh! its super confidential..... 
-                    </div>
-            </div>
 
             <div id="tab-about" class="tab-pane">
-                    <h3 style="margin-bottom: 25px; letter-spacing: 5px; font-size: 0.9rem; color: var(--accent-gold);">[ THE_MANIFESTO ]</h3>
-<div class="info-block" style="font-family: 'Courier New', monospace; letter-spacing: 1px;">
-    <p><b>PROJECT:</b> H&K STUDIO // PHASE_01</p>
-    <p><b>LOCATION:</b> JAIPUR_ARCHIVE [26.9124° N, 75.7873° E]</p>
-    
-    <p style="margin-top: 20px; color: #fff; line-height: 1.8;">
-        H&K is not just a mere brand; it is a study in <b>Organic Geometry</b> and <b>Regional Olfactory</b>. We believe that luxury isn't found in mass production, but in the deliberate imperfection of a hand-poured vessel.
-    </p>
 
-    <div class="quote" style="border-left: 1px solid var(--accent-gold); margin: 25px 0;">
-        "We are currently in a controlled Trial Launch. Every 'Object' released is a prototype of our scalability, supporting local artisans and preserving the raw soul of the Pink City."
-    </div>
+                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">THE_VISION</h3>
 
-    <p style="font-size: 0.7rem; opacity: 0.6;">
-        // STATUS: ACTIVE <br>
-        // QUALITY_CONTROL: INTERNAL <br>
-        // DISTRIBUTION: REGIONAL_ONLY (JPR)
-    </p>
-</div>
+                <div class="info-block">
+
                     <p><b>Trial Launch Theory:</b> testing scalability via handcrafted production. Access is curated to maintain quality control.</p>
+
                     <p style="margin-top: 8px;"><b>Region Restrictions:</b> Deliveries are currently localized in jaipur to ensure fragile items arrive intact.</p>
+
                     <div class="quote">"We are a small team and thus may have delays, but there is no compromise with your experiences."</div>
+
                     <div class="quote" style="border-color: #444;">"The imperfection in our products are proof that they are purely handcrafted and support local workers."</div>
+
                 </div>
+
             </div>
+
+
 
             <div id="tab-coming" class="tab-pane">
+
                 <h1 style="letter-spacing: 10px; opacity: 0.1; font-size: 1.5rem;">LOCKED</h1>
+
             </div>
+
         </div>
+
+
 
         <div class="right-bar">
+
             <div class="section-header">SUGGESTIONS</div>
+
             <div id="suggestions">
+
                 <div class="suggestion-item" onclick="addToBag('Keylink', 149)">
+
                     <div style="font-size: 0.65rem; font-weight: 700;">+ FOUNDER KEYLINK</div>
+
                     <div style="font-size: 0.55rem; color: var(--accent-gold);">₹149</div>
+
                 </div>
+
             </div>
+
+
 
             <div class="section-header" style="margin-top: 25px;">ARCHIVE_LOG</div>
+
             <div id="bag-list" style="flex: 1; font-size: 0.7rem; overflow-y: auto; max-height: 250px;">
+
                 <p style="opacity: 0.2; font-style: italic;">_EMPTY</p>
+
             </div>
+
+
 
             <div style="border-top: 1px solid var(--border); padding-top: 15px;">
+
                 <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+
                     <span style="font-size: 0.65rem;">TOTAL</span>
+
                     <span id="total-price" style="font-weight: 800; color: var(--accent-gold); font-size: 0.9rem;">₹0</span>
+
                 </div>
+
                 <button class="btn-add" style="width: 100%; font-size: 0.65rem;" onclick="openCheckout()">INITIATE_ORDER</button>
+
             </div>
+
         </div>
+
     </div>
+
+
 
     <div id="checkout-modal" class="modal">
-        <div class="modal-content" style="background: #000; border-radius: 0px; border: 1px solid var(--border); padding: 40px 30px;">
-            <h4 style="margin-bottom: 30px; letter-spacing: 5px; font-size: 0.7rem; color: var(--accent-gold); font-weight: 400;">
-                [ TRANSMISSION_PROTOCOL ]
-            </h4>
-            
-            <input type="text" id="cust-name" class="input-box" placeholder="IDENTIFIER / NAME">
-            
-            <input type="tel" id="cust-phone" class="input-box" placeholder="COMM_CHANNEL / WHATSAPP">
-            
-            <input type="text" id="cust-label" class="input-box" placeholder="ARCHIVE_LABEL (IF_ANY)" style="border-style: dashed; opacity: 0.7;">
-            
-            <button class="btn-add" id="transmit-btn" onclick="sendOrder()">EXECUTE_TRANSMISSION</button>
-            
-            <p style="margin-top: 25px; cursor: pointer; font-size: 0.5rem; color: var(--text-muted); letter-spacing: 3px; opacity: 0.5;" onclick="document.getElementById('checkout-modal').style.display='none'">
-                // ABORT_SESSION
-            </p>
+
+        <div class="modal-content">
+
+            <h4 style="margin-bottom: 20px; letter-spacing: 2px; font-size: 0.9rem;">TRANSMISSION_PROTOCOL</h4>
+
+            <input type="text" id="cust-name" class="input-box" placeholder="YOUR NAME">
+
+            <input type="tel" id="cust-phone" class="input-box" placeholder="WHATSAPP NUMBER">
+
+            <input type="text" id="custom-label(if not may type h&k)" class="input-box" placeholder="CUSTOM LABEL">
+
+            <button class="btn-add" id="transmit-btn" style="width:100%" onclick="sendOrder()">TRANSMIT VIA WHATSAPP</button>
+
+            <p style="margin-top: 15px; cursor: pointer; font-size: 0.55rem; color: var(--text-muted);" onclick="document.getElementById('checkout-modal').style.display='none'">[ ABORT ]</p>
+
         </div>
+
     </div>
 
+
+
     <script>
+
        let bag = [];
 
+
+
         function switchTab(id, btn) {
+
             document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
+
             document.getElementById('tab-' + id).classList.add('active');
+
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
             btn.classList.add('active');
+
         }
+
+
 
         function addToBag(name, price) {
+
             bag.push({name, price});
+
             updateBag();
+
         }
+
+
 
         function updateBag() {
+
             const list = document.getElementById('bag-list');
+
             const totalDisplay = document.getElementById('total-price');
+
             if(bag.length === 0) {
+
                 list.innerHTML = '<p style="opacity: 0.2;">_EMPTY</p>';
+
                 totalDisplay.innerText = '₹0';
+
                 return;
+
             }
+
             let total = 0;
+
             list.innerHTML = bag.map(i => {
+
                 total += i.price;
+
                 return `<div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span>${i.name}</span><b>₹${i.price}</b></div>`;
+
             }).join('');
+
             totalDisplay.innerText = '₹' + total;
+
         }
+
+
 
         function openCheckout() {
+
             if(bag.length > 0) document.getElementById('checkout-modal').style.display = 'flex';
+
             else alert("Add items to your archive first.");
+
         }
 
+
+
         async function sendOrder() {
+
             const name = document.getElementById('cust-name').value;
+
             const phone = document.getElementById('cust-phone').value;
-            
-            // This MUST match the id="cust-label" from the HTML above
-            const customLabel = document.getElementById('cust-label').value || "H&K_STANDARD";
-            
+
             const total = document.getElementById('total-price').innerText;
-            
-            // ... the rest of your fetch and window.open code remains the same ...
+
             const items = bag.map(i => i.name).join(', ');
+
             const orderId = "HK-" + Math.floor(1000 + Math.random() * 9000);
+
+
 
             if(!name || !phone) return alert("Please enter Name and WhatsApp Number.");
 
+
+
             const btn = document.getElementById('transmit-btn');
+
             btn.innerText = "TRANSMITTING...";
+
             btn.disabled = true;
 
+
+
             const formData = new FormData();
+
             formData.append('Order_ID', orderId);
+
             formData.append('Name', name);
+
             formData.append('WhatsApp', phone);
+
             formData.append('Items', items);
-            formData.append('customlabel',customlabel);
+
             formData.append('Total', total);
 
+
+
             try {
+
                 // Sending to your Formspree
+
                 await fetch('https://formspree.io/f/mykndpzj', {
+
                     method: 'POST',
+
                     body: formData,
+
                     headers: { 'Accept': 'application/json' }
+
                 });
 
+
+
                 const waMsg = `*H&K ORDER PROTOCOL*%0A*ID:* ${orderId}%0A*Name:* ${name}%0A*Items:* ${items}%0A*Total:* ${total}`;
+
                 window.open(`https://wa.me/+91 9782145263?text=${waMsg}`);
+
                 
+
                 document.getElementById('checkout-modal').style.display = 'none';
+
                 alert("Order Logged. Opening WhatsApp for confirmation...");
+
             } catch (e) {
+
                 // Fallback to just WhatsApp if email fails
+
                 const waMsg = `*H&K MANUAL ORDER*%0A*Name:* ${name}%0A*Items:* ${items}%0A*Total:* ${total}`;
+
                 window.open(`https://wa.me/+91 9782145263?text=${encodeURLcomponent(waMsg)}`);
+
             } finally {
+
                 btn.innerText = "TRANSMIT VIA WHATSAPP";
+
                 btn.disabled = false;
+
             }
+
         }
+
     </script>
+
 </body>
+
 </html>
