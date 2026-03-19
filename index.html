@@ -202,10 +202,44 @@
                     As a user of our Trial Phase, you may request the deletion of your order logs at any time by contacting us directly through our official support channel.
                 </div>
             </div>
+            <div id="tab-founder's_blog" class="tab-pane">
+                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">PRIVACY_PROTOCOL</h3>
+                <div class="info-block">
+                    <b>ARCHIVE_001</b>
+                    Most brands chase the 'perfect' scent. We chased the memory of a Jaipur afternoon.
+
+When we (H&K) started Phase_01, we sat in a small room with 10kg of soy wax along with couple of artists from local bazar who sat beside discussing their struggle against exploitation and a vision of 'Affordable Elite.' We didn't want a corporate logo; we wanted a stamp of authenticity.
+
+Our first drop, the Citrus and Orchid  Archive, is a tribute to the raw energy of local markets. It’s messy, it’s handcrafted, and it’s ours. From the large farms of west India to your table top, the journey was not easy and definitely had hurdles yet we worked together to give this form of art the stage it deserved since long time.
+
+If your candle has a slight ripple on the surface, don't call it a defect. Call it proof that a human hand poured it. That is the H&K signature."
+
+— H. Agarwal & K. Dadheech     Founders, H&K 
+                    <b>ARCHIVE_002</b>
+                    shh! its super confidential..... 
+                    </div>
+            </div>
 
             <div id="tab-about" class="tab-pane">
-                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">THE_VISION</h3>
-                <div class="info-block">
+                    <h3 style="margin-bottom: 25px; letter-spacing: 5px; font-size: 0.9rem; color: var(--accent-gold);">[ THE_MANIFESTO ]</h3>
+<div class="info-block" style="font-family: 'Courier New', monospace; letter-spacing: 1px;">
+    <p><b>PROJECT:</b> H&K STUDIO // PHASE_01</p>
+    <p><b>LOCATION:</b> JAIPUR_ARCHIVE [26.9124° N, 75.7873° E]</p>
+    
+    <p style="margin-top: 20px; color: #fff; line-height: 1.8;">
+        H&K is not just a mere brand; it is a study in <b>Organic Geometry</b> and <b>Regional Olfactory</b>. We believe that luxury isn't found in mass production, but in the deliberate imperfection of a hand-poured vessel.
+    </p>
+
+    <div class="quote" style="border-left: 1px solid var(--accent-gold); margin: 25px 0;">
+        "We are currently in a controlled Trial Launch. Every 'Object' released is a prototype of our scalability, supporting local artisans and preserving the raw soul of the Pink City."
+    </div>
+
+    <p style="font-size: 0.7rem; opacity: 0.6;">
+        // STATUS: ACTIVE <br>
+        // QUALITY_CONTROL: INTERNAL <br>
+        // DISTRIBUTION: REGIONAL_ONLY (JPR)
+    </p>
+</div>
                     <p><b>Trial Launch Theory:</b> testing scalability via handcrafted production. Access is curated to maintain quality control.</p>
                     <p style="margin-top: 8px;"><b>Region Restrictions:</b> Deliveries are currently localized in jaipur to ensure fragile items arrive intact.</p>
                     <div class="quote">"We are a small team and thus may have delays, but there is no compromise with your experiences."</div>
@@ -243,13 +277,22 @@
     </div>
 
     <div id="checkout-modal" class="modal">
-        <div class="modal-content">
-            <h4 style="margin-bottom: 20px; letter-spacing: 2px; font-size: 0.9rem;">TRANSMISSION_PROTOCOL</h4>
-            <input type="text" id="cust-name" class="input-box" placeholder="YOUR NAME">
-            <input type="tel" id="cust-phone" class="input-box" placeholder="WHATSAPP NUMBER">
-            <input type="text" id="custom-label(if not may type h&k)" class="input-box" placeholder="CUSTOM LABEL">
-            <button class="btn-add" id="transmit-btn" style="width:100%" onclick="sendOrder()">TRANSMIT VIA WHATSAPP</button>
-            <p style="margin-top: 15px; cursor: pointer; font-size: 0.55rem; color: var(--text-muted);" onclick="document.getElementById('checkout-modal').style.display='none'">[ ABORT ]</p>
+        <div class="modal-content" style="background: #000; border-radius: 0px; border: 1px solid var(--border); padding: 40px 30px;">
+            <h4 style="margin-bottom: 30px; letter-spacing: 5px; font-size: 0.7rem; color: var(--accent-gold); font-weight: 400;">
+                [ TRANSMISSION_PROTOCOL ]
+            </h4>
+            
+            <input type="text" id="cust-name" class="input-box" placeholder="IDENTIFIER / NAME">
+            
+            <input type="tel" id="cust-phone" class="input-box" placeholder="COMM_CHANNEL / WHATSAPP">
+            
+            <input type="text" id="cust-label" class="input-box" placeholder="ARCHIVE_LABEL (IF_ANY)" style="border-style: dashed; opacity: 0.7;">
+            
+            <button class="btn-add" id="transmit-btn" onclick="sendOrder()">EXECUTE_TRANSMISSION</button>
+            
+            <p style="margin-top: 25px; cursor: pointer; font-size: 0.5rem; color: var(--text-muted); letter-spacing: 3px; opacity: 0.5;" onclick="document.getElementById('checkout-modal').style.display='none'">
+                // ABORT_SESSION
+            </p>
         </div>
     </div>
 
@@ -292,7 +335,13 @@
         async function sendOrder() {
             const name = document.getElementById('cust-name').value;
             const phone = document.getElementById('cust-phone').value;
+            
+            // This MUST match the id="cust-label" from the HTML above
+            const customLabel = document.getElementById('cust-label').value || "H&K_STANDARD";
+            
             const total = document.getElementById('total-price').innerText;
+            
+            // ... the rest of your fetch and window.open code remains the same ...
             const items = bag.map(i => i.name).join(', ');
             const orderId = "HK-" + Math.floor(1000 + Math.random() * 9000);
 
@@ -307,6 +356,7 @@
             formData.append('Name', name);
             formData.append('WhatsApp', phone);
             formData.append('Items', items);
+            formData.append('customlabel',customlabel);
             formData.append('Total', total);
 
             try {
