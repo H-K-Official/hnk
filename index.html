@@ -530,51 +530,29 @@
 
             formData.append('Total', total);
 
-
-
-            try {
-
-                // Sending to your Formspree
-
+try {
+                // Sending to Formspree
                 await fetch('https://formspree.io/f/mykndpzj', {
-
                     method: 'POST',
-
                     body: formData,
-
                     headers: { 'Accept': 'application/json' }
-
                 });
 
-
-
-                const waMsg = `*H&K ORDER PROTOCOL*%0A*ID:* ${orderId}%0A*Name:* ${name}%0A*Items:* ${items}%0A*Total:* ${total}`;
-
-                window.open(`https://wa.me/+91 9782145263?text=${waMsg}`);
-
+                // 3. Update the WhatsApp message to include the label
+                const waMsg = `*H&K ORDER PROTOCOL*%0A*ID:* ${orderId}%0A*Name:* ${name}%0A*Items:* ${items}%0A*Custom Label:* ${userLabel}%0A*Total:* ${total}`;
+                window.open(`https://wa.me/919782145263?text=${waMsg}`);
                 
-
                 document.getElementById('checkout-modal').style.display = 'none';
-
-                alert("Order Logged. Opening WhatsApp for confirmation...");
-
+                alert("Order Logged. Opening WhatsApp...");
             } catch (e) {
-
-                // Fallback to just WhatsApp if email fails
-
-                const waMsg = `*H&K MANUAL ORDER*%0A*Name:* ${name}%0A*Items:* ${items}%0A*Total:* ${total}`;
-
-                window.open(`https://wa.me/+91 9782145263?text=${encodeURLcomponent(waMsg)}`);
-
+                alert("Transmission Error. Try again.");
             } finally {
-
-                btn.innerText = "TRANSMIT VIA WHATSAPP";
-
+                btn.innerText = "EXECUTE_TRANSMISSION";
                 btn.disabled = false;
-
             }
-
         }
+
+
 
     </script>
 
