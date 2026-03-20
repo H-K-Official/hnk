@@ -525,71 +525,80 @@
 
         }
 
+async function sendOrder() {
+    // 1. DATA CAPTURE
+    const name = document.getElementById('cust-name').value.trim();
+    const phone = document.getElementById('cust-phone').value.trim();
+    const labelInput = document.getElementById('customlabel');
+    const userLabel = (labelInput && labelInput.value.trim()) ? labelInput.value.trim() : "None";
+    
+    const total = document.getElementById('total-price').innerText;
+    const items = bag.map(i => i.name).join(', ');
+    const orderId = "HK-" + Math.floor(1000 + Math.random() * 9000);
 
+    // 2. VALIDATION
+    if(!name || !phone) {
+        alert("PROTOCOL_ERROR: Name and WhatsApp Number Required.");
+        return;
+    }
 
-        async function sendOrder() {
+    // 3. UI FEEDBACK
+    const btn = document.getElementById('transmit-btn');
+    const originalText = btn.innerText;
+    btn.innerText = "TRANSMITTING...";
+    btn.disabled = true;
 
-            const name = document.getElementById('cust-name').value;
+    // 4. STEP A: FORMSPREE TRANSMISSION (The Ledger)
+    const formData = new FormData();
+    formData.append('Order_ID', orderId);
+    formData.append('Name', name);
+    formData.append('WhatsApp', phone);
+    formData.append('Items', items);
+    formData.append('Custom_Label', userLabel);
+    formData.append('Total', total);
 
-            const phone = document.getElementById('cust-phone').value;
+    try {
+        // Send to Formspree first
+        const response = await fetch('https://formspree.io/f/mykndpzj', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
 
-            const labelText = document.getElementById('customlabel').value || "None";
+        // 5. STEP B: WHATSAPP REDIRECT (The Notification)
+        // We trigger this even if Formspree has a minor delay
+        const waMsg = `*H&K ORDER_TRANSMISSION*%0A` +
+                      `----------------------------%0A` +
+                      `*ID:* ${orderId}%0A` +
+                      `*CLIENT:* ${name}%0A` +
+                      `*ITEMS:* ${items}%0A` +
+                      `*LABEL:* ${userLabel}%0A` +
+                      `*TOTAL:* ${total}%0A` +
+                      `----------------------------%0A` +
+                      `_Status: Order Logged in Archive_`;
 
-            const total = document.getElementById('total-price').innerText;
+        const waUrl = `https://wa.me/919782145263?text=${waMsg}`;
+        
+        // Finalize UI and Open WhatsApp
+        document.getElementById('checkout-modal').style.display = 'none';
+        window.open(waUrl, '_blank');
+        alert("Order Archived & WhatsApp Opening...");
 
-            const items = bag.map(i => i.name).join(', ');
+    } catch (error) {
+        console.error("Formspree Error:", error);
+        alert("Database Sync Failed, but opening WhatsApp for direct order...");
+        
+        // Fallback: Open WhatsApp anyway so you don't lose the customer!
+        const fallbackMsg = `*H&K DIRECT_ORDER*%0A*ID:* ${orderId}%0A*Name:* ${name}%0A*Items:* ${items}%0A*Label:* ${userLabel}`;
+        window.open(`https://wa.me/919782145263?text=${fallbackMsg}`, '_blank');
+        
+    } finally {
+        btn.innerText = originalText;
+        btn.disabled = false;
+    }
+}
 
-            const orderId = "HK-" + Math.floor(1000 + Math.random() * 9000);
-
-
-
-            if(!name || !phone) return alert("Please enter Name and WhatsApp Number.");
-
-
-
-            const btn = document.getElementById('transmit-btn');
-
-            btn.innerText = "TRANSMITTING...";
-
-            btn.disabled = true;
-
-
-
-            const formData = new FormData();
-
-            formData.append('Order_ID', orderId);
-
-            formData.append('Name', name);
-
-            formData.append('WhatsApp', phone);
-
-            formData.append('Items', items);
-            
-            formData.append('customlabel', customlabel);
-
-            formData.append('Total', total);
-
-try {
-                // Sending to Formspree
-                await fetch('https://formspree.io/f/mykndpzj', {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                // 3. Update the WhatsApp message to include the label
-                const waMsg = `*H&K ORDER PROTOCOL*%0A*ID:* ${orderId}%0A*Name:* ${name}%0A*Items:* ${items}%0A*Custom Label:* ${userLabel}%0A*Total:* ${total}`;
-                window.open(`https://wa.me/919782145263?text=${waMsg}`);
-                
-                document.getElementById('checkout-modal').style.display = 'none';
-                alert("Order Logged. Opening WhatsApp...");
-            } catch (e) {
-                alert("Transmission Error. Try again.");
-            } finally {
-                btn.innerText = "EXECUTE_TRANSMISSION";
-                btn.disabled = false;
-            }
-        }
+    
 
 
 
