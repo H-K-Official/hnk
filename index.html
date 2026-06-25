@@ -1,199 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H&K | Elite Trial Launch</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-
-        :root {
-            --bg: #121212;
-            --panel: #1a1a1a;
-            --accent-gold: #D4AF37;
-            --text-primary: #f8f9fa;
-            --text-muted: #6c757d;
-            --border: rgba(255, 255, 255, 0.08);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .sale-banner {
-            position: fixed;
-            top: 0; width: 100%;
-            background: var(--accent-gold);
-            color: #000;
-            text-align: center;
-            padding: 8px;
-            font-weight: 800;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            z-index: 1000;
-            text-transform: uppercase;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&K | Elite Trial Launch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        :root {
+            --bg: #121212;
+            --panel: #1a1a1a;
+            --accent-gold: #D4AF37;
+            --text-primary: #f8f9fa;
+            --text-muted: #6c757d;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .sale-banner {
+            position: fixed;
+            top: 0; width: 100%;
+            background: var(--accent-gold);
+            color: #000;
+            text-align: center;
+            padding: 8px;
+            font-weight: 800;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            z-index: 1000;
+            text-transform: uppercase;
+        }
 
 
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            height: 90vh; 
-            background: var(--panel);
-            display: grid;
-            grid-template-columns: 220px 1fr 280px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-            margin-top: 20px;
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            height: 90vh; 
+            background: var(--panel);
+            display: grid;
+            grid-template-columns: 220px 1fr 280px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+            margin-top: 20px;
 
-        }
+        }
 
-        .sidebar {
-            background: #151515;
-            padding: 30px 15px;
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
+        .sidebar {
+            background: #151515;
+            padding: 30px 15px;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
 
-        }
-        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 4px; margin-bottom: 40px; color: var(--accent-gold); text-align: center; }
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 4px; margin-bottom: 40px; color: var(--accent-gold); text-align: center; }
 
 
-        .nav-btn {
-            background: transparent; border: none; color: var(--text-muted);
-            padding: 12px 15px; text-align: left; cursor: pointer;
-            font-family: inherit; font-size: 0.75rem; font-weight: 600;
-            transition: 0.3s; border-radius: 8px; margin-bottom: 5px;
-            width: 100%;
+        .nav-btn {
+            background: transparent; border: none; color: var(--text-muted);
+            padding: 12px 15px; text-align: left; cursor: pointer;
+            font-family: inherit; font-size: 0.75rem; font-weight: 600;
+            transition: 0.3s; border-radius: 8px; margin-bottom: 5px;
+            width: 100%;
 
-        }
+        }
 
-        .nav-btn:hover, .nav-btn.active { background: rgba(255,255,255,0.05); color: #fff; }
+        .nav-btn:hover, .nav-btn.active { background: rgba(255,255,255,0.05); color: #fff; }
 
 
-        .main-content { 
-            padding: 30px; 
-            overflow-y: auto; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            background: radial-gradient(circle at center, #1e1e1e 0%, #1a1a1a 100%);
+        .main-content { 
+            padding: 30px; 
+            overflow-y: auto; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            background: radial-gradient(circle at center, #1e1e1e 0%, #1a1a1a 100%);
 
-        }
+        }
 
-        .tab-pane { width: 100%; display: none; animation: fadeIn 0.4s ease; }
-        .tab-pane.active { display: flex; flex-direction: column; align-items: center; }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .tab-pane { width: 100%; display: none; animation: fadeIn 0.4s ease; }
+        .tab-pane.active { display: flex; flex-direction: column; align-items: center; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 
-        .preview-card {
-            width: 100%;
-            max-width: 300px; 
-            aspect-ratio: 1/1.1;
-            background: #1c1c1c;
-            border: 1px solid var(--border); border-radius: 15px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            margin-bottom: 20px; position: relative;
+        .preview-card {
+            width: 100%;
+            max-width: 300px; 
+            aspect-ratio: 1/1.1;
+            background: #1c1c1c;
+            border: 1px solid var(--border); border-radius: 15px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            margin-bottom: 20px; position: relative;
 
-        }
+        }
 
 
 
-        .price-tag { display: flex; align-items: center; gap: 10px; margin: 15px 0; }
+        .price-tag { display: flex; align-items: center; gap: 10px; margin: 15px 0; }
 
-        .old-price { text-decoration: line-through; color: var(--text-muted); font-size: 0.8rem; }
+        .old-price { text-decoration: line-through; color: var(--text-muted); font-size: 0.8rem; }
 
-        .new-price { font-size: 1.6rem; font-weight: 800; color: var(--accent-gold); }
+        .new-price { font-size: 1.6rem; font-weight: 800; color: var(--accent-gold); }
 
 
 
-        .input-box {
+        .input-box {
 
-            width: 100%; max-width: 350px; background: #222; border: 1px solid var(--border);
+            width: 100%; max-width: 350px; background: #222; border: 1px solid var(--border);
 
-            padding: 12px; color: #fff; border-radius: 8px; text-align: center; margin-bottom: 15px;
+            padding: 12px; color: #fff; border-radius: 8px; text-align: center; margin-bottom: 15px;
 
-            font-size: 0.9rem;
+            font-size: 0.9rem;
 
-        }
+        }
 
 
 
-        .btn-add {
+        .btn-add {
 
-            background: var(--accent-gold); color: #000; padding: 12px 30px;
+            background: var(--accent-gold); color: #000; padding: 12px 30px;
 
-            border-radius: 50px; font-weight: 800; border: none; cursor: pointer;
+            border-radius: 50px; font-weight: 800; border: none; cursor: pointer;
 
-            transition: 0.3s; text-transform: uppercase; font-size: 0.75rem;
+            transition: 0.3s; text-transform: uppercase; font-size: 0.75rem;
 
-        }
+        }
 
 
 
-        .right-bar { background: #141414; padding: 20px; border-left: 1px solid var(--border); display: flex; flex-direction: column; }
+        .right-bar { background: #141414; padding: 20px; border-left: 1px solid var(--border); display: flex; flex-direction: column; }
 
-        .section-header { font-size: 0.6rem; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; }
+        .section-header { font-size: 0.6rem; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; }
 
 
 
-        .suggestion-item {
+        .suggestion-item {
 
-            background: #1d1d1d; padding: 10px; border-radius: 8px; margin-bottom: 8px;
+            background: #1d1d1d; padding: 10px; border-radius: 8px; margin-bottom: 8px;
 
-            cursor: pointer; border: 1px solid transparent; transition: 0.2s;
+            cursor: pointer; border: 1px solid transparent; transition: 0.2s;
 
-        }
+        }
 
-        .suggestion-item:hover { border-color: var(--accent-gold); }
+        .suggestion-item:hover { border-color: var(--accent-gold); }
 
 
 
-        .info-block { text-align: left; width: 100%; max-width: 500px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+        .info-block { text-align: left; width: 100%; max-width: 500px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
 
-        .info-block b { color: var(--accent-gold); display: block; margin-top: 15px; margin-bottom: 5px; }
+        .info-block b { color: var(--accent-gold); display: block; margin-top: 15px; margin-bottom: 5px; }
 
-        .quote { font-style: italic; border-left: 2px solid var(--accent-gold); padding-left: 12px; margin: 15px 0; color: #ccc; }
+        .quote { font-style: italic; border-left: 2px solid var(--accent-gold); padding-left: 12px; margin: 15px 0; color: #ccc; }
 
 
 
-        @media (max-width: 900px) {
+        @media (max-width: 900px) {
 
-            .container { grid-template-columns: 1fr; height: auto; max-height: none; overflow: visible; }
+            .container { grid-template-columns: 1fr; height: auto; max-height: none; overflow: visible; }
 
-            .sidebar, .right-bar { display: none; }
+            .sidebar, .right-bar { display: none; }
 
-            body { overflow-y: auto; padding-top: 50px; }
+            body { overflow-y: auto; padding-top: 50px; }
 
-        }
+        }
 
 
 
-        .modal {
+        .modal {
 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
 
-            background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
+            background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
 
-        }
+        }
 
-        .modal-content { background: #111; padding: 30px; border-radius: 15px; border: 1px solid var(--accent-gold); width: 100%; max-width: 400px; text-align: center; }
+        .modal-content { background: #111; padding: 30px; border-radius: 15px; border: 1px solid var(--accent-gold); width: 100%; max-width: 400px; text-align: center; }
 
-    </style>
+    </style>
 
 </head>
 
@@ -201,415 +201,433 @@
 
 
 
-    <div class="sale-banner">WEDDING SEASON EXCLUSIVE — 50% OFF AUTOMATICALLY APPLIED</div>
+    <div class="sale-banner">WEDDING SEASON EXCLUSIVE — 50% OFF AUTOMATICALLY APPLIED</div>
 
 
 
-    <div class="container">
+    <div class="container">
 
-        <div class="sidebar">
+        <div class="sidebar">
 
-            <div class="logo">H&K</div>
+            <div class="logo">H&K</div>
 
-            <button class="nav-btn active" onclick="switchTab('candles', this)">[ CANDLES ]</button>
+            <button class="nav-btn active" onclick="switchTab('candles', this)">[ CANDLES ]</button>
 
-            <button class="nav-btn" onclick="switchTab('acc', this)">[ ACCESSORIES ]</button>
+            <button class="nav-btn" onclick="switchTab('acc', this)">[ ACCESSORIES ]</button>
 
-            <button class="nav-btn" onclick="switchTab('coming', this)">[ WEAR ]</button>
+            <button class="nav-btn" onclick="switchTab('coming', this)">[ WEAR ]</button>
 
-            
+            
 
-            <div style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 15px;">
+            <div style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 15px;">
 
-                <button class="nav-btn" style="font-size: 0.65rem" onclick="switchTab('about', this)">ABOUT_US</button>
+                <button class="nav-btn" style="font-size: 0.65rem" onclick="switchTab('about', this)">ABOUT_US</button>
 
-                <button class="nav-btn" onclick="switchTab('blog', this)">[ FOUNDER_LOG ]</button>
-                
-                <button class="nav-btn" style="font-size: 0.65rem" onclick="switchTab('privacy', this)">PRIVACY</button>
+                <button class="nav-btn" onclick="switchTab('blog', this)">[ FOUNDER_LOG ]</button>
+                
+                <button class="nav-btn" style="font-size: 0.65rem" onclick="switchTab('privacy', this)">PRIVACY</button>
 
-            </div>
+            </div>
 
-        </div>
+        </div>
 
 
 
-        <div class="main-content">
+        <div class="main-content">
 
-            <div id="tab-candles" class="tab-pane active">
-    <!-- Image container with absolute badge positioning -->
-    <div class="preview-card" style="position: relative; border-color: rgba(255,255,255,0.03);">
-        <span style="position: absolute; top: 15px; left: 15px; background: #ff3333; color: #000; font-size: 0.55rem; font-weight: 800; letter-spacing: 2px; padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">OUT OF ARCHIVE</span>
-        <span style="font-size: 0.5rem; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 10px; opacity: 0.5;">HANDCRAFTED_ELITE_TERRACOTTA</span>
-        <h2 id="label-prev" style="font-size: 1.2rem; letter-spacing: 2px; opacity: 0.3;">H&K_ARCHIVE</h2>
-    </div>
-    <div class="price-tag" style="opacity: 0.4;">
-        <span class="old-price">₹278</span>
-        <span class="new-price">₹139</span>
-    </div>
-    <input type="text" id="label-input" class="input-box" placeholder="AWAITING RESTOCK..." disabled style="opacity: 0.3; cursor: not-allowed;">
-    <!-- Disabled purchase mechanics -->
-    <button class="btn-add" disabled style="background: #333; color: var(--text-muted); cursor: not-allowed; opacity: 0.5;">SOLD OUT</button>
-</div>
+            <div id="tab-candles" class="tab-pane active">
 
+                <div class="preview-card">
 
+                    <span style="font-size: 0.5rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 10px;">HANDCRAFTED_ELITE_TERRACOTTA</span>
 
-            <div id="tab-acc" class="tab-pane">
+                    <h2 id="label-prev" style="font-size: 1.2rem; letter-spacing: 2px;">H&K_ARCHIVE</h2>
 
-                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">ESSENTIALS</h3>
+                </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 500px;">
+                <div class="price-tag">
 
-                    <div class="suggestion-item" style="text-align:center" onclick="addToBag('Canvas Tote', 199)">
+                    <span class="old-price">₹278</span>
 
-                        <div style="font-size: 0.7rem;">CANVAS_TOTE</div>
+                    <span class="new-price">₹139</span>
 
-                        <div style="font-size: 0.6rem; color: var(--accent-gold);">₹199</div>
+                </div>
 
-                    </div>
+                <input type="text" id="label-input" class="input-box" placeholder="CUSTOMIZE LABEL..." oninput="document.getElementById('label-prev').innerText = this.value || 'H&K_ARCHIVE'">
 
-                    <div class="suggestion-item" style="text-align:center" onclick="addToBag('Founder Keylink', 149)">
+                <button class="btn-add" onclick="addToBag('Elite Candle', 139)">ADD TO ARCHIVE</button>
 
-                        <div style="font-size: 0.7rem;">KEYLINK</div>
+            </div>
 
-                        <div style="font-size: 0.6rem; color: var(--accent-gold);">₹149</div>
 
-                    </div>
 
-                </div>
+            <div id="tab-acc" class="tab-pane">
 
-            </div>
+                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">ESSENTIALS</h3>
 
-            <div id="tab-blog" class="tab-pane">
-                <h3 style="letter-spacing: 5px; margin-bottom: 30px; color: var(--accent-gold); font-size: 0.8rem;">
-                    [ ENTRY_001: THE ORIGIN_STAMP ]
-                </h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 500px;">
 
-                <div class="info-block" style="line-height: 2; letter-spacing: 0.5px; font-family: 'Inter', sans-serif;">
-                    <p style="color: #fff; margin-bottom: 20px; font-size: 1rem;">
-                        Most brands chase the 'perfect' scent. We chased the <b>Memory of a Jaipur Afternoon</b>.
-                    </p>
+                    <div class="suggestion-item" style="text-align:center" onclick="addToBag('Canvas Tote', 199)">
 
-                    <p style="margin-bottom: 20px; color: #aaa;">
-                        When we (H&K) started <b>PHASE_01</b>, we sat in a small room. Beside us were artists from the local bazaar, discussing their struggle against exploitation. We didn't want a corporate logo; we wanted a <b>Stamp of Authenticity</b>.
-                    </p>
+                        <div style="font-size: 0.7rem;">CANVAS_TOTE</div>
 
-                    <div class="quote" style="border-left: 2px solid var(--accent-gold); background: rgba(212, 175, 55, 0.05); padding: 25px; margin: 30px 0;">
-                        "Our first drop, the <b>Citrus & Orchid Archive</b>, is a tribute to the raw energy of local markets. It’s messy, it’s handcrafted, and it’s ours."
-                    </div>
+                        <div style="font-size: 0.6rem; color: var(--accent-gold);">₹199</div>
 
-                    <p style="margin-bottom: 20px; color: #aaa;">
-                        From the large farms of West India to your tabletop, the journey was not easy. There were hurdles, yet we worked together to give this form of art the stage it has deserved for a long time.
-                    </p>
+                    </div>
 
-                    <p style="margin-top: 30px; font-family: 'Courier New', monospace; color: var(--accent-gold); font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 20px;">
-                        // SIGNATURE_VERIFIED: <br>
-                        // IF YOUR CANDLE HAS A SLIGHT RIPPLE ON THE SURFACE, DO NOT CALL IT A DEFECT. <br>
-                        // CALL IT PROOF THAT A HUMAN HAND POURED IT.
-                    </p>
+                    <div class="suggestion-item" style="text-align:center" onclick="addToBag('Founder Keylink', 149)">
 
-                    <div style="margin-top: 40px;">
-                        <span style="font-size: 0.6rem; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase;">EXECUTED_BY:</span>
-                        <p style="font-weight: 800; letter-spacing: 2px; margin-top: 5px; color: #fff;">
-                            H. AGARWAL & K. DADHEECH
-                        </p>
-                        <p style="font-size: 0.5rem; color: var(--accent-gold); letter-spacing: 1px;">FOUNDERS // H&K</p>
-                    </div>
-                </div>
-            </div>
+                        <div style="font-size: 0.7rem;">KEYLINK</div>
 
+                        <div style="font-size: 0.6rem; color: var(--accent-gold);">₹149</div>
 
-            <div id="tab-privacy" class="tab-pane">
+                    </div>
 
-                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">PRIVACY_PROTOCOL</h3>
+                </div>
 
-                <div class="info-block">
+            </div>
 
-                    <b>Data Collection</b>
+            <div id="tab-blog" class="tab-pane">
+                <h3 style="letter-spacing: 5px; margin-bottom: 30px; color: var(--accent-gold); font-size: 0.8rem;">
+                    [ ENTRY_001: THE ORIGIN_STAMP ]
+                </h3>
 
-                    H&K logs user-provided identifiers (Name, Contact Number) strictly for order fulfillment during this Trial Launch Phase. 
+                <div class="info-block" style="line-height: 2; letter-spacing: 0.5px; font-family: 'Inter', sans-serif;">
+                    <p style="color: #fff; margin-bottom: 20px; font-size: 1rem;">
+                        Most brands chase the 'perfect' scent. We chased the <b>Memory of a Jaipur Afternoon</b>.
+                    </p>
 
-                    <b>Transmission Security</b>
+                    <p style="margin-bottom: 20px; color: #aaa;">
+                        When we (H&K) started <b>PHASE_01</b> Beside us were artists from the local bazaar, discussing their struggle against exploitation. We didn't want a corporate logo; we wanted a <b>Stamp of Authenticity</b>.
+                    </p>
 
-                    All checkout data is transmitted via end-to-end encrypted WhatsApp gateways. We do not store financial records or passwords on our internal servers.
+                    <div class="quote" style="border-left: 2px solid var(--accent-gold); background: rgba(212, 175, 55, 0.05); padding: 25px; margin: 30px 0;">
+                        "Our first drop, the <b>Citrus & Orchid Archive</b>, is a tribute to the raw energy of local markets. It’s messy, it’s handcrafted, and it’s ours."
+                    </div>
 
-                    <b>Third-Party Access</b>
+                    <p style="margin-bottom: 20px; color: #aaa;">
+                        From the large farms of West India to your tabletop, the journey was not easy. There were hurdles, yet we worked together to give this form of art the stage it has deserved for a long time.
+                    </p>
 
-                    Your information is never sold or shared with external marketing agencies. Data is used solely by the H&K team to coordinate handcrafted production and regional delivery.
+                    <p style="margin-top: 30px; font-family: 'Courier New', monospace; color: var(--accent-gold); font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 20px;">
+                        // SIGNATURE_VERIFIED: <br>
+                        // IF YOUR CANDLE HAS A SLIGHT RIPPLE ON THE SURFACE, DO NOT CALL IT A DEFECT. <br>
+                        // CALL IT PROOF THAT A HUMAN HAND POURED IT.
+                    </p>
 
-                    
+                    <div style="margin-top: 40px;">
+                        <span style="font-size: 0.6rem; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase;">EXECUTED_BY:</span>
+                        <p style="font-weight: 800; letter-spacing: 2px; margin-top: 5px; color: #fff;">
+                            H. AGARWAL & K. DADHEECH
+                        </p>
+                        <p style="font-size: 0.5rem; color: var(--accent-gold); letter-spacing: 1px;">FOUNDERS // H&K</p>
+                    </div>
+                </div>
+            </div>
 
-                    <b>User Rights</b>
 
-                    As a user of our Trial Phase, you may request the deletion of your order logs at any time by contacting us directly through our official support channel.
+            <div id="tab-privacy" class="tab-pane">
 
-                </div>
+                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">PRIVACY_PROTOCOL</h3>
 
-            </div>
+                <div class="info-block">
 
+                    <b>Data Collection</b>
 
+                    H&K logs user-provided identifiers (Name, Contact Number) strictly for order fulfillment during this Trial Launch Phase. 
 
-            <div id="tab-about" class="tab-pane">
+                    <b>Transmission Security</b>
 
-                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">THE_VISION</h3>
+                    All checkout data is transmitted via end-to-end encrypted WhatsApp gateways. We do not store financial records or passwords on our internal servers.
 
-                <div class="info-block">
+                    <b>Third-Party Access</b>
 
-                    <p><b>Trial Launch Theory:</b> testing scalability via handcrafted production. Access is curated to maintain quality control.</p>
+                    Your information is never sold or shared with external marketing agencies. Data is used solely by the H&K team to coordinate handcrafted production and regional delivery.
 
-                    <p style="margin-top: 8px;"><b>Region Restrictions:</b> Deliveries are currently localized in jaipur to ensure fragile items arrive intact.</p>
+                    
 
-                    <div class="quote">"We are a small team and thus may have delays, but there is no compromise with your experiences."</div>
+                    <b>User Rights</b>
 
-                    <div class="quote" style="border-color: #444;">"The imperfection in our products are proof that they are purely handcrafted and support local workers."</div>
+                    As a user of our Trial Phase, you may request the deletion of your order logs at any time by contacting us directly through our official support channel.
 
-                </div>
+                </div>
 
-            </div>
+            </div>
 
-            <div id="tab-coming" class="tab-pane">
-    <h3 style="margin-bottom: 15px; letter-spacing: 5px; font-size: 0.75rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
+
+
+            <div id="tab-about" class="tab-pane">
+
+                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">THE_VISION</h3>
+
+                <div class="info-block">
+
+                    <p><b>Trial Launch Theory:</b> testing scalability via handcrafted production. Access is curated to maintain quality control.</p>
+
+                    <p style="margin-top: 8px;"><b>Region Restrictions:</b> Deliveries are currently localized in jaipur to ensure fragile items arrive intact.</p>
+
+                    <div class="quote">"We are a small team and thus may have delays, but there is no compromise with your experiences."</div>
+
+                    <div class="quote" style="border-color: #444;">"The imperfection in our products are proof that they are purely handcrafted and support local workers."</div>
+
+                </div>
+
+            </div>
+
+
+
+            <div id="tab-coming" class="tab-pane">
+    <h3 style="margin-bottom: 20px; letter-spacing: 5px; font-size: 0.75rem; color: var(--accent-gold);">[ THE_APPARELS ]</h3>
     
-    <!-- Constrained Product Card Container to stop grid leakage -->
-    <div style="width: 100%; max-width: 260px; background: #1c1c1c; border: 1px solid var(--border); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; align-items: center; margin-bottom: 10px;">
+    <!-- Clean Minimalist Category Sub-Navigation Menu -->
+    <div style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; width: 100%; max-width: 400px; justify-content: center;">
+        <span style="font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; color: var(--accent-gold); cursor: pointer;">[ 01_TOPS ]</span>
+        <span style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); opacity: 0.4; cursor: not-allowed;">02_BOTTOMS (LOCKED)</span>
+    </div>
+    
+    <!-- Active Category Grid Container -->
+    <div id="category-tops-container" style="width: 100%; max-width: 300px; display: flex; flex-direction: column; align-items: center;">
         
-        <!-- Max-height control to prevent elements running over each other -->
-        <div style="width: 100%; max-height: 180px; overflow: hidden; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #121212; margin-bottom: 12px;">
+        <!-- Text-Based Minimalist Product Card (No Image Overlaps) -->
+        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #1c1c1c; border: 1px solid var(--border);">
+            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 600;">ARCHIVE_SERIES_01</div>
+            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #fff;">911 Editorial Tee</h4>
+            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">280 GSM Heavyweight French Terry Neutral • Boxy Fit</p>
             
+            <!-- Pricing Internal Layout -->
+            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+                <span class="old-price" style="font-size: 0.75rem;">₹599</span>
+                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹399</span>
+            </div>
+            
+            <!-- Action Button -->
+            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%;" onclick="addToBag('911 Editorial Tee', 399)">ADD TO ARCHIVE</button>
         </div>
-        
-        <div style="text-align: center; width: 100%;">
-            <div style="font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 2px;">911 Editorial Tee</div>
-            <div style="font-size: 0.6rem; color: var(--text-muted);">280 GSM French Terry • Boxy Fit</div>
-        </div>
-    </div>
 
-    <!-- Tightened spacing for pricing and button layout -->
-    <div class="price-tag" style="margin: 10px 0;">
-        <span class="old-price" style="font-size: 0.75rem;">₹599</span>
-        <span class="new-price" style="font-size: 1.4rem;">₹399</span>
     </div>
-
-    <button class="btn-add" style="padding: 10px 24px; font-size: 0.7rem;" onclick="addToBag('911 Editorial Tee', 399)">ADD TO ARCHIVE</button>
 </div>
 
+        </div>
 
-        <div class="right-bar">
 
-            <div class="section-header">SUGGESTIONS</div>
 
-            <div id="suggestions">
+        <div class="right-bar">
 
-                <div class="suggestion-item" onclick="addToBag('Keylink', 149)">
+            <div class="section-header">SUGGESTIONS</div>
 
-                    <div style="font-size: 0.65rem; font-weight: 700;">+ FOUNDER KEYLINK</div>
+            <div id="suggestions">
 
-                    <div style="font-size: 0.55rem; color: var(--accent-gold);">₹149</div>
+                <div class="suggestion-item" onclick="addToBag('Keylink', 149)">
 
-                </div>
+                    <div style="font-size: 0.65rem; font-weight: 700;">+ FOUNDER KEYLINK</div>
 
-            </div>
+                    <div style="font-size: 0.55rem; color: var(--accent-gold);">₹149</div>
 
+                </div>
 
+            </div>
 
-            <div class="section-header" style="margin-top: 25px;">ARCHIVE_LOG</div>
 
-            <div id="bag-list" style="flex: 1; font-size: 0.7rem; overflow-y: auto; max-height: 250px;">
 
-                <p style="opacity: 0.2; font-style: italic;">_EMPTY</p>
+            <div class="section-header" style="margin-top: 25px;">ARCHIVE_LOG</div>
 
-            </div>
+            <div id="bag-list" style="flex: 1; font-size: 0.7rem; overflow-y: auto; max-height: 250px;">
 
+                <p style="opacity: 0.2; font-style: italic;">_EMPTY</p>
 
+            </div>
 
-            <div style="border-top: 1px solid var(--border); padding-top: 15px;">
 
-                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
 
-                    <span style="font-size: 0.65rem;">TOTAL</span>
+            <div style="border-top: 1px solid var(--border); padding-top: 15px;">
 
-                    <span id="total-price" style="font-weight: 800; color: var(--accent-gold); font-size: 0.9rem;">₹0</span>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
 
-                </div>
+                    <span style="font-size: 0.65rem;">TOTAL</span>
 
-                <button class="btn-add" style="width: 100%; font-size: 0.65rem;" onclick="openCheckout()">INITIATE_ORDER</button>
+                    <span id="total-price" style="font-weight: 800; color: var(--accent-gold); font-size: 0.9rem;">₹0</span>
 
-            </div>
+                </div>
 
-        </div>
+                <button class="btn-add" style="width: 100%; font-size: 0.65rem;" onclick="openCheckout()">INITIATE_ORDER</button>
 
-    </div>
+            </div>
 
+        </div>
 
+    </div>
 
-    <div id="checkout-modal" class="modal">
 
-        <div class="modal-content">
 
-            <h4 style="margin-bottom: 20px; letter-spacing: 2px; font-size: 0.9rem;">TRANSMISSION_PROTOCOL</h4>
+    <div id="checkout-modal" class="modal">
 
-            <input type="text" id="cust-name" class="input-box" placeholder="YOUR NAME">
+        <div class="modal-content">
 
-            <input type="tel" id="cust-phone" class="input-box" placeholder="WHATSAPP NUMBER">
-            <input type="text" id="customlabel" class="input-box" placeholder="YOUR LABEL IF ANY">
+            <h4 style="margin-bottom: 20px; letter-spacing: 2px; font-size: 0.9rem;">TRANSMISSION_PROTOCOL</h4>
 
-            <button class="btn-add" id="transmit-btn" style="width:100%" onclick="sendOrder()">TRANSMIT VIA WHATSAPP</button>
+            <input type="text" id="cust-name" class="input-box" placeholder="YOUR NAME">
 
-            <p style="margin-top: 15px; cursor: pointer; font-size: 0.55rem; color: var(--text-muted);" onclick="document.getElementById('checkout-modal').style.display='none'">[ ABORT ]</p>
+            <input type="tel" id="cust-phone" class="input-box" placeholder="WHATSAPP NUMBER">
+            <input type="text" id="customlabel" class="input-box" placeholder="YOUR LABEL IF ANY">
 
-        </div>
+            <button class="btn-add" id="transmit-btn" style="width:100%" onclick="sendOrder()">TRANSMIT VIA WHATSAPP</button>
 
-    </div>
+            <p style="margin-top: 15px; cursor: pointer; font-size: 0.55rem; color: var(--text-muted);" onclick="document.getElementById('checkout-modal').style.display='none'">[ ABORT ]</p>
 
+        </div>
 
+    </div>
 
-    <script>
 
-        let bag = [];
 
+    <script>
 
+        let bag = [];
 
-        function switchTab(id, btn) {
 
-            document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
 
-            document.getElementById('tab-' + id).classList.add('active');
+        function switchTab(id, btn) {
 
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
 
-            btn.classList.add('active');
+            document.getElementById('tab-' + id).classList.add('active');
 
-        }
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
 
+            btn.classList.add('active');
 
+        }
 
-        function addToBag(name, price) {
 
-            bag.push({name, price});
 
-            updateBag();
+        function addToBag(name, price) {
 
-        }
+            bag.push({name, price});
 
+            updateBag();
 
+        }
 
-        function updateBag() {
 
-            const list = document.getElementById('bag-list');
 
-            const totalDisplay = document.getElementById('total-price');
+        function updateBag() {
 
-            if(bag.length === 0) {
+            const list = document.getElementById('bag-list');
 
-                list.innerHTML = '<p style="opacity: 0.2;">_EMPTY</p>';
+            const totalDisplay = document.getElementById('total-price');
 
-                totalDisplay.innerText = '₹0';
+            if(bag.length === 0) {
 
-                return;
+                list.innerHTML = '<p style="opacity: 0.2;">_EMPTY</p>';
 
-            }
+                totalDisplay.innerText = '₹0';
 
-            let total = 0;
+                return;
 
-            list.innerHTML = bag.map(i => {
+            }
 
-                total += i.price;
+            let total = 0;
 
-                return `<div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span>${i.name}</span><b>₹${i.price}</b></div>`;
+            list.innerHTML = bag.map(i => {
 
-            }).join('');
+                total += i.price;
 
-            totalDisplay.innerText = '₹' + total;
+                return `<div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span>${i.name}</span><b>₹${i.price}</b></div>`;
 
-        }
+            }).join('');
 
+            totalDisplay.innerText = '₹' + total;
 
+        }
 
-        function openCheckout() {
 
-            if(bag.length > 0) document.getElementById('checkout-modal').style.display = 'flex';
 
-            else alert("Add items to your archive first.");
+        function openCheckout() {
 
-        }
+            if(bag.length > 0) document.getElementById('checkout-modal').style.display = 'flex';
+
+            else alert("Add items to your archive first.");
+
+        }
 
 async function sendOrder() {
-    // 1. DATA CAPTURE
-    const name = document.getElementById('cust-name').value.trim();
-    const phone = document.getElementById('cust-phone').value.trim();
-    const labelInput = document.getElementById('customlabel');
-    const userLabel = (labelInput && labelInput.value.trim()) ? labelInput.value.trim() : "None";
-    
-    const total = document.getElementById('total-price').innerText;
-    const items = bag.map(i => i.name).join(', ');
-    const orderId = "HK-" + Math.floor(1000 + Math.random() * 9000);
+    // 1. DATA CAPTURE
+    const name = document.getElementById('cust-name').value.trim();
+    const phone = document.getElementById('cust-phone').value.trim();
+    const labelInput = document.getElementById('customlabel');
+    const userLabel = (labelInput && labelInput.value.trim()) ? labelInput.value.trim() : "None";
+    
+    const total = document.getElementById('total-price').innerText;
+    const items = bag.map(i => i.name).join(', ');
+    const orderId = "HK-" + Math.floor(1000 + Math.random() * 9000);
 
-    // 2. VALIDATION
-    if(!name || !phone) {
-        alert("PROTOCOL_ERROR: Name and WhatsApp Number Required.");
-        return;
-    }
+    // 2. VALIDATION
+    if(!name || !phone) {
+        alert("PROTOCOL_ERROR: Name and WhatsApp Number Required.");
+        return;
+    }
 
-    // 3. UI FEEDBACK
-    const btn = document.getElementById('transmit-btn');
-    const originalText = btn.innerText;
-    btn.innerText = "TRANSMITTING...";
-    btn.disabled = true;
+    // 3. UI FEEDBACK
+    const btn = document.getElementById('transmit-btn');
+    const originalText = btn.innerText;
+    btn.innerText = "TRANSMITTING...";
+    btn.disabled = true;
 
-    // 4. STEP A: FORMSPREE TRANSMISSION (The Ledger)
-    const formData = new FormData();
-    formData.append('Order_ID', orderId);
-    formData.append('Name', name);
-    formData.append('WhatsApp', phone);
-    formData.append('Items', items);
-    formData.append('Custom_Label', userLabel);
-    formData.append('Total', total);
+    // 4. STEP A: FORMSPREE TRANSMISSION (The Ledger)
+    const formData = new FormData();
+    formData.append('Order_ID', orderId);
+    formData.append('Name', name);
+    formData.append('WhatsApp', phone);
+    formData.append('Items', items);
+    formData.append('Custom_Label', userLabel);
+    formData.append('Total', total);
 
-    try {
-        // Send to Formspree first
-        const response = await fetch('https://formspree.io/f/mykndpzj', {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        });
+    try {
+        // Send to Formspree first
+        const response = await fetch('https://formspree.io/f/mykndpzj', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
 
-        // 5. STEP B: WHATSAPP REDIRECT (The Notification)
-        // We trigger this even if Formspree has a minor delay
-        const waMsg = `*H&K ORDER_TRANSMISSION*%0A` +
-                      `----------------------------%0A` +
-                      `*ID:* ${orderId}%0A` +
-                      `*CLIENT:* ${name}%0A` +
-                      `*ITEMS:* ${items}%0A` +
-                      `*LABEL:* ${userLabel}%0A` +
-                      `*TOTAL:* ${total}%0A` +
-                      `----------------------------%0A` +
-                      `_Status: Order Logged in Archive_`;
+        // 5. STEP B: WHATSAPP REDIRECT (The Notification)
+        // We trigger this even if Formspree has a minor delay
+        const waMsg = `*H&K ORDER_TRANSMISSION*%0A` +
+                      `----------------------------%0A` +
+                      `*ID:* ${orderId}%0A` +
+                      `*CLIENT:* ${name}%0A` +
+                      `*ITEMS:* ${items}%0A` +
+                      `*LABEL:* ${userLabel}%0A` +
+                      `*TOTAL:* ${total}%0A` +
+                      `----------------------------%0A` +
+                      `_Status: Order Logged in Archive_`;
 
-        const waUrl = `https://wa.me/919782145263?text=${waMsg}`;
-        
-        // Finalize UI and Open WhatsApp
-        document.getElementById('checkout-modal').style.display = 'none';
-        window.open(waUrl, '_blank');
-        alert("Order Archived & WhatsApp Opening...");
+        const waUrl = `https://wa.me/919782145263?text=${waMsg}`;
+        
+        // Finalize UI and Open WhatsApp
+        document.getElementById('checkout-modal').style.display = 'none';
+        window.open(waUrl, '_blank');
+        alert("Order Archived & WhatsApp Opening...");
 
-    } catch (error) {
-        console.error("Formspree Error:", error);
-        alert("Database Sync Failed, but opening WhatsApp for direct order...");
-        
-        // Fallback: Open WhatsApp anyway so you don't lose the customer!
-        const fallbackMsg = `*H&K DIRECT_ORDER*%0A*ID:* ${orderId}%0A*Name:* ${name}%0A*Items:* ${items}%0A*Label:* ${userLabel}`;
-        window.open(`https://wa.me/919782145263?text=${fallbackMsg}`, '_blank');
-        
-    } finally {
-        btn.innerText = originalText;
-        btn.disabled = false;
-    }
+    } catch (error) {
+        console.error("Formspree Error:", error);
+        alert("Database Sync Failed, but opening WhatsApp for direct order...");
+        
+        // Fallback: Open WhatsApp anyway so you don't lose the customer!
+        const fallbackMsg = `*H&K DIRECT_ORDER*%0A*ID:* ${orderId}%0A*Name:* ${name}%0A*Items:* ${items}%0A*Label:* ${userLabel}`;
+        window.open(`https://wa.me/919782145263?text=${fallbackMsg}`, '_blank');
+        
+    } finally {
+        btn.innerText = originalText;
+        btn.disabled = false;
+    }
 }
 
-    
+    
 
 
 
-    </script>
+    </script>
 
 </body>
 
