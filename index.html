@@ -366,30 +366,31 @@
 
             </div>
 
-<div id="tab-coming" class="tab-pane">
-    <h3 style="margin-bottom: 25px; letter-spacing: 5px; font-size: 0.8rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
+            <div id="tab-coming" class="tab-pane">
+    <h3 style="margin-bottom: 15px; letter-spacing: 5px; font-size: 0.75rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
     
-    <!-- Minimalist Product Visual Layout -->
-    <div style="width: 100%; max-width: 320px; background: #1c1c1c; border: 1px solid var(--border); border-radius: 15px; padding: 15px; display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
-        <!-- Inserted professional layout photo verbatim -->
-        <img src="watermarked_img_8725466067987750814.png" alt="911 Editorial Tee" style="width: 100%; border-radius: 10px; object-fit: cover; margin-bottom: 15px;">
+    <!-- Constrained Product Card Container to stop grid leakage -->
+    <div style="width: 100%; max-width: 260px; background: #1c1c1c; border: 1px solid var(--border); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; align-items: center; margin-bottom: 10px;">
+        
+        <!-- Max-height control to prevent elements running over each other -->
+        <div style="width: 100%; max-height: 180px; overflow: hidden; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #121212; margin-bottom: 12px;">
+            
+        </div>
         
         <div style="text-align: center; width: 100%;">
-            <div style="font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 4px;">911 Editorial Tee</div>
-            <div style="font-size: 0.65rem; color: var(--text-muted); margin-bottom: 10px;">280 GSM French Terry • Boxy Silhouette</div>
+            <div style="font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 2px;">911 Editorial Tee</div>
+            <div style="font-size: 0.6rem; color: var(--text-muted);">280 GSM French Terry • Boxy Fit</div>
         </div>
     </div>
 
-    <!-- Pricing Strategy Implementation -->
-    <div class="price-tag">
-        <span class="old-price" style="font-size: 0.9rem;">₹999</span>
-        <span class="new-price" style="font-size: 1.8rem;">₹399</span>
+    <!-- Tightened spacing for pricing and button layout -->
+    <div class="price-tag" style="margin: 10px 0;">
+        <span class="old-price" style="font-size: 0.75rem;">₹599</span>
+        <span class="new-price" style="font-size: 1.4rem;">₹399</span>
     </div>
 
-    <!-- Functional Order Hook -->
-    <button class="btn-add" onclick="addToBag('911 Editorial Tee', 399)">ADD TO ARCHIVE</button>
+    <button class="btn-add" style="padding: 10px 24px; font-size: 0.7rem;" onclick="addToBag('911 Editorial Tee', 399)">ADD TO ARCHIVE</button>
 </div>
-
 
 
         <div class="right-bar">
