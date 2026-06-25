@@ -236,28 +236,20 @@
         <div class="main-content">
 
             <div id="tab-candles" class="tab-pane active">
-
-                <div class="preview-card">
-
-                    <span style="font-size: 0.5rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 10px;">HANDCRAFTED_ELITE_TERRACOTTA</span>
-
-                    <h2 id="label-prev" style="font-size: 1.2rem; letter-spacing: 2px;">H&K_ARCHIVE</h2>
-
-                </div>
-
-                <div class="price-tag">
-
-                    <span class="old-price">₹278</span>
-
-                    <span class="new-price">₹139</span>
-
-                </div>
-
-                <input type="text" id="label-input" class="input-box" placeholder="CUSTOMIZE LABEL..." oninput="document.getElementById('label-prev').innerText = this.value || 'H&K_ARCHIVE'">
-
-                <button class="btn-add" onclick="addToBag('Elite Candle', 139)">ADD TO ARCHIVE</button>
-
-            </div>
+    <!-- Image container with absolute badge positioning -->
+    <div class="preview-card" style="position: relative; border-color: rgba(255,255,255,0.03);">
+        <span style="position: absolute; top: 15px; left: 15px; background: #ff3333; color: #000; font-size: 0.55rem; font-weight: 800; letter-spacing: 2px; padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">OUT OF ARCHIVE</span>
+        <span style="font-size: 0.5rem; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 10px; opacity: 0.5;">HANDCRAFTED_ELITE_TERRACOTTA</span>
+        <h2 id="label-prev" style="font-size: 1.2rem; letter-spacing: 2px; opacity: 0.3;">H&K_ARCHIVE</h2>
+    </div>
+    <div class="price-tag" style="opacity: 0.4;">
+        <span class="old-price">₹278</span>
+        <span class="new-price">₹139</span>
+    </div>
+    <input type="text" id="label-input" class="input-box" placeholder="AWAITING RESTOCK..." disabled style="opacity: 0.3; cursor: not-allowed;">
+    <!-- Disabled purchase mechanics -->
+    <button class="btn-add" disabled style="background: #333; color: var(--text-muted); cursor: not-allowed; opacity: 0.5;">SOLD OUT</button>
+</div>
 
 
 
@@ -298,7 +290,7 @@
                     </p>
 
                     <p style="margin-bottom: 20px; color: #aaa;">
-                        When we (H&K) started <b>PHASE_01</b>, we sat in a small room with 10kg of soy wax. Beside us were artists from the local bazaar, discussing their struggle against exploitation. We didn't want a corporate logo; we wanted a <b>Stamp of Authenticity</b>.
+                        When we (H&K) started <b>PHASE_01</b>, we sat in a small room. Beside us were artists from the local bazaar, discussing their struggle against exploitation. We didn't want a corporate logo; we wanted a <b>Stamp of Authenticity</b>.
                     </p>
 
                     <div class="quote" style="border-left: 2px solid var(--accent-gold); background: rgba(212, 175, 55, 0.05); padding: 25px; margin: 30px 0;">
@@ -320,7 +312,7 @@
                         <p style="font-weight: 800; letter-spacing: 2px; margin-top: 5px; color: #fff;">
                             H. AGARWAL & K. DADHEECH
                         </p>
-                        <p style="font-size: 0.5rem; color: var(--accent-gold); letter-spacing: 1px;">FOUNDERS // H&K STUDIO</p>
+                        <p style="font-size: 0.5rem; color: var(--accent-gold); letter-spacing: 1px;">FOUNDERS // H&K</p>
                     </div>
                 </div>
             </div>
@@ -374,15 +366,29 @@
 
             </div>
 
-
-
-            <div id="tab-coming" class="tab-pane">
-
-                <h1 style="letter-spacing: 10px; opacity: 0.1; font-size: 1.5rem;">LOCKED</h1>
-
-            </div>
-
+<div id="tab-coming" class="tab-pane">
+    <h3 style="margin-bottom: 25px; letter-spacing: 5px; font-size: 0.8rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
+    
+    <!-- Minimalist Product Visual Layout -->
+    <div style="width: 100%; max-width: 320px; background: #1c1c1c; border: 1px solid var(--border); border-radius: 15px; padding: 15px; display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
+        <!-- Inserted professional layout photo verbatim -->
+        <img src="watermarked_img_8725466067987750814.png" alt="911 Editorial Tee" style="width: 100%; border-radius: 10px; object-fit: cover; margin-bottom: 15px;">
+        
+        <div style="text-align: center; width: 100%;">
+            <div style="font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 4px;">911 Editorial Tee</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted); margin-bottom: 10px;">280 GSM French Terry • Boxy Silhouette</div>
         </div>
+    </div>
+
+    <!-- Pricing Strategy Implementation -->
+    <div class="price-tag">
+        <span class="old-price" style="font-size: 0.9rem;">₹999</span>
+        <span class="new-price" style="font-size: 1.8rem;">₹399</span>
+    </div>
+
+    <!-- Functional Order Hook -->
+    <button class="btn-add" onclick="addToBag('911 Editorial Tee', 399)">ADD TO ARCHIVE</button>
+</div>
 
 
 
