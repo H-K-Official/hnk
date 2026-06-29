@@ -276,7 +276,19 @@
                             <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹399</span>
                         </div>
                         
-                        <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%;" onclick="addToBag('911 Editorial Tee', 399)">ADD TO ARCHIVE</button>
+                        <select id="size-911" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; cursor: pointer; outline: none;">
+        <option value="" disabled selected>SELECT YOUR SIZE</option>
+        <option value="S">S (Chest: 96cm)</option>
+        <option value="M">M (Chest: 101cm)</option>
+        <option value="L">L (Chest: 107cm)</option>
+        <option value="XL">XL (Chest: 112cm)</option>
+    </select>
+    
+    <!-- SMART BUTTON FOR 911 TEE -->
+    <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
+    onclick="let sz = document.getElementById('size-911').value; if(sz) { addToBag('911 Editorial Tee - Size: ' + sz, 399); } else { alert('Please select a size before adding to the archive.'); }">
+        ADD TO ARCHIVE
+    </button>
                     </div>
                 </div>
 
@@ -294,9 +306,19 @@
         <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
     </div>
     
-    <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="addToBag('Bang Bang Tee', 649)">ADD TO ARCHIVE</button>
-</div>
-                
+    <select id="size-bangbang" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; cursor: pointer; outline: none;">
+        <option value="" disabled selected>SELECT YOUR SIZE</option>
+        <option value="S">S (Chest: 96cm)</option>
+        <option value="M">M (Chest: 101cm)</option>
+        <option value="L">L (Chest: 107cm)</option>
+        <option value="XL">XL (Chest: 112cm)</option>
+    </select>
+    
+    <!-- UPDATED: SMART ADD TO BAG BUTTON -->
+    <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
+    onclick="let sz = document.getElementById('size-bangbang').value; if(sz) { addToBag('Bang Bang Tee - Size: ' + sz, 649); } else { alert('Please select a size before adding to the archive.'); }">
+        ADD TO ARCHIVE
+    </button>
             </div>
 
         </div>
