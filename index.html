@@ -263,20 +263,23 @@
                 </div>
                 
                 <div id="category-tops-container" style="width: 100%; max-width: 300px; display: flex; flex-direction: column; align-items: center;">
-                    <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #1c1c1c; border: 1px solid var(--border);">
 
-<img src="car911.png" alt="911 Editorial Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                        
-                        <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 600;">ARCHIVE_SERIES_01</div>
-                        <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #fff;">911 Editorial Tee</h4>
-                        <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">280 GSM Heavyweight French Terry • polyester neutral</p>
-                        
-                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                            <span class="old-price" style="font-size: 0.75rem;">₹599</span>
-                            <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹399</span>
-                        </div>
-                        
-                        <select id="size-911" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; cursor: pointer; outline: none;">
+
+<!-- START OF 911 EDITORIAL TEE CARD -->
+<div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+
+    <img src="car911.png" alt="911 Editorial Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
+
+    <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">ARCHIVE_SERIES_01</div>
+    <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">911 Editorial Tee</h4>
+    <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">280 GSM Heavyweight French Terry</p>
+    
+    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+        <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹599</span>
+        <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹399</span>
+    </div>
+    
+    <select id="size-911" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; cursor: pointer; outline: none;">
         <option value="" disabled selected>SELECT YOUR SIZE</option>
         <option value="S">S (Chest: 96cm)</option>
         <option value="M">M (Chest: 101cm)</option>
@@ -284,17 +287,19 @@
         <option value="XL">XL (Chest: 112cm)</option>
     </select>
     
-    <!-- SMART BUTTON FOR 911 TEE -->
     <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
     onclick="let sz = document.getElementById('size-911').value; if(sz) { addToBag('911 Editorial Tee - Size: ' + sz, 399); } else { alert('Please select a size before adding to the archive.'); }">
         ADD TO ARCHIVE
     </button>
-                    </div>
+</div>
+<!-- END OF 911 EDITORIAL TEE CARD -->
+
+                    
                 </div>
 
+                <!-- START OF BANG BANG TEE CARD -->
 <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-top: 15px;">
     
-    <!-- Make sure your image file path matches this src exactly -->
     <img src="bigbangtee.png" alt="Bang Bang Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
 
     <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">NEW ARRIVAL</div>
@@ -302,7 +307,7 @@
     <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Heavyweight Graphic Streetwear</p>
     
     <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-        <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹899</span>
+        <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
         <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
     </div>
     
@@ -314,12 +319,14 @@
         <option value="XL">XL (Chest: 112cm)</option>
     </select>
     
-    <!-- UPDATED: SMART ADD TO BAG BUTTON -->
     <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
     onclick="let sz = document.getElementById('size-bangbang').value; if(sz) { addToBag('Bang Bang Tee - Size: ' + sz, 649); } else { alert('Please select a size before adding to the archive.'); }">
         ADD TO ARCHIVE
     </button>
-            </div>
+</div>
+<!-- END OF BANG BANG TEE CARD -->
+
+            
 
         </div>
 
