@@ -525,16 +525,24 @@
             }
         }
     </script>
-<!-- MOBILE MENU SCRIPT -->
+<!-- DIAGNOSTIC MOBILE MENU SCRIPT -->
 <script>
     function toggleMobileMenu() {
+        // 1. Check if the button is even working
+        alert("The button was tapped!"); 
+        
         let nav = document.getElementById('hk-nav');
-        if (nav) {
-            nav.classList.toggle('active-menu');
+        
+        // 2. Check if the ID is missing
+        if (!nav) {
+            alert("ERROR: The code cannot find 'hk-nav'. The ID is missing from your sidebar tag!");
+            return;
         }
+        
+        // 3. If everything is right, slide the menu
+        nav.classList.toggle('active-menu');
     }
 </script>
-
 </body>
     
 </html>
