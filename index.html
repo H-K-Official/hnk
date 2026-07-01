@@ -142,14 +142,73 @@
             background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
         }
         .modal-content { background: #111; padding: 30px; border-radius: 15px; border: 1px solid var(--accent-gold); width: 100%; max-width: 400px; text-align: center; }
+   
+    
+    
+    /* H&K PREMIUM MOBILE OVERRIDE */
+  @media only screen and (max-width: 768px) {
+    
+    /* Show the new mobile top bar */
+    .mobile-header {
+        display: flex !important;
+    }
+
+    /* Push main website down so it isn't hidden under the top bar */
+    body {
+        padding-top: 70px !important;
+        overflow-x: hidden;
+    }
+    
+    /* THE SMOOTH TRANSITION MENU */
+    #hk-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: -100% !important; /* Starts hidden entirely off the left screen */
+        width: 75% !important; /* Takes up 3/4 of the phone screen */
+        height: 100vh !important;
+        background: #0a0a0a !important;
+        border-right: 1px solid rgba(212, 175, 55, 0.2) !important;
+        z-index: 1000 !important;
+        padding-top: 90px !important; /* Space for the close button/header */
+        transition: left 0.4s ease-in-out !important; /* THIS IS THE SMOOTH GLIDE */
+    }
+    
+    /* When the Javascript fires, this class pushes the menu onto the screen */
+    #hk-nav.active-menu {
+        left: 0 !important;
+    }
+
+    /* Ensure product cards fit nicely on phone screens */
+    .suggestion-item {
+        width: 90% !important;
+        margin: 0 auto 20px auto !important;
+    }
+    
+    /* Make the Archive Log (Cart) sit neatly at the bottom */
+    .right-panel, #archive-log-container {
+        width: 100% !important;
+        position: relative !important;
+        margin-top: 40px !important;
+    }
+  }
+    
+    
+    
+    
     </style>
 </head>
 <body>
 
+    <!-- H&K MOBILE HEADER -->
+<div class="mobile-header" style="display: none; justify-content: space-between; align-items: center; padding: 15px 20px; background: #111111; border-bottom: 1px solid rgba(212,175,55,0.2); position: fixed; top: 0; left: 0; width: 100%; z-index: 1001;">
+    <h2 style="color: var(--accent-gold); margin: 0; font-size: 1.2rem; letter-spacing: 2px;">H&K</h2>
+    <button onclick="toggleMobileMenu()" style="background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; outline: none;">☰</button>
+</div>
+
     <div class="sale-banner">WEDDING SEASON EXCLUSIVE — 50% OFF AUTOMATICALLY APPLIED</div>
 
     <div class="container">
-        <div class="sidebar">
+        <div id="hk-nav" class="sidebar">
             <div class="logo">H&K</div>
             <button class="nav-btn active" onclick="switchTab('candles', this)">[ CANDLES ]</button>
             <button class="nav-btn" onclick="switchTab('acc', this)">[ ACCESSORIES ]</button>
@@ -467,4 +526,15 @@
         }
     </script>
 </body>
+
+<!-- MOBILE MENU SCRIPT -->
+<script>
+    function toggleMobileMenu() {
+        let nav = document.getElementById('hk-nav');
+        if (nav) {
+            nav.classList.toggle('active-menu');
+        }
+    }
+</script>
+    
 </html>
