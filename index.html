@@ -159,25 +159,28 @@
         overflow-x: hidden;
     }
     
-    /* THE SMOOTH TRANSITION MENU */
+/* THE BULLETPROOF SMOOTH TRANSITION MENU */
     #hk-nav {
         position: fixed !important;
         top: 0 !important;
-        left: -100% !important; /* Starts hidden entirely off the left screen */
-        width: 75% !important; /* Takes up 3/4 of the phone screen */
+        left: 0 !important; 
+        transform: translateX(-100%) !important; /* Forces it off-screen reliably */
+        width: 75% !important; 
         height: 100vh !important;
         background: #0a0a0a !important;
         border-right: 1px solid rgba(212, 175, 55, 0.2) !important;
         z-index: 1000 !important;
-        padding-top: 90px !important; /* Space for the close button/header */
-        transition: left 0.4s ease-in-out !important; /* THIS IS THE SMOOTH GLIDE */
+        padding-top: 90px !important; 
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important; /* Buttery smooth hardware acceleration */
+        display: block !important;
     }
     
-    /* When the Javascript fires, this class pushes the menu onto the screen */
+    /* When the Javascript fires, this pushes it onto the screen */
     #hk-nav.active-menu {
-        left: 0 !important;
+        transform: translateX(0) !important;
     }
 
+      
     /* Ensure product cards fit nicely on phone screens */
     .suggestion-item {
         width: 90% !important;
@@ -525,24 +528,15 @@
             }
         }
     </script>
-<!-- DIAGNOSTIC MOBILE MENU SCRIPT -->
 <script>
     function toggleMobileMenu() {
-        // 1. Check if the button is even working
-        alert("The button was tapped!"); 
-        
         let nav = document.getElementById('hk-nav');
-        
-        // 2. Check if the ID is missing
-        if (!nav) {
-            alert("ERROR: The code cannot find 'hk-nav'. The ID is missing from your sidebar tag!");
-            return;
+        if (nav) {
+            nav.classList.toggle('active-menu');
         }
-        
-        // 3. If everything is right, slide the menu
-        nav.classList.toggle('active-menu');
     }
 </script>
+    
 </body>
     
 </html>
