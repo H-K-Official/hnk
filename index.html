@@ -187,11 +187,17 @@
         margin: 0 auto 20px auto !important;
     }
     
-    /* Make the Archive Log (Cart) sit neatly at the bottom */
-    .right-panel, #archive-log-container {
-        width: 100% !important;
+
+
+      /* BRING THE CART BACK FROM THE DEAD */
+    #hk-cart {
+        display: flex !important;
+        width: 95% !important;
         position: relative !important;
-        margin-top: 40px !important;
+        margin: 40px auto 20px auto !important;
+        border-left: none !important;
+        border: 1px solid var(--accent-gold) !important;
+        border-radius: 12px !important;
     }
   }
     
@@ -399,7 +405,7 @@
                 
         </div>
 
-        <div class="right-bar">
+        <div id="hk-cart" class="right-bar">
             <div class="section-header">SUGGESTIONS</div>
             <div id="suggestions">
                 <div class="suggestion-item" onclick="addToBag('Keylink', 149)">
@@ -543,14 +549,17 @@
         }
     }
 
-    /* BULLETPROOF JUMP-TO-CART SCRIPT */
+/* TARGETED JUMP-TO-CART SCRIPT */
     function scrollToLog() {
-        // This forces the phone to smoothly scroll to the absolute bottom of the website
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: 'smooth'
-        });
+        let cart = document.getElementById('hk-cart');
+        if (cart) {
+            cart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            alert("Oops! The cart is still hiding."); 
+        }
     }
+    
+    
 </script>
     
     
