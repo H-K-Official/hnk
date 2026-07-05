@@ -534,6 +534,7 @@
             }
         }
     </script>
+
 <script>
     function toggleMobileMenu() {
         let nav = document.getElementById('hk-nav');
@@ -542,15 +543,16 @@
         }
     }
 
-    /* NEW JUMP-TO-CART SCRIPT */
+    /* BULLETPROOF JUMP-TO-CART SCRIPT */
     function scrollToLog() {
-        // This looks for your right-side panel and smoothly glides down to it
-        let cart = document.querySelector('.right-panel') || document.getElementById('archive-log-container') || document.querySelector('[style*="archive"]');
-        if (cart) {
-            cart.scrollIntoView({ behavior: 'smooth' });
-        }
+        // This forces the phone to smoothly scroll to the absolute bottom of the website
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
     }
 </script>
+    
     
 </body>
     
