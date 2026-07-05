@@ -202,12 +202,18 @@
 </head>
 <body>
 
-    <!-- H&K MOBILE HEADER -->
+<!-- H&K MOBILE HEADER -->
 <div class="mobile-header" style="display: none; justify-content: space-between; align-items: center; padding: 15px 20px; background: #111111; border-bottom: 1px solid rgba(212,175,55,0.2); position: fixed; top: 0; left: 0; width: 100%; z-index: 1001;">
+    
+    <button onclick="toggleMobileMenu()" style="background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; outline: none; padding: 0;">☰</button>
+    
     <h2 style="color: var(--accent-gold); margin: 0; font-size: 1.2rem; letter-spacing: 2px;">H&K</h2>
-    <button onclick="toggleMobileMenu()" style="background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; outline: none;">☰</button>
-</div>
+    
+    <!-- THE NEW CART JUMP BUTTON -->
+    <button onclick="scrollToLog()" style="background: var(--accent-gold); border: none; color: #000; font-size: 0.6rem; font-weight: 800; cursor: pointer; outline: none; padding: 8px 14px; border-radius: 20px; letter-spacing: 1px;">VIEW LOG</button>
 
+</div>
+    
     <div class="sale-banner">WEDDING SEASON EXCLUSIVE — 50% OFF AUTOMATICALLY APPLIED</div>
 
     <div class="container">
@@ -533,6 +539,15 @@
         let nav = document.getElementById('hk-nav');
         if (nav) {
             nav.classList.toggle('active-menu');
+        }
+    }
+
+    /* NEW JUMP-TO-CART SCRIPT */
+    function scrollToLog() {
+        // This looks for your right-side panel and smoothly glides down to it
+        let cart = document.querySelector('.right-panel') || document.getElementById('archive-log-container') || document.querySelector('[style*="archive"]');
+        if (cart) {
+            cart.scrollIntoView({ behavior: 'smooth' });
         }
     }
 </script>
