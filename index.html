@@ -225,9 +225,9 @@
     <div class="container">
         <div id="hk-nav" class="sidebar">
             <div class="logo">H&K</div>
-            <button class="nav-btn active" onclick="switchTab('candles', this)">[ CANDLES ]</button>
+            <button class="nav-btn" onclick="switchTab('candles', this)">[ CANDLES ]</button>
             <button class="nav-btn" onclick="switchTab('acc', this)">[ ACCESSORIES ]</button>
-            <button class="nav-btn" onclick="switchTab('coming', this)">[ WEAR ]</button>
+            <button class="nav-btn active" onclick="switchTab('coming', this)">[ WEAR ]</button>
             
             <div style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 15px;">
                 <button class="nav-btn" style="font-size: 0.65rem" onclick="switchTab('about', this)">ABOUT_US</button>
@@ -238,7 +238,7 @@
 
         <div class="main-content">
             <!-- CANDLES SECTION -->
-            <div id="tab-candles" class="tab-pane active">
+            <div id="tab-candles" class="tab-pane">
                 <div class="preview-card" style="position: relative; border-color: rgba(255,255,255,0.03);">
                     <span style="position: absolute; top: 15px; left: 15px; background: #ff3333; color: #000; font-size: 0.55rem; font-weight: 800; letter-spacing: 2px; padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">OUT OF ARCHIVE</span>
                     <span style="font-size: 0.5rem; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 10px; opacity: 0.5;">HANDCRAFTED_ELITE_TERRACOTTA</span>
@@ -327,7 +327,7 @@
             </div>
 
             <!-- WEAR SECTION (CLEAN TEXT LAYOUT) -->
-            <div id="tab-coming" class="tab-pane">
+            <div id="tab-coming" class="tab-pane active">
                 <h3 style="margin-bottom: 20px; letter-spacing: 5px; font-size: 0.75rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
                 
                 <div style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; width: 100%; max-width: 400px; justify-content: center;">
@@ -404,7 +404,7 @@
 <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-top: 15px;">
     
     <!-- Make sure you upload the image to GitHub with this exact name! -->
-    <img src="h&K apperals/Diva ones.png" alt="All Eyez On Me Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
+    <img src="h&K apperals/all eyez on me tee.png" alt="All Eyez On Me Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
 
     <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
     <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">All Eyez On Me Tee</h4>
@@ -435,7 +435,7 @@
     
     <!-- Make sure you upload the image to GitHub with this exact name! -->
 
-    <img src="h&K apperals/gandhi-god.png" alt="Money a Curse Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
+    <img src="h&K apperals/money a curse tee.png" alt="Money a Curse Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
     
 
     <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
@@ -461,7 +461,61 @@
     </button>
 </div>
 <!-- END OF MONEY A CURSE TEE CARD -->
-                
+
+
+
+                <img src="h&K apperals/uno tee.png" alt="Uno Fan-made" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
+    
+
+    <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
+    <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">UNO Tee</h4>
+    <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Polycotton Blend</p>
+    
+    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+        <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
+        <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
+    </div>
+    
+    <select id="size-money" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; cursor: pointer; outline: none;">
+        <option value="" disabled selected>SELECT YOUR SIZE</option>
+        <option value="S">S (Chest: 96cm)</option>
+        <option value="M">M (Chest: 101cm)</option>
+        <option value="L">L (Chest: 107cm)</option>
+        <option value="XL">XL (Chest: 112cm)</option>
+    </select>
+    
+    <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
+    onclick="let sz = document.getElementById('size-money').value; if(sz) { addToBag('uno tee - Size: ' + sz, 649); } else { alert('Please select a size before adding to the archive.'); }">
+        ADD TO ARCHIVE
+    </button>
+</div>
+
+
+<img src="h&K apperals/anime tee 1.png" alt="Anime Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
+    
+
+    <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
+    <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Anime Tee</h4>
+    <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium cotton</p>
+    
+    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+        <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
+        <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
+    </div>
+    
+    <select id="size-money" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; cursor: pointer; outline: none;">
+        <option value="" disabled selected>SELECT YOUR SIZE</option>
+        <option value="S">S (Chest: 96cm)</option>
+        <option value="M">M (Chest: 101cm)</option>
+        <option value="L">L (Chest: 107cm)</option>
+        <option value="XL">XL (Chest: 112cm)</option>
+    </select>
+    
+    <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
+    onclick="let sz = document.getElementById('size-money').value; if(sz) { addToBag('Anime1 Tee - Size: ' + sz, 649); } else { alert('Please select a size before adding to the archive.'); }">
+        ADD TO ARCHIVE
+    </button>
+</div>
 
             
 </div>
