@@ -476,7 +476,8 @@
         <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
     </div>
     
-    <select id="size-money" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; cursor: pointer; outline: none;">
+    <!-- 1. THE UPDATED DROPDOWN WITH UNIQUE ID 'size-uno' -->
+    <select id="size-uno" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; cursor: pointer; outline: none;">
         <option value="" disabled selected>SELECT YOUR SIZE</option>
         <option value="S">S (Chest: 96cm)</option>
         <option value="M">M (Chest: 101cm)</option>
@@ -484,10 +485,13 @@
         <option value="XL">XL (Chest: 112cm)</option>
     </select>
     
+    <!-- 2. THE UPDATED BUTTON LOOKING FOR 'size-uno' -->
     <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
-    onclick="let sz = document.getElementById('size-money').value; if(sz) { addToBag('uno tee - Size: ' + sz, 649); } else { alert('Please select a size before adding to the archive.'); }">
+    onclick="let sz = document.getElementById('size-uno').value; if(sz) { addToBag('UNO Tee - Size: ' + sz, 649); } else { alert('Please select a size before adding to the archive.'); }">
         ADD TO ARCHIVE
     </button>
+    
+   
 </div>
 
 
