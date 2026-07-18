@@ -58,7 +58,9 @@
         }
 
         .sidebar {
-            background: #151515;
+        background: rgba(21, 21, 21, 0.65);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
             padding: 30px 15px;
             border-right: 1px solid var(--border);
             display: flex;
@@ -148,11 +150,16 @@
     /* H&K PREMIUM MOBILE OVERRIDE */
   @media only screen and (max-width: 768px) {
     
-    /* Show the new mobile top bar */
+/* Show the new mobile top bar - FROSTED GLASS UPGRADE */
     .mobile-header {
         display: flex !important;
+        background: rgba(10, 10, 15, 0.75) !important; 
+        backdrop-filter: blur(16px) !important; 
+        -webkit-backdrop-filter: blur(16px) !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
     }
 
+      
     /* Push main website down so it isn't hidden under the top bar */
     body {
         padding-top: 70px !important;
@@ -167,7 +174,9 @@
         transform: translateX(-100%) !important; /* Forces it off-screen reliably */
         width: 75% !important; 
         height: 100vh !important;
-        background: #0a0a0a !important;
+       background: rgba(10, 10, 15, 0.85) !important;
+        backdrop-filter: blur(24px) !important;
+        -webkit-backdrop-filter: blur(24px) !important;
         border-right: 1px solid rgba(212, 175, 55, 0.2) !important;
         z-index: 1000 !important;
         padding-top: 90px !important; 
