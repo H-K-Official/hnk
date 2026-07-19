@@ -143,7 +143,60 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
         }
-        .modal-content { background: #111; padding: 30px; border-radius: 15px; border: 1px solid var(--accent-gold); width: 100%; max-width: 400px; text-align: center; }
+/* PREMIUM PROMO BILLBOARD */
+        .promo-billboard {
+            width: 100%;
+            max-width: 600px; 
+            height: 220px; 
+            border-radius: 16px;
+            margin: 10px auto 30px auto;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            display: flex;
+            align-items: flex-end;
+            background-color: #111; 
+        }
+
+        .promo-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-image: url('YOUR_PROMO_IMAGE_LINK_HERE.jpg'); 
+        }
+
+        .promo-overlay {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 70%;
+            background: linear-gradient(to top, rgba(10,10,15,1), rgba(10,10,15,0));
+        }
+
+        .promo-text {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .promo-text h4 {
+            color: var(--accent-gold);
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .promo-text h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        
    
     
     
@@ -336,7 +389,15 @@
             </div>
 
             <!-- WEAR SECTION (CLEAN TEXT LAYOUT) -->
-            <div id="tab-coming" class="tab-pane active">
+            <!-- EXCLUSIVE DROP PROMO BILLBOARD -->
+        <div class="promo-billboard">
+            <div class="promo-bg"></div>
+            <div class="promo-overlay"></div>
+            <div class="promo-text">
+                <h4>Drop 02 // Live</h4>
+                <h2>The UNO x H&K Series</h2>
+            </div>
+        </div>
                 <h3 style="margin-bottom: 20px; letter-spacing: 5px; font-size: 0.75rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
                 
                 <div style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; width: 100%; max-width: 400px; justify-content: center;">
