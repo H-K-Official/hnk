@@ -49,7 +49,7 @@
             height: 90vh; 
             background: var(--panel);
             display: grid;
-            grid-template-columns: 220px 1fr 280px;
+            grid-template-columns: 220px 1fr 340px;
             border: 1px solid var(--border);
             border-radius: 20px;
             overflow: hidden;
@@ -159,14 +159,38 @@
             background-color: #111; 
         }
 
-        .promo-bg {
+/* THE SEAMLESS CINEMATIC CAROUSEL */
+        .promo-track {
+            display: flex;
+            width: 400%; 
+            height: 100%;
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-image: url('YOUR_PROMO_IMAGE_LINK_HERE.jpg'); 
+            top: 0; left: 0;
+            animation: hotstarSlide 16s infinite cubic-bezier(0.77, 0, 0.175, 1); 
         }
 
+        .promo-slide {
+            width: 25%; 
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            animation: hotstarZoom 12s infinite alternate ease-in-out; 
+        }
+
+        /* THE SLIDER TIMING */
+        @keyframes hotstarSlide {
+            0%, 22% { transform: translateX(0%); }           
+            33%, 55% { transform: translateX(-25%); }        
+            66%, 88% { transform: translateX(-50%); }        
+            100% { transform: translateX(-75%); }            
+        }
+        
+        /* THE ZOOM TIMING */
+        @keyframes hotstarZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+        
         .promo-overlay {
             position: absolute;
             bottom: 0; left: 0; width: 100%; height: 70%;
@@ -198,7 +222,24 @@
         }
         
    
-    
+/* PREMIUM DARK SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 6px; /* Ultra-thin aesthetic */
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--panel); /* Blends into the dark background */
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.25); /* Faint gold */
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-gold); /* Solid gold on hover */
+        }
+        
     
     /* H&K PREMIUM MOBILE OVERRIDE */
   @media only screen and (max-width: 768px) {
@@ -391,15 +432,28 @@
             <!-- WEAR SECTION (CLEAN TEXT LAYOUT) -->
             <div id="tab-coming" class="tab-pane active">
                 
-            <!-- EXCLUSIVE DROP PROMO BILLBOARD -->
+
+<!-- EXCLUSIVE DROP PROMO BILLBOARD -->
         <div class="promo-billboard">
-            <div class="promo-bg"></div>
+            <!-- THE SLIDING CAROUSEL TRACK -->
+            <div class="promo-track">
+                <!-- Slide 1 -->
+                <div class="promo-slide" style="background-image: url('h&K apperals/uno tee.jpeg');"></div>
+                <!-- Slide 2 -->
+                <div class="promo-slide" style="background-image: url('h&K apperals/all eyez on me tee.jpeg');"></div>
+                <!-- Slide 3 -->
+                <div class="promo-slide" style="background-image: url('h&K apperals/money a curse tee.jpeg');"></div>
+                <!-- Slide 4: CLONE OF SLIDE 1 (Creates the seamless infinite loop) -->
+                <div class="promo-slide" style="background-image: url('h&K apperals/uno tee.jpeg');"></div>
+            </div>
+            
             <div class="promo-overlay"></div>
             <div class="promo-text">
                 <h4>Drop 02 // Live</h4>
-                <h2>The UNO x H&K Series</h2>
+                <h2>The Archive Series</h2>
             </div>
         </div>
+                
                 <h3 style="margin-bottom: 20px; letter-spacing: 5px; font-size: 0.75rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
                 
                 <div style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; width: 100%; max-width: 400px; justify-content: center;">
@@ -535,13 +589,15 @@
 <!-- END OF MONEY A CURSE TEE CARD -->
 
 
+                <!-- START OF UNO TEE CARD -->
+<div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-top: 15px;">
 
                 <img src="h&K apperals/uno tee.jpeg" alt="Uno Fan-made" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
     
 
     <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
     <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">UNO Tee</h4>
-    <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Polycotton Blend</p>
+    <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium polycotton Blend-FANMADE</p>
     
     <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
         <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
