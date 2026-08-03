@@ -18,6 +18,11 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        body, html {
+    overflow-x: hidden !important; /* This permanently stops the site from stretching sideways */
+    background-color: #050505; /* This locks in a premium dark mode background if your gradient breaks */
+}
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg);
@@ -145,6 +150,14 @@
         }
 
 /* THE SEAMLESS 6-SLIDE CINEMATIC CAROUSEL */
+.promo-billboard { /* Change this name to whatever your wrapper is actually called */
+    position: relative;
+    width: 100vw; /* Locks the width strictly to the viewer's screen */
+    height: 75vh; /* Sets a massive, cinematic height. Change the 75 to make it taller or shorter */
+    overflow: hidden !important; /* THIS IS THE FIX: It slices off the 600% track so it doesn't break the page */
+    background: #000000;
+}
+        
         .promo-track {
             display: flex;
             width: 600%; /* Upgraded from 400% to fit all 6 slides perfectly */
