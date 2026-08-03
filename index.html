@@ -143,47 +143,36 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
         }
-/* PREMIUM PROMO BILLBOARD */
-        .promo-billboard {
-            width: 100%;
-            max-width: 600px; 
-            height: 220px; 
-            border-radius: 16px;
-            margin: 10px auto 30px auto;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            display: flex;
-            align-items: flex-end;
-            background-color: #111; 
-        }
 
-/* THE SEAMLESS CINEMATIC CAROUSEL */
+/* THE SEAMLESS 6-SLIDE CINEMATIC CAROUSEL */
         .promo-track {
             display: flex;
-            width: 400%; 
+            width: 600%; /* Upgraded from 400% to fit all 6 slides perfectly */
             height: 100%;
             position: absolute;
             top: 0; left: 0;
-            animation: hotstarSlide 16s infinite cubic-bezier(0.77, 0, 0.175, 1); 
+            animation: hotstarSlide 25s infinite cubic-bezier(0.77, 0, 0.175, 1); /* Increased time so it doesn't rush through 5 shirts */
         }
 
         .promo-slide {
-            width: 25%; 
+            width: 16.666%; /* 100% divided by 6 slides */
             height: 100%;
             background-size: cover;
             background-position: center;
-            animation: hotstarZoom 12s infinite alternate ease-in-out; 
+            animation: hotstarZoom 12s infinite alternate ease-in-out; /* Keeps the breathing zoom alive */
         }
 
-        /* THE SLIDER TIMING */
+        /* THE UPGRADED SLIDER TIMING (Hold, then slide smoothly) */
         @keyframes hotstarSlide {
-            0%, 22% { transform: translateX(0%); }           
-            33%, 55% { transform: translateX(-25%); }        
-            66%, 88% { transform: translateX(-50%); }        
-            100% { transform: translateX(-75%); }            
+            0%, 14% { transform: translateX(0%); }           /* Hold Slide 1 (UNO) */
+            20%, 34% { transform: translateX(-16.666%); }    /* Hold Slide 2 (All Eyez) */
+            40%, 54% { transform: translateX(-33.333%); }    /* Hold Slide 3 (Money) */
+            60%, 74% { transform: translateX(-50%); }        /* Hold Slide 4 (Demon Slayer) */
+            80%, 94% { transform: translateX(-66.666%); }    /* Hold Slide 5 (Acid Wash) */
+            100% { transform: translateX(-83.333%); }        /* Slide to Clone (Invisibly resets) */
         }
+        
+
         
         /* THE ZOOM TIMING */
         @keyframes hotstarZoom {
@@ -431,24 +420,27 @@
 
             <!-- WEAR SECTION (CLEAN TEXT LAYOUT) -->
             <div id="tab-coming" class="tab-pane active">
-                
 
-<!-- EXCLUSIVE DROP PROMO BILLBOARD -->
-        <div class="promo-billboard">
-            <!-- THE SLIDING CAROUSEL TRACK -->
+<!-- THE SLIDING CAROUSEL TRACK -->
             <div class="promo-track">
                 <!-- Slide 1 -->
-                <div class="promo-slide" style="background-image: url('h&K apperals/uno tee.jpeg');"></div>
+                <div class="promo-slide" style="background-image: url('hk-apparels/uno tee.jpeg');"></div>
                 <!-- Slide 2 -->
-                <div class="promo-slide" style="background-image: url('h&K apperals/all eyez on me tee.jpeg');"></div>
+                <div class="promo-slide" style="background-image: url('hk-apparels/all eyez on me tee.jpeg');"></div>
                 <!-- Slide 3 -->
-                <div class="promo-slide" style="background-image: url('h&K apperals/money a curse tee.jpeg');"></div>
+                <div class="promo-slide" style="background-image: url('hk-apparels/money a curse tee.jpeg');"></div>
+                
                 <!-- Slide 4 -->
-                <div class="promo-slide" style="background-image: url('h&k apperals/demon slayer tee.jpeg');"></div>
-                <!-- Slide 5: CLONE OF SLIDE 1 (Creates the seamless infinite loop) -->
-                <div class="promo-slide" style="background-image: url('h&K apperals/uno tee.jpeg');"></div>
+                <div class="promo-slide" style="background-image: url('hk-apparels/demon slayer tee.jpeg');"></div>
+                
+                <!-- Slide 5 -->
+                <div class="promo-slide" style="background-image: url('hk-apparels/acid-wash-tee.jpeg');"></div>
+                
+                <!-- Slide 6: CLONE OF SLIDE 1 (Creates the seamless infinite loop) -->
+                <div class="promo-slide" style="background-image: url('hk-apparels/uno tee.jpeg');"></div>
             </div>
-            
+
+                
             <div class="promo-overlay"></div>
             <div class="promo-text">
                 <h4>Drop 02 // Live</h4>
@@ -656,7 +648,7 @@
 <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-top: 15px;">
     
     <!-- Remember to upload the image with this exact name! -->
-    <img src="h&K apperals/anime heavy.jpeg" alt="Anime Heavy Print Polo" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
+    <img src="h&K apperals/anime heavy.png" alt="Anime Heavy Print Polo" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
 
     <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // FANMADE_EDITION</div>
     <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Anime Heavy Print Polo</h4>
