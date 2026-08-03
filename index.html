@@ -150,13 +150,17 @@
         }
 
 /* THE SEAMLESS 6-SLIDE CINEMATIC CAROUSEL */
-.promo-billboard { /* Change this name to whatever your wrapper is actually called */
+.promo-billboard { 
     position: relative;
-    width: 100vw; /* Locks the width strictly to the viewer's screen */
-    height: 75vh; /* Sets a massive, cinematic height. Change the 75 to make it taller or shorter */
-    overflow: hidden !important; /* THIS IS THE FIX: It slices off the 600% track so it doesn't break the page */
+    width: 100%; /* Fits flawlessly inside your middle app column */
+    height: 380px; /* Aesthetic cinematic height. Change this number if you want it taller/shorter */
+    border-radius: 16px; /* Matches the luxury rounded corners of H&K */
+    overflow: hidden !important; /* THE MAGIC LOCK */
     background: #000000;
+    margin-bottom: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.2); /* Faint gold border to match the aesthetic */
 }
+
         
         .promo-track {
             display: flex;
@@ -431,37 +435,42 @@
                 </div>
             </div>
 
-            <!-- WEAR SECTION (CLEAN TEXT LAYOUT) -->
+<!-- WEAR SECTION (CLEAN TEXT LAYOUT) -->
             <div id="tab-coming" class="tab-pane active">
 
-<!-- THE SLIDING CAROUSEL TRACK -->
-            <div class="promo-track">
-                <!-- Slide 1 -->
-                <div class="promo-slide" style="background-image: url('hk-apparels/uno tee.jpeg');"></div>
-                <!-- Slide 2 -->
-                <div class="promo-slide" style="background-image: url('hk-apparels/all eyez on me tee.jpeg');"></div>
-                <!-- Slide 3 -->
-                <div class="promo-slide" style="background-image: url('hk-apparels/money a curse tee.jpeg');"></div>
-                
-                <!-- Slide 4 -->
-                <div class="promo-slide" style="background-image: url('hk-apparels/demon slayer tee.jpeg');"></div>
-                
-                <!-- Slide 5 -->
-                <div class="promo-slide" style="background-image: url('hk-apparels/acid-wash-tee.jpeg');"></div>
-                
-                <!-- Slide 6: CLONE OF SLIDE 1 (Creates the seamless infinite loop) -->
-                <div class="promo-slide" style="background-image: url('hk-apparels/uno tee.jpeg');"></div>
-            </div>
-
-                
-            <div class="promo-overlay"></div>
-            <div class="promo-text">
-                <h4>Drop 02 // Live</h4>
-                <h2>The Archive Series</h2>
-            </div>
-        </div>
+                <!-- 🚨 THE MISSING WRAPPER 🚨 -->
+                <div class="promo-billboard">
+                    
+                    <!-- THE SLIDING CAROUSEL TRACK -->
+                    <div class="promo-track">
+                        <!-- Slide 1 -->
+                        <div class="promo-slide" style="background-image: url('hk-apparels/uno tee.jpeg');"></div>
+                        <!-- Slide 2 -->
+                        <div class="promo-slide" style="background-image: url('hk-apparels/all eyez on me tee.jpeg');"></div>
+                        <!-- Slide 3 -->
+                        <div class="promo-slide" style="background-image: url('hk-apparels/money a curse tee.jpeg');"></div>
+                        <!-- Slide 4 -->
+                        <div class="promo-slide" style="background-image: url('hk-apparels/demon slayer tee.jpeg');"></div>
+                        <!-- Slide 5 -->
+                        <div class="promo-slide" style="background-image: url('hk-apparels/acid-wash-tee.jpeg');"></div>
+                        <!-- Slide 6: CLONE -->
+                        <div class="promo-slide" style="background-image: url('hk-apparels/uno tee.jpeg');"></div>
+                    </div>
+                    
+                    <!-- TEXT AND OVERLAY ALSO GO INSIDE THE WRAPPER -->
+                    <div class="promo-overlay"></div>
+                    <div class="promo-text">
+                        <h4>Drop 02 // Live</h4>
+                        <h2>The Archive Series</h2>
+                    </div>
+                    
+                </div> <!-- 🚨 THIS CLOSES THE BILLBOARD WRAPPER 🚨 -->
                 
                 <h3 style="margin-bottom: 20px; letter-spacing: 5px; font-size: 0.75rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
+                
+                <!-- ... The rest of your code for 01_TOPS stays exactly the same from here down! ... -->
+
+            
                 
                 <div style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; width: 100%; max-width: 400px; justify-content: center;">
                     <span style="font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; color: var(--accent-gold); cursor: pointer;">01_TOPS</span>
