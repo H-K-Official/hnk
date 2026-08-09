@@ -607,10 +607,13 @@
                 <!-- ========================================== -->
                 <div id="sub-acid" style="display: none; width: 100%;">
                     
-<!-- ACID WASH EXCLUSIVE BILLBOARD (AESTHETIC FIX) -->
-                    <div class="hk-billboard-wrapper" style="height: 180px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);">
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent);"></div>
-                        <div style="position: relative; z-index: 2; text-align: center; width: 100%;">
+<!-- ACID WASH EXCLUSIVE BILLBOARD (AESTHETIC & INTERACTIVE FIX) -->
+                    <div style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
+                        
+                        <!-- THE INVISIBLE SHIELD FIX: pointer-events: none ensures it NEVER blocks clicks -->
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent); pointer-events: none;"></div>
+                        
+                        <div style="position: relative; z-index: 2; text-align: center; width: 100%; pointer-events: none;">
                             <h4 style="color: var(--accent-gold); font-size: 0.65rem; letter-spacing: 4px; margin-bottom: 8px; text-transform: uppercase;">Capsule // 01</h4>
                             <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin: 0;">The Acid Archive</h2>
                         </div>
