@@ -470,16 +470,16 @@
                 
                 <h3 style="margin-bottom: 20px; letter-spacing: 5px; font-size: 0.75rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
                 
-                <!-- ... The rest of your code for 01_TOPS stays exactly the same from here down! ... -->
-
-            
-                
-                <div style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; width: 100%; max-width: 400px; justify-content: center;">
-                    <span style="font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; color: var(--accent-gold); cursor: pointer;">01_TOPS</span>
-                    <span style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); opacity: 0.4; cursor: not-allowed;">02_BOTTOMS (LOCKED)</span>
-                    <span style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); opacity: 0.4; cursor: not-allowed;">03_UNDERS (LOCKED)</span>
-                </div>
-                
+    <!-- UPGRADED SUB-NAVIGATION -->
+    <div style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; width: 100%; max-width: 400px; justify-content: center;">
+        <span id="nav-tops" onclick="switchSubTab('tops')" style="font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; color: var(--accent-gold); cursor: pointer; border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px;">01_TOPS</span>
+        
+        <span id="nav-acid" onclick="switchSubTab('acid')" style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); cursor: pointer; padding-bottom: 5px; transition: 0.3s;">02_ACID_WASH</span>
+        
+        <span style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); opacity: 0.4; cursor: not-allowed;">03_UNDERS (LOCKED)</span>
+    </div>
+                <!-- START OF TOPS CONTAINER -->
+    <div id="sub-tops" style="display: block; width: 100%;">
                 <div id="category-tops-container" style="width: 100%; max-width: 300px; display: flex; flex-direction: column; align-items: center;">
 
 
@@ -728,35 +728,98 @@
 </div>
 <!-- END OF DEMON SLAYER FANMADE CARD -->
 
-<!-- START OF ACID WASH BLACK TEE CARD -->
-<div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-top: 15px;">
-    
-    <!-- Remember to upload the image with this exact name! -->
-    <img src="h&K apperals/acid-wash-tee.jpeg" alt="Acid Wash Black Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
+        </div> <!-- CLOSES THE CATEGORY-TOPS-CONTAINER -->
+    </div> <!-- END OF TOPS CONTAINER -->
 
-    <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">MENS EXCLUSIVE // PREMIUM WASH</div>
-    <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Acid Wash Black Tee</h4>
-    <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Heavyweight Acid Wash Cotton</p>
-    
-    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-        <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1999</span>
-        <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹999</span>
-    </div>
-    
-    <select id="size-acid" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; cursor: pointer; outline: none;">
-        <option value="" disabled selected>SELECT YOUR SIZE</option>
-        <option value="S">S (Chest: 96cm)</option>
-        <option value="M">M (Chest: 101cm)</option>
-        <option value="L">L (Chest: 107cm)</option>
-        <option value="XL">XL (Chest: 112cm)</option>
-    </select>
-    
-    <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
-    onclick="let sz = document.getElementById('size-acid').value; if(sz) { addToBag('Acid Wash Black Tee - Size: ' + sz, 999); } else { alert('Please select a size before adding to the archive.'); }">
-        ADD TO ARCHIVE
-    </button>
-</div>
-<!-- END OF ACID WASH BLACK TEE CARD -->
+<!-- START OF ACID WASH CONTAINER (HIDDEN BY DEFAULT) -->
+    <div id="sub-acid" style="display: none; width: 100%;">
+        
+        <!-- ACID WASH EXCLUSIVE BILLBOARD -->
+        <div class="hk-billboard-wrapper" style="height: 250px;">
+            <div style="width: 100%; height: 100%; background-image: url('h%26K%20apperals/acid-wash-tee.jpeg'); background-size: cover; background-position: center; animation: hotstarZoom 12s infinite alternate ease-in-out;"></div>
+            <div class="promo-overlay"></div>
+            <div class="promo-text">
+                <h4>Capsule // 01</h4>
+                <h2>The Acid Archive</h2>
+            </div>
+        </div>
+
+        <div id="category-acid-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+
+            <!-- 1. MIGRATED BASIC ACID WASH (₹999) -->
+            <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                <img src="h%26K%20apperals/acid-wash-tee.jpeg" alt="Acid Wash Basic" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
+                <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">MENS EXCLUSIVE // PREMIUM WASH</div>
+                <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Acid Wash Black Tee</h4>
+                <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Heavyweight Acid Wash Cotton</p>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+                    <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1999</span>
+                    <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹999</span>
+                </div>
+                <select id="size-acid-basic" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
+                    <option value="" disabled selected>SELECT YOUR SIZE</option>
+                    <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
+                </select>
+                <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
+                onclick="let sz = document.getElementById('size-acid-basic').value; if(sz) { addToBag('Acid Wash Black Tee - Size: ' + sz, 999); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
+            </div>
+
+            <!-- 2. H&K EXCLUSIVE ACID WASH (₹1399) -->
+            <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                <img src="h%26K%20apperals/hk-exclusive-acid.jpeg" alt="H&K Exclusive Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
+                <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">H&K EXCLUSIVE // CAPSULE_01</div>
+                <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">H&K Exclusive Acid Tee</h4>
+                <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Ultra-Premium Vintage Wash</p>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+                    <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹2499</span>
+                    <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹1399</span>
+                </div>
+                <select id="size-acid-hk" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
+                    <option value="" disabled selected>SELECT YOUR SIZE</option>
+                    <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
+                </select>
+                <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
+                onclick="let sz = document.getElementById('size-acid-hk').value; if(sz) { addToBag('H&K Exclusive Acid Tee - Size: ' + sz, 1399); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
+            </div>
+
+            <!-- 3. DEMON SLAYER ACID WASH (₹1399) -->
+            <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                <img src="h%26K%20apperals/demon-acid.jpeg" alt="Demon Slayer Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
+                <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">FANMADE EDITION // CAPSULE_01</div>
+                <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Demon Slayer Acid Wash</h4>
+                <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Ultra-Premium Vintage Wash</p>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+                    <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹2499</span>
+                    <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹1399</span>
+                </div>
+                <select id="size-acid-demon" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
+                    <option value="" disabled selected>SELECT YOUR SIZE</option>
+                    <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
+                </select>
+                <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
+                onclick="let sz = document.getElementById('size-acid-demon').value; if(sz) { addToBag('Demon Slayer Acid Wash - Size: ' + sz, 1399); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
+            </div>
+
+            <!-- 4. GREEK STYLE ACID WASH (₹1399) -->
+            <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                <img src="h%26K%20apperals/greek-acid.jpeg" alt="Greek Style Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
+                <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GREEK MYTHOS // CAPSULE_01</div>
+                <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Greek Style Acid Wash</h4>
+                <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Ultra-Premium Vintage Wash</p>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+                    <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹2499</span>
+                    <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹1399</span>
+                </div>
+                <select id="size-acid-greek" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
+                    <option value="" disabled selected>SELECT YOUR SIZE</option>
+                    <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
+                </select>
+                <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
+                onclick="let sz = document.getElementById('size-acid-greek').value; if(sz) { addToBag('Greek Style Acid Wash - Size: ' + sz, 1399); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
+            </div>
+
+        </div> <!-- CLOSES CATEGORY-ACID-CONTAINER -->
+    </div> <!-- END OF ACID WASH CONTAINER -->
 
             </div> <!-- THIS CLOSES THE WEAR TAB -->
         </div> <!-- THIS CLOSES THE MAIN CONTENT AREA -->
@@ -798,6 +861,23 @@
 
     <script>
         let bag = [];
+
+
+        function switchSubTab(tab) {
+            // Swap visibility of the containers
+            document.getElementById('sub-tops').style.display = (tab === 'tops') ? 'block' : 'none';
+            document.getElementById('sub-acid').style.display = (tab === 'acid') ? 'block' : 'none';
+            
+            // Highlight the TOPS button if active
+            document.getElementById('nav-tops').style.color = (tab === 'tops') ? 'var(--accent-gold)' : 'var(--text-muted)';
+            document.getElementById('nav-tops').style.fontWeight = (tab === 'tops') ? '800' : '600';
+            document.getElementById('nav-tops').style.borderBottom = (tab === 'tops') ? '2px solid var(--accent-gold)' : 'none';
+            
+            // Highlight the ACID WASH button if active
+            document.getElementById('nav-acid').style.color = (tab === 'acid') ? 'var(--accent-gold)' : 'var(--text-muted)';
+            document.getElementById('nav-acid').style.fontWeight = (tab === 'acid') ? '800' : '600';
+            document.getElementById('nav-acid').style.borderBottom = (tab === 'acid') ? '2px solid var(--accent-gold)' : 'none';
+        }
 
         function switchTab(id, btn) {
             document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
