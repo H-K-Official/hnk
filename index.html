@@ -481,21 +481,36 @@
                     <div id="category-tops-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
 
                         <!-- POLY H&K EXCLUSIVE TEE-->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 122px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/poly H&K exclusive.png" alt="H&K Exclusive Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">ARCHIVE_SERIES_01</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">H&K Exclusive Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">poly Heavyweight French Terry</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹599</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹399</span>
-                            </div>
-                            <select id="size-ployex" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-polyex').value; if(sz) { addToBag('H&K Exclusive Tee - Size: ' + sz, 399); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
+<div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+    
+
+    <img src="h%26K%20apperals/poly H&K exclusive.png" alt="H&K Exclusive Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
+
+    <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">ARCHIVE_SERIES_01</div>
+    <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">H&K Exclusive Tee</h4>
+    <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">poly Heavyweight French Terry</p>
+    
+    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+        <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹599</span>
+        <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹399</span>
+    </div>
+    
+    
+    <select id="size-hk-exclusive" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
+        <option value="" disabled selected>SELECT YOUR SIZE</option>
+        <option value="S">S (Chest: 96cm)</option>
+        <option value="M">M (Chest: 101cm)</option>
+        <option value="L">L (Chest: 107cm)</option>
+        <option value="XL">XL (Chest: 112cm)</option>
+    </select>
+    
+
+    <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
+    onclick="let sz = document.getElementById('size-hk-exclusive').value; if(sz) { addToBag('H&K Exclusive Tee - Size: ' + sz, 399); } else { alert('Please select a size before adding to the archive.'); }">
+        ADD TO ARCHIVE
+    </button>
+</div>
+<!-- END OF H&K poly EXCLUSIVE TEE CARD -->
 
                         
                         
