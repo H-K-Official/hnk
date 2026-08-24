@@ -453,7 +453,7 @@
                 <div style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; width: 100%; max-width: 400px; justify-content: center;">
                     <span id="nav-tops" onclick="switchSubTab('tops')" style="font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; color: var(--accent-gold); cursor: pointer; border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px;">01_NEUTRAL_TEES</span>
                     <span id="nav-acid" onclick="switchSubTab('acid')" style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); cursor: pointer; padding-bottom: 5px; transition: 0.3s;">02_ACID_WASH</span>
-                    <span style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); opacity: 0.4; cursor: not-allowed;">03_GIRLS_ARCHIVE (LOCKED)</span>
+                   <span id="nav-her" onclick="switchSubTab('her')" style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); cursor: pointer; padding-bottom: 5px; transition: 0.3s;">03_HER_ARCHIVE</span>
                 </div>
 
                 <!-- ========================================== -->
@@ -748,6 +748,94 @@
                     </div> <!-- CLOSES CATEGORY-ACID-CONTAINER -->
                 </div> <!-- END OF ACID WASH CONTAINER -->
 
+<!-- ========================================== -->
+                <!-- START OF HER ARCHIVE CONTAINER (HIDDEN FIRST) -->
+                <!-- ========================================== -->
+                <div id="sub-her" style="display: none; width: 100%;">
+                    
+                    <!-- HER ARCHIVE EXCLUSIVE BILLBOARD -->
+                    <div class="hk-billboard-wrapper" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #3a0d16 0%, #000000 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent); pointer-events: none;"></div>
+                        <div style="position: relative; z-index: 2; text-align: center; width: 100%; pointer-events: none;">
+                            <h4 style="color: var(--accent-gold); font-size: 0.65rem; letter-spacing: 4px; margin-bottom: 8px; text-transform: uppercase;">Rakhi Exclusive</h4>
+                            <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin: 0;">Her Archive</h2>
+                        </div>
+                    </div>
+
+                    <div id="category-her-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+
+                        <!-- 1. BURI NAZAR CROP TOP -->
+                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                            <img src="h%26K%20apperals/GIRLS%20buri%20nazar%20crop%20top.png" alt="No Buri Nazar Crop Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
+                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // CROP FIT</div>
+                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Buri Nazar Crop Top</h4>
+                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Cropped Silhouette</p>
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹999</span>
+                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹599</span>
+                            </div>
+                            <select id="size-her-buri" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
+                                <option value="" disabled selected>SELECT HER SIZE</option>
+                                <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
+                            </select>
+                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-buri').value; if(sz) { addToBag('Buri Nazar Crop Top - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
+                        </div>
+
+                        <!-- 2. DIVA TEE -->
+                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                            <img src="h%26K%20apperals/GIRLS%20diva%20tee.png" alt="Diva Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
+                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // RELAXED FIT</div>
+                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Diva Graphic Tee</h4>
+                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Heavyweight Polycotton Blend</p>
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
+                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
+                            </div>
+                            <select id="size-her-diva" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
+                                <option value="" disabled selected>SELECT HER SIZE</option>
+                                <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
+                            </select>
+                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-diva').value; if(sz) { addToBag('Diva Graphic Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
+                        </div>
+
+                        <!-- 3. NONCHALANT TEE -->
+                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                            <img src="h%26K%20apperals/GIRLS%20nonchalant%20tee.png" alt="Nonchalant Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
+                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // RELAXED FIT</div>
+                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Nonchalant Tee</h4>
+                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Heavyweight Polycotton Blend</p>
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
+                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
+                            </div>
+                            <select id="size-her-nonchalant" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
+                                <option value="" disabled selected>SELECT HER SIZE</option>
+                                <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
+                            </select>
+                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-nonchalant').value; if(sz) { addToBag('Nonchalant Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
+                        </div>
+
+                        <!-- 4. TOXIC CROP TOP -->
+                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                            <img src="h%26K%20apperals/GIRLS%20Toxic%20crop%20top.png" alt="Toxic Crop Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
+                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // CROP FIT</div>
+                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Toxic Stamp Crop Top</h4>
+                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Cropped Silhouette</p>
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹999</span>
+                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹599</span>
+                            </div>
+                            <select id="size-her-toxic" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
+                                <option value="" disabled selected>SELECT HER SIZE</option>
+                                <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
+                            </select>
+                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-toxic').value; if(sz) { addToBag('Toxic Stamp Crop Top - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
+                        </div>
+
+                    </div> <!-- CLOSES CATEGORY-HER-CONTAINER -->
+                </div> <!-- END OF HER ARCHIVE CONTAINER -->
+                
+
             </div> <!-- THIS CLOSES THE WEAR TAB -->
 
 
@@ -795,19 +883,23 @@
 
 
         function switchSubTab(tab) {
-            // Swap visibility of the containers
+            // Swap visibility of the three containers seamlessly
             document.getElementById('sub-tops').style.display = (tab === 'tops') ? 'block' : 'none';
             document.getElementById('sub-acid').style.display = (tab === 'acid') ? 'block' : 'none';
+            document.getElementById('sub-her').style.display = (tab === 'her') ? 'block' : 'none';
             
-            // Highlight the TOPS button if active
-            document.getElementById('nav-tops').style.color = (tab === 'tops') ? 'var(--accent-gold)' : 'var(--text-muted)';
-            document.getElementById('nav-tops').style.fontWeight = (tab === 'tops') ? '800' : '600';
-            document.getElementById('nav-tops').style.borderBottom = (tab === 'tops') ? '2px solid var(--accent-gold)' : 'none';
+            // Reusable function to instantly update the active/inactive styles of the sub-nav buttons
+            const updateNavStyle = (id, isActive) => {
+                const el = document.getElementById(id);
+                el.style.color = isActive ? 'var(--accent-gold)' : 'var(--text-muted)';
+                el.style.fontWeight = isActive ? '800' : '600';
+                el.style.borderBottom = isActive ? '2px solid var(--accent-gold)' : 'none';
+            };
             
-            // Highlight the ACID WASH button if active
-            document.getElementById('nav-acid').style.color = (tab === 'acid') ? 'var(--accent-gold)' : 'var(--text-muted)';
-            document.getElementById('nav-acid').style.fontWeight = (tab === 'acid') ? '800' : '600';
-            document.getElementById('nav-acid').style.borderBottom = (tab === 'acid') ? '2px solid var(--accent-gold)' : 'none';
+            // Fire the style updates
+            updateNavStyle('nav-tops', tab === 'tops');
+            updateNavStyle('nav-acid', tab === 'acid');
+            updateNavStyle('nav-her', tab === 'her');
         }
 
         function switchTab(id, btn) {
