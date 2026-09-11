@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H&K | Elite Trial Launch</title>
+    
+    <!-- H&K GLOBAL TRANSMISSION TAGS (SEO) -->
+    <meta name="description" content="H&K is a curated Modern Heritage Archive based in Jaipur. Shop handcrafted, aesthetic, high-aura streetwear, acid wash capsules, and luxury.">
+    <meta name="keywords" content="H&K streetwear, luxury clothing Jaipur, modern heritage archive, acid wash oversized tees, Indian maximalism fashion">
+    <meta name="author" content="H&K Founders">
+    <meta property="og:title" content="H&K | The Apparel Archive">
+    <meta property="og:description" content="Handcrafted heritage. Explore Drop 02 of the H&K streetwear archive.">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -14,14 +23,16 @@
             --text-primary: #f8f9fa;
             --text-muted: #6c757d;
             --border: rgba(255, 255, 255, 0.08);
+            --cursor-x: 50vw; /* Interactive X Coordinate */
+            --cursor-y: 50vh; /* Interactive Y Coordinate */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body, html {
-    overflow-x: hidden !important; /* This permanently stops the site from stretching sideways */
-    background-color: #050505; /* This locks in a premium dark mode background if your gradient breaks */
-}
+            overflow-x: hidden !important; 
+            background-color: #050505; 
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -32,6 +43,34 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+        }
+
+        /* NASA TIER INTERACTIVITY: THE DARK MATTER SPOTLIGHT */
+        #dark-matter-spotlight {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 1500;
+            background: radial-gradient(circle 500px at var(--cursor-x) var(--cursor-y), rgba(212, 175, 55, 0.04), transparent 80%);
+            transition: opacity 0.3s ease;
+        }
+
+        /* NASA TIER INTERACTIVITY: HOVER MICRO-ZOOM */
+        .suggestion-item img {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .suggestion-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* NASA TIER INTERACTIVITY: CINEMATIC SCROLL LOGIC */
+        .hidden-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-scroll {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .sale-banner {
@@ -63,9 +102,9 @@
         }
 
         .sidebar {
-        background: rgba(21, 21, 21, 0.65);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+            background: rgba(21, 21, 21, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 30px 15px;
             border-right: 1px solid var(--border);
             display: flex;
@@ -149,49 +188,44 @@
             background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
         }
 
-/* THE SEAMLESS 6-SLIDE CINEMATIC CAROUSEL */
-.promo-billboard { 
-    position: relative;
-    width: 100%; /* Fits flawlessly inside your middle app column */
-    height: 380px; /* Aesthetic cinematic height. Change this number if you want it taller/shorter */
-    border-radius: 16px; /* Matches the luxury rounded corners of H&K */
-    overflow: hidden !important; /* THE MAGIC LOCK */
-    background: #000000;
-    margin-bottom: 30px;
-    border: 1px solid rgba(212, 175, 55, 0.2); /* Faint gold border to match the aesthetic */
-}
+        /* THE SEAMLESS 6-SLIDE CINEMATIC CAROUSEL */
+        .promo-billboard { 
+            position: relative;
+            width: 100%; 
+            height: 380px; 
+            border-radius: 16px; 
+            overflow: hidden !important; 
+            background: #000000;
+            margin-bottom: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.2); 
+        }
 
-        
         .promo-track {
             display: flex;
-            width: 600%; /* Upgraded from 400% to fit all 6 slides perfectly */
+            width: 600%; 
             height: 100%;
             position: absolute;
             top: 0; left: 0;
-            animation: hotstarSlide 25s infinite cubic-bezier(0.77, 0, 0.175, 1); /* Increased time so it doesn't rush through 5 shirts */
+            animation: hotstarSlide 25s infinite cubic-bezier(0.77, 0, 0.175, 1); 
         }
 
         .promo-slide {
-            width: 16.666%; /* 100% divided by 6 slides */
+            width: 16.666%; 
             height: 100%;
             background-size: cover;
             background-position: center;
-            animation: hotstarZoom 12s infinite alternate ease-in-out; /* Keeps the breathing zoom alive */
+            animation: hotstarZoom 12s infinite alternate ease-in-out; 
         }
 
-        /* THE UPGRADED SLIDER TIMING (Hold, then slide smoothly) */
         @keyframes hotstarSlide {
-            0%, 14% { transform: translateX(0%); }           /* Hold Slide 1 (UNO) */
-            20%, 34% { transform: translateX(-16.666%); }    /* Hold Slide 2 (All Eyez) */
-            40%, 54% { transform: translateX(-33.333%); }    /* Hold Slide 3 (Money) */
-            60%, 74% { transform: translateX(-50%); }        /* Hold Slide 4 (Demon Slayer) */
-            80%, 94% { transform: translateX(-66.666%); }    /* Hold Slide 5 (Acid Wash) */
-            100% { transform: translateX(-83.333%); }        /* Slide to Clone (Invisibly resets) */
+            0%, 14% { transform: translateX(0%); }           
+            20%, 34% { transform: translateX(-16.666%); }    
+            40%, 54% { transform: translateX(-33.333%); }    
+            60%, 74% { transform: translateX(-50%); }        
+            80%, 94% { transform: translateX(-66.666%); }    
+            100% { transform: translateX(-83.333%); }        
         }
         
-
-        
-        /* THE ZOOM TIMING */
         @keyframes hotstarZoom {
             0% { transform: scale(1); }
             100% { transform: scale(1.15); }
@@ -227,30 +261,28 @@
             text-transform: uppercase;
         }
         
-   
-/* PREMIUM DARK SCROLLBAR */
+        /* PREMIUM DARK SCROLLBAR */
         ::-webkit-scrollbar {
-            width: 6px; /* Ultra-thin aesthetic */
+            width: 6px; 
         }
         
         ::-webkit-scrollbar-track {
-            background: var(--panel); /* Blends into the dark background */
+            background: var(--panel); 
         }
         
         ::-webkit-scrollbar-thumb {
-            background: rgba(212, 175, 55, 0.25); /* Faint gold */
+            background: rgba(212, 175, 55, 0.25); 
             border-radius: 10px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-gold); /* Solid gold on hover */
+            background: var(--accent-gold); 
         }
         
-    
     /* H&K PREMIUM MOBILE OVERRIDE */
   @media only screen and (max-width: 768px) {
     
-/* Show the new mobile top bar - FROSTED GLASS UPGRADE */
+    /* Show the new mobile top bar - FROSTED GLASS UPGRADE */
     .mobile-header {
         display: flex !important;
         background: rgba(10, 10, 15, 0.75) !important; 
@@ -259,19 +291,18 @@
         border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
     }
 
-      
     /* Push main website down so it isn't hidden under the top bar */
     body {
         padding-top: 70px !important;
         overflow-x: hidden;
     }
     
-/* THE BULLETPROOF SMOOTH TRANSITION MENU */
+    /* THE BULLETPROOF SMOOTH TRANSITION MENU */
     #hk-nav {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important; 
-        transform: translateX(-100%) !important; /* Forces it off-screen reliably */
+        transform: translateX(-100%) !important; 
         width: 75% !important; 
         height: 100vh !important;
        background: rgba(10, 10, 15, 0.85) !important;
@@ -280,7 +311,7 @@
         border-right: 1px solid rgba(212, 175, 55, 0.2) !important;
         z-index: 1000 !important;
         padding-top: 90px !important; 
-        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important; /* Buttery smooth hardware acceleration */
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important; 
         display: block !important;
     }
     
@@ -289,15 +320,12 @@
         transform: translateX(0) !important;
     }
 
-      
     /* Ensure product cards fit nicely on phone screens */
     .suggestion-item {
         width: 90% !important;
         margin: 0 auto 20px auto !important;
     }
     
-
-
       /* BRING THE CART BACK FROM THE DEAD */
     #hk-cart {
         display: flex !important;
@@ -309,13 +337,12 @@
         border-radius: 12px !important;
     }
   }
-    
-    
-    
-    
     </style>
 </head>
 <body>
+
+<!-- THE GLOBAL SPOTLIGHT OVERLAY -->
+<div id="dark-matter-spotlight"></div>
 
 <!-- H&K MOBILE HEADER -->
 <div class="mobile-header" style="display: none; justify-content: space-between; align-items: center; padding: 15px 20px; background: #111111; border-bottom: 1px solid rgba(212,175,55,0.2); position: fixed; top: 0; left: 0; width: 100%; z-index: 1001;">
@@ -348,28 +375,28 @@
         <div class="main-content">
             <!-- CANDLES SECTION -->
             <div id="tab-candles" class="tab-pane">
-                <div class="preview-card" style="position: relative; border-color: rgba(255,255,255,0.03);">
+                <div class="preview-card hidden-scroll" style="position: relative; border-color: rgba(255,255,255,0.03);">
                     <span style="position: absolute; top: 15px; left: 15px; background: #ff3333; color: #000; font-size: 0.55rem; font-weight: 800; letter-spacing: 2px; padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">OUT OF ARCHIVE</span>
                     <span style="font-size: 0.5rem; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 10px; opacity: 0.5;">HANDCRAFTED_ELITE_TERRACOTTA</span>
                     <h2 id="label-prev" style="font-size: 1.2rem; letter-spacing: 2px; opacity: 0.3;">H&K_ARCHIVE</h2>
                 </div>
-                <div class="price-tag" style="opacity: 0.4;">
+                <div class="price-tag hidden-scroll" style="opacity: 0.4;">
                     <span class="old-price">₹278</span>
                     <span class="new-price">₹139</span>
                 </div>
-                <input type="text" id="label-input" class="input-box" placeholder="AWAITING RESTOCK..." disabled style="opacity: 0.3; cursor: not-allowed;">
-                <button class="btn-add" disabled style="background: #333; color: var(--text-muted); cursor: not-allowed; opacity: 0.5;">SOLD OUT</button>
+                <input type="text" id="label-input" class="input-box hidden-scroll" placeholder="AWAITING RESTOCK..." disabled style="opacity: 0.3; cursor: not-allowed;">
+                <button class="btn-add hidden-scroll" disabled style="background: #333; color: var(--text-muted); cursor: not-allowed; opacity: 0.5;">SOLD OUT</button>
             </div>
 
             <!-- ACCESSORIES SECTION -->
             <div id="tab-acc" class="tab-pane">
-                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">ESSENTIALS</h3>
+                <h3 class="hidden-scroll" style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">ESSENTIALS</h3>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 500px;">
-                    <div class="suggestion-item" style="text-align:center" onclick="addToBag('Canvas Tote', 199)">
+                    <div class="suggestion-item hidden-scroll" style="text-align:center" onclick="addToBag('Canvas Tote', 199)">
                         <div style="font-size: 0.7rem;">CANVAS_TOTE</div>
                         <div style="font-size: 0.6rem; color: var(--accent-gold);">₹199</div>
                     </div>
-                    <div class="suggestion-item" style="text-align:center" onclick="addToBag('Founder Keylink', 149)">
+                    <div class="suggestion-item hidden-scroll" style="text-align:center" onclick="addToBag('Founder Keylink', 149)">
                         <div style="font-size: 0.7rem;">KEYLINK</div>
                         <div style="font-size: 0.6rem; color: var(--accent-gold);">₹149</div>
                     </div>
@@ -377,12 +404,11 @@
             </div>
 
             <!-- FOUNDER LOG SECTION -->
-
             <div id="tab-blog" class="tab-pane">
-                <h3 style="letter-spacing: 5px; margin-bottom: 30px; color: var(--accent-gold); font-size: 0.8rem;">
+                <h3 class="hidden-scroll" style="letter-spacing: 5px; margin-bottom: 30px; color: var(--accent-gold); font-size: 0.8rem;">
                     [ ENTRY_001: THE WEARABLE ARCHIVE ]
                 </h3>
-                <div class="info-block" style="line-height: 2; letter-spacing: 0.5px; font-family: 'Inter', sans-serif;">
+                <div class="info-block hidden-scroll" style="line-height: 2; letter-spacing: 0.5px; font-family: 'Inter', sans-serif;">
                     <p style="color: #fff; margin-bottom: 20px; font-size: 1rem;">
                         We didn't just want to print shirts. We wanted to dye <b>Culture</b> into heavy cotton.
                     </p>
@@ -410,11 +436,10 @@
                 </div>
             </div>
             
-
             <!-- PRIVACY SECTION -->
             <div id="tab-privacy" class="tab-pane">
-                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">PRIVACY_PROTOCOL</h3>
-                <div class="info-block">
+                <h3 class="hidden-scroll" style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">PRIVACY_PROTOCOL</h3>
+                <div class="info-block hidden-scroll">
                     <b>Data Collection</b>
                     H&K logs user-provided identifiers (Name, Contact Number,Address) strictly for order fulfillment during this Trial Launch Phase. 
                     <b>Transmission Security</b>
@@ -428,8 +453,8 @@
 
             <!-- ABOUT SECTION -->
             <div id="tab-about" class="tab-pane">
-                <h3 style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">THE_VISION</h3>
-                <div class="info-block">
+                <h3 class="hidden-scroll" style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">THE_VISION</h3>
+                <div class="info-block hidden-scroll">
                     <p><b>Musings of H&K:</b>H&K is a curated Modern Heritage Archive that is a gear for modern metropolis.
                         H&K was never meant to be just a storefront. It was born from the raw energy, the dust, and the vibrancy of a Jaipur afternoon. 
                         It started with a simple realization: the modern market is saturated with sterile, mass-produced perfection. We wanted to build something that actually had a pulse.
@@ -444,7 +469,7 @@
             </div>
 
 
-<!-- WEAR SECTION (CLEAN TEXT LAYOUT) -->
+            <!-- WEAR SECTION (CLEAN TEXT LAYOUT) -->
             <div id="tab-coming" class="tab-pane active">
 
                 <h3 style="margin-bottom: 20px; letter-spacing: 5px; font-size: 0.75rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
@@ -465,7 +490,7 @@
                 <div id="sub-tops" style="display: block; width: 100%;">
 
                     <!-- MAIN TOPS BILLBOARD (LOCKED INSIDE SUB-TOPS) -->
-                    <div class="promo-billboard" style="max-width: 350px; margin: 0 auto 30px auto;">
+                    <div class="promo-billboard hidden-scroll" style="max-width: 350px; margin: 0 auto 30px auto;">
                         <div class="promo-track">
                             <div class="promo-slide" style="background-image: url('h%26K%20apperals/uno%20tee.jpeg');"></div>
                             <div class="promo-slide" style="background-image: url('h%26K%20apperals/all%20eyez%20on%20me%20tee.jpeg');"></div>
@@ -484,7 +509,7 @@
                     <div id="category-tops-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
 
                         <!-- POLY H&K EXCLUSIVE TEE-->
-<div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+<div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
     
 
     <img src="h%26K%20apperals/poly H&K exclusive.png" alt="H&K Exclusive Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
@@ -513,12 +538,8 @@
         ADD TO ARCHIVE
     </button>
 </div>
-<!-- END OF H&K poly EXCLUSIVE TEE CARD -->
-
-                        
-                        
                         <!-- 911 EDITORIAL TEE -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/car911.png" alt="911 Editorial Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">ARCHIVE_SERIES_01</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">911 Editorial Tee</h4>
@@ -536,7 +557,7 @@
 
 
                         <!-- MONEY A CURSE TEE -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/money%20a%20curse%20tee.jpeg" alt="Money a Curse Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Money a Curse Tee</h4>
@@ -554,7 +575,7 @@
 
                       
                         <!-- BANG BANG TEE -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/bigbangtee.png" alt="Bang Bang Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL NEW ARRIVAL</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Bang Bang Tee</h4>
@@ -571,7 +592,7 @@
                         </div>
 
                         <!-- ALL EYEZ ON ME TEE -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/all%20eyez%20on%20me%20tee.jpeg" alt="All Eyez On Me Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">All Eyez On Me Tee</h4>
@@ -590,7 +611,7 @@
                         
 
                         <!-- UNO TEE -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/uno%20tee.jpeg" alt="Uno Fan-made" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">UNO Tee</h4>
@@ -608,7 +629,7 @@
 
                         
                         <!--H&K EXCLUSIVE COTTON TEE-->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/hnk exclusive.jpeg" alt="H&K Exclusive Cotton Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">H&K Exclusive Cotton Tee</h4>
@@ -625,7 +646,7 @@
                         </div>
 
                         <!-- HARMONY KINGS TEE -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/harmony%20kings%20tee.jpeg" alt="Harmony Kings Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Harmony Kings Tee</h4>
@@ -642,7 +663,7 @@
                         </div>
 
                         <!-- ANIME HEAVY PRINT POLO -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/anime%20heavy.png" alt="Anime Heavy Print Polo" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // FANMADE_EDITION</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Anime Heavy Print Polo</h4>
@@ -667,7 +688,7 @@
                 <div id="sub-acid" style="display: none; width: 100%;">
                     
 <!-- ACID WASH EXCLUSIVE BILLBOARD (AESTHETIC & INTERACTIVE FIX) -->
-                    <div style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
+                    <div class="hk-billboard-wrapper hidden-scroll" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
                         
                         <!-- THE INVISIBLE SHIELD FIX: pointer-events: none ensures it NEVER blocks clicks -->
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent); pointer-events: none;"></div>
@@ -681,7 +702,7 @@
                     <div id="category-acid-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
 
                         <!-- 1. MIGRATED BASIC ACID WASH (₹999) -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/acid-wash-tee.jpeg" alt="Acid Wash Basic" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">MENS EXCLUSIVE // PREMIUM WASH</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Acid Wash Black Tee</h4>
@@ -698,7 +719,7 @@
                         </div>
 
                         <!-- 2. H&K EXCLUSIVE ACID WASH (₹1399) -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/acid wash exclusive tee.jpeg" alt="H&K Exclusive Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">H&K EXCLUSIVE // CAPSULE_01</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">H&K Exclusive Acid Tee</h4>
@@ -715,7 +736,7 @@
                         </div>
 
                         <!-- 3. DEMON SLAYER ACID WASH (₹1399) -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/acid wash demon slayer tee.jpeg" alt="Demon Slayer Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">FANMADE EDITION // CAPSULE_01</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Demon Slayer Acid Wash</h4>
@@ -732,7 +753,7 @@
                         </div>
 
                         <!-- 4. GREEK STYLE ACID WASH (₹1399) -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/acid wash greek tee.jpeg" alt="Greek Style Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GREEK MYTHOS // CAPSULE_01</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Greek Style Acid Wash</h4>
@@ -757,7 +778,7 @@
                 <div id="sub-her" style="display: none; width: 100%;">
                     
                     <!-- HER ARCHIVE EXCLUSIVE BILLBOARD -->
-                    <div class="hk-billboard-wrapper" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #3a0d16 0%, #000000 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
+                    <div class="hk-billboard-wrapper hidden-scroll" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #3a0d16 0%, #000000 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent); pointer-events: none;"></div>
                         <div style="position: relative; z-index: 2; text-align: center; width: 100%; pointer-events: none;">
                             <h4 style="color: var(--accent-gold); font-size: 0.65rem; letter-spacing: 4px; margin-bottom: 8px; text-transform: uppercase;">Rakhi Exclusive</h4>
@@ -768,7 +789,7 @@
                     <div id="category-her-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
 
                         <!-- 1. BURI NAZAR CROP TOP -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/GIRLS%20buri%20nazar%20crop%20top.png" alt="No Buri Nazar Crop Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // CROP FIT</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Buri Nazar Crop Top</h4>
@@ -785,7 +806,7 @@
                         </div>
 
                         <!-- 2. DIVA TEE -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/GIRLS%20diva%20tee.png" alt="Diva Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // RELAXED FIT</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Diva Graphic Tee</h4>
@@ -802,7 +823,7 @@
                         </div>
 
                         <!-- 3. NONCHALANT TEE -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/GIRLS%20nonchalant%20tee.png" alt="Nonchalant Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // RELAXED FIT</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Nonchalant Tee</h4>
@@ -819,7 +840,7 @@
                         </div>
 
                         <!-- 4. TOXIC CROP TOP -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/GIRLS%20Toxic%20crop%20top.png" alt="Toxic Crop Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // CROP FIT</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Toxic Stamp Crop Top</h4>
@@ -844,7 +865,7 @@
                 <div id="sub-his" style="display: none; width: 100%;">
                     
                     <!-- HIS ARCHIVE EXCLUSIVE BILLBOARD -->
-                    <div class="hk-billboard-wrapper" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1b263b 0%, #0d1117 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
+                    <div class="hk-billboard-wrapper hidden-scroll" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1b263b 0%, #0d1117 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent); pointer-events: none;"></div>
                         <div style="position: relative; z-index: 2; text-align: center; width: 100%; pointer-events: none;">
                             <h4 style="color: var(--accent-gold); font-size: 0.65rem; letter-spacing: 4px; margin-bottom: 8px; text-transform: uppercase;">Rakhi Exclusive</h4>
@@ -855,7 +876,7 @@
                     <div id="category-his-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
 
                         <!-- 1. VINTAGE UMBER TIPPING POLO (₹649) -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/MEN brown umber polo.png" alt="Umber Tipping Polo" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">PREMIUM HERITAGE // EXCLUSIVE</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Brown Umber Tipping Polo</h4>
@@ -872,7 +893,7 @@
                         </div>
 
                         <!-- 2. NAVY BLUE ESSENTIAL POLO -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/MEN navy blue polo.png" alt="Navy Polo" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">THE ESSENTIALS // DROP 02</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Midnight Navy Polo</h4>
@@ -889,7 +910,7 @@
                         </div>
                         
                         <!-- 3. SKY BLUE ESSENTIAL POLO -->
-                        <div class="suggestion-item" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/MEN sky blue polo.png" alt="Sky Blue Polo" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">THE ESSENTIALS // DROP 02</div>
                             <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Sky Blue Polo</h4>
@@ -967,7 +988,40 @@
 
     <script>
         let bag = [];
+        let scrollObserver; // Global observer for cinematic scroll
 
+        // NASA TIER INTERACTIVITY: THE DARK MATTER SPOTLIGHT
+        
+        // 1. DESKTOP SPOTLIGHT (Tracks the mouse)
+        document.addEventListener('mousemove', (e) => {
+            document.documentElement.style.setProperty('--cursor-x', e.clientX + 'px');
+            document.documentElement.style.setProperty('--cursor-y', e.clientY + 'px');
+        });
+
+        // 2. MOBILE SPOTLIGHT (Tracks the thumb while swiping)
+        document.addEventListener('touchmove', (e) => {
+            document.documentElement.style.setProperty('--cursor-x', e.touches[0].clientX + 'px');
+            document.documentElement.style.setProperty('--cursor-y', e.touches[0].clientY + 'px');
+        });
+
+        // NASA TIER INTERACTIVITY: THE CINEMATIC SCROLL ENGINE
+        document.addEventListener("DOMContentLoaded", () => {
+            setDeliveryDate();
+            
+            scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('reveal-scroll');
+                        scrollObserver.unobserve(entry.target); // only animate once per view
+                    }
+                });
+            }, { threshold: 0.1 }); // triggers when 10% of the item is visible
+
+            document.querySelectorAll('.suggestion-item, .promo-billboard, h3, .info-block').forEach(el => {
+                el.classList.add('hidden-scroll');
+                scrollObserver.observe(el);
+            });
+        });
 
         function switchSubTab(tab) {
             // Swap visibility of the FOUR containers seamlessly
@@ -991,6 +1045,14 @@
             updateNavStyle('nav-acid', tab === 'acid');
             updateNavStyle('nav-her', tab === 'her');
             updateNavStyle('nav-his', tab === 'his');
+
+            // RE-TRIGGER CINEMATIC SCROLL FOR THE NEWLY OPENED TAB
+            const activeSub = document.getElementById('sub-' + tab);
+            activeSub.querySelectorAll('.suggestion-item, .promo-billboard').forEach(el => {
+                el.classList.remove('reveal-scroll');
+                el.classList.add('hidden-scroll');
+                setTimeout(() => { scrollObserver.observe(el); }, 50); 
+            });
         }
 
         function switchTab(id, btn) {
@@ -1029,7 +1091,7 @@
 async function sendOrder() {
             const name = document.getElementById('cust-name').value.trim();
             const phone = document.getElementById('cust-phone').value.trim();
-            const address = document.getElementById('cust-address').value.trim(); // NEW ADDRESS GRAB
+            const address = document.getElementById('cust-address').value.trim(); 
             const labelInput = document.getElementById('customlabel');
             const userLabel = (labelInput && labelInput.value.trim()) ? labelInput.value.trim() : "None";
             
@@ -1037,7 +1099,6 @@ async function sendOrder() {
             const items = bag.map(i => i.name).join(', ');
             const orderId = "HK-" + Math.floor(1000 + Math.random() * 9000);
 
-            // UPGRADED PROTOCOL: Forces them to enter an address
             if(!name || !phone || !address) {
                 alert("PROTOCOL_ERROR: Name, WhatsApp Number, and Full Address are required.");
                 return;
@@ -1052,12 +1113,11 @@ async function sendOrder() {
             formData.append('Order_ID', orderId);
             formData.append('Name', name);
             formData.append('WhatsApp', phone);
-            formData.append('Address', address); // SENT TO FORMSPREE
+            formData.append('Address', address); 
             formData.append('Items', items);
             formData.append('Custom_Label', userLabel);
             formData.append('Total', total);
 
-            // URL Encoder ensures commas and line breaks in the address don't break the WhatsApp link
             const safeAddress = encodeURIComponent(address);
 
             try {
@@ -1106,7 +1166,6 @@ async function sendOrder() {
         }
     }
 
-/* TARGETED JUMP-TO-CART SCRIPT */
     function scrollToLog() {
         let cart = document.getElementById('hk-cart');
         if (cart) {
@@ -1116,24 +1175,18 @@ async function sendOrder() {
         }
     }
 
-    // THE DYNAMIC 15-DAY CALENDAR ENGINE
         function setDeliveryDate() {
             const today = new Date();
-            today.setDate(today.getDate() + 15); // Adds exactly 15 days to the current date
+            today.setDate(today.getDate() + 15); 
             
-            // Formats it to look luxury and high-end (e.g., "SEPTEMBER 8, 2026")
             const options = { month: 'long', day: 'numeric', year: 'numeric' };
             const formattedDate = today.toLocaleDateString('en-US', options).toUpperCase();
             
-            // Pushes the date into the cart
             const dateBox = document.getElementById('delivery-date');
             if(dateBox) {
                 dateBox.innerText = formattedDate;
             }
         }
-
-        // Fires the calculator the second the website loads
-        window.addEventListener('DOMContentLoaded', setDeliveryDate);
     
 </script>
     
