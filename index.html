@@ -337,45 +337,22 @@
         border-radius: 12px !important;
     }
   }
-   /* ========================================= */
-        /* H&K BRUTALIST ARCHIVE OVERRIDE (GOD-TIER) */
+  /* ========================================= */
+        /* H&K BRUTALIST OVERRIDE (STABLE & FAST) */
         /* ========================================= */
 
-        /* 1. THE RAW FILM GRAIN (Makes the site feel physical) */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        /* 2. KILL THE CURVES (Sharp, unapologetic luxury edges) */
+        /* 1. KILL THE CURVES (Sharp, unapologetic luxury edges) */
         .container, .suggestion-item, .promo-billboard, .hk-billboard-wrapper, .input-box, .btn-add, select {
             border-radius: 0px !important;
         }
 
-        /* 3. BORDERLESS FLOATING CARDS (Removes the basic boxes) */
-        .suggestion-item {
-            background: transparent !important;
-            border: none !important;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important; /* Only a sharp underline */
-            padding-bottom: 30px !important;
-        }
-        
-        .suggestion-item img {
-            border-radius: 0px !important;
-            filter: contrast(1.05) grayscale(0.1); /* Makes the faceless fit pics look slightly more raw/editorial */
-        }
-
-        /* 4. CRYPTIC TERMINAL TYPOGRAPHY */
+        /* 2. CRYPTIC TERMINAL TYPOGRAPHY */
         .old-price, .new-price, select, .btn-add, .section-header {
             font-family: 'Courier New', Courier, monospace !important;
             letter-spacing: 2px;
         }
 
-        /* 5. GHOST BUTTONS */
+        /* 3. HOLLOW GHOST BUTTONS */
         .btn-add {
             background: transparent !important;
             color: var(--accent-gold) !important;
@@ -385,17 +362,9 @@
             background: var(--accent-gold) !important;
             color: #000 !important;
         }
-        
-        /* 6. REMOVE THE OUTER BOX */
-        .container {
-            border: none !important;
-            box-shadow: none !important;
-            background: transparent !important;
-        }
-        .sidebar, .right-bar {
-            background: transparent !important;
-            border-color: rgba(255,255,255,0.03) !important;
-        }
+      
+
+       
     
     </style>
 </head>
