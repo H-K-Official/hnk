@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H&K | Elite Trial Launch</title>
+    <title>H&K | Modern Heritage Apparel Archive — Streetwear Jaipur</title>
     
     <!-- H&K GLOBAL TRANSMISSION TAGS (SEO) -->
     <meta name="description" content="H&K is a curated Modern Heritage Archive based in Jaipur. Shop handcrafted, aesthetic, high-aura streetwear, acid wash capsules, and luxury.">
@@ -1015,25 +1015,45 @@
         </div>
     </div>
 
-    <script>
+   <script>
+        // ==========================================
+        // 1. GLOBAL VARIABLES
+        // ==========================================
         let bag = [];
-        let scrollObserver; // Global observer for cinematic scroll
+        let scrollObserver;
 
-        // NASA TIER INTERACTIVITY: THE DARK MATTER SPOTLIGHT
-        
-        // 1. DESKTOP SPOTLIGHT (Tracks the mouse)
+        // ==========================================
+        // 2. THE SPOTLIGHT ENGINE (Desktop + Mobile)
+        // ==========================================
         document.addEventListener('mousemove', (e) => {
             document.documentElement.style.setProperty('--cursor-x', e.clientX + 'px');
             document.documentElement.style.setProperty('--cursor-y', e.clientY + 'px');
         });
-
-        // 2. MOBILE SPOTLIGHT (Tracks the thumb while swiping)
         document.addEventListener('touchmove', (e) => {
-            document.documentElement.style.setProperty('--cursor-x', e.touches[0].clientX + 'px');
-            document.documentElement.style.setProperty('--cursor-y', e.touches[0].clientY + 'px');
+            if(e.touches.length > 0) {
+                document.documentElement.style.setProperty('--cursor-x', e.touches[0].clientX + 'px');
+                document.documentElement.style.setProperty('--cursor-y', e.touches[0].clientY + 'px');
+            }
         });
 
-        // NASA TIER INTERACTIVITY: THE CINEMATIC SCROLL ENGINE
+        // ==========================================
+        // 3. DATE CALCULATOR
+        // ==========================================
+        function setDeliveryDate() {
+            const today = new Date();
+            today.setDate(today.getDate() + 15);
+            const options = { month: 'long', day: 'numeric', year: 'numeric' };
+            const formattedDate = today.toLocaleDateString('en-US', options).toUpperCase();
+            
+            const dateBox = document.getElementById('delivery-date');
+            if(dateBox) {
+                dateBox.innerText = formattedDate;
+            }
+        }
+
+        // ==========================================
+        // 4. CINEMATIC SCROLL ENGINE
+        // ==========================================
         document.addEventListener("DOMContentLoaded", () => {
             setDeliveryDate();
             
@@ -1041,26 +1061,26 @@
                 entries.forEach(entry => {
                     if(entry.isIntersecting) {
                         entry.target.classList.add('reveal-scroll');
-                        scrollObserver.unobserve(entry.target); // only animate once per view
+                        scrollObserver.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
 
-            // FIX: Added .hk-billboard-wrapper so the Javascript wakes up ALL your archive billboards!
             document.querySelectorAll('.suggestion-item, .promo-billboard, .hk-billboard-wrapper, h3, .info-block').forEach(el => {
                 el.classList.add('hidden-scroll');
                 scrollObserver.observe(el);
             });
         });
 
+        // ==========================================
+        // 5. NAVIGATION LOGIC
+        // ==========================================
         function switchSubTab(tab) {
-            // Swap visibility of the FOUR containers seamlessly
             document.getElementById('sub-tops').style.display = (tab === 'tops') ? 'block' : 'none';
             document.getElementById('sub-acid').style.display = (tab === 'acid') ? 'block' : 'none';
             document.getElementById('sub-her').style.display = (tab === 'her') ? 'block' : 'none';
             document.getElementById('sub-his').style.display = (tab === 'his') ? 'block' : 'none';
             
-            // Reusable function to instantly update the active/inactive styles of the sub-nav buttons
             const updateNavStyle = (id, isActive) => {
                 const el = document.getElementById(id);
                 if (el) {
@@ -1070,13 +1090,11 @@
                 }
             };
             
-            // Fire the style updates
             updateNavStyle('nav-tops', tab === 'tops');
             updateNavStyle('nav-acid', tab === 'acid');
             updateNavStyle('nav-her', tab === 'her');
             updateNavStyle('nav-his', tab === 'his');
 
-            // FIX: Ensure the cinematic scroll restarts for the specific sub-tab billboards when clicked
             const activeSub = document.getElementById('sub-' + tab);
             if(activeSub) {
                 activeSub.querySelectorAll('.suggestion-item, .promo-billboard, .hk-billboard-wrapper').forEach(el => {
@@ -1086,21 +1104,6 @@
                 });
             }
         }
-            
-            // Fire the style updates
-            updateNavStyle('nav-tops', tab === 'tops');
-            updateNavStyle('nav-acid', tab === 'acid');
-            updateNavStyle('nav-her', tab === 'her');
-            updateNavStyle('nav-his', tab === 'his');
-
-            // RE-TRIGGER CINEMATIC SCROLL FOR THE NEWLY OPENED TAB
-            const activeSub = document.getElementById('sub-' + tab);
-            activeSub.querySelectorAll('.suggestion-item, .promo-billboard').forEach(el => {
-                el.classList.remove('reveal-scroll');
-                el.classList.add('hidden-scroll');
-                setTimeout(() => { scrollObserver.observe(el); }, 50); 
-            });
-        }
 
         function switchTab(id, btn) {
             document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
@@ -1109,6 +1112,9 @@
             btn.classList.add('active');
         }
 
+        // ==========================================
+        // 6. CART & TRANSMISSION LOGIC
+        // ==========================================
         function addToBag(name, price) {
             bag.push({name, price});
             updateBag();
@@ -1118,7 +1124,7 @@
             const list = document.getElementById('bag-list');
             const totalDisplay = document.getElementById('total-price');
             if(bag.length === 0) {
-                list.innerHTML = '<p style="opacity: 0.2;">_EMPTY</p>';
+                list.innerHTML = '<p style="opacity: 0.2; font-style: italic;">_EMPTY</p>';
                 totalDisplay.innerText = '₹0';
                 return;
             }
@@ -1135,7 +1141,7 @@
             else alert("Add items to your archive first.");
         }
 
-async function sendOrder() {
+        async function sendOrder() {
             const name = document.getElementById('cust-name').value.trim();
             const phone = document.getElementById('cust-phone').value.trim();
             const address = document.getElementById('cust-address').value.trim(); 
@@ -1168,7 +1174,7 @@ async function sendOrder() {
             const safeAddress = encodeURIComponent(address);
 
             try {
-                const response = await fetch('https://formspree.io/f/mykndpzj', {
+                await fetch('https://formspree.io/f/mykndpzj', {
                     method: 'POST',
                     body: formData,
                     headers: { 'Accept': 'application/json' }
@@ -1185,59 +1191,30 @@ async function sendOrder() {
                               `----------------------------%0A` +
                               `_Status: Order Logged in Archive_`;
 
-                const waUrl = `https://wa.me/919782145263?text=${waMsg}`;
-                
                 document.getElementById('checkout-modal').style.display = 'none';
-                window.open(waUrl, '_blank');
-                alert("Order Archived & WhatsApp Opening...");
+                window.open(`https://wa.me/919782145263?text=${waMsg}`, '_blank');
 
             } catch (error) {
-                console.error("Formspree Error:", error);
-                alert("Database Sync Failed, but opening WhatsApp for direct order...");
-                
                 const fallbackMsg = `*H&K DIRECT_ORDER*%0A*ID:* ${orderId}%0A*Name:* ${name}%0A*Address:* ${safeAddress}%0A*Items:* ${items}%0A*Label:* ${userLabel}`;
                 window.open(`https://wa.me/919782145263?text=${fallbackMsg}`, '_blank');
-                
             } finally {
                 btn.innerText = originalText;
                 btn.disabled = false;
             }
         }
+
+        // ==========================================
+        // 7. MOBILE UTILITIES
+        // ==========================================
+        function toggleMobileMenu() {
+            let nav = document.getElementById('hk-nav');
+            if (nav) nav.classList.toggle('active-menu');
+        }
+
+        function scrollToLog() {
+            let cart = document.getElementById('hk-cart');
+            if (cart) cart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     </script>
-
-<script>
-    function toggleMobileMenu() {
-        let nav = document.getElementById('hk-nav');
-        if (nav) {
-            nav.classList.toggle('active-menu');
-        }
-    }
-
-    function scrollToLog() {
-        let cart = document.getElementById('hk-cart');
-        if (cart) {
-            cart.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-            alert("Oops! The cart is still hiding."); 
-        }
-    }
-
-        function setDeliveryDate() {
-            const today = new Date();
-            today.setDate(today.getDate() + 15); 
-            
-            const options = { month: 'long', day: 'numeric', year: 'numeric' };
-            const formattedDate = today.toLocaleDateString('en-US', options).toUpperCase();
-            
-            const dateBox = document.getElementById('delivery-date');
-            if(dateBox) {
-                dateBox.innerText = formattedDate;
-            }
-        }
-    
-</script>
-    
-    
 </body>
-    
 </html>
