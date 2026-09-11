@@ -337,6 +337,66 @@
         border-radius: 12px !important;
     }
   }
+   /* ========================================= */
+        /* H&K BRUTALIST ARCHIVE OVERRIDE (GOD-TIER) */
+        /* ========================================= */
+
+        /* 1. THE RAW FILM GRAIN (Makes the site feel physical) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* 2. KILL THE CURVES (Sharp, unapologetic luxury edges) */
+        .container, .suggestion-item, .promo-billboard, .hk-billboard-wrapper, .input-box, .btn-add, select {
+            border-radius: 0px !important;
+        }
+
+        /* 3. BORDERLESS FLOATING CARDS (Removes the basic boxes) */
+        .suggestion-item {
+            background: transparent !important;
+            border: none !important;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important; /* Only a sharp underline */
+            padding-bottom: 30px !important;
+        }
+        
+        .suggestion-item img {
+            border-radius: 0px !important;
+            filter: contrast(1.05) grayscale(0.1); /* Makes the faceless fit pics look slightly more raw/editorial */
+        }
+
+        /* 4. CRYPTIC TERMINAL TYPOGRAPHY */
+        .old-price, .new-price, select, .btn-add, .section-header {
+            font-family: 'Courier New', Courier, monospace !important;
+            letter-spacing: 2px;
+        }
+
+        /* 5. GHOST BUTTONS */
+        .btn-add {
+            background: transparent !important;
+            color: var(--accent-gold) !important;
+            border: 1px solid var(--accent-gold) !important;
+        }
+        .btn-add:hover {
+            background: var(--accent-gold) !important;
+            color: #000 !important;
+        }
+        
+        /* 6. REMOVE THE OUTER BOX */
+        .container {
+            border: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+        }
+        .sidebar, .right-bar {
+            background: transparent !important;
+            border-color: rgba(255,255,255,0.03) !important;
+        }
+    
     </style>
 </head>
 <body>
@@ -1015,9 +1075,10 @@
                         scrollObserver.unobserve(entry.target); // only animate once per view
                     }
                 });
-            }, { threshold: 0.1 }); // triggers when 10% of the item is visible
+            }, { threshold: 0.1 });
 
-            document.querySelectorAll('.suggestion-item, .promo-billboard, h3, .info-block').forEach(el => {
+            // FIX: Added .hk-billboard-wrapper so the Javascript wakes up ALL your archive billboards!
+            document.querySelectorAll('.suggestion-item, .promo-billboard, .hk-billboard-wrapper, h3, .info-block').forEach(el => {
                 el.classList.add('hidden-scroll');
                 scrollObserver.observe(el);
             });
@@ -1039,6 +1100,23 @@
                     el.style.borderBottom = isActive ? '2px solid var(--accent-gold)' : 'none';
                 }
             };
+            
+            // Fire the style updates
+            updateNavStyle('nav-tops', tab === 'tops');
+            updateNavStyle('nav-acid', tab === 'acid');
+            updateNavStyle('nav-her', tab === 'her');
+            updateNavStyle('nav-his', tab === 'his');
+
+            // FIX: Ensure the cinematic scroll restarts for the specific sub-tab billboards when clicked
+            const activeSub = document.getElementById('sub-' + tab);
+            if(activeSub) {
+                activeSub.querySelectorAll('.suggestion-item, .promo-billboard, .hk-billboard-wrapper').forEach(el => {
+                    el.classList.remove('reveal-scroll');
+                    el.classList.add('hidden-scroll');
+                    setTimeout(() => { scrollObserver.observe(el); }, 50); 
+                });
+            }
+        }
             
             // Fire the style updates
             updateNavStyle('nav-tops', tab === 'tops');
