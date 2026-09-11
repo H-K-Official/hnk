@@ -337,30 +337,55 @@
         border-radius: 12px !important;
     }
   }
-  /* ========================================= */
-        /* H&K BRUTALIST OVERRIDE (STABLE & FAST) */
+ /* ========================================= */
+        /* H&K NEO-GLASS OVERRIDE (HARSH'S AESTHETIC)*/
         /* ========================================= */
 
-        /* 1. KILL THE CURVES (Sharp, unapologetic luxury edges) */
-        .container, .suggestion-item, .promo-billboard, .hk-billboard-wrapper, .input-box, .btn-add, select {
-            border-radius: 0px !important;
+        /* 1. RESTORE THE FINE ROUNDED BORDERS */
+        .container, .hk-billboard-wrapper, .promo-billboard, .input-box, .btn-add, select {
+            border-radius: 16px !important;
+            transition: all 0.4s ease;
         }
 
-        /* 2. CRYPTIC TERMINAL TYPOGRAPHY */
+        /* 2. THE FROSTED GLASS EFFECT (From the Skeleton Dump) */
+        .suggestion-item {
+            background: rgba(20, 20, 25, 0.4) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+            padding-bottom: 20px !important;
+        }
+        
+        .suggestion-item img {
+            border-radius: 12px !important;
+        }
+
+        .suggestion-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.3) !important;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4) !important;
+            background: rgba(30, 30, 35, 0.6) !important;
+        }
+
+        /* 3. SMOOTH PREMIUM TYPOGRAPHY (Removing the Cryptic Terminal Font) */
         .old-price, .new-price, select, .btn-add, .section-header {
-            font-family: 'Courier New', Courier, monospace !important;
-            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif !important;
+            letter-spacing: 1px;
         }
 
-        /* 3. HOLLOW GHOST BUTTONS */
+        /* 4. LUXURY GRADIENT BUTTONS */
         .btn-add {
-            background: transparent !important;
-            color: var(--accent-gold) !important;
-            border: 1px solid var(--accent-gold) !important;
+            background: linear-gradient(135deg, var(--accent-gold), #b8860b) !important;
+            color: #000 !important;
+            border: none !important;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2) !important;
+            font-weight: 800 !important;
         }
         .btn-add:hover {
-            background: var(--accent-gold) !important;
-            color: #000 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4) !important;
         }
       
 
