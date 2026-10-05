@@ -1240,6 +1240,45 @@
             let cart = document.getElementById('hk-cart');
             if (cart) cart.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+
+
+// ==========================================
+        // H&K 3D INTERACTIVE ENGINE 
+        // ==========================================
+        
+        // Target all the glassmorphism cards we built for Harsh
+        const interactiveCards = document.querySelectorAll('.service-card, .suggestion-item');
+
+        interactiveCards.forEach(card => {
+            // Track mouse movement over the card
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                
+                // Calculate mouse position relative to the center of the card
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // Calculate rotation (Divide by a higher number for less extreme tilt)
+                const rotateX = (y / (rect.height / 2)) * -15; // Max tilt 15 degrees
+                const rotateY = (x / (rect.width / 2)) * 15;
+                
+                // Apply the 3D transformation instantly
+                card.style.transition = 'none';
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                
+                // Optional: Add a dynamic lighting glare based on mouse position
+                card.style.boxShadow = `${-x / 5}px ${-y / 5}px 30px rgba(212, 175, 55, 0.3)`;
+            });
+
+            // Reset smoothly when mouse leaves
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease';
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
+            });
+        });
+       
+       
     </script>
 </body>
 </html>
