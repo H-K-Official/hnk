@@ -18,6 +18,29 @@
     <style>
 
 
+
+/* ========================================= */
+        /* H&K MOBILE PREMIUM TAP PHYSICS            */
+        /* ========================================= */
+        @media (hover: none) {
+            /* When a user taps a card on their phone */
+            .service-card:active, .suggestion-item:active {
+                transform: scale(0.96) !important; /* Physically presses down */
+                background: rgba(30, 30, 35, 0.8) !important;
+                border-color: rgba(212, 175, 55, 0.6) !important;
+                box-shadow: 0 0 30px rgba(139, 0, 0, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.2) !important;
+                transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            }
+            
+            /* Make the add-to-cart buttons snap */
+            .btn-add:active {
+                transform: scale(0.92) !important;
+                filter: brightness(1.2);
+            }
+        }
+
+        
+
 /* ========================================= */
         /* H&K THE VOID BACKGROUND                   */
         /* ========================================= */
@@ -404,7 +427,21 @@
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4) !important;
         }
       
+/* ========================================= */
+        /* H&K LUXURY BLUR REVEAL (MOBILE & DESKTOP) */
+        /* ========================================= */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            filter: blur(10px); /* Starts blurred */
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
 
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0px); /* Snaps into focus */
+        }
        
     
     </style>
@@ -1079,6 +1116,27 @@
                 document.documentElement.style.setProperty('--cursor-y', e.touches[0].clientY + 'px');
             }
         });
+
+// ==========================================
+        // MOBILE SCROLL WARP EFFECT
+        // ==========================================
+        let isScrolling;
+        window.addEventListener('scroll', () => {
+            // Accelerate particles upwards when scrolling down
+            for (let i = 0; i < voidParticles.length; i++) {
+                voidParticles[i].y -= 3; // Warp speed shift
+            }
+            
+            // Detect when scrolling stops to settle the dust
+            window.clearTimeout(isScrolling);
+            isScrolling = setTimeout(() => {
+                // Return to normal slow drift
+                for (let i = 0; i < voidParticles.length; i++) {
+                    voidParticles[i].dy = (Math.random() - 0.5) * 0.5;
+                }
+            }, 66);
+        }, false);
+       
 
         // ==========================================
         // 3. DATE CALCULATOR
