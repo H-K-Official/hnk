@@ -16,32 +16,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-
-
-
-/* ========================================= */
+        /* ========================================= */
         /* H&K MOBILE PREMIUM TAP PHYSICS            */
         /* ========================================= */
         @media (hover: none) {
-            /* When a user taps a card on their phone */
             .service-card:active, .suggestion-item:active {
-                transform: scale(0.96) !important; /* Physically presses down */
+                transform: scale(0.96) !important;
                 background: rgba(30, 30, 35, 0.8) !important;
                 border-color: rgba(212, 175, 55, 0.6) !important;
                 box-shadow: 0 0 30px rgba(139, 0, 0, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.2) !important;
                 transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1) !important;
             }
             
-            /* Make the add-to-cart buttons snap */
             .btn-add:active {
                 transform: scale(0.92) !important;
                 filter: brightness(1.2);
             }
         }
 
-        
-
-/* ========================================= */
+        /* ========================================= */
         /* H&K THE VOID BACKGROUND                   */
         /* ========================================= */
         #hk-void {
@@ -50,38 +43,41 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Pushes it behind everything */
-            pointer-events: none; /* Stops it from blocking clicks */
-            background: #050507; /* Deep archive pitch black */
+            z-index: 0;
+            pointer-events: none;
+            background: #050507;
         }
         
         :root {
-            --bg: #121212;
-            --panel: #1a1a1a;
+            --bg: #050507;
+            --panel: rgba(20, 20, 24, 0.75);
             --accent-gold: #D4AF37;
             --text-primary: #f8f9fa;
             --text-muted: #6c757d;
             --border: rgba(255, 255, 255, 0.08);
-            --cursor-x: 50vw; /* Interactive X Coordinate */
-            --cursor-y: 50vh; /* Interactive Y Coordinate */
+            --cursor-x: 50vw;
+            --cursor-y: 50vh;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body, html {
+        html {
             overflow-x: hidden !important; 
-            background-color: #050505; 
+            background-color: #050507; 
         }
 
         body {
+            overflow-x: hidden !important;
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
+            background-color: transparent;
             color: var(--text-primary);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         /* NASA TIER INTERACTIVITY: THE DARK MATTER SPOTLIGHT */
@@ -97,19 +93,21 @@
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .suggestion-item:hover img {
-            transform: scale(1.08);
+            transform: scale(1.04);
         }
 
-        /* NASA TIER INTERACTIVITY: CINEMATIC SCROLL LOGIC */
+        /* H&K LUXURY BLUR REVEAL & CINEMATIC SCROLL LOGIC */
         .hidden-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
+            transform: translateY(40px) scale(0.95);
+            filter: blur(8px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease-out;
+            will-change: opacity, transform, filter;
         }
         .reveal-scroll {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
+            filter: blur(0px);
         }
 
         .sale-banner {
@@ -127,21 +125,25 @@
         }
 
         .container {
+            position: relative;
+            z-index: 2;
             width: 100%;
             max-width: 1200px;
             height: 90vh; 
             background: var(--panel);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             display: grid;
             grid-template-columns: 220px 1fr 340px;
             border: 1px solid var(--border);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
             margin-top: 20px;
         }
 
         .sidebar {
-            background: rgba(21, 21, 21, 0.65);
+            background: rgba(15, 15, 18, 0.65);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: 30px 15px;
@@ -169,7 +171,7 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            background: radial-gradient(circle at center, #1e1e1e 0%, #1a1a1a 100%);
+            background: radial-gradient(circle at center, rgba(30, 30, 35, 0.5) 0%, rgba(15, 15, 20, 0.7) 100%);
         }
 
         .tab-pane { width: 100%; display: none; animation: fadeIn 0.4s ease; }
@@ -203,7 +205,7 @@
             transition: 0.3s; text-transform: uppercase; font-size: 0.75rem;
         }
 
-        .right-bar { background: #141414; padding: 20px; border-left: 1px solid var(--border); display: flex; flex-direction: column; }
+        .right-bar { background: rgba(18, 18, 22, 0.85); padding: 20px; border-left: 1px solid var(--border); display: flex; flex-direction: column; }
         .section-header { font-size: 0.6rem; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; }
 
         .suggestion-item {
@@ -306,7 +308,7 @@
         }
         
         ::-webkit-scrollbar-track {
-            background: var(--panel); 
+            background: #141414; 
         }
         
         ::-webkit-scrollbar-thumb {
@@ -318,80 +320,71 @@
             background: var(--accent-gold); 
         }
         
-    /* H&K PREMIUM MOBILE OVERRIDE */
-  @media only screen and (max-width: 768px) {
-    
-    /* Show the new mobile top bar - FROSTED GLASS UPGRADE */
-    .mobile-header {
-        display: flex !important;
-        background: rgba(10, 10, 15, 0.75) !important; 
-        backdrop-filter: blur(16px) !important; 
-        -webkit-backdrop-filter: blur(16px) !important;
-        border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
-    }
+        /* H&K PREMIUM MOBILE OVERRIDE */
+        @media only screen and (max-width: 768px) {
+            .mobile-header {
+                display: flex !important;
+                background: rgba(10, 10, 15, 0.75) !important; 
+                backdrop-filter: blur(16px) !important; 
+                -webkit-backdrop-filter: blur(16px) !important;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+            }
 
-    /* Push main website down so it isn't hidden under the top bar */
-    body {
-        padding-top: 70px !important;
-        overflow-x: hidden;
-    }
-    
-    /* THE BULLETPROOF SMOOTH TRANSITION MENU */
-    #hk-nav {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important; 
-        transform: translateX(-100%) !important; 
-        width: 75% !important; 
-        height: 100vh !important;
-       background: rgba(10, 10, 15, 0.85) !important;
-        backdrop-filter: blur(24px) !important;
-        -webkit-backdrop-filter: blur(24px) !important;
-        border-right: 1px solid rgba(212, 175, 55, 0.2) !important;
-        z-index: 1000 !important;
-        padding-top: 90px !important; 
-        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important; 
-        display: block !important;
-    }
-    
-    /* When the Javascript fires, this pushes it onto the screen */
-    #hk-nav.active-menu {
-        transform: translateX(0) !important;
-    }
+            body {
+                padding-top: 70px !important;
+                overflow-x: hidden;
+            }
+            
+            #hk-nav {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important; 
+                transform: translateX(-100%) !important; 
+                width: 75% !important; 
+                height: 100vh !important;
+                background: rgba(10, 10, 15, 0.85) !important;
+                backdrop-filter: blur(24px) !important;
+                -webkit-backdrop-filter: blur(24px) !important;
+                border-right: 1px solid rgba(212, 175, 55, 0.2) !important;
+                z-index: 1000 !important;
+                padding-top: 90px !important; 
+                transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important; 
+                display: block !important;
+            }
+            
+            #hk-nav.active-menu {
+                transform: translateX(0) !important;
+            }
 
-    /* Ensure product cards fit nicely on phone screens */
-    .suggestion-item {
-        width: 90% !important;
-        margin: 0 auto 20px auto !important;
-    }
-    
-      /* BRING THE CART BACK FROM THE DEAD */
-    #hk-cart {
-        display: flex !important;
-        width: 95% !important;
-        position: relative !important;
-        margin: 40px auto 20px auto !important;
-        border-left: none !important;
-        border: 1px solid var(--accent-gold) !important;
-        border-radius: 12px !important;
-    }
-  }
- /* ========================================= */
+            .suggestion-item {
+                width: 90% !important;
+                margin: 0 auto 20px auto !important;
+            }
+            
+            #hk-cart {
+                display: flex !important;
+                width: 95% !important;
+                position: relative !important;
+                margin: 40px auto 20px auto !important;
+                border-left: none !important;
+                border: 1px solid var(--accent-gold) !important;
+                border-radius: 12px !important;
+            }
+        }
+
+        /* ========================================= */
         /* H&K NEO-GLASS OVERRIDE (HARSH'S AESTHETIC)*/
         /* ========================================= */
-
-        /* 1. RESTORE THE FINE ROUNDED BORDERS */
         .container, .hk-billboard-wrapper, .promo-billboard, .input-box, .btn-add, select {
             border-radius: 16px !important;
             transition: all 0.4s ease;
         }
 
-        /* 2. THE FROSTED GLASS EFFECT (From the Skeleton Dump) */
         .suggestion-item {
-            background: rgba(20, 20, 25, 0.4) !important;
+            background: rgba(20, 20, 25, 0.55) !important;
             backdrop-filter: blur(12px) !important;
             -webkit-backdrop-filter: blur(12px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
             border-radius: 16px !important;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
             padding-bottom: 20px !important;
@@ -405,16 +398,14 @@
             transform: translateY(-5px);
             border-color: rgba(212, 175, 55, 0.3) !important;
             box-shadow: 0 15px 40px rgba(0,0,0,0.4) !important;
-            background: rgba(30, 30, 35, 0.6) !important;
+            background: rgba(30, 30, 35, 0.7) !important;
         }
 
-        /* 3. SMOOTH PREMIUM TYPOGRAPHY (Removing the Cryptic Terminal Font) */
         .old-price, .new-price, select, .btn-add, .section-header {
             font-family: 'Inter', sans-serif !important;
             letter-spacing: 1px;
         }
 
-        /* 4. LUXURY GRADIENT BUTTONS */
         .btn-add {
             background: linear-gradient(135deg, var(--accent-gold), #b8860b) !important;
             color: #000 !important;
@@ -426,24 +417,6 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4) !important;
         }
-      
-/* ========================================= */
-        /* H&K LUXURY BLUR REVEAL (MOBILE & DESKTOP) */
-        /* ========================================= */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px) scale(0.95);
-            filter: blur(10px); /* Starts blurred */
-            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0px); /* Snaps into focus */
-        }
-       
-    
     </style>
 </head>
 <body>
@@ -451,20 +424,15 @@
     <!-- H&K THE VOID CANVAS -->
     <canvas id="hk-void"></canvas>
 
-<!-- THE GLOBAL SPOTLIGHT OVERLAY -->
-<div id="dark-matter-spotlight"></div>
+    <!-- THE GLOBAL SPOTLIGHT OVERLAY -->
+    <div id="dark-matter-spotlight"></div>
 
-<!-- H&K MOBILE HEADER -->
-<div class="mobile-header" style="display: none; justify-content: space-between; align-items: center; padding: 15px 20px; background: #111111; border-bottom: 1px solid rgba(212,175,55,0.2); position: fixed; top: 0; left: 0; width: 100%; z-index: 1001;">
-    
-    <button onclick="toggleMobileMenu()" style="background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; outline: none; padding: 0;">☰</button>
-    
-    <h2 style="color: var(--accent-gold); margin: 0; font-size: 1.2rem; letter-spacing: 2px;">H&K</h2>
-    
-    <!-- THE NEW CART JUMP BUTTON -->
-    <button onclick="scrollToLog()" style="background: var(--accent-gold); border: none; color: #000; font-size: 0.6rem; font-weight: 800; cursor: pointer; outline: none; padding: 8px 14px; border-radius: 20px; letter-spacing: 1px;">VIEW LOG</button>
-
-</div>
+    <!-- H&K MOBILE HEADER -->
+    <div class="mobile-header" style="display: none; justify-content: space-between; align-items: center; padding: 15px 20px; background: #111111; border-bottom: 1px solid rgba(212,175,55,0.2); position: fixed; top: 0; left: 0; width: 100%; z-index: 1001;">
+        <button onclick="toggleMobileMenu()" style="background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; outline: none; padding: 0;">☰</button>
+        <h2 style="color: var(--accent-gold); margin: 0; font-size: 1.2rem; letter-spacing: 2px;">H&K</h2>
+        <button onclick="scrollToLog()" style="background: var(--accent-gold); border: none; color: #000; font-size: 0.6rem; font-weight: 800; cursor: pointer; outline: none; padding: 8px 14px; border-radius: 20px; letter-spacing: 1px;">VIEW LOG</button>
+    </div>
     
     <div class="sale-banner">WEDDING SEASON EXCLUSIVE — 50% OFF AUTOMATICALLY APPLIED</div>
 
@@ -482,7 +450,7 @@
             </div>
         </div>
 
-        <div class="main-content">
+        <div class="main-content" id="main-scroll-area">
             <!-- CANDLES SECTION -->
             <div id="tab-candles" class="tab-pane">
                 <div class="preview-card hidden-scroll" style="position: relative; border-color: rgba(255,255,255,0.03);">
@@ -551,13 +519,13 @@
                 <h3 class="hidden-scroll" style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">PRIVACY_PROTOCOL</h3>
                 <div class="info-block hidden-scroll">
                     <b>Data Collection</b>
-                    H&K logs user-provided identifiers (Name, Contact Number,Address) strictly for order fulfillment during this Trial Launch Phase. 
+                    H&K logs user-provided identifiers (Name, Contact Number, Address) strictly for order fulfillment during this Trial Launch Phase. 
                     <b>Transmission Security</b>
                     All checkout data is transmitted via end-to-end encrypted gateways. We do not store financial records or passwords on our internal servers.
                     <b>Third-Party Access</b>
                     Your information is never sold or shared with external marketing agencies. Data is used solely by the H&K team to coordinate handcrafted production and regional delivery.
                     <b>User Rights</b>
-                    As a user of our Trial Phase, we currently not handle requests of deletion of your order logs or exchanges, however we do reconfirm the orders.
+                    As a user of our Trial Phase, we currently do not handle requests of deletion of your order logs or exchanges, however we do reconfirm the orders.
                 </div>
             </div>
 
@@ -565,21 +533,20 @@
             <div id="tab-about" class="tab-pane">
                 <h3 class="hidden-scroll" style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">THE_VISION</h3>
                 <div class="info-block hidden-scroll">
-                    <p><b>Musings of H&K:</b>H&K is a curated Modern Heritage Archive that is a gear for modern metropolis.
+                    <p><b>Musings of H&K:</b> H&K is a curated Modern Heritage Archive that is gear for the modern metropolis.
                         H&K was never meant to be just a storefront. It was born from the raw energy, the dust, and the vibrancy of a Jaipur afternoon. 
                         It started with a simple realization: the modern market is saturated with sterile, mass-produced perfection. We wanted to build something that actually had a pulse.
                         We are not a "studio." We dropped that word because we don't design in sterile, corporate rooms. We are a Modern Heritage Archive—a curated, maximalist vault of culture, scent, and style. We bridge the ancient wisdom of local artisans with the high-speed aesthetic of modern luxury.
-                        Perfection is a machine’s game yet we master it. At H&K,unpredictable fade on an acid-washed tee is never considered a defect. It is the ultimate proof of life. It is the signature of the human hands that crafted it.</p>
-                    <p><b>Trial Launch Theory:</b> testing scalability via handcrafted production. Access is curated to maintain quality control.</p>
-                    <p style="margin-top: 8px;"><b>Region Restrictions:</b> Deliveries are currently localized in jaipur to ensure fragile items arrive intact.</p>
+                        Perfection is a machine’s game yet we master it. At H&K, unpredictable fade on an acid-washed tee is never considered a defect. It is the ultimate proof of life. It is the signature of the human hands that crafted it.</p>
+                    <p><b>Trial Launch Theory:</b> Testing scalability via handcrafted production. Access is curated to maintain quality control.</p>
+                    <p style="margin-top: 8px;"><b>Region Restrictions:</b> Deliveries are currently localized in Jaipur to ensure fragile items arrive intact.</p>
                     <div class="quote">"We don't just sell products. We archive memories, culture, and heritage and hence we are loved and curated."</div>
                     <div class="quote">"We are a small team and thus may have delays, but there is no compromise with your experiences."</div>
                     <div class="quote" style="border-color: #444;">"The minor imperfection in our products are proof that they are purely handcrafted and support local workers."</div>
                 </div>
             </div>
 
-
-            <!-- WEAR SECTION (CLEAN TEXT LAYOUT) -->
+            <!-- WEAR SECTION -->
             <div id="tab-coming" class="tab-pane active">
 
                 <h3 style="margin-bottom: 20px; letter-spacing: 5px; font-size: 0.75rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
@@ -587,19 +554,16 @@
                 <!-- UPGRADED 4-TAB SUB-NAVIGATION -->
                 <div style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; width: 100%; max-width: 450px; justify-content: center; flex-wrap: wrap;">
                     <span id="nav-tops" onclick="switchSubTab('tops')" style="font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; color: var(--accent-gold); cursor: pointer; border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px;">01_NEUTRAL_TEES</span>
-                    
                     <span id="nav-acid" onclick="switchSubTab('acid')" style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); cursor: pointer; padding-bottom: 5px; transition: 0.3s;">02_ACID_WASH</span>
-                    
                     <span id="nav-her" onclick="switchSubTab('her')" style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); cursor: pointer; padding-bottom: 5px; transition: 0.3s;">03_HER_ARCHIVE</span>
-
                     <span id="nav-his" onclick="switchSubTab('his')" style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); cursor: pointer; padding-bottom: 5px; transition: 0.3s;">04_HIS_ARCHIVE</span>
                 </div>
+
                 <!-- ========================================== -->
-                <!-- START OF TOPS CONTAINER -->
+                <!-- 01: START OF TOPS CONTAINER                -->
                 <!-- ========================================== -->
                 <div id="sub-tops" style="display: block; width: 100%;">
 
-                    <!-- MAIN TOPS BILLBOARD (LOCKED INSIDE SUB-TOPS) -->
                     <div class="promo-billboard hidden-scroll" style="max-width: 350px; margin: 0 auto 30px auto;">
                         <div class="promo-track">
                             <div class="promo-slide" style="background-image: url('h%26K%20apperals/uno%20tee.jpeg');"></div>
@@ -618,8 +582,6 @@
 
                     <div id="category-tops-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
 
-                       
-                        
                         <!-- MONEY A CURSE TEE -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/money%20a%20curse%20tee.jpeg" alt="Money a Curse Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
@@ -637,34 +599,22 @@
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-money').value; if(sz) { addToBag('Money a Curse Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        
-                        
-                        
-                        
-                        <!-- POLY H&K EXCLUSIVE TEE-->
-<div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-    
-
-    <img src="h%26K%20apperals/poly H&K exclusive.png" alt="H&K Exclusive Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
-
-    <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">ARCHIVE_SERIES_01</div>
-    <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">H&K Exclusive Tee</h4>
-    <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">poly Heavyweight French Terry</p>
-    
-    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-        <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹599</span>
-        <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹399</span>
-    </div>
-    
-    
-    <select id="size-hk-exclusive" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
-        <option value="" disabled selected>SELECT YOUR SIZE</option>
-        <option value="S">S (Chest: 96cm)</option>
-        <option value="M">M (Chest: 101cm)</option>
-        <option value="L">L (Chest: 107cm)</option>
-        <option value="XL">XL (Chest: 112cm)</option>
-    </select>
-
+                        <!-- POLY H&K EXCLUSIVE TEE (FIXED CLOSING DIV) -->
+                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
+                            <img src="h%26K%20apperals/poly H&K exclusive.png" alt="H&K Exclusive Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
+                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">ARCHIVE_SERIES_01</div>
+                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">H&K Exclusive Tee</h4>
+                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">poly Heavyweight French Terry</p>
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹599</span>
+                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹399</span>
+                            </div>
+                            <select id="size-hk-exclusive" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
+                                <option value="" disabled selected>SELECT YOUR SIZE</option>
+                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
+                            </select>
+                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-hk-exclusive').value; if(sz) { addToBag('H&K Exclusive Tee - Size: ' + sz, 399); } else { alert('Please select a size before adding to the archive.'); }">ADD TO ARCHIVE</button>
+                        </div>
 
                         <!-- ALL EYEZ ON ME TEE -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
@@ -683,18 +633,7 @@
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-alleyez').value; if(sz) { addToBag('All Eyez On Me Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-
-    
-
-    <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" 
-    onclick="let sz = document.getElementById('size-hk-exclusive').value; if(sz) { addToBag('H&K Exclusive Tee - Size: ' + sz, 399); } else { alert('Please select a size before adding to the archive.'); }">
-        ADD TO ARCHIVE
-    </button>
-</div>
-
-
-
-                        <!-------modi tee------------>
+                        <!-- MODI TEE -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/modi%20tee.png" alt="Modi FANMADE Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_03</div>
@@ -711,7 +650,7 @@
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-modi').value; if(sz) { addToBag('Modi FANMADE tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                     <!-------Lord Krishn Tee------->
+                        <!-- LORD KRISHNA TEE -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/lord%20krishna%20tee.png" alt="Lord Krishna Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_03</div>
@@ -727,9 +666,6 @@
                             </select>
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-krshn').value; if(sz) { addToBag('Lord Krishna tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
-
-
-
 
                         <!-- BANG BANG TEE -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
@@ -748,8 +684,6 @@
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-bangbang').value; if(sz) { addToBag('Bang Bang Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        
-                        
                         <!-- 911 EDITORIAL TEE -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/car911.png" alt="911 Editorial Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
@@ -766,8 +700,6 @@
                             </select>
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-911').value; if(sz) { addToBag('911 Editorial Tee - Size: ' + sz, 399); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
-
-
 
                         <!-- UNO TEE -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
@@ -786,8 +718,7 @@
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-uno').value; if(sz) { addToBag('UNO Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        
-                        <!--H&K EXCLUSIVE COTTON TEE-->
+                        <!-- H&K EXCLUSIVE COTTON TEE -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/hnk exclusive.jpeg" alt="H&K Exclusive Cotton Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
@@ -804,11 +735,6 @@
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-cottonex').value; if(sz) { addToBag('H&K Exclusive Cotton Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-
-                        
-
-
-                        
                         <!-- HARMONY KINGS TEE -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/harmony%20kings%20tee.jpeg" alt="Harmony Kings Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
@@ -847,16 +773,12 @@
                 </div> <!-- END OF TOPS CONTAINER -->
 
                 <!-- ========================================== -->
-                <!-- START OF ACID WASH CONTAINER (HIDDEN FIRST) -->
+                <!-- 02: START OF ACID WASH CONTAINER           -->
                 <!-- ========================================== -->
                 <div id="sub-acid" style="display: none; width: 100%;">
                     
-<!-- ACID WASH EXCLUSIVE BILLBOARD (AESTHETIC & INTERACTIVE FIX) -->
                     <div class="hk-billboard-wrapper hidden-scroll" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
-                        
-                        <!-- THE INVISIBLE SHIELD FIX: pointer-events: none ensures it NEVER blocks clicks -->
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent); pointer-events: none;"></div>
-                        
                         <div style="position: relative; z-index: 2; text-align: center; width: 100%; pointer-events: none;">
                             <h4 style="color: var(--accent-gold); font-size: 0.65rem; letter-spacing: 4px; margin-bottom: 8px; text-transform: uppercase;">Capsule // 01</h4>
                             <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin: 0;">The Acid Archive</h2>
@@ -865,7 +787,7 @@
                     
                     <div id="category-acid-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
 
-                        <!-- 1. MIGRATED BASIC ACID WASH (₹999) -->
+                        <!-- 1. MIGRATED BASIC ACID WASH -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/acid-wash-tee.jpeg" alt="Acid Wash Basic" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">MENS EXCLUSIVE // PREMIUM WASH</div>
@@ -882,7 +804,7 @@
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-acid-basic').value; if(sz) { addToBag('Acid Wash Black Tee - Size: ' + sz, 999); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        <!-- 2. H&K EXCLUSIVE ACID WASH (₹1399) -->
+                        <!-- 2. H&K EXCLUSIVE ACID WASH -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/acid wash exclusive tee.jpeg" alt="H&K Exclusive Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">H&K EXCLUSIVE // CAPSULE_01</div>
@@ -899,7 +821,7 @@
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-acid-hk').value; if(sz) { addToBag('H&K Exclusive Acid Tee - Size: ' + sz, 1399); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        <!-- 3. DEMON SLAYER ACID WASH (₹1399) -->
+                        <!-- 3. DEMON SLAYER ACID WASH -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/acid wash demon slayer tee.jpeg" alt="Demon Slayer Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">FANMADE EDITION // CAPSULE_01</div>
@@ -916,7 +838,7 @@
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-acid-demon').value; if(sz) { addToBag('Demon Slayer Acid Wash - Size: ' + sz, 1399); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        <!-- 4. GREEK STYLE ACID WASH (₹1399) -->
+                        <!-- 4. GREEK STYLE ACID WASH -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/acid wash greek tee.jpeg" alt="Greek Style Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GREEK MYTHOS // CAPSULE_01</div>
@@ -936,12 +858,11 @@
                     </div> <!-- CLOSES CATEGORY-ACID-CONTAINER -->
                 </div> <!-- END OF ACID WASH CONTAINER -->
 
-<!-- ========================================== -->
-                <!-- START OF HER ARCHIVE CONTAINER (HIDDEN FIRST) -->
+                <!-- ========================================== -->
+                <!-- 03: START OF HER ARCHIVE CONTAINER         -->
                 <!-- ========================================== -->
                 <div id="sub-her" style="display: none; width: 100%;">
                     
-                    <!-- HER ARCHIVE EXCLUSIVE BILLBOARD -->
                     <div class="hk-billboard-wrapper hidden-scroll" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #3a0d16 0%, #000000 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent); pointer-events: none;"></div>
                         <div style="position: relative; z-index: 2; text-align: center; width: 100%; pointer-events: none;">
@@ -952,12 +873,11 @@
 
                     <div id="category-her-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
 
-                       
-                        <!-- 1. Lepoard Tube TOP -->
+                        <!-- 1. LEOPARD TUBE TOP -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/lepord%20tubetop.png" alt="Lepoard Tube Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // CROP FIT</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Lepoard Tube top </h4>
+                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Lepoard Tube top</h4>
                             <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Cropped Silhouette (All over print)</p>
                             <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
                                 <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹439</span>
@@ -969,11 +889,8 @@
                             </select>
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-lepoard').value; if(sz) { addToBag('Lepoard Tube top - Size: ' + sz, 209); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
-                        
 
-
-
-                     <!-- 2. TOXIC CROP TOP -->
+                        <!-- 2. TOXIC CROP TOP -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/GIRLS%20Toxic%20crop%20top.png" alt="Toxic Crop Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // CROP FIT</div>
@@ -990,8 +907,7 @@
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-toxic').value; if(sz) { addToBag('Toxic Stamp Crop Top - Size: ' + sz, 599); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-
-                   <!-- 3. Spill TEA CROP TOP -->
+                        <!-- 3. SPILL TEA CROP TOP (FIXED MISSING CLOSING DIV!) -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/spill%20tea%20crop%20top.png" alt="Spill tea Crop Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // CROP FIT</div>
@@ -1006,11 +922,8 @@
                                 <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
                             </select>
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-tea').value; if(sz) { addToBag('Spill Tea Crop Top - Size: ' + sz, 599); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
+                        </div>
 
-
-
-                        
-                        
                         <!-- 4. BURI NAZAR CROP TOP -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/GIRLS%20buri%20nazar%20crop%20top.png" alt="No Buri Nazar Crop Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
@@ -1062,21 +975,14 @@
                             <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-nonchalant').value; if(sz) { addToBag('Nonchalant Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        
-
-                    
-                        
-                        
-
                     </div> <!-- CLOSES CATEGORY-HER-CONTAINER -->
                 </div> <!-- END OF HER ARCHIVE CONTAINER -->
 
                 <!-- ========================================== -->
-                <!-- START OF HIS ARCHIVE CONTAINER -->
+                <!-- 04: START OF HIS ARCHIVE CONTAINER         -->
                 <!-- ========================================== -->
                 <div id="sub-his" style="display: none; width: 100%;">
                     
-                    <!-- HIS ARCHIVE EXCLUSIVE BILLBOARD -->
                     <div class="hk-billboard-wrapper hidden-scroll" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1b263b 0%, #0d1117 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent); pointer-events: none;"></div>
                         <div style="position: relative; z-index: 2; text-align: center; width: 100%; pointer-events: none;">
@@ -1087,7 +993,7 @@
 
                     <div id="category-his-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
 
-                        <!-- 1. VINTAGE UMBER TIPPING POLO (₹649) -->
+                        <!-- 1. VINTAGE UMBER TIPPING POLO -->
                         <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 15px;">
                             <img src="h%26K%20apperals/MEN brown umber polo.png" alt="Umber Tipping Polo" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
                             <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">PREMIUM HERITAGE // EXCLUSIVE</div>
@@ -1140,15 +1046,11 @@
 
                     </div> <!-- CLOSES CATEGORY-HIS-CONTAINER -->
                 </div> <!-- END OF HIS ARCHIVE CONTAINER -->
-                
 
             </div> <!-- THIS CLOSES THE WEAR TAB -->
-
-
-
-            
         </div> <!-- THIS CLOSES THE MAIN CONTENT AREA -->
 
+        <!-- RIGHT SIDEBAR CART -->
         <div id="hk-cart" class="right-bar">
             <div class="section-header">SUGGESTIONS</div>
             <div id="suggestions">
@@ -1163,7 +1065,7 @@
                 <p style="opacity: 0.2; font-style: italic;">_EMPTY</p>
             </div>
 
-           <div style="border-top: 1px solid var(--border); padding-top: 15px;">
+            <div style="border-top: 1px solid var(--border); padding-top: 15px;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
                     <span style="font-size: 0.65rem;">TOTAL</span>
                     <span id="total-price" style="font-weight: 800; color: var(--accent-gold); font-size: 0.9rem;">₹0</span>
@@ -1187,10 +1089,7 @@
             
             <input type="text" id="cust-name" class="input-box" placeholder="YOUR NAME">
             <input type="tel" id="cust-phone" class="input-box" placeholder="WHATSAPP NUMBER">
-            
-            <!-- NEW ADDRESS BOX (Multi-line so they can add City & Pincode) -->
             <textarea id="cust-address" class="input-box" rows="3" placeholder="FULL DELIVERY ADDRESS (WITH PINCODE)" style="resize: none; font-family: inherit; margin-bottom: 15px;"></textarea>
-            
             <input type="text" id="customlabel" class="input-box" placeholder="YOUR LABEL IF ANY">
             
             <button class="btn-add" id="transmit-btn" style="width:100%" onclick="sendOrder()">TRANSMIT VIA WHATSAPP</button>
@@ -1198,12 +1097,13 @@
         </div>
     </div>
 
-   <script>
+    <script>
         // ==========================================
         // 1. GLOBAL VARIABLES
         // ==========================================
         let bag = [];
         let scrollObserver;
+        let voidParticles = [];
 
         // ==========================================
         // 2. THE SPOTLIGHT ENGINE (Desktop + Mobile)
@@ -1218,27 +1118,6 @@
                 document.documentElement.style.setProperty('--cursor-y', e.touches[0].clientY + 'px');
             }
         });
-
-// ==========================================
-        // MOBILE SCROLL WARP EFFECT
-        // ==========================================
-        let isScrolling;
-        window.addEventListener('scroll', () => {
-            // Accelerate particles upwards when scrolling down
-            for (let i = 0; i < voidParticles.length; i++) {
-                voidParticles[i].y -= 3; // Warp speed shift
-            }
-            
-            // Detect when scrolling stops to settle the dust
-            window.clearTimeout(isScrolling);
-            isScrolling = setTimeout(() => {
-                // Return to normal slow drift
-                for (let i = 0; i < voidParticles.length; i++) {
-                    voidParticles[i].dy = (Math.random() - 0.5) * 0.5;
-                }
-            }, 66);
-        }, false);
-       
 
         // ==========================================
         // 3. DATE CALCULATOR
@@ -1420,13 +1299,11 @@
             if (cart) cart.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-
-// ==========================================
-        // H&K 3D INTERACTIVE ENGINE (DESKTOP ONLY)
+        // ==========================================
+        // 8. H&K 3D INTERACTIVE ENGINE (DESKTOP ONLY)
         // ==========================================
         const interactiveCards = document.querySelectorAll('.service-card, .suggestion-item');
 
-        // Check if the device has a precise pointer (mouse), ignores touchscreens
         if (window.matchMedia("(pointer: fine)").matches) {
             interactiveCards.forEach(card => {
                 card.addEventListener('mousemove', (e) => {
@@ -1434,12 +1311,12 @@
                     const x = e.clientX - rect.left - rect.width / 2;
                     const y = e.clientY - rect.top - rect.height / 2;
                     
-                    const rotateX = (y / (rect.height / 2)) * -15; 
-                    const rotateY = (x / (rect.width / 2)) * 15;
+                    const rotateX = (y / (rect.height / 2)) * -10; 
+                    const rotateY = (x / (rect.width / 2)) * 10;
                     
                     card.style.transition = 'none';
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-                    card.style.boxShadow = `${-x / 5}px ${-y / 5}px 30px rgba(212, 175, 55, 0.3)`;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+                    card.style.boxShadow = `${-x / 6}px ${-y / 6}px 30px rgba(212, 175, 55, 0.25)`;
                 });
 
                 card.addEventListener('mouseleave', () => {
@@ -1450,18 +1327,13 @@
             });
         }
 
-       
-
-// ==========================================
-        // H&K THE VOID: PARTICLE ENGINE
+        // ==========================================
+        // 9. H&K THE VOID: PARTICLE ENGINE & WARP
         // ==========================================
         const canvas = document.getElementById('hk-void');
         const ctx = canvas.getContext('2d');
-        
-        let voidParticles = [];
         let mouse = { x: null, y: null, radius: 150 };
 
-        // Resize Canvas to fit screen exactly
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -1469,7 +1341,6 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        // Track Mouse
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.x;
             mouse.y = e.y;
@@ -1479,7 +1350,6 @@
             mouse.y = undefined;
         });
 
-       // Track Touch (For Mobile Phones)
         window.addEventListener('touchmove', (e) => {
             mouse.x = e.touches[0].clientX;
             mouse.y = e.touches[0].clientY;
@@ -1489,7 +1359,6 @@
             mouse.y = undefined;
         });
 
-        // Create the Archive Dust (Particles)
         class Particle {
             constructor(x, y, dx, dy, size) {
                 this.x = x;
@@ -1502,15 +1371,14 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                // Subtle H&K Gold for the dust
-                ctx.fillStyle = 'rgba(212, 175, 55, 0.4)'; 
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.45)'; 
                 ctx.fill();
             }
             
             update() {
-                // Bounce off walls
                 if (this.x + this.size > canvas.width || this.x - this.size < 0) this.dx = -this.dx;
                 if (this.y + this.size > canvas.height || this.y - this.size < 0) this.dy = -this.dy;
+                if (this.y < 0) this.y = canvas.height;
                 
                 this.x += this.dx;
                 this.y += this.dy;
@@ -1519,23 +1387,20 @@
             }
         }
 
-        // Initialize the Particle Grid
         function initVoid() {
             voidParticles = [];
-            // Calculate number of particles based on screen size (Maximalist but clean)
             let numberOfParticles = (canvas.width * canvas.height) / 9000;
             
             for (let i = 0; i < numberOfParticles; i++) {
                 let size = (Math.random() * 2) + 0.5;
                 let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
                 let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
-                let dx = (Math.random() - 0.5) * 0.5; // Very slow drift
+                let dx = (Math.random() - 0.5) * 0.5;
                 let dy = (Math.random() - 0.5) * 0.5;
                 voidParticles.push(new Particle(x, y, dx, dy, size));
             }
         }
 
-        // Animate and Connect the Grid
         function animateVoid() {
             requestAnimationFrame(animateVoid);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -1543,16 +1408,14 @@
             for (let i = 0; i < voidParticles.length; i++) {
                 voidParticles[i].update();
                 
-                // Connect particles to each other and to mouse
                 for (let j = i; j < voidParticles.length; j++) {
                     let distanceX = voidParticles[i].x - voidParticles[j].x;
                     let distanceY = voidParticles[i].y - voidParticles[j].y;
                     let distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
                     
-                    // Connection distance
                     if (distance < 100) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(212, 175, 55, ${0.1 - distance/1000})`; // Fading Gold lines
+                        ctx.strokeStyle = `rgba(212, 175, 55, ${0.12 - distance/1000})`;
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(voidParticles[i].x, voidParticles[i].y);
                         ctx.lineTo(voidParticles[j].x, voidParticles[j].y);
@@ -1560,7 +1423,6 @@
                     }
                 }
                 
-                // Mouse interaction physics
                 if (mouse.x != null) {
                     let dx = mouse.x - voidParticles[i].x;
                     let dy = mouse.y - voidParticles[i].y;
@@ -1568,7 +1430,7 @@
                     
                     if (distanceToMouse < mouse.radius) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(139, 0, 0, ${1 - distanceToMouse/mouse.radius})`; // H&K Blood Red interaction
+                        ctx.strokeStyle = `rgba(139, 0, 0, ${1 - distanceToMouse/mouse.radius})`;
                         ctx.lineWidth = 1;
                         ctx.moveTo(voidParticles[i].x, voidParticles[i].y);
                         ctx.lineTo(mouse.x, mouse.y);
@@ -1578,13 +1440,24 @@
             }
         }
 
-        // Fire it up
         initVoid();
         animateVoid();
-       
-       
-       
-       
+
+        // Scroll Warp (Works on both Mobile Window & Desktop Main Content Scroll!)
+        let isScrolling;
+        const triggerWarp = () => {
+            for (let i = 0; i < voidParticles.length; i++) {
+                voidParticles[i].y -= 2.5;
+            }
+            window.clearTimeout(isScrolling);
+            isScrolling = setTimeout(() => {
+                for (let i = 0; i < voidParticles.length; i++) {
+                    voidParticles[i].dy = (Math.random() - 0.5) * 0.5;
+                }
+            }, 66);
+        };
+        window.addEventListener('scroll', triggerWarp, { passive: true });
+        document.getElementById('main-scroll-area').addEventListener('scroll', triggerWarp, { passive: true });
     </script>
 </body>
 </html>
