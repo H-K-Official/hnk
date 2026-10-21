@@ -2,1111 +2,755 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>H&K | Modern Heritage Apparel Archive — Streetwear Jaipur</title>
     
-    <!-- H&K GLOBAL TRANSMISSION TAGS (SEO) -->
-    <meta name="description" content="H&K is a curated Modern Heritage Archive based in Jaipur. Shop handcrafted, aesthetic, high-aura streetwear, acid wash capsules, and luxury.">
-    <meta name="keywords" content="H&K streetwear, luxury clothing Jaipur, modern heritage archive, acid wash oversized tees, Indian maximalism fashion">
-    <meta name="author" content="H&K Founders">
+    <!-- H&K GLOBAL TRANSMISSION TAGS -->
+    <meta name="description" content="H&K is a curated Modern Heritage Archive based in Jaipur. Handcrafted, aesthetic, high-aura streetwear.">
     <meta property="og:title" content="H&K | The Apparel Archive">
     <meta property="og:description" content="Handcrafted heritage. Explore Drop 02 of the H&K streetwear archive.">
-    <meta property="og:type" content="website">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ========================================= */
-        /* H&K MOBILE PREMIUM TAP PHYSICS            */
+        /* H&K COLOR ENGINE: THE RUNWAY OVERHAUL     */
         /* ========================================= */
-        @media (hover: none) {
-            .service-card:active, .suggestion-item:active {
-                transform: scale(0.96) !important;
-                background: rgba(30, 30, 35, 0.8) !important;
-                border-color: rgba(212, 175, 55, 0.6) !important;
-                box-shadow: 0 0 30px rgba(139, 0, 0, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.2) !important;
-                transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            }
-            
-            .btn-add:active {
-                transform: scale(0.92) !important;
-                filter: brightness(1.2);
-            }
-        }
-
-        /* ========================================= */
-        /* H&K THE VOID BACKGROUND                   */
-        /* ========================================= */
-        #hk-void {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            background: #050507;
-        }
-        
         :root {
-            --bg: #050507;
-            --panel: rgba(20, 20, 24, 0.75);
-            --accent-gold: #D4AF37;
-            --text-primary: #f8f9fa;
-            --text-muted: #6c757d;
-            --border: rgba(255, 255, 255, 0.08);
+            --bg-obsidian: #0A0A0C;
+            --chrome: #E5E4E2;
+            --blood-red: #8B0000;
+            --raw-cotton: #F4F4F0;
+            --panel: rgba(18, 18, 22, 0.65);
+            --border: rgba(229, 228, 226, 0.1);
             --cursor-x: 50vw;
             --cursor-y: 50vh;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html {
-            overflow-x: hidden !important; 
-            background-color: #050507; 
-        }
-
-        body {
-            overflow-x: hidden !important;
+        /* ANDROID & IOS APEX OPTIMIZATIONS */
+        html, body {
+            background-color: var(--bg-obsidian);
+            color: var(--raw-cotton);
             font-family: 'Inter', sans-serif;
-            background-color: transparent;
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
+            overflow: hidden; /* Lock master body, scrolling happens in viewport */
+            overscroll-behavior-y: none; /* Kills Android pull-to-refresh bounce */
+            width: 100%;
+            height: 100dvh;
         }
 
-        /* NASA TIER INTERACTIVITY: THE DARK MATTER SPOTLIGHT */
+        /* HIDES SCROLLBARS FOR CLEAN APP LOOK */
+        ::-webkit-scrollbar { display: none; }
+        * { scrollbar-width: none; -ms-overflow-style: none; }
+
+        /* THE DARK MATTER SPOTLIGHT (DESKTOP) */
         #dark-matter-spotlight {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             pointer-events: none; z-index: 1500;
-            background: radial-gradient(circle 500px at var(--cursor-x) var(--cursor-y), rgba(212, 175, 55, 0.04), transparent 80%);
+            background: radial-gradient(circle 600px at var(--cursor-x) var(--cursor-y), rgba(229, 228, 226, 0.03), transparent 80%);
             transition: opacity 0.3s ease;
         }
 
-        /* NASA TIER INTERACTIVITY: HOVER MICRO-ZOOM */
-        .suggestion-item img {
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .suggestion-item:hover img {
-            transform: scale(1.04);
+        /* H&K THE VOID BACKGROUND */
+        #hk-void {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; pointer-events: none; background: var(--bg-obsidian);
         }
 
-        /* H&K LUXURY BLUR REVEAL & CINEMATIC SCROLL LOGIC */
-        .hidden-scroll {
-            opacity: 0;
-            transform: translateY(40px) scale(0.95);
-            filter: blur(8px);
-            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease-out;
-            will-change: opacity, transform, filter;
-        }
-        .reveal-scroll {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0px);
-        }
-
-        .sale-banner {
-            position: fixed;
-            top: 0; width: 100%;
-            background: var(--accent-gold);
-            color: #000;
-            text-align: center;
-            padding: 8px;
-            font-weight: 800;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            z-index: 1000;
-            text-transform: uppercase;
-        }
-
+        /* ========================================= */
+        /* DESKTOP LAYOUT (SIDEBARS)                 */
+        /* ========================================= */
         .container {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 1200px;
-            height: 90vh; 
-            background: var(--panel);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            display: grid;
-            grid-template-columns: 220px 1fr 340px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
-            margin-top: 20px;
+            position: relative; z-index: 2; width: 100%; max-width: 1400px;
+            height: 100dvh; display: grid; grid-template-columns: 220px 1fr 340px;
+            margin: 0 auto;
         }
 
         .sidebar {
-            background: rgba(15, 15, 18, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 30px 15px;
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
+            background: var(--panel); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            padding: 40px 20px; border-right: 1px solid var(--border);
+            display: flex; flex-direction: column; z-index: 100;
         }
 
-        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 4px; margin-bottom: 40px; color: var(--accent-gold); text-align: center; }
+        .right-bar {
+            background: var(--panel); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            padding: 30px; border-left: 1px solid var(--border);
+            display: flex; flex-direction: column; z-index: 100;
+        }
+
+        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: 5px; margin-bottom: 50px; color: var(--chrome); text-align: center; text-transform: uppercase; }
 
         .nav-btn {
-            background: transparent; border: none; color: var(--text-muted);
+            background: transparent; border: none; color: #888;
             padding: 12px 15px; text-align: left; cursor: pointer;
-            font-family: inherit; font-size: 0.75rem; font-weight: 600;
-            transition: 0.3s; border-radius: 8px; margin-bottom: 5px;
-            width: 100%;
+            font-family: 'Courier New', monospace; font-size: 0.8rem; font-weight: 600;
+            transition: 0.3s; border-radius: 8px; margin-bottom: 10px; width: 100%; letter-spacing: 1px;
         }
+        .nav-btn:hover, .nav-btn.active { background: rgba(229, 228, 226, 0.1); color: var(--chrome); }
 
-        .nav-btn:hover, .nav-btn.active { background: rgba(255,255,255,0.05); color: #fff; }
-
+        /* ========================================= */
+        /* H&K MOBILE SOUL: SNAP SCROLL & BENTO GRID */
+        /* ========================================= */
         .main-content { 
-            padding: 30px; 
-            overflow-y: auto; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            background: radial-gradient(circle at center, rgba(30, 30, 35, 0.5) 0%, rgba(15, 15, 20, 0.7) 100%);
-        }
-
-        .tab-pane { width: 100%; display: none; animation: fadeIn 0.4s ease; }
-        .tab-pane.active { display: flex; flex-direction: column; align-items: center; }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .preview-card {
-            width: 100%;
-            max-width: 300px; 
-            aspect-ratio: 1/1.1;
-            background: #1c1c1c;
-            border: 1px solid var(--border); border-radius: 15px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            margin-bottom: 20px; position: relative;
-        }
-
-        .price-tag { display: flex; align-items: center; gap: 10px; margin: 15px 0; }
-        .old-price { text-decoration: line-through; color: var(--text-muted); font-size: 0.8rem; }
-        .new-price { font-size: 1.6rem; font-weight: 800; color: var(--accent-gold); }
-
-        .input-box {
-            width: 100%; max-width: 350px; background: #222; border: 1px solid var(--border);
-            padding: 12px; color: #fff; border-radius: 8px; text-align: center; margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-
-        .btn-add {
-            background: var(--accent-gold); color: #000; padding: 12px 30px;
-            border-radius: 50px; font-weight: 800; border: none; cursor: pointer;
-            transition: 0.3s; text-transform: uppercase; font-size: 0.75rem;
-        }
-
-        .right-bar { background: rgba(18, 18, 22, 0.85); padding: 20px; border-left: 1px solid var(--border); display: flex; flex-direction: column; }
-        .section-header { font-size: 0.6rem; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; }
-
-        .suggestion-item {
-            background: #1d1d1d; padding: 10px; border-radius: 8px; margin-bottom: 8px;
-            cursor: pointer; border: 1px solid transparent; transition: 0.2s;
-        }
-        .suggestion-item:hover { border-color: var(--accent-gold); }
-
-        .info-block { text-align: left; width: 100%; max-width: 500px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
-        .info-block b { color: var(--accent-gold); display: block; margin-top: 15px; margin-bottom: 5px; }
-        .quote { font-style: italic; border-left: 2px solid var(--accent-gold); padding-left: 12px; margin: 15px 0; color: #ccc; }
-
-        @media (max-width: 900px) {
-            .container { grid-template-columns: 1fr; height: auto; max-height: none; overflow: visible; }
-            .sidebar, .right-bar { display: none; }
-            body { overflow-y: auto; padding-top: 50px; }
-        }
-
-        .modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px;
-        }
-
-        /* THE SEAMLESS 6-SLIDE CINEMATIC CAROUSEL */
-        .promo-billboard { 
             position: relative;
-            width: 100%; 
-            height: 380px; 
-            border-radius: 16px; 
-            overflow: hidden !important; 
-            background: #000000;
-            margin-bottom: 30px;
-            border: 1px solid rgba(212, 175, 55, 0.2); 
+            height: 100dvh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory; /* TIKTOK STYLE SNAP SCROLLING */
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 40px;
+            background: radial-gradient(circle at center, rgba(30, 30, 35, 0.2) 0%, transparent 100%);
         }
 
-        .promo-track {
+        .tab-pane { display: none; animation: fadeIn 0.5s ease; width: 100%; }
+        .tab-pane.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* THE BENTO GRID ARCHITECTURE */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: minmax(180px, auto);
+            gap: 16px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 100px;
+        }
+
+        /* BENTO DESKTOP OVERRIDES */
+        @media(min-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(220px, auto); gap: 20px; }
+            .bento-hero { grid-column: span 2; grid-row: span 2; }
+            .bento-wide { grid-column: span 2; grid-row: span 1; }
+            .bento-square { grid-column: span 1; grid-row: span 1; }
+        }
+
+        /* BENTO MOBILE OVERRIDES */
+        @media(max-width: 1023px) {
+            .bento-hero { grid-column: span 2; grid-row: span 2; min-height: 55vh; }
+            .bento-wide { grid-column: span 2; grid-row: span 1; min-height: 30vh; }
+            .bento-square { grid-column: span 1; grid-row: span 1; min-height: 30vh; }
+        }
+
+        .bento-card {
+            background: rgba(15, 15, 18, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            scroll-snap-align: center; /* SNAPS DIRECTLY TO CENTER OF PHONE */
+            scroll-snap-stop: always;
             display: flex;
-            width: 600%; 
-            height: 100%;
-            position: absolute;
-            top: 0; left: 0;
-            animation: hotstarSlide 25s infinite cubic-bezier(0.77, 0, 0.175, 1); 
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s;
         }
 
-        .promo-slide {
-            width: 16.666%; 
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            animation: hotstarZoom 12s infinite alternate ease-in-out; 
+        .bento-img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: 1;
+            filter: grayscale(30%) contrast(110%) brightness(0.8);
+            transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        @keyframes hotstarSlide {
-            0%, 14% { transform: translateX(0%); }           
-            20%, 34% { transform: translateX(-16.666%); }    
-            40%, 54% { transform: translateX(-33.333%); }    
-            60%, 74% { transform: translateX(-50%); }        
-            80%, 94% { transform: translateX(-66.666%); }    
-            100% { transform: translateX(-83.333%); }        
+        .bento-card:hover { border-color: var(--chrome); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .bento-card:hover .bento-img { filter: grayscale(0%) contrast(120%) brightness(1); transform: scale(1.05); }
+
+        .bento-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 85%;
+            background: linear-gradient(to top, rgba(10,10,12,0.95) 10%, rgba(10,10,12,0.4) 60%, transparent);
+            z-index: 2; pointer-events: none;
+        }
+
+        .bento-content {
+            position: relative; z-index: 3; padding: 20px;
+            display: flex; flex-direction: column; gap: 8px;
+        }
+
+        /* BENTO TYPOGRAPHY & UI */
+        .bento-tag { color: var(--blood-red); font-family: 'Courier New', monospace; font-size: 0.65rem; letter-spacing: 2px; font-weight: bold; }
+        .bento-tag.chrome { color: var(--chrome); }
+        .bento-title { color: var(--raw-cotton); font-weight: 800; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; line-height: 1.1; }
+        .bento-desc { color: #888; font-size: 0.7rem; letter-spacing: 0.5px; margin-bottom: 5px; }
+        .bento-price-old { text-decoration: line-through; color: #666; font-size: 0.75rem; font-family: 'Courier New', monospace; }
+        .bento-price { color: var(--chrome); font-family: 'Courier New', monospace; font-size: 1.2rem; font-weight: bold; }
+        
+        .bento-ui-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; margin-top: 5px; }
+        .bento-controls { display: flex; flex-direction: column; gap: 8px; flex: 1; max-width: 140px; }
+
+        .bento-select {
+            background: rgba(0, 0, 0, 0.6); color: var(--raw-cotton);
+            border: 1px solid rgba(229, 228, 226, 0.3); border-radius: 8px;
+            padding: 8px 10px; font-size: 0.7rem; font-family: 'Courier New', monospace;
+            outline: none; backdrop-filter: blur(8px); cursor: pointer; width: 100%;
         }
         
-        @keyframes hotstarZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.15); }
-        }
-        
-        .promo-overlay {
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 70%;
-            background: linear-gradient(to top, rgba(10,10,15,1), rgba(10,10,15,0));
-        }
-
-        .promo-text {
-            position: relative;
-            z-index: 2;
-            padding: 20px;
-            width: 100%;
-            text-align: left;
-        }
-
-        .promo-text h4 {
-            color: var(--accent-gold);
-            font-size: 0.65rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        .promo-text h2 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin: 0;
-            color: #fff;
-            text-transform: uppercase;
-        }
-        
-        /* PREMIUM DARK SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 6px; 
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #141414; 
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: rgba(212, 175, 55, 0.25); 
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-gold); 
-        }
-        
-        /* H&K PREMIUM MOBILE OVERRIDE */
-        @media only screen and (max-width: 768px) {
-            .mobile-header {
-                display: flex !important;
-                background: rgba(10, 10, 15, 0.75) !important; 
-                backdrop-filter: blur(16px) !important; 
-                -webkit-backdrop-filter: blur(16px) !important;
-                border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
-            }
-
-            body {
-                padding-top: 70px !important;
-                overflow-x: hidden;
-            }
-            
-            #hk-nav {
-                position: fixed !important;
-                top: 0 !important;
-                left: 0 !important; 
-                transform: translateX(-100%) !important; 
-                width: 75% !important; 
-                height: 100vh !important;
-                background: rgba(10, 10, 15, 0.85) !important;
-                backdrop-filter: blur(24px) !important;
-                -webkit-backdrop-filter: blur(24px) !important;
-                border-right: 1px solid rgba(212, 175, 55, 0.2) !important;
-                z-index: 1000 !important;
-                padding-top: 90px !important; 
-                transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important; 
-                display: block !important;
-            }
-            
-            #hk-nav.active-menu {
-                transform: translateX(0) !important;
-            }
-
-            .suggestion-item {
-                width: 90% !important;
-                margin: 0 auto 20px auto !important;
-            }
-            
-            #hk-cart {
-                display: flex !important;
-                width: 95% !important;
-                position: relative !important;
-                margin: 40px auto 20px auto !important;
-                border-left: none !important;
-                border: 1px solid var(--accent-gold) !important;
-                border-radius: 12px !important;
-            }
-        }
-
-        /* ========================================= */
-        /* H&K NEO-GLASS OVERRIDE (HARSH'S AESTHETIC)*/
-        /* ========================================= */
-        .container, .hk-billboard-wrapper, .promo-billboard, .input-box, .btn-add, select {
-            border-radius: 16px !important;
-            transition: all 0.4s ease;
-        }
-
-        .suggestion-item {
-            background: rgba(20, 20, 25, 0.55) !important;
-            backdrop-filter: blur(12px) !important;
-            -webkit-backdrop-filter: blur(12px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
-            border-radius: 16px !important;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
-            padding-bottom: 20px !important;
-        }
-        
-        .suggestion-item img {
-            border-radius: 12px !important;
-        }
-
-        .suggestion-item:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212, 175, 55, 0.3) !important;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4) !important;
-            background: rgba(30, 30, 35, 0.7) !important;
-        }
-
-        .old-price, .new-price, select, .btn-add, .section-header {
-            font-family: 'Inter', sans-serif !important;
-            letter-spacing: 1px;
-        }
-
         .btn-add {
-            background: linear-gradient(135deg, var(--accent-gold), #b8860b) !important;
-            color: #000 !important;
-            border: none !important;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2) !important;
-            font-weight: 800 !important;
+            background: var(--chrome); color: var(--bg-obsidian);
+            border: none; border-radius: 8px; padding: 10px;
+            font-weight: 800; font-size: 0.7rem; cursor: pointer;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; width: 100%;
         }
-        .btn-add:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4) !important;
+        .btn-add.red { background: var(--blood-red); color: var(--raw-cotton); }
+        .btn-add:hover { filter: brightness(1.2); transform: scale(1.02); }
+
+        /* ACTIVE TAP PHYSICS */
+        @media (hover: none) {
+            .bento-card:active { transform: scale(0.97); border-color: var(--blood-red); }
+            .btn-add:active { transform: scale(0.92); }
         }
+
+        /* ========================================= */
+        /* MOBILE UI OVERRIDES                       */
+        /* ========================================= */
+        .mobile-header { display: none; }
+        
+        @media (max-width: 900px) {
+            .container { display: block; height: 100dvh; }
+            .sidebar, .right-bar { display: none; }
+            
+            .mobile-header {
+                display: flex; justify-content: space-between; align-items: center;
+                padding: 15px 20px; background: rgba(10, 10, 12, 0.85);
+                backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+                border-bottom: 1px solid var(--border);
+                position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
+            }
+
+            .main-content {
+                padding: 90px 15px 120px 15px; /* CLEARS HEADER AND BOTTOM CART */
+                height: 100dvh;
+            }
+
+            #hk-nav {
+                position: fixed; top: 0; left: 0; transform: translateX(-100%);
+                width: 80%; height: 100dvh; background: rgba(10, 10, 12, 0.95);
+                border-right: 1px solid var(--border); z-index: 1900;
+                padding-top: 100px; display: flex; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            }
+            #hk-nav.active-menu { transform: translateX(0); }
+
+            /* MOBILE FLOATING CART BAR */
+            #hk-cart-mobile {
+                position: fixed; bottom: 20px; left: 5%; width: 90%;
+                background: rgba(229, 228, 226, 0.95); backdrop-filter: blur(16px);
+                border-radius: 16px; padding: 15px 20px; z-index: 2000;
+                display: flex; justify-content: space-between; align-items: center;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            }
+        }
+
+        /* SUB-NAV (01_NEUTRAL, 02_ACID, etc) */
+        .sub-nav-container {
+            display: flex; gap: 15px; margin-bottom: 30px; border-bottom: 1px solid var(--border);
+            padding-bottom: 15px; width: 100%; justify-content: center; flex-wrap: wrap;
+        }
+        .sub-nav-btn {
+            font-family: 'Courier New', monospace; font-size: 0.7rem; font-weight: bold;
+            letter-spacing: 1px; color: #666; cursor: pointer; padding-bottom: 5px; transition: 0.3s;
+        }
+        .sub-nav-btn.active { color: var(--chrome); border-bottom: 2px solid var(--chrome); }
+
+        /* CART TEXT STYLES */
+        .section-header { font-family: 'Courier New', monospace; font-size: 0.65rem; letter-spacing: 3px; color: var(--chrome); margin-bottom: 15px; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.8rem; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 5px;}
+
+        /* MODAL */
+        .modal {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh;
+            background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px;
+        }
+        .input-box {
+            width: 100%; background: #111; border: 1px solid var(--border); border-radius: 12px;
+            padding: 15px; color: #fff; margin-bottom: 15px; font-family: 'Inter', sans-serif; outline: none;
+        }
+        .input-box:focus { border-color: var(--chrome); }
     </style>
 </head>
 <body>
 
-    <!-- H&K THE VOID CANVAS -->
+    <!-- SANSKRIT ENGINE: THE VOID -->
     <canvas id="hk-void"></canvas>
-
-    <!-- THE GLOBAL SPOTLIGHT OVERLAY -->
     <div id="dark-matter-spotlight"></div>
 
-    <!-- H&K MOBILE HEADER -->
-    <div class="mobile-header" style="display: none; justify-content: space-between; align-items: center; padding: 15px 20px; background: #111111; border-bottom: 1px solid rgba(212,175,55,0.2); position: fixed; top: 0; left: 0; width: 100%; z-index: 1001;">
-        <button onclick="toggleMobileMenu()" style="background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; outline: none; padding: 0;">☰</button>
-        <h2 style="color: var(--accent-gold); margin: 0; font-size: 1.2rem; letter-spacing: 2px;">H&K</h2>
-        <button onclick="scrollToLog()" style="background: var(--accent-gold); border: none; color: #000; font-size: 0.6rem; font-weight: 800; cursor: pointer; outline: none; padding: 8px 14px; border-radius: 20px; letter-spacing: 1px;">VIEW LOG</button>
+    <!-- MOBILE HEADER -->
+    <div class="mobile-header">
+        <button onclick="document.getElementById('hk-nav').classList.toggle('active-menu')" style="background: none; border: none; color: var(--chrome); font-size: 1.5rem; cursor: pointer;">☰</button>
+        <h2 style="color: var(--chrome); margin: 0; font-size: 1.2rem; letter-spacing: 4px; font-weight: 800;">H&K</h2>
+        <button onclick="document.getElementById('checkout-modal').style.display='flex'" style="background: var(--blood-red); border: none; color: #fff; font-size: 0.6rem; font-weight: 800; cursor: pointer; padding: 8px 12px; border-radius: 8px; letter-spacing: 1px;">[ TRANSMIT ]</button>
     </div>
-    
-    <div class="sale-banner">WEDDING SEASON EXCLUSIVE — 50% OFF AUTOMATICALLY APPLIED</div>
+
+    <!-- MOBILE FLOATING CART (ONLY SHOWS ON PHONES) -->
+    <div id="hk-cart-mobile" style="display: none;">
+        <div>
+            <div style="font-family: 'Courier New', monospace; font-size: 0.6rem; color: #666; font-weight: bold;">SAṂGRAHA TOTAL</div>
+            <div id="mobile-total" style="font-size: 1.2rem; font-weight: 800; color: #000;">₹0</div>
+        </div>
+        <button onclick="document.getElementById('checkout-modal').style.display='flex'" style="background: #000; color: var(--chrome); border: none; padding: 12px 20px; border-radius: 8px; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px;">ACQUIRE</button>
+    </div>
 
     <div class="container">
+        <!-- DESKTOP SIDEBAR -->
         <div id="hk-nav" class="sidebar">
             <div class="logo">H&K</div>
-            <button class="nav-btn" onclick="switchTab('candles', this)">[ CANDLES ]</button>
-            <button class="nav-btn" onclick="switchTab('acc', this)">[ ACCESSORIES ]</button>
-            <button class="nav-btn active" onclick="switchTab('coming', this)">[ WEAR ]</button>
+            <button class="nav-btn" onclick="switchTab('candles', this)">[ 01_CANDLES ]</button>
+            <button class="nav-btn" onclick="switchTab('acc', this)">[ 02_GEAR ]</button>
+            <button class="nav-btn active" onclick="switchTab('coming', this)">[ 03_ARCHIVE ]</button>
             
             <div style="margin-top: auto; border-top: 1px solid var(--border); padding-top: 15px;">
-                <button class="nav-btn" style="font-size: 0.65rem" onclick="switchTab('about', this)">ABOUT_US</button>
-                <button class="nav-btn" onclick="switchTab('blog', this)">[ FOUNDER_LOG ]</button>
-                <button class="nav-btn" style="font-size: 0.65rem" onclick="switchTab('privacy', this)">PRIVACY</button>
+                <button class="nav-btn" style="font-size: 0.65rem" onclick="switchTab('blog', this)">FOUNDER_LOG</button>
             </div>
         </div>
 
+        <!-- MAIN SCROLL VIEWPORT (THE SOUL) -->
         <div class="main-content" id="main-scroll-area">
-            <!-- CANDLES SECTION -->
-            <div id="tab-candles" class="tab-pane">
-                <div class="preview-card hidden-scroll" style="position: relative; border-color: rgba(255,255,255,0.03);">
-                    <span style="position: absolute; top: 15px; left: 15px; background: #ff3333; color: #000; font-size: 0.55rem; font-weight: 800; letter-spacing: 2px; padding: 4px 8px; border-radius: 4px; text-transform: uppercase;">OUT OF ARCHIVE</span>
-                    <span style="font-size: 0.5rem; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 10px; opacity: 0.5;">HANDCRAFTED_ELITE_TERRACOTTA</span>
-                    <h2 id="label-prev" style="font-size: 1.2rem; letter-spacing: 2px; opacity: 0.3;">H&K_ARCHIVE</h2>
-                </div>
-                <div class="price-tag hidden-scroll" style="opacity: 0.4;">
-                    <span class="old-price">₹278</span>
-                    <span class="new-price">₹139</span>
-                </div>
-                <input type="text" id="label-input" class="input-box hidden-scroll" placeholder="AWAITING RESTOCK..." disabled style="opacity: 0.3; cursor: not-allowed;">
-                <button class="btn-add hidden-scroll" disabled style="background: #333; color: var(--text-muted); cursor: not-allowed; opacity: 0.5;">SOLD OUT</button>
-            </div>
 
-            <!-- ACCESSORIES SECTION -->
-            <div id="tab-acc" class="tab-pane">
-                <h3 class="hidden-scroll" style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">ESSENTIALS</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 500px;">
-                    <div class="suggestion-item hidden-scroll" style="text-align:center" onclick="addToBag('Canvas Tote', 199)">
-                        <div style="font-size: 0.7rem;">CANVAS_TOTE</div>
-                        <div style="font-size: 0.6rem; color: var(--accent-gold);">₹199</div>
-                    </div>
-                    <div class="suggestion-item hidden-scroll" style="text-align:center" onclick="addToBag('Founder Keylink', 149)">
-                        <div style="font-size: 0.7rem;">KEYLINK</div>
-                        <div style="font-size: 0.6rem; color: var(--accent-gold);">₹149</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FOUNDER LOG SECTION -->
-            <div id="tab-blog" class="tab-pane">
-                <h3 class="hidden-scroll" style="letter-spacing: 5px; margin-bottom: 30px; color: var(--accent-gold); font-size: 0.8rem;">
-                    [ ENTRY_001: THE WEARABLE ARCHIVE ]
-                </h3>
-                <div class="info-block hidden-scroll" style="line-height: 2; letter-spacing: 0.5px; font-family: 'Inter', sans-serif;">
-                    <p style="color: #fff; margin-bottom: 20px; font-size: 1rem;">
-                        We didn't just want to print shirts. We wanted to dye <b>Culture</b> into heavy cotton.
-                    </p>
-                    <p style="margin-bottom: 20px; color: #aaa;">
-                        When we conceptualized <b>PHASE_01</b> and the Acid Wash Capsule, factories told us our vintage treatment was too aggressive, too unpredictable. They wanted uniform perfection. We wanted raw, industrial heritage. 
-                    </p>
-                    <div class="quote" style="border-left: 2px solid var(--accent-gold); background: rgba(212, 175, 55, 0.05); padding: 25px; margin: 30px 0;">
-                        "A blank tee is just a uniform. An acid-washed heavy cotton drop is a statement. Every fade, every distressed hem is earned, not manufactured."
-                    </div>
-                    <p style="margin-bottom: 20px; color: #aaa;">
-                        This Drop is an evolution of the H&K vision. From the local bazaars to the global stage, we are bridging eras and aesthetics. It’s heavy, it’s unapologetic, and it’s exclusively yours.
-                    </p>
-                    <p style="margin-top: 30px; font-family: 'Courier New', monospace; color: var(--accent-gold); font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 20px;">
-                        // SIGNATURE_VERIFIED: <br>
-                        // THE ACID WASH PROCESS IS VOLATILE BY NATURE. <br>
-                        // NO TWO TEES IN CAPSULE_01 ARE IDENTICAL. YOUR FADE IS YOUR FINGERPRINT.
-                    </p>
-                    <div style="margin-top: 40px;">
-                        <span style="font-size: 0.6rem; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase;">EXECUTED_BY:</span>
-                        <p style="font-weight: 800; letter-spacing: 2px; margin-top: 5px; color: #fff;">
-                            THE FOUNDERS
-                        </p>
-                        <p style="font-size: 0.5rem; color: var(--accent-gold); letter-spacing: 1px;">H&K // MODERN HERITAGE ARCHIVE</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- PRIVACY SECTION -->
-            <div id="tab-privacy" class="tab-pane">
-                <h3 class="hidden-scroll" style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">PRIVACY_PROTOCOL</h3>
-                <div class="info-block hidden-scroll">
-                    <b>Data Collection</b>
-                    H&K logs user-provided identifiers (Name, Contact Number, Address) strictly for order fulfillment during this Trial Launch Phase. 
-                    <b>Transmission Security</b>
-                    All checkout data is transmitted via end-to-end encrypted gateways. We do not store financial records or passwords on our internal servers.
-                    <b>Third-Party Access</b>
-                    Your information is never sold or shared with external marketing agencies. Data is used solely by the H&K team to coordinate handcrafted production and regional delivery.
-                    <b>User Rights</b>
-                    As a user of our Trial Phase, we currently do not handle requests of deletion of your order logs or exchanges, however we do reconfirm the orders.
-                </div>
-            </div>
-
-            <!-- ABOUT SECTION -->
-            <div id="tab-about" class="tab-pane">
-                <h3 class="hidden-scroll" style="margin-bottom: 20px; letter-spacing: 4px; font-size: 1rem;">THE_VISION</h3>
-                <div class="info-block hidden-scroll">
-                    <p><b>Musings of H&K:</b> H&K is a curated Modern Heritage Archive that is gear for the modern metropolis.
-                        H&K was never meant to be just a storefront. It was born from the raw energy, the dust, and the vibrancy of a Jaipur afternoon. 
-                        It started with a simple realization: the modern market is saturated with sterile, mass-produced perfection. We wanted to build something that actually had a pulse.
-                        We are not a "studio." We dropped that word because we don't design in sterile, corporate rooms. We are a Modern Heritage Archive—a curated, maximalist vault of culture, scent, and style. We bridge the ancient wisdom of local artisans with the high-speed aesthetic of modern luxury.
-                        Perfection is a machine’s game yet we master it. At H&K, unpredictable fade on an acid-washed tee is never considered a defect. It is the ultimate proof of life. It is the signature of the human hands that crafted it.</p>
-                    <p><b>Trial Launch Theory:</b> Testing scalability via handcrafted production. Access is curated to maintain quality control.</p>
-                    <p style="margin-top: 8px;"><b>Region Restrictions:</b> Deliveries are currently localized in Jaipur to ensure fragile items arrive intact.</p>
-                    <div class="quote">"We don't just sell products. We archive memories, culture, and heritage and hence we are loved and curated."</div>
-                    <div class="quote">"We are a small team and thus may have delays, but there is no compromise with your experiences."</div>
-                    <div class="quote" style="border-color: #444;">"The minor imperfection in our products are proof that they are purely handcrafted and support local workers."</div>
-                </div>
-            </div>
-
-            <!-- WEAR SECTION -->
+            <!-- THE APPAREL ARCHIVE (ACTIVE TAB) -->
             <div id="tab-coming" class="tab-pane active">
-
-                <h3 style="margin-bottom: 20px; letter-spacing: 5px; font-size: 0.75rem; color: var(--accent-gold);">[ THE_APPAREL_ARCHIVE ]</h3>
                 
-                <!-- UPGRADED 4-TAB SUB-NAVIGATION -->
-                <div style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; width: 100%; max-width: 450px; justify-content: center; flex-wrap: wrap;">
-                    <span id="nav-tops" onclick="switchSubTab('tops')" style="font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; color: var(--accent-gold); cursor: pointer; border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px;">01_NEUTRAL_TEES</span>
-                    <span id="nav-acid" onclick="switchSubTab('acid')" style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); cursor: pointer; padding-bottom: 5px; transition: 0.3s;">02_ACID_WASH</span>
-                    <span id="nav-her" onclick="switchSubTab('her')" style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); cursor: pointer; padding-bottom: 5px; transition: 0.3s;">03_HER_ARCHIVE</span>
-                    <span id="nav-his" onclick="switchSubTab('his')" style="font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); cursor: pointer; padding-bottom: 5px; transition: 0.3s;">04_HIS_ARCHIVE</span>
+                <div class="sub-nav-container">
+                    <span id="nav-tops" class="sub-nav-btn active" onclick="switchSubTab('tops')">01_NEUTRAL</span>
+                    <span id="nav-acid" class="sub-nav-btn" onclick="switchSubTab('acid')">02_ACID</span>
+                    <span id="nav-her" class="sub-nav-btn" onclick="switchSubTab('her')">03_HER</span>
+                    <span id="nav-his" class="sub-nav-btn" onclick="switchSubTab('his')">04_HIS</span>
                 </div>
 
                 <!-- ========================================== -->
-                <!-- 01: START OF TOPS CONTAINER                -->
+                <!-- 01: NEUTRAL BENTO GRID                     -->
                 <!-- ========================================== -->
-                <div id="sub-tops" style="display: block; width: 100%;">
-
-                    <div class="promo-billboard hidden-scroll" style="max-width: 350px; margin: 0 auto 30px auto;">
-                        <div class="promo-track">
-                            <div class="promo-slide" style="background-image: url('h%26K%20apperals/uno%20tee.jpeg');"></div>
-                            <div class="promo-slide" style="background-image: url('h%26K%20apperals/all%20eyez%20on%20me%20tee.jpeg');"></div>
-                            <div class="promo-slide" style="background-image: url('h%26K%20apperals/money%20a%20curse%20tee.jpeg');"></div>
-                            <div class="promo-slide" style="background-image: url('h%26K%20apperals/demon%20slayer%20tee.jpeg');"></div>
-                            <div class="promo-slide" style="background-image: url('h%26K%20apperals/acid-wash-tee.jpeg');"></div>
-                            <div class="promo-slide" style="background-image: url('h%26K%20apperals/uno%20tee.jpeg');"></div>
-                        </div>
-                        <div class="promo-overlay"></div>
-                        <div class="promo-text">
-                            <h4>Drop 02 // Live</h4>
-                            <h2>The Archive Series</h2>
-                        </div>
-                    </div> 
-
-                    <div id="category-tops-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-
-                        <!-- MONEY A CURSE TEE -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/money%20a%20curse%20tee.jpeg" alt="Money a Curse Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Money a Curse Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Polycotton Blend (BACKPRINT)</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
+                <div id="sub-tops" style="display: block;">
+                    <div class="bento-grid">
+                        
+                        <!-- 1. DIVINE DIRECTIVE (HERO) -->
+                        <div class="bento-card bento-hero">
+                            <img src="h%26K%20apperals/lord%20krishna%20tee.png" alt="Lord Krishna Tee" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag chrome">[ ARCHIVE_03 // GENDER NEUTRAL ]</div>
+                                <h4 class="bento-title">Divine Directive</h4>
+                                <div class="bento-desc">Heavyweight Blend. Cosmic Maximalism.</div>
+                                <div class="bento-ui-row">
+                                    <div>
+                                        <div class="bento-price-old">₹1499</div>
+                                        <div class="bento-price">₹649</div>
+                                    </div>
+                                    <div class="bento-controls">
+                                        <select id="sz-krishna" class="bento-select"><option value="" disabled selected>SIZE</option><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option></select>
+                                        <button class="btn-add" onclick="triggerAcquire('sz-krishna', 'Divine Directive Tee', 649)">ACQUIRE</button>
+                                    </div>
+                                </div>
                             </div>
-                            <select id="size-money" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-money').value; if(sz) { addToBag('Money a Curse Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        <!-- POLY H&K EXCLUSIVE TEE (FIXED CLOSING DIV) -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/poly H&K exclusive.png" alt="H&K Exclusive Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">ARCHIVE_SERIES_01</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">H&K Exclusive Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">poly Heavyweight French Terry</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹599</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹399</span>
+                        <!-- 2. MONEY A CURSE (SQUARE) -->
+                        <div class="bento-card bento-square">
+                            <img src="h%26K%20apperals/money%20a%20curse%20tee.jpeg" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag">[ ARCHIVE_02 ]</div>
+                                <h4 class="bento-title" style="font-size:1rem;">Money A Curse</h4>
+                                <div class="bento-ui-row">
+                                    <div class="bento-price">₹649</div>
+                                    <div class="bento-controls">
+                                        <select id="sz-money" class="bento-select" style="padding:5px;"><option value="" disabled selected>SIZE</option><option value="M">M</option><option value="L">L</option></select>
+                                        <button class="btn-add" style="padding:6px;" onclick="triggerAcquire('sz-money', 'Money A Curse', 649)">ADD</button>
+                                    </div>
+                                </div>
                             </div>
-                            <select id="size-hk-exclusive" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-hk-exclusive').value; if(sz) { addToBag('H&K Exclusive Tee - Size: ' + sz, 399); } else { alert('Please select a size before adding to the archive.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        <!-- ALL EYEZ ON ME TEE -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/all%20eyez%20on%20me%20tee.jpeg" alt="All Eyez On Me Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">All Eyez On Me Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium cotton (BACKPRINT)</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
+                        <!-- 3. H&K EXCLUSIVE TEE (SQUARE) -->
+                        <div class="bento-card bento-square">
+                            <img src="h%26K%20apperals/poly H&K exclusive.png" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag">[ ARCHIVE_01 ]</div>
+                                <h4 class="bento-title" style="font-size:1rem;">H&K Exclusive</h4>
+                                <div class="bento-ui-row">
+                                    <div class="bento-price">₹399</div>
+                                    <div class="bento-controls">
+                                        <select id="sz-poly" class="bento-select" style="padding:5px;"><option value="" disabled selected>SIZE</option><option value="M">M</option><option value="L">L</option></select>
+                                        <button class="btn-add" style="padding:6px;" onclick="triggerAcquire('sz-poly', 'H&K Poly Exclusive', 399)">ADD</button>
+                                    </div>
+                                </div>
                             </div>
-                            <select id="size-alleyez" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-alleyez').value; if(sz) { addToBag('All Eyez On Me Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        <!-- MODI TEE -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/modi%20tee.png" alt="Modi FANMADE Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_03</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Modi Fanmade Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Polycotton Blend</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
+                        <!-- 4. MODI DIRECTIVE (WIDE) -->
+                        <div class="bento-card bento-wide">
+                            <img src="h%26K%20apperals/modi%20tee.png" class="bento-img" style="object-position: top;">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag chrome">[ ARCHIVE_03 // GEOPOLITICS ]</div>
+                                <h4 class="bento-title">The Directive (Modi)</h4>
+                                <div class="bento-desc">Brutalist Halftone Artifact. Polycotton.</div>
+                                <div class="bento-ui-row">
+                                    <div>
+                                        <div class="bento-price-old">₹1499</div>
+                                        <div class="bento-price" style="color:var(--blood-red);">₹649</div>
+                                    </div>
+                                    <div class="bento-controls" style="flex-direction:row; max-width: 200px;">
+                                        <select id="sz-modi" class="bento-select"><option value="" disabled selected>SIZE</option><option value="S">S</option><option value="M">M</option></select>
+                                        <button class="btn-add red" onclick="triggerAcquire('sz-modi', 'Modi Directive', 649)">ACQUIRE</button>
+                                    </div>
+                                </div>
                             </div>
-                            <select id="size-modi" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-modi').value; if(sz) { addToBag('Modi FANMADE tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        <!-- LORD KRISHNA TEE -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/lord%20krishna%20tee.png" alt="Lord Krishna Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_03</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Lord Krishna Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Blend (May have shloka overlay)</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
+                        <!-- 5. ALL EYEZ ON ME (SQUARE) -->
+                        <div class="bento-card bento-square">
+                            <img src="h%26K%20apperals/all%20eyez%20on%20me%20tee.jpeg" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag">[ ARCHIVE_02 ]</div>
+                                <h4 class="bento-title" style="font-size:1rem;">All Eyez On Me</h4>
+                                <div class="bento-ui-row">
+                                    <div class="bento-price">₹649</div>
+                                    <div class="bento-controls">
+                                        <select id="sz-eyez" class="bento-select" style="padding:5px;"><option value="" disabled selected>SZ</option><option value="M">M</option></select>
+                                        <button class="btn-add" style="padding:6px;" onclick="triggerAcquire('sz-eyez', 'All Eyez On Me', 649)">ADD</button>
+                                    </div>
+                                </div>
                             </div>
-                            <select id="size-krshn" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-krshn').value; if(sz) { addToBag('Lord Krishna tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        <!-- BANG BANG TEE -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/bigbangtee.png" alt="Bang Bang Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL NEW ARRIVAL</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Bang Bang Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Heavyweight Graphic Streetwear</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
+                        <!-- 6. BANG BANG (SQUARE) -->
+                        <div class="bento-card bento-square">
+                            <img src="h%26K%20apperals/bigbangtee.png" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag">[ NEW ARRIVAL ]</div>
+                                <h4 class="bento-title" style="font-size:1rem;">Bang Bang</h4>
+                                <div class="bento-ui-row">
+                                    <div class="bento-price">₹649</div>
+                                    <div class="bento-controls">
+                                        <select id="sz-bang" class="bento-select" style="padding:5px;"><option value="" disabled selected>SZ</option><option value="L">L</option></select>
+                                        <button class="btn-add" style="padding:6px;" onclick="triggerAcquire('sz-bang', 'Bang Bang Tee', 649)">ADD</button>
+                                    </div>
+                                </div>
                             </div>
-                            <select id="size-bangbang" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-bangbang').value; if(sz) { addToBag('Bang Bang Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        <!-- 911 EDITORIAL TEE -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/car911.png" alt="911 Editorial Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">ARCHIVE_SERIES_01</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">911 Editorial Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">poly Heavyweight French Terry</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹599</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹399</span>
-                            </div>
-                            <select id="size-911" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-911').value; if(sz) { addToBag('911 Editorial Tee - Size: ' + sz, 399); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- UNO TEE -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/uno%20tee.jpeg" alt="Uno Fan-made" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">UNO Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium cotton (BACKPRINT)-FANMADE</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
-                            </div>
-                            <select id="size-uno" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-uno').value; if(sz) { addToBag('UNO Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- H&K EXCLUSIVE COTTON TEE -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/hnk exclusive.jpeg" alt="H&K Exclusive Cotton Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">H&K Exclusive Cotton Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Polycotton Blend</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
-                            </div>
-                            <select id="size-cottonex" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-cottonex').value; if(sz) { addToBag('H&K Exclusive Cotton Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- HARMONY KINGS TEE -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/harmony%20kings%20tee.jpeg" alt="Harmony Kings Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // ARCHIVE_02</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Harmony Kings Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Polycotton Blend</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
-                            </div>
-                            <select id="size-harmony" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-harmony').value; if(sz) { addToBag('Harmony Kings Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- ANIME HEAVY PRINT POLO -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/anime%20heavy.png" alt="Anime Heavy Print Polo" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GENDER NEUTRAL // FANMADE_EDITION</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Anime Heavy Print Polo</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Pique Blend</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
-                            </div>
-                            <select id="size-animepolo" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-animepolo').value; if(sz) { addToBag('Anime Polo - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                    </div> <!-- CLOSES CATEGORY-TOPS-CONTAINER -->
-                </div> <!-- END OF TOPS CONTAINER -->
-
-                <!-- ========================================== -->
-                <!-- 02: START OF ACID WASH CONTAINER           -->
-                <!-- ========================================== -->
-                <div id="sub-acid" style="display: none; width: 100%;">
-                    
-                    <div class="hk-billboard-wrapper hidden-scroll" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent); pointer-events: none;"></div>
-                        <div style="position: relative; z-index: 2; text-align: center; width: 100%; pointer-events: none;">
-                            <h4 style="color: var(--accent-gold); font-size: 0.65rem; letter-spacing: 4px; margin-bottom: 8px; text-transform: uppercase;">Capsule // 01</h4>
-                            <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin: 0;">The Acid Archive</h2>
-                        </div>
                     </div>
-                    
-                    <div id="category-acid-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-
-                        <!-- 1. MIGRATED BASIC ACID WASH -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/acid-wash-tee.jpeg" alt="Acid Wash Basic" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">MENS EXCLUSIVE // PREMIUM WASH</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Acid Wash Black Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Heavyweight Acid Wash Cotton</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1999</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹999</span>
-                            </div>
-                            <select id="size-acid-basic" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-acid-basic').value; if(sz) { addToBag('Acid Wash Black Tee - Size: ' + sz, 999); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- 2. H&K EXCLUSIVE ACID WASH -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/acid wash exclusive tee.jpeg" alt="H&K Exclusive Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">H&K EXCLUSIVE // CAPSULE_01</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">H&K Exclusive Acid Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Ultra-Premium Vintage Wash (BACKPRINT)</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹2499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹1399</span>
-                            </div>
-                            <select id="size-acid-hk" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-acid-hk').value; if(sz) { addToBag('H&K Exclusive Acid Tee - Size: ' + sz, 1399); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- 3. DEMON SLAYER ACID WASH -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/acid wash demon slayer tee.jpeg" alt="Demon Slayer Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">FANMADE EDITION // CAPSULE_01</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Demon Slayer Acid Wash</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Ultra-Premium Vintage Wash (BACKPRINT)</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹2499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹1399</span>
-                            </div>
-                            <select id="size-acid-demon" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-acid-demon').value; if(sz) { addToBag('Demon Slayer Acid Wash - Size: ' + sz, 1399); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- 4. GREEK STYLE ACID WASH -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/acid wash greek tee.jpeg" alt="Greek Style Acid" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">GREEK MYTHOS // CAPSULE_01</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Greek Style Acid Wash</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Ultra-Premium Vintage Wash (BACKPRINT)</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹2499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹1399</span>
-                            </div>
-                            <select id="size-acid-greek" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none;">
-                                <option value="" disabled selected>SELECT YOUR SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-acid-greek').value; if(sz) { addToBag('Greek Style Acid Wash - Size: ' + sz, 1399); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                    </div> <!-- CLOSES CATEGORY-ACID-CONTAINER -->
-                </div> <!-- END OF ACID WASH CONTAINER -->
+                </div>
 
                 <!-- ========================================== -->
-                <!-- 03: START OF HER ARCHIVE CONTAINER         -->
+                <!-- 02: ACID WASH BENTO GRID                   -->
                 <!-- ========================================== -->
-                <div id="sub-her" style="display: none; width: 100%;">
-                    
-                    <div class="hk-billboard-wrapper hidden-scroll" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #3a0d16 0%, #000000 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent); pointer-events: none;"></div>
-                        <div style="position: relative; z-index: 2; text-align: center; width: 100%; pointer-events: none;">
-                            <h4 style="color: var(--accent-gold); font-size: 0.65rem; letter-spacing: 4px; margin-bottom: 8px; text-transform: uppercase;">Rakhi Exclusive</h4>
-                            <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin: 0;">Her Archive</h2>
+                <div id="sub-acid" style="display: none;">
+                    <div class="bento-grid">
+                        
+                        <!-- 1. H&K EXCLUSIVE ACID (HERO) -->
+                        <div class="bento-card bento-hero">
+                            <img src="h%26K%20apperals/acid wash exclusive tee.jpeg" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag chrome">[ CAPSULE_01 // INDUSTRIAL ]</div>
+                                <h4 class="bento-title">H&K Acid Protocol</h4>
+                                <div class="bento-desc">Ultra-Premium Vintage Wash. Unpredictable Fade.</div>
+                                <div class="bento-ui-row">
+                                    <div>
+                                        <div class="bento-price-old">₹2499</div>
+                                        <div class="bento-price">₹1399</div>
+                                    </div>
+                                    <div class="bento-controls">
+                                        <select id="sz-acid-hk" class="bento-select"><option value="" disabled selected>SIZE</option><option value="M">M</option><option value="L">L</option></select>
+                                        <button class="btn-add" onclick="triggerAcquire('sz-acid-hk', 'H&K Exclusive Acid', 1399)">ACQUIRE</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- 2. DEMON SLAYER ACID (SQUARE) -->
+                        <div class="bento-card bento-square">
+                            <img src="h%26K%20apperals/acid wash demon slayer tee.jpeg" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag">[ FANMADE ]</div>
+                                <h4 class="bento-title" style="font-size:1rem;">Demon Slayer</h4>
+                                <div class="bento-ui-row">
+                                    <div class="bento-price">₹1399</div>
+                                    <div class="bento-controls">
+                                        <select id="sz-acid-ds" class="bento-select" style="padding:5px;"><option value="" disabled selected>SZ</option><option value="M">M</option></select>
+                                        <button class="btn-add" style="padding:6px;" onclick="triggerAcquire('sz-acid-ds', 'Demon Slayer Acid', 1399)">ADD</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. BASIC ACID (SQUARE) -->
+                        <div class="bento-card bento-square">
+                            <img src="h%26K%20apperals/acid-wash-tee.jpeg" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag">[ ESSENTIAL ]</div>
+                                <h4 class="bento-title" style="font-size:1rem;">Basic Wash</h4>
+                                <div class="bento-ui-row">
+                                    <div class="bento-price">₹999</div>
+                                    <div class="bento-controls">
+                                        <select id="sz-acid-bsc" class="bento-select" style="padding:5px;"><option value="" disabled selected>SZ</option><option value="L">L</option></select>
+                                        <button class="btn-add" style="padding:6px;" onclick="triggerAcquire('sz-acid-bsc', 'Basic Acid Wash', 999)">ADD</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-
-                    <div id="category-her-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-
-                        <!-- 1. LEOPARD TUBE TOP -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/lepord%20tubetop.png" alt="Lepoard Tube Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // CROP FIT</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Lepoard Tube top</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Cropped Silhouette (All over print)</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹439</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹209</span>
-                            </div>
-                            <select id="size-her-lepoard" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
-                                <option value="" disabled selected>SELECT HER SIZE</option>
-                                <option value="XS">XS (Length: 10in Waist: 12in)</option><option value="S">S (Length: 10.5in Waist: 12.5in)</option><option value="M">M (Length: 11in Waist: 13in)</option><option value="L">L (Length: 11.5in Waist:13.5in)</option><option value="XL">XL (Length: 12in Waist: 14in)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-lepoard').value; if(sz) { addToBag('Lepoard Tube top - Size: ' + sz, 209); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- 2. TOXIC CROP TOP -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/GIRLS%20Toxic%20crop%20top.png" alt="Toxic Crop Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // CROP FIT</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Toxic Stamp Crop Top</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Cropped Silhouette</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹999</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹599</span>
-                            </div>
-                            <select id="size-her-toxic" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
-                                <option value="" disabled selected>SELECT HER SIZE</option>
-                                <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-toxic').value; if(sz) { addToBag('Toxic Stamp Crop Top - Size: ' + sz, 599); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- 3. SPILL TEA CROP TOP (FIXED MISSING CLOSING DIV!) -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/spill%20tea%20crop%20top.png" alt="Spill tea Crop Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // CROP FIT</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Spill Tea Crop Top</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Cropped Silhouette</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹999</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹599</span>
-                            </div>
-                            <select id="size-her-tea" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
-                                <option value="" disabled selected>SELECT HER SIZE</option>
-                                <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-tea').value; if(sz) { addToBag('Spill Tea Crop Top - Size: ' + sz, 599); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- 4. BURI NAZAR CROP TOP -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/GIRLS%20buri%20nazar%20crop%20top.png" alt="No Buri Nazar Crop Top" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // CROP FIT</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Buri Nazar Crop Top</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Premium Cropped Silhouette</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹999</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹599</span>
-                            </div>
-                            <select id="size-her-buri" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
-                                <option value="" disabled selected>SELECT HER SIZE</option>
-                                <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-buri').value; if(sz) { addToBag('Buri Nazar Crop Top - Size: ' + sz, 599); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- 5. DIVA TEE -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/GIRLS%20diva%20tee.png" alt="Diva Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // RELAXED FIT</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Diva Graphic Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Heavyweight Polycotton Blend</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
-                            </div>
-                            <select id="size-her-diva" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
-                                <option value="" disabled selected>SELECT HER SIZE</option>
-                                <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-diva').value; if(sz) { addToBag('Diva Graphic Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                        <!-- 6. NONCHALANT TEE -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/GIRLS%20nonchalant%20tee.png" alt="Nonchalant Tee" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">WOMENS EXCLUSIVE // RELAXED FIT</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Nonchalant Tee</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Heavyweight Polycotton Blend</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1499</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
-                            </div>
-                            <select id="size-her-nonchalant" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
-                                <option value="" disabled selected>SELECT HER SIZE</option>
-                                <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-her-nonchalant').value; if(sz) { addToBag('Nonchalant Tee - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
-                        </div>
-
-                    </div> <!-- CLOSES CATEGORY-HER-CONTAINER -->
-                </div> <!-- END OF HER ARCHIVE CONTAINER -->
+                </div>
 
                 <!-- ========================================== -->
-                <!-- 04: START OF HIS ARCHIVE CONTAINER         -->
+                <!-- 03: HER ARCHIVE BENTO GRID                 -->
                 <!-- ========================================== -->
-                <div id="sub-his" style="display: none; width: 100%;">
-                    
-                    <div class="hk-billboard-wrapper hidden-scroll" style="position: relative; overflow: hidden; height: 180px; max-width: 350px; margin: 0 auto 30px auto; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1b263b 0%, #0d1117 100%); border: 1px solid rgba(212, 175, 55, 0.2);">
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent); pointer-events: none;"></div>
-                        <div style="position: relative; z-index: 2; text-align: center; width: 100%; pointer-events: none;">
-                            <h4 style="color: var(--accent-gold); font-size: 0.65rem; letter-spacing: 4px; margin-bottom: 8px; text-transform: uppercase;">Rakhi Exclusive</h4>
-                            <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin: 0;">His Archive</h2>
-                        </div>
-                    </div>
-
-                    <div id="category-his-container" style="width: 100%; max-width: 300px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-
-                        <!-- 1. VINTAGE UMBER TIPPING POLO -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/MEN brown umber polo.png" alt="Umber Tipping Polo" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">PREMIUM HERITAGE // EXCLUSIVE</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Brown Umber Tipping Polo</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Vintage White Collar Accents</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹1299</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹649</span>
+                <div id="sub-her" style="display: none;">
+                    <div class="bento-grid">
+                        
+                        <!-- 1. SPILL THE TEA (WIDE) -->
+                        <div class="bento-card bento-wide">
+                            <img src="h%26K%20apperals/spill%20tea%20crop%20top.png" class="bento-img" style="object-position: top;">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag chrome">[ WOMENS EXCLUSIVE ]</div>
+                                <h4 class="bento-title" style="color:var(--blood-red);">Heritage Ironic Top</h4>
+                                <div class="bento-desc">Spill the tea. Premium Cropped Silhouette.</div>
+                                <div class="bento-ui-row">
+                                    <div>
+                                        <div class="bento-price-old">₹999</div>
+                                        <div class="bento-price">₹599</div>
+                                    </div>
+                                    <div class="bento-controls" style="flex-direction:row; max-width: 200px;">
+                                        <select id="sz-tea" class="bento-select"><option value="" disabled selected>SIZE</option><option value="XS">XS</option><option value="S">S</option></select>
+                                        <button class="btn-add red" onclick="triggerAcquire('sz-tea', 'Spill Tea Crop', 599)">ACQUIRE</button>
+                                    </div>
+                                </div>
                             </div>
-                            <select id="size-his-umber" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
-                                <option value="" disabled selected>SELECT HIS SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-his-umber').value; if(sz) { addToBag('Brown Umber Polo - Size: ' + sz, 649); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                        <!-- 2. NAVY BLUE ESSENTIAL POLO -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/MEN navy blue polo.png" alt="Navy Polo" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">THE ESSENTIALS // DROP 02</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Midnight Navy Polo</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Heavyweight Pique Cotton</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹999</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹549</span>
+                        <!-- 2. LEOPARD TUBE TOP (HERO) -->
+                        <div class="bento-card bento-hero">
+                            <img src="h%26K%20apperals/lepord%20tubetop.png" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag chrome">[ Y2K SYNDICATE ]</div>
+                                <h4 class="bento-title">Censored Archive Tube</h4>
+                                <div class="bento-desc">Seamless AOP with Brutalist Stamp.</div>
+                                <div class="bento-ui-row">
+                                    <div>
+                                        <div class="bento-price-old">₹439</div>
+                                        <div class="bento-price">₹209</div>
+                                    </div>
+                                    <div class="bento-controls">
+                                        <select id="sz-tube" class="bento-select"><option value="" disabled selected>SIZE</option><option value="S">S</option><option value="M">M</option></select>
+                                        <button class="btn-add" onclick="triggerAcquire('sz-tube', 'Leopard Tube Top', 209)">ACQUIRE</button>
+                                    </div>
+                                </div>
                             </div>
-                            <select id="size-his-navy" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
-                                <option value="" disabled selected>SELECT HIS SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-his-navy').value; if(sz) { addToBag('Midnight Navy Polo - Size: ' + sz, 549); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
+                        </div>
+
+                        <!-- 3. TOXIC CROP (SQUARE) -->
+                        <div class="bento-card bento-square">
+                            <img src="h%26K%20apperals/GIRLS%20Toxic%20crop%20top.png" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag">[ CROP FIT ]</div>
+                                <h4 class="bento-title" style="font-size:1rem;">Toxic Stamp</h4>
+                                <div class="bento-ui-row">
+                                    <div class="bento-price">₹599</div>
+                                    <div class="bento-controls">
+                                        <select id="sz-toxic" class="bento-select" style="padding:5px;"><option value="" disabled selected>SZ</option><option value="S">S</option></select>
+                                        <button class="btn-add" style="padding:6px;" onclick="triggerAcquire('sz-toxic', 'Toxic Crop', 599)">ADD</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
-                        <!-- 3. SKY BLUE ESSENTIAL POLO -->
-                        <div class="suggestion-item hidden-scroll" style="width: 100%; padding: 20px; text-align: center; border-radius: 12px; background: #111111; border: 1px solid rgba(212, 175, 55, 0.1); margin-bottom: 15px;">
-                            <img src="h%26K%20apperals/MEN sky blue polo.png" alt="Sky Blue Polo" style="width: 100%; max-width: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: cover;">
-                            <div style="font-size: 0.55rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 8px; font-weight: 700;">THE ESSENTIALS // DROP 02</div>
-                            <h4 style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 400; margin-bottom: 4px; color: #ffffff;">Sky Blue Polo</h4>
-                            <p style="font-size: 0.6rem; color: var(--text-muted); margin-bottom: 15px;">Heavyweight Pique Cotton</p>
-                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px;">
-                                <span class="old-price" style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted);">₹999</span>
-                                <span class="new-price" style="font-size: 1.3rem; font-weight: 800; color: var(--accent-gold);">₹549</span>
+                        <!-- 4. BURI NAZAR (SQUARE) -->
+                        <div class="bento-card bento-square">
+                            <img src="h%26K%20apperals/GIRLS%20buri%20nazar%20crop%20top.png" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag">[ CROP FIT ]</div>
+                                <h4 class="bento-title" style="font-size:1rem;">Buri Nazar</h4>
+                                <div class="bento-ui-row">
+                                    <div class="bento-price">₹599</div>
+                                    <div class="bento-controls">
+                                        <select id="sz-nazar" class="bento-select" style="padding:5px;"><option value="" disabled selected>SZ</option><option value="M">M</option></select>
+                                        <button class="btn-add" style="padding:6px;" onclick="triggerAcquire('sz-nazar', 'Buri Nazar Crop', 599)">ADD</button>
+                                    </div>
+                                </div>
                             </div>
-                            <select id="size-his-sky" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #111; color: #fff; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 6px; font-size: 0.75rem; text-align: center; outline: none; cursor: pointer;">
-                                <option value="" disabled selected>SELECT HIS SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" style="padding: 10px 24px; font-size: 0.65rem; width: 100%; background: var(--accent-gold); color: #000; border: none; border-radius: 20px; font-weight: 700; cursor: pointer;" onclick="let sz = document.getElementById('size-his-sky').value; if(sz) { addToBag('Sky Blue Polo - Size: ' + sz, 549); } else { alert('Please select a size.'); }">ADD TO ARCHIVE</button>
                         </div>
 
-                    </div> <!-- CLOSES CATEGORY-HIS-CONTAINER -->
-                </div> <!-- END OF HIS ARCHIVE CONTAINER -->
+                    </div>
+                </div>
 
-            </div> <!-- THIS CLOSES THE WEAR TAB -->
-        </div> <!-- THIS CLOSES THE MAIN CONTENT AREA -->
+                <!-- ========================================== -->
+                <!-- 04: HIS ARCHIVE BENTO GRID                 -->
+                <!-- ========================================== -->
+                <div id="sub-his" style="display: none;">
+                    <div class="bento-grid">
+                        
+                        <!-- 1. UMBER POLO (HERO) -->
+                        <div class="bento-card bento-hero">
+                            <img src="h%26K%20apperals/MEN brown umber polo.png" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag chrome">[ MENS EXCLUSIVE ]</div>
+                                <h4 class="bento-title">Umber Tipping Polo</h4>
+                                <div class="bento-desc">Premium Heritage. Vintage Collar Accents.</div>
+                                <div class="bento-ui-row">
+                                    <div>
+                                        <div class="bento-price-old">₹1299</div>
+                                        <div class="bento-price">₹649</div>
+                                    </div>
+                                    <div class="bento-controls">
+                                        <select id="sz-umber" class="bento-select"><option value="" disabled selected>SIZE</option><option value="M">M</option><option value="L">L</option></select>
+                                        <button class="btn-add" onclick="triggerAcquire('sz-umber', 'Umber Polo', 649)">ACQUIRE</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-        <!-- RIGHT SIDEBAR CART -->
+                        <!-- 2. NAVY POLO (SQUARE) -->
+                        <div class="bento-card bento-square">
+                            <img src="h%26K%20apperals/MEN navy blue polo.png" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag">[ ESSENTIAL ]</div>
+                                <h4 class="bento-title" style="font-size:1rem;">Midnight Navy</h4>
+                                <div class="bento-ui-row">
+                                    <div class="bento-price">₹549</div>
+                                    <div class="bento-controls">
+                                        <select id="sz-navy" class="bento-select" style="padding:5px;"><option value="" disabled selected>SZ</option><option value="L">L</option></select>
+                                        <button class="btn-add" style="padding:6px;" onclick="triggerAcquire('sz-navy', 'Navy Polo', 549)">ADD</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. SKY POLO (SQUARE) -->
+                        <div class="bento-card bento-square">
+                            <img src="h%26K%20apperals/MEN sky blue polo.png" class="bento-img">
+                            <div class="bento-overlay"></div>
+                            <div class="bento-content">
+                                <div class="bento-tag">[ ESSENTIAL ]</div>
+                                <h4 class="bento-title" style="font-size:1rem;">Sky Blue</h4>
+                                <div class="bento-ui-row">
+                                    <div class="bento-price">₹549</div>
+                                    <div class="bento-controls">
+                                        <select id="sz-sky" class="bento-select" style="padding:5px;"><option value="" disabled selected>SZ</option><option value="M">M</option></select>
+                                        <button class="btn-add" style="padding:6px;" onclick="triggerAcquire('sz-sky', 'Sky Polo', 549)">ADD</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- CANDLES, ACC, LOG, PRIVACY PANELS (Kept Clean & Hidden until clicked) -->
+            <div id="tab-candles" class="tab-pane"><h2 style="color:var(--chrome); text-align:center; margin-top:100px;">[ OUT OF ARCHIVE ]</h2></div>
+            <div id="tab-acc" class="tab-pane"><h2 style="color:var(--chrome); text-align:center; margin-top:100px;">[ ACCESSORIES LOADING ]</h2></div>
+            <div id="tab-blog" class="tab-pane">
+                <div style="max-width: 600px; margin: 0 auto; color: #888; font-family: 'Courier New', monospace; font-size: 0.8rem; line-height: 1.8;">
+                    <h3 style="color: var(--chrome); letter-spacing: 4px; margin-bottom: 20px;">[ ENTRY_001: THE WEARABLE ARCHIVE ]</h3>
+                    <p style="margin-bottom: 20px;">A blank tee is just a uniform. An acid-washed heavy cotton drop is a statement. Every fade, every distressed hem is earned, not manufactured.</p>
+                    <p style="color: var(--blood-red);">// SIGNATURE_VERIFIED: NO TWO TEES IN CAPSULE_01 ARE IDENTICAL.</p>
+                </div>
+            </div>
+            <div id="tab-privacy" class="tab-pane"><h2 style="color:var(--chrome); text-align:center; margin-top:100px;">[ END-TO-END ENCRYPTED ]</h2></div>
+
+        </div> <!-- CLOSES MAIN SCROLL AREA -->
+
+        <!-- DESKTOP RIGHT SIDEBAR CART -->
         <div id="hk-cart" class="right-bar">
-            <div class="section-header">SUGGESTIONS</div>
-            <div id="suggestions">
-                <div class="suggestion-item" onclick="addToBag('Keylink', 149)">
-                    <div style="font-size: 0.65rem; font-weight: 700;">+ FOUNDER KEYLINK</div>
-                    <div style="font-size: 0.55rem; color: var(--accent-gold);">₹149</div>
-                </div>
+            <div class="section-header">ARCHIVE_LOG (SAṂGRAHA)</div>
+            <div id="bag-list" style="flex: 1; font-size: 0.8rem; overflow-y: auto; color: var(--chrome); font-family: 'Courier New', monospace;">
+                <p style="opacity: 0.2; font-style: italic;">_VOID_EMPTY</p>
             </div>
-
-            <div class="section-header" style="margin-top: 25px;">ARCHIVE_LOG</div>
-            <div id="bag-list" style="flex: 1; font-size: 0.7rem; overflow-y: auto; max-height: 250px;">
-                <p style="opacity: 0.2; font-style: italic;">_EMPTY</p>
-            </div>
-
-            <div style="border-top: 1px solid var(--border); padding-top: 15px;">
+            <div style="border-top: 1px solid var(--border); padding-top: 15px; margin-top: 20px;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                    <span style="font-size: 0.65rem;">TOTAL</span>
-                    <span id="total-price" style="font-weight: 800; color: var(--accent-gold); font-size: 0.9rem;">₹0</span>
+                    <span style="font-family: 'Courier New', monospace; font-size: 0.7rem; color: #888;">TOTAL</span>
+                    <span id="total-price" style="font-weight: 800; color: var(--chrome); font-size: 1.2rem;">₹0</span>
                 </div>
-                
-                <!-- DYNAMIC 15-DAY DELIVERY TRACKER -->
-                <div style="font-size: 0.55rem; color: var(--text-muted); text-align: center; margin-bottom: 15px; letter-spacing: 1px; padding: 10px; background: rgba(212, 175, 55, 0.05); border-radius: 6px; border: 1px dashed rgba(212, 175, 55, 0.2);">
-                    EST. FULFILLMENT: <br>
-                    <span id="delivery-date" style="font-weight: 800; color: #fff; font-size: 0.7rem; letter-spacing: 2px;">CALCULATING...</span>
-                </div>
-
-                <button class="btn-add" style="width: 100%; font-size: 0.65rem;" onclick="openCheckout()">INITIATE_ORDER</button>
+                <button class="btn-add" style="width: 100%;" onclick="document.getElementById('checkout-modal').style.display='flex'">INITIATE_TRANSMISSION</button>
             </div>
         </div>
+
     </div>
 
-    <!-- UPGRADED TRANSMISSION PROTOCOL (CHECKOUT) -->
+    <!-- TRANSMISSION PROTOCOL MODAL -->
     <div id="checkout-modal" class="modal">
-        <div class="modal-content" style="background: #111; padding: 30px; border-radius: 12px; border: 1px solid var(--accent-gold); width: 90%; max-width: 400px; text-align: center;">
-            <h4 style="margin-bottom: 20px; letter-spacing: 2px; font-size: 0.9rem;">TRANSMISSION_PROTOCOL</h4>
-            
+        <div style="background: rgba(10, 10, 12, 0.95); padding: 30px; border-radius: 20px; border: 1px solid var(--chrome); width: 90%; max-width: 400px; text-align: center; backdrop-filter: blur(24px);">
+            <h4 style="margin-bottom: 20px; letter-spacing: 2px; font-size: 0.9rem; color: var(--chrome);">TRANSMISSION_PROTOCOL</h4>
             <input type="text" id="cust-name" class="input-box" placeholder="YOUR NAME">
             <input type="tel" id="cust-phone" class="input-box" placeholder="WHATSAPP NUMBER">
-            <textarea id="cust-address" class="input-box" rows="3" placeholder="FULL DELIVERY ADDRESS (WITH PINCODE)" style="resize: none; font-family: inherit; margin-bottom: 15px;"></textarea>
-            <input type="text" id="customlabel" class="input-box" placeholder="YOUR LABEL IF ANY">
-            
-            <button class="btn-add" id="transmit-btn" style="width:100%" onclick="sendOrder()">TRANSMIT VIA WHATSAPP</button>
-            <p style="margin-top: 15px; cursor: pointer; font-size: 0.55rem; color: var(--text-muted);" onclick="document.getElementById('checkout-modal').style.display='none'">[ ABORT ]</p>
+            <textarea id="cust-address" class="input-box" rows="3" placeholder="FULL DELIVERY ADDRESS" style="resize: none;"></textarea>
+            <button class="btn-add" id="transmit-btn" style="width:100%; margin-top: 10px;" onclick="sendOrder()">TRANSMIT TO FOUNDERS</button>
+            <p style="margin-top: 20px; cursor: pointer; font-size: 0.65rem; color: #666; letter-spacing: 2px;" onclick="document.getElementById('checkout-modal').style.display='none'">[ ABORT ]</p>
         </div>
     </div>
 
+    <!-- SANSKRIT-POWERED APEX JAVASCRIPT ENGINE -->
     <script>
         // ==========================================
-        // 1. GLOBAL VARIABLES
+        // 1. SAṂGRAHA (THE ARCHIVE/CART STATE)
         // ==========================================
-        let bag = [];
-        let scrollObserver;
-        let voidParticles = [];
+        let saṃgraha = []; // Sanskrit for Collection/Archive (Replaces 'bag')
+
+        function triggerAcquire(selectId, itemName, price) {
+            let sz = document.getElementById(selectId).value; 
+            if(sz) { 
+                saṃgraha.push({ name: `${itemName} [${sz}]`, price: price });
+                updateSangraha();
+                
+                // Haptic feedback illusion
+                const btn = event.target;
+                btn.innerText = "ACQUIRED";
+                btn.style.background = "var(--blood-red)";
+                btn.style.color = "var(--raw-cotton)";
+                setTimeout(() => { 
+                    btn.innerText = "ADD MORE"; 
+                    btn.style.background = "var(--chrome)"; 
+                    btn.style.color = "var(--bg-obsidian)"; 
+                }, 1500);
+            } else { 
+                alert('PROTOCOL HALTED: SELECT A SIZE.'); 
+            }
+        }
+
+        function updateSangraha() {
+            const list = document.getElementById('bag-list');
+            const totalDisplay = document.getElementById('total-price');
+            const mobileTotal = document.getElementById('mobile-total');
+            const mobileCartBar = document.getElementById('hk-cart-mobile');
+            
+            if(saṃgraha.length === 0) {
+                list.innerHTML = '<p style="opacity: 0.2; font-style: italic;">_VOID_EMPTY</p>';
+                totalDisplay.innerText = '₹0';
+                mobileTotal.innerText = '₹0';
+                if(window.innerWidth <= 900) mobileCartBar.style.display = 'none';
+                return;
+            }
+            
+            let total = 0;
+            list.innerHTML = saṃgraha.map(i => {
+                total += i.price;
+                return `<div class="cart-item"><span>${i.name}</span><b>₹${i.price}</b></div>`;
+            }).join('');
+            
+            totalDisplay.innerText = '₹' + total;
+            mobileTotal.innerText = '₹' + total;
+            
+            // Pop open the mobile cart bar if on phone
+            if(window.innerWidth <= 900) mobileCartBar.style.display = 'flex';
+        }
 
         // ==========================================
-        // 2. THE SPOTLIGHT ENGINE (Desktop + Mobile)
+        // 2. THE SPOTLIGHT ENGINE 
         // ==========================================
         document.addEventListener('mousemove', (e) => {
             document.documentElement.style.setProperty('--cursor-x', e.clientX + 'px');
@@ -1120,130 +764,46 @@
         });
 
         // ==========================================
-        // 3. DATE CALCULATOR
+        // 3. UI TAB SWITCHERS
         // ==========================================
-        function setDeliveryDate() {
-            const today = new Date();
-            today.setDate(today.getDate() + 15);
-            const options = { month: 'long', day: 'numeric', year: 'numeric' };
-            const formattedDate = today.toLocaleDateString('en-US', options).toUpperCase();
-            
-            const dateBox = document.getElementById('delivery-date');
-            if(dateBox) {
-                dateBox.innerText = formattedDate;
-            }
-        }
-
-        // ==========================================
-        // 4. CINEMATIC SCROLL ENGINE
-        // ==========================================
-        document.addEventListener("DOMContentLoaded", () => {
-            setDeliveryDate();
-            
-            scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        entry.target.classList.add('reveal-scroll');
-                        scrollObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.suggestion-item, .promo-billboard, .hk-billboard-wrapper, h3, .info-block').forEach(el => {
-                el.classList.add('hidden-scroll');
-                scrollObserver.observe(el);
-            });
-        });
-
-        // ==========================================
-        // 5. NAVIGATION LOGIC
-        // ==========================================
-        function switchSubTab(tab) {
-            document.getElementById('sub-tops').style.display = (tab === 'tops') ? 'block' : 'none';
-            document.getElementById('sub-acid').style.display = (tab === 'acid') ? 'block' : 'none';
-            document.getElementById('sub-her').style.display = (tab === 'her') ? 'block' : 'none';
-            document.getElementById('sub-his').style.display = (tab === 'his') ? 'block' : 'none';
-            
-            const updateNavStyle = (id, isActive) => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.style.color = isActive ? 'var(--accent-gold)' : 'var(--text-muted)';
-                    el.style.fontWeight = isActive ? '800' : '600';
-                    el.style.borderBottom = isActive ? '2px solid var(--accent-gold)' : 'none';
-                }
-            };
-            
-            updateNavStyle('nav-tops', tab === 'tops');
-            updateNavStyle('nav-acid', tab === 'acid');
-            updateNavStyle('nav-her', tab === 'her');
-            updateNavStyle('nav-his', tab === 'his');
-
-            const activeSub = document.getElementById('sub-' + tab);
-            if(activeSub) {
-                activeSub.querySelectorAll('.suggestion-item, .promo-billboard, .hk-billboard-wrapper').forEach(el => {
-                    el.classList.remove('reveal-scroll');
-                    el.classList.add('hidden-scroll');
-                    setTimeout(() => { scrollObserver.observe(el); }, 50); 
-                });
-            }
-        }
-
         function switchTab(id, btn) {
             document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
             document.getElementById('tab-' + id).classList.add('active');
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+            document.getElementById('hk-nav').classList.remove('active-menu'); // Close mobile menu
+        }
+
+        function switchSubTab(tab) {
+            ['tops', 'acid', 'her', 'his'].forEach(t => {
+                document.getElementById('sub-' + t).style.display = 'none';
+                document.getElementById('nav-' + t).classList.remove('active');
+            });
+            document.getElementById('sub-' + tab).style.display = 'block';
+            document.getElementById('nav-' + tab).classList.add('active');
+            
+            // Reset scroll to top of bento grid on mobile
+            document.getElementById('main-scroll-area').scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // ==========================================
-        // 6. CART & TRANSMISSION LOGIC
+        // 4. TRANSMISSION PROTOCOL (FORMSPREE)
         // ==========================================
-        function addToBag(name, price) {
-            bag.push({name, price});
-            updateBag();
-        }
-
-        function updateBag() {
-            const list = document.getElementById('bag-list');
-            const totalDisplay = document.getElementById('total-price');
-            if(bag.length === 0) {
-                list.innerHTML = '<p style="opacity: 0.2; font-style: italic;">_EMPTY</p>';
-                totalDisplay.innerText = '₹0';
-                return;
-            }
-            let total = 0;
-            list.innerHTML = bag.map(i => {
-                total += i.price;
-                return `<div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span>${i.name}</span><b>₹${i.price}</b></div>`;
-            }).join('');
-            totalDisplay.innerText = '₹' + total;
-        }
-
-        function openCheckout() {
-            if(bag.length > 0) document.getElementById('checkout-modal').style.display = 'flex';
-            else alert("Add items to your archive first.");
-        }
-
         async function sendOrder() {
             const name = document.getElementById('cust-name').value.trim();
             const phone = document.getElementById('cust-phone').value.trim();
             const address = document.getElementById('cust-address').value.trim(); 
-            const labelInput = document.getElementById('customlabel');
-            const userLabel = (labelInput && labelInput.value.trim()) ? labelInput.value.trim() : "None";
-            
             const total = document.getElementById('total-price').innerText;
-            const items = bag.map(i => i.name).join(', ');
-            const orderId = "HK-" + Math.floor(1000 + Math.random() * 9000);
+            const items = saṃgraha.map(i => i.name).join(', ');
+            const orderId = "HK-ARC-" + Math.floor(1000 + Math.random() * 9000);
 
             if(!name || !phone || !address) {
-                alert("PROTOCOL_ERROR: Name, WhatsApp Number, and Full Address are required.");
-                return;
+                alert("PROTOCOL_ERROR: Core Data Missing."); return;
             }
 
             const btn = document.getElementById('transmit-btn');
             const originalText = btn.innerText;
-            btn.innerText = "TRANSMITTING...";
-            btn.disabled = true;
+            btn.innerText = "TRANSMITTING..."; btn.disabled = true;
 
             const formData = new FormData();
             formData.append('Order_ID', orderId);
@@ -1251,138 +811,46 @@
             formData.append('WhatsApp', phone);
             formData.append('Address', address); 
             formData.append('Items', items);
-            formData.append('Custom_Label', userLabel);
             formData.append('Total', total);
 
             const safeAddress = encodeURIComponent(address);
+            const waMsg = `*H&K ARCHIVE_TRANSMISSION*%0A----------------------------%0A*ID:* ${orderId}%0A*CLIENT:* ${name}%0A*ADDRESS:* ${safeAddress}%0A*ITEMS:* ${items}%0A*TOTAL:* ${total}%0A----------------------------`;
 
             try {
-                await fetch('https://formspree.io/f/mykndpzj', {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                const waMsg = `*H&K ORDER_TRANSMISSION*%0A` +
-                              `----------------------------%0A` +
-                              `*ID:* ${orderId}%0A` +
-                              `*CLIENT:* ${name}%0A` +
-                              `*ADDRESS:* ${safeAddress}%0A` +
-                              `*ITEMS:* ${items}%0A` +
-                              `*LABEL:* ${userLabel}%0A` +
-                              `*TOTAL:* ${total}%0A` +
-                              `----------------------------%0A` +
-                              `_Status: Order Logged in Archive_`;
-
+                await fetch('https://formspree.io/f/mykndpzj', { method: 'POST', body: formData, headers: { 'Accept': 'application/json' }});
                 document.getElementById('checkout-modal').style.display = 'none';
                 window.open(`https://wa.me/919782145263?text=${waMsg}`, '_blank');
-
             } catch (error) {
-                const fallbackMsg = `*H&K DIRECT_ORDER*%0A*ID:* ${orderId}%0A*Name:* ${name}%0A*Address:* ${safeAddress}%0A*Items:* ${items}%0A*Label:* ${userLabel}`;
-                window.open(`https://wa.me/919782145263?text=${fallbackMsg}`, '_blank');
+                window.open(`https://wa.me/919782145263?text=${waMsg}`, '_blank');
             } finally {
-                btn.innerText = originalText;
-                btn.disabled = false;
+                btn.innerText = originalText; btn.disabled = false;
             }
         }
 
         // ==========================================
-        // 7. MOBILE UTILITIES
-        // ==========================================
-        function toggleMobileMenu() {
-            let nav = document.getElementById('hk-nav');
-            if (nav) nav.classList.toggle('active-menu');
-        }
-
-        function scrollToLog() {
-            let cart = document.getElementById('hk-cart');
-            if (cart) cart.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        // ==========================================
-        // 8. H&K 3D INTERACTIVE ENGINE (DESKTOP ONLY)
-        // ==========================================
-        const interactiveCards = document.querySelectorAll('.service-card, .suggestion-item');
-
-        if (window.matchMedia("(pointer: fine)").matches) {
-            interactiveCards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
-                    
-                    const rotateX = (y / (rect.height / 2)) * -10; 
-                    const rotateY = (x / (rect.width / 2)) * 10;
-                    
-                    card.style.transition = 'none';
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
-                    card.style.boxShadow = `${-x / 6}px ${-y / 6}px 30px rgba(212, 175, 55, 0.25)`;
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease';
-                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                    card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
-                });
-            });
-        }
-
-        // ==========================================
-        // 9. H&K THE VOID: PARTICLE ENGINE & WARP
+        // 5. H&K THE VOID: PARTICLE ENGINE & WARP
         // ==========================================
         const canvas = document.getElementById('hk-void');
         const ctx = canvas.getContext('2d');
-        let mouse = { x: null, y: null, radius: 150 };
+        let voidParticles = [];
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeCanvas); resizeCanvas();
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
-        window.addEventListener('mouseout', () => {
-            mouse.x = undefined;
-            mouse.y = undefined;
-        });
-
-        window.addEventListener('touchmove', (e) => {
-            mouse.x = e.touches[0].clientX;
-            mouse.y = e.touches[0].clientY;
-        });
-        window.addEventListener('touchend', () => {
-            mouse.x = undefined;
-            mouse.y = undefined;
-        });
-
-        class Particle {
+        class AkashaParticle { // Sanskrit for Void/Aether
             constructor(x, y, dx, dy, size) {
-                this.x = x;
-                this.y = y;
-                this.dx = dx;
-                this.dy = dy;
-                this.size = size;
+                this.x = x; this.y = y; this.dx = dx; this.dy = dy; this.size = size;
             }
-            
             draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = 'rgba(212, 175, 55, 0.45)'; 
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = 'rgba(229, 228, 226, 0.2)'; // Chrome dust
                 ctx.fill();
             }
-            
             update() {
                 if (this.x + this.size > canvas.width || this.x - this.size < 0) this.dx = -this.dx;
                 if (this.y + this.size > canvas.height || this.y - this.size < 0) this.dy = -this.dy;
                 if (this.y < 0) this.y = canvas.height;
-                
-                this.x += this.dx;
-                this.y += this.dy;
-                
+                this.x += this.dx; this.y += this.dy;
                 this.draw();
             }
         }
@@ -1390,74 +858,31 @@
         function initVoid() {
             voidParticles = [];
             let numberOfParticles = (canvas.width * canvas.height) / 9000;
-            
             for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 2) + 0.5;
-                let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
-                let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
-                let dx = (Math.random() - 0.5) * 0.5;
-                let dy = (Math.random() - 0.5) * 0.5;
-                voidParticles.push(new Particle(x, y, dx, dy, size));
+                let size = (Math.random() * 1.5) + 0.5;
+                let x = Math.random() * canvas.width; let y = Math.random() * canvas.height;
+                let dx = (Math.random() - 0.5) * 0.4; let dy = (Math.random() - 0.5) * 0.4;
+                voidParticles.push(new AkashaParticle(x, y, dx, dy, size));
             }
         }
 
         function animateVoid() {
             requestAnimationFrame(animateVoid);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            for (let i = 0; i < voidParticles.length; i++) {
-                voidParticles[i].update();
-                
-                for (let j = i; j < voidParticles.length; j++) {
-                    let distanceX = voidParticles[i].x - voidParticles[j].x;
-                    let distanceY = voidParticles[i].y - voidParticles[j].y;
-                    let distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-                    
-                    if (distance < 100) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(212, 175, 55, ${0.12 - distance/1000})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(voidParticles[i].x, voidParticles[i].y);
-                        ctx.lineTo(voidParticles[j].x, voidParticles[j].y);
-                        ctx.stroke();
-                    }
-                }
-                
-                if (mouse.x != null) {
-                    let dx = mouse.x - voidParticles[i].x;
-                    let dy = mouse.y - voidParticles[i].y;
-                    let distanceToMouse = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distanceToMouse < mouse.radius) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(139, 0, 0, ${1 - distanceToMouse/mouse.radius})`;
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(voidParticles[i].x, voidParticles[i].y);
-                        ctx.lineTo(mouse.x, mouse.y);
-                        ctx.stroke();
-                    }
-                }
-            }
+            for (let i = 0; i < voidParticles.length; i++) voidParticles[i].update();
         }
 
-        initVoid();
-        animateVoid();
+        initVoid(); animateVoid();
 
-        // Scroll Warp (Works on both Mobile Window & Desktop Main Content Scroll!)
+        // WARP SCROLL PHYSICS (Tied to the Snap Viewport)
         let isScrolling;
-        const triggerWarp = () => {
-            for (let i = 0; i < voidParticles.length; i++) {
-                voidParticles[i].y -= 2.5;
-            }
+        document.getElementById('main-scroll-area').addEventListener('scroll', () => {
+            for (let i = 0; i < voidParticles.length; i++) voidParticles[i].y -= 3.5;
             window.clearTimeout(isScrolling);
             isScrolling = setTimeout(() => {
-                for (let i = 0; i < voidParticles.length; i++) {
-                    voidParticles[i].dy = (Math.random() - 0.5) * 0.5;
-                }
+                for (let i = 0; i < voidParticles.length; i++) voidParticles[i].dy = (Math.random() - 0.5) * 0.4;
             }, 66);
-        };
-        window.addEventListener('scroll', triggerWarp, { passive: true });
-        document.getElementById('main-scroll-area').addEventListener('scroll', triggerWarp, { passive: true });
+        }, { passive: true });
     </script>
 </body>
 </html>
