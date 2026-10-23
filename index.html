@@ -198,17 +198,21 @@
         ::-webkit-scrollbar-thumb { background: rgba(229, 228, 226, 0.2); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--chrome); }
 
-        /* MOBILE OVERRIDE */
+/* ========================================= */
+        /* H&K MOBILE OVERRIDE: 2-COLUMN GRID & FIX  */
+        /* ========================================= */
         @media (max-width: 900px) {
-            .container { display: block; height: 100dvh; border: none; margin-top: 0; border-radius: 0; box-shadow: none; }
+            /* Kills the flex-centering bug so scrolling works perfectly */
+            body { display: block; padding-top: 70px !important; padding-left: 0; padding-right: 0; overflow-y: auto !important; }
+            .container { display: block; height: auto; min-height: 100vh; border: none; margin-top: 0; border-radius: 0; box-shadow: none; }
             .sidebar, .right-bar { display: none; }
+            
             .mobile-header {
                 display: flex !important; justify-content: space-between; align-items: center;
                 padding: 15px 20px; background: rgba(10, 10, 12, 0.85); backdrop-filter: blur(16px);
                 border-bottom: 1px solid var(--border); position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
             }
-            body { padding-top: 70px !important; overflow-y: auto !important; }
-            .main-content { padding: 90px 15px 40px 15px; height: auto; overflow: visible; background: transparent; }
+            .main-content { padding: 90px 10px 40px 10px; height: auto; overflow: visible; background: transparent; }
             
             #hk-nav {
                 position: fixed; top: 0; left: 0; transform: translateX(-100%); width: 80%; height: 100dvh;
@@ -217,9 +221,26 @@
             }
             #hk-nav.active-menu { transform: translateX(0); }
             
-            .product-grid { grid-template-columns: 1fr; gap: 20px; }
+            /* TRUE MOBILE 2-COLUMN GRID */
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            
+            /* Micro-scaling so the 2-column layout fits perfectly on phones */
+            .suggestion-item { padding: 12px; border-radius: 12px; }
+            .suggestion-item img { margin-bottom: 10px; }
+            .suggestion-item h4 { font-size: 0.8rem !important; }
+            .micro-code { font-size: 0.45rem; letter-spacing: 1px; margin: 10px 0 5px 0 !important; }
+            .suggestion-item p { font-size: 0.55rem !important; line-height: 1.2; }
+            
+            /* Stacking prices to save horizontal space */
+            .price-tag { flex-direction: column; gap: 2px; margin: 10px 0; }
+            .new-price { font-size: 1.1rem; }
+            .old-price { font-size: 0.65rem; }
+            
+            .btn-add { padding: 8px 10px; font-size: 0.6rem; letter-spacing: 0px; }
+            .input-box, select { padding: 8px; font-size: 0.65rem; margin-bottom: 10px; }
         }
 
+        
         /* MOBILE TAP PHYSICS */
         @media (hover: none) {
             .suggestion-item:active { transform: scale(0.97) !important; border-color: var(--chrome) !important; box-shadow: 0 0 30px rgba(229, 228, 226, 0.2) !important; }
@@ -387,7 +408,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-money').value; if(sz) { addToBag('Money a Curse Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-money').value; if(sz) { addToBag('Money a Curse Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -400,7 +421,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-hk-exclusive').value; if(sz) { addToBag('H&K Exclusive Tee - ' + sz, 399); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-hk-exclusive').value; if(sz) { addToBag('H&K Exclusive Tee - ' + sz, 399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -413,7 +434,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-alleyez').value; if(sz) { addToBag('All Eyez On Me Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-alleyez').value; if(sz) { addToBag('All Eyez On Me Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -426,7 +447,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add red-btn" onclick="let sz = document.getElementById('size-modi').value; if(sz) { addToBag('Modi Fanmade Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add red-btn" onclick="let sz = document.getElementById('size-modi').value; if(sz) { addToBag('Modi Fanmade Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -439,12 +460,12 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-krshn').value; if(sz) { addToBag('Lord Krishna Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-krshn').value; if(sz) { addToBag('Lord Krishna Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/bigbangtee.png" alt="Bang Bang Tee">
-                            <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">NEW_ARRIVAL</div>
+                            <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">नव आगमन(NEW)</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Bang Bang Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Heavyweight Graphic Streetwear</p>
                             <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
@@ -452,7 +473,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-bangbang').value; if(sz) { addToBag('Bang Bang Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-bangbang').value; if(sz) { addToBag('Bang Bang Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -465,7 +486,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-911').value; if(sz) { addToBag('911 Editorial Tee - ' + sz, 399); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-911').value; if(sz) { addToBag('911 Editorial Tee - ' + sz, 399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -478,7 +499,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-uno').value; if(sz) { addToBag('UNO Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-uno').value; if(sz) { addToBag('UNO Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -491,7 +512,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-cottonex').value; if(sz) { addToBag('H&K Exclusive Cotton Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-cottonex').value; if(sz) { addToBag('H&K Exclusive Cotton Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -504,7 +525,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-harmony').value; if(sz) { addToBag('Harmony Kings Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-harmony').value; if(sz) { addToBag('Harmony Kings Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -517,7 +538,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-animepolo').value; if(sz) { addToBag('Anime Polo - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-animepolo').value; if(sz) { addToBag('Anime Polo - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                     </div>
@@ -546,7 +567,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-basic').value; if(sz) { addToBag('Acid Wash Black Tee - ' + sz, 999); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-basic').value; if(sz) { addToBag('Acid Wash Black Tee - ' + sz, 999); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -559,7 +580,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add red-btn" onclick="let sz = document.getElementById('size-acid-hk').value; if(sz) { addToBag('H&K Exclusive Acid Tee - ' + sz, 1399); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add red-btn" onclick="let sz = document.getElementById('size-acid-hk').value; if(sz) { addToBag('H&K Exclusive Acid Tee - ' + sz, 1399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -572,7 +593,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-demon').value; if(sz) { addToBag('Demon Slayer Acid Wash - ' + sz, 1399); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-demon').value; if(sz) { addToBag('Demon Slayer Acid Wash - ' + sz, 1399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -585,7 +606,7 @@
                                 <option value="" disabled selected>SELECT SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-greek').value; if(sz) { addToBag('Greek Style Acid Wash - ' + sz, 1399); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-greek').value; if(sz) { addToBag('Greek Style Acid Wash - ' + sz, 1399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                     </div>
@@ -614,7 +635,7 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS (L:10in W:12in)</option><option value="S">S (L:10.5in W:12.5in)</option><option value="M">M (L:11in W:13in)</option><option value="L">L (L:11.5in W:13.5in)</option><option value="XL">XL (L:12in W:14in)</option>
                             </select>
-                            <button class="btn-add red-btn" onclick="let sz = document.getElementById('size-her-lepoard').value; if(sz) { addToBag('Leopard Tube top - ' + sz, 209); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add red-btn" onclick="let sz = document.getElementById('size-her-lepoard').value; if(sz) { addToBag('Leopard Tube top - ' + sz, 209); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -627,7 +648,7 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-toxic').value; if(sz) { addToBag('Toxic Stamp Crop Top - ' + sz, 599); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-toxic').value; if(sz) { addToBag('Toxic Stamp Crop Top - ' + sz, 599); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -640,7 +661,7 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-tea').value; if(sz) { addToBag('Spill Tea Crop Top - ' + sz, 599); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-tea').value; if(sz) { addToBag('Spill Tea Crop Top - ' + sz, 599); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -653,7 +674,7 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-buri').value; if(sz) { addToBag('Buri Nazar Crop Top - ' + sz, 599); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-buri').value; if(sz) { addToBag('Buri Nazar Crop Top - ' + sz, 599); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -666,7 +687,7 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-diva').value; if(sz) { addToBag('Diva Graphic Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-diva').value; if(sz) { addToBag('Diva Graphic Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -679,7 +700,7 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS (Bust: 81cm)</option><option value="S">S (Bust: 86cm)</option><option value="M">M (Bust: 91cm)</option><option value="L">L (Bust: 99cm)</option><option value="XL">XL (Bust: 102cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-nonchalant').value; if(sz) { addToBag('Nonchalant Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-nonchalant').value; if(sz) { addToBag('Nonchalant Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                     </div>
@@ -708,7 +729,7 @@
                                 <option value="" disabled selected>SELECT HIS SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-umber').value; if(sz) { addToBag('Brown Umber Polo - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-umber').value; if(sz) { addToBag('Brown Umber Polo - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -721,7 +742,7 @@
                                 <option value="" disabled selected>SELECT HIS SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-navy').value; if(sz) { addToBag('Midnight Navy Polo - ' + sz, 549); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-navy').value; if(sz) { addToBag('Midnight Navy Polo - ' + sz, 549); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
                         
                         <div class="suggestion-item hidden-scroll">
@@ -734,7 +755,7 @@
                                 <option value="" disabled selected>SELECT HIS SIZE</option>
                                 <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-sky').value; if(sz) { addToBag('Sky Blue Polo - ' + sz, 549); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-sky').value; if(sz) { addToBag('Sky Blue Polo - ' + sz, 549); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                     </div>
@@ -753,7 +774,7 @@
                 </div>
             </div>
 
-            <div class="section-header">ARCHIVE_LOG (SAṂGRAHA)</div>
+            <div class="section-header">संग्रह वृत्तान्त (ARCHIVE LOG)</div>
             <div id="bag-list" style="flex: 1; font-size: 0.75rem; overflow-y: auto; max-height: 250px; font-family: 'Space Mono', monospace; margin-bottom: 20px;">
                 <p style="opacity: 0.2; font-style: italic;">_VOID_EMPTY</p>
             </div>
