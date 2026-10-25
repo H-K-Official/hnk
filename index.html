@@ -15,21 +15,24 @@
 
         
         /* ========================================= */
-        /* COLOR ENGINE: RAW CONCRETE (LIGHT)        */
+        /* COLOR ENGINE: WASHED CHARCOAL (HIGH VIS)  */
         /* ========================================= */
         :root {
-            --bg-obsidian: #E6E4DF; /* Raw Cement / Plaster */
-            --chrome: #111111; /* Sharp Charcoal Ink */
-            --blood-red: #9B1C1C; /* Archive Stamp Red */
-            --text-primary: #1A1A1A; /* Heavy Dark Text */
-            --text-muted: #666666; /* Ash Grey */
-            --panel: rgba(255, 255, 255, 0.5); /* Frosty translucent glass */
-            --border: rgba(17, 17, 17, 0.15);
+            --bg-obsidian: #18181b; /* Sleek, lighter charcoal (No longer pitch black) */
+            --chrome: #E5E4E2; /* Sharp silver for primary accents */
+            --blood-red: #cc0000; /* Brightened the red slightly to pop on dark mode */
+            --text-primary: #ffffff; /* Pure white text for absolute max contrast */
+            --text-muted: #a1a1aa; /* Brighter grey for subtext so it never gets lost */
+            --panel: rgba(39, 39, 42, 0.85); /* Lighter, more opaque glass for readability */
+            --border: rgba(229, 228, 226, 0.25); /* Stronger borders to separate the cards */
             --cursor-x: 50vw; --cursor-y: 50vh;
         }
 
-
-
+        /* TEXT VISIBILITY OVERRIDE (Fixes the invisible text bug) */
+        .suggestion-item h4 { color: var(--text-primary) !important; }
+        .suggestion-item p { color: var(--text-muted) !important; font-weight: 600 !important; }
+        .micro-code { color: var(--chrome) !important; font-weight: bold !important; }
+        .info-block { color: var(--text-primary) !important; }
 
 
 
@@ -473,7 +476,18 @@
                             <button class="btn-add" onclick="let sz = document.getElementById('size-alleyez').value; if(sz) { addToBag('All Eyez On Me Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
-                        
+                         <div class="suggestion-item hidden-scroll">
+                            <img src="h&K apperals/Gemini_Generated_Image_h03udeh03udeh03u.png" alt="911 Editorial Tee">
+                            <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">ARCHIVE_01</div>
+                            <h4 style="font-size: 1.1rem; color: #fff;">911 Editorial Tee</h4>
+                            <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Heavyweight French Terry</p>
+                            <div class="price-tag"><span class="old-price">₹599</span><span class="new-price">₹399</span></div>
+                            <select id="size-911">
+                                <option value="" disabled selected>SELECT SIZE</option>
+                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
+                            </select>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-911').value; if(sz) { addToBag('911 Editorial Tee - ' + sz, 399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                        </div>
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/lord%20krishna%20tee.png" alt="Lord Krishna Tee">
@@ -488,6 +502,23 @@
                             <button class="btn-add" onclick="let sz = document.getElementById('size-krshn').value; if(sz) { addToBag('Lord Krishna Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
+      
+                     <div class="suggestion-item hidden-scroll">
+                        <img src="h%26K%20apperals/demon%20slayer%20tee.jpeg" alt="Demon Slayer Tee">
+                        <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">FANMADE_EDITION</div>
+                        <h4 style="font-size: 1.1rem; color: #fff;">Demon Slayer Tee</h4>
+                        <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Polycotton Blend</p>
+                        <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
+                        <select id="size-demon-neutral">
+                            <option value="" disabled selected>SELECT SIZE</option>
+                            <option value="S">S (Chest: 96cm)</option>
+                            <option value="M">M (Chest: 101cm)</option>
+                            <option value="L">L (Chest: 107cm)</option>
+                            <option value="XL">XL (Chest: 112cm)</option>
+                       </select>
+                       <button class="btn-add" onclick="let sz = document.getElementById('size-demon-neutral').value; if(sz) { addToBag('Demon Slayer Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">ADD TO ARCHIVE</button>
+                     </div>
+                        
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/bigbangtee.png" alt="Bang Bang Tee">
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">नव आगमन(NEW)</div>
@@ -501,18 +532,7 @@
                             <button class="btn-add" onclick="let sz = document.getElementById('size-bangbang').value; if(sz) { addToBag('Bang Bang Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
-                        <div class="suggestion-item hidden-scroll">
-                            <img src="h%26K%20apperals/car911.png" alt="911 Editorial Tee">
-                            <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">ARCHIVE_01</div>
-                            <h4 style="font-size: 1.1rem; color: #fff;">911 Editorial Tee</h4>
-                            <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Heavyweight French Terry</p>
-                            <div class="price-tag"><span class="old-price">₹599</span><span class="new-price">₹399</span></div>
-                            <select id="size-911">
-                                <option value="" disabled selected>SELECT SIZE</option>
-                                <option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
-                            </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-911').value; if(sz) { addToBag('911 Editorial Tee - ' + sz, 399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
-                        </div>
+                       
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/uno%20tee.jpeg" alt="Uno Fan-made">
@@ -1107,7 +1127,7 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = 'rgba(229, 228, 226, 0.2)'; 
+                ctx.fillStyle = 'rgba(229, 228, 226, 0.4)'; 
                 ctx.fill();
             }
             update() {
