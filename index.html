@@ -12,20 +12,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+
+        
         /* ========================================= */
-        /* THE RUNWAY COLOR PALETTE (OBSIDIAN/CHROME)*/
+        /* COLOR ENGINE: JAIPUR TERRACOTTA (WARM)    */
         /* ========================================= */
         :root {
-            --bg-obsidian: #050507;
-            --chrome: #E5E4E2;
-            --blood-red: #8B0000;
-            --text-primary: #f8f9fa;
-            --text-muted: #6c757d;
-            --panel: rgba(15, 15, 18, 0.7);
-            --border: rgba(229, 228, 226, 0.15);
+            --bg-obsidian: #1A1412; /* Deep Earth / Umber */
+            --chrome: #D4A373; /* Jaipur Sandstone */
+            --blood-red: #A84233; /* Faded Terracotta */
+            --text-primary: #FAEDCD; /* Aged Parchment */
+            --text-muted: #8E7D6A; /* Dusty Sand */
+            --panel: rgba(43, 30, 25, 0.65); /* Warm frosted glass */
+            --border: rgba(212, 163, 115, 0.15);
             --cursor-x: 50vw; --cursor-y: 50vh;
         }
 
+
+
+
+
+
+
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html, body {
@@ -119,6 +128,33 @@
         .tab-pane.active { display: flex; flex-direction: column; align-items: center; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+
+
+/* ========================================= */
+        /* H&K x SNITCH STYLE SKELETON LOADERS       */
+        /* ========================================= */
+        .skeleton {
+            background: linear-gradient(90deg, #111 25%, #222 50%, #111 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Hides the actual image until it fully loads */
+        .lazy-img {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .lazy-img.loaded {
+            opacity: 1;
+        }
+
+
+        
         /* ========================================= */
         /* THE TRUE RESPONSIVE GRID FIX              */
         /* ========================================= */
