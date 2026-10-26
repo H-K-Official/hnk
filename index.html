@@ -290,6 +290,134 @@
             position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh;
             background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px;
         }
+
+/* ========================================= */
+/* STEP 1: TEXT VISIBILITY & IMAGE FIXES     */
+/* ========================================= */
+
+/* Force text to be dark against the light background */
+.suggestion-item h4 { color: #111111 !important; font-weight: 800; }
+.suggestion-item p { color: #444 !important; font-weight: 600; display: block !important; }
+.old-price { color: #666 !important; }
+.new-price { color: #9B1C1C !important; }
+.micro-code { color: #9B1C1C !important; font-weight: bold; }
+.info-block, .info-block p { color: #111111 !important; }
+
+/* "Zoom-to-Fit" so images never compress or stretch */
+.suggestion-item img {
+    width: 100% !important;
+    height: 220px !important; /* Locks the height uniformly */
+    object-fit: cover !important; /* Auto-zooms to fit the box without stretching */
+    border-radius: 12px;
+}
+
+
+        /* ========================================= */
+/* STEP 2A: MOBILE CART RESCUE & DELETE BTN  */
+/* ========================================= */
+
+/* Forces the hidden sidebar cart to pop up as a modal on phones */
+@media (max-width: 900px) {
+    #hk-cart.active-cart {
+        display: flex !important;
+        position: fixed !important;
+        top: 80px; left: 5%; width: 90%; max-height: 80vh;
+        z-index: 3000;
+        background: #E6E4DF; /* Matches the raw concrete */
+        border: 1px solid #111;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+}
+
+/* The tiny delete button styling */
+.remove-item {
+    color: #9B1C1C; cursor: pointer; font-weight: 900; 
+    margin-left: 15px; padding: 2px 6px; 
+    border-radius: 4px; border: 1px solid #9B1C1C;
+    font-family: 'Space Mono', monospace; font-size: 0.7rem;
+    transition: 0.2s;
+}
+.remove-item:hover { background: #9B1C1C; color: #fff; }
+
+
+
+// ==========================================
+        // STEP 2B: DELETE LOGIC & MOBILE CART TOGGLE
+        // ==========================================
+        
+        // Upgraded: Pops the cart open on mobile, scrolls to it on desktop
+        function scrollToLog() {
+            let cart = document.getElementById('hk-cart');
+            if (window.innerWidth <= 900) {
+                cart.classList.toggle('active-cart'); 
+            } else {
+                cart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Brand New: Removes the specific item based on its list position
+        function removeFromBag(index) {
+            bag.splice(index, 1); // Cuts the item out of the array
+            updateBag(); // Refreshes the cart UI
+        }
+
+        // Upgraded: Injects the [X] button next to every added item
+        function updateBag() {
+            const list = document.getElementById('bag-list');
+            const totalDisplay = document.getElementById('total-price');
+            
+            if(bag.length === 0) {
+                list.innerHTML = '<p style="opacity: 0.4; font-style: italic; color: #111;">_VOID_EMPTY</p>';
+                totalDisplay.innerText = '₹0';
+                return;
+            }
+            
+            let total = 0;
+            list.innerHTML = bag.map((item, index) => {
+                total += item.price;
+                return `<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom: 1px dashed rgba(17,17,17,0.2); padding-bottom: 5px; color: #111;">
+                            <span style="flex:1;">${item.name}</span>
+                            <b style="color:#111;">₹${item.price}</b>
+                            <span class="remove-item" onclick="removeFromBag(${index})">X</span>
+                        </div>`;
+            }).join('');
+            
+            totalDisplay.innerText = '₹' + total;
+        }
+
+            /* ========================================= */
+/* STEP 3A: AI_FIT & HELP DESK CSS           */
+/* ========================================= */
+.help-desk-container {
+    width: 100%; max-width: 600px; margin: 40px auto 20px auto; padding: 30px;
+    background: rgba(255, 255, 255, 0.5); border: 1px solid #111;
+    border-radius: 12px; backdrop-filter: blur(12px); text-align: center;
+}
+
+.ai-btn {
+    background: #111; color: #E6E4DF; border: none; padding: 6px 12px; border-radius: 20px;
+    font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 800;
+    cursor: pointer; margin-bottom: 10px; width: 100%; transition: 0.3s;
+}
+.ai-btn:hover { background: #9B1C1C; color: #fff; }
+
+/* The AI Scanning Laser */
+.ai-scanner {
+    width: 100%; height: 4px; background: #ddd; margin: 20px 0; border-radius: 2px; overflow: hidden; position: relative; display: none;
+}
+.ai-scanner::after {
+    content: ''; position: absolute; left: -50%; width: 50%; height: 100%; background: #9B1C1C;
+    animation: scan 1.5s infinite ease-in-out;
+}
+@keyframes scan { 0% { left: -50%; } 100% { left: 100%; } }
+
+.modal-content-light {
+    background: #E6E4DF; padding: 30px; border-radius: 16px; 
+    border: 1px solid #111; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+        
+        
     </style>
 </head>
 <body>
@@ -381,6 +509,7 @@
                 <div class="info-block hidden-scroll">
                     <b>Data Collection</b>
                     H&K logs user-provided identifiers (Name, Contact Number, Address) strictly for order fulfillment during this Trial Launch Phase. 
+                    All the AI-TryOns are AI-Powered and H&K does not store your image data in any form, its used to create your fit in tees and deleted forever. Any such images are not saved in servers.
                     <b>Transmission Security</b>
                     All checkout data is transmitted via end-to-end encrypted gateways. We do not store financial records or passwords on our internal servers.
                     <b>Third-Party Access</b>
@@ -439,6 +568,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/money%20a%20curse%20tee.jpeg" alt="Money a Curse Tee">
+                            <button class="ai-btn" onclick="openAITryOn('Money a Curse Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">ARCHIVE_02</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Money a Curse Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Polycotton (BACKPRINT)</p>
@@ -452,6 +582,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/poly H&K exclusive.png" alt="H&K Exclusive Tee" style="object-fit: cover;">
+                            <button class="ai-btn" onclick="openAITryOn('H&K Exclusive Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">ARCHIVE_01</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">H&K Exclusive Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">poly Heavyweight French Terry</p>
@@ -465,6 +596,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/all%20eyez%20on%20me%20tee.jpeg" alt="All Eyez On Me Tee">
+                            <button class="ai-btn" onclick="openAITryOn('All Eyez On Me Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">ARCHIVE_02</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">All Eyez On Me Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium cotton (BACKPRINT)</p>
@@ -478,6 +610,7 @@
 
                          <div class="suggestion-item hidden-scroll">
                             <img src="h&K apperals/Gemini_Generated_Image_h03udeh03udeh03u.png" alt="911 Editorial Tee">
+                             <button class="ai-btn" onclick="openAITryOn('911 Editorial Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">ARCHIVE_01</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">911 Editorial Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Heavyweight French Terry</p>
@@ -491,6 +624,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/lord%20krishna%20tee.png" alt="Lord Krishna Tee">
+                            <button class="ai-btn" onclick="openAITryOn('Lord Krishna Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">DIVINE_ARCHIVE</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Lord Krishna Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Blend Shloka Overlay</p>
@@ -505,6 +639,7 @@
       
                      <div class="suggestion-item hidden-scroll">
                         <img src="h%26K%20apperals/demon%20slayer%20tee.jpeg" alt="Demon Slayer Tee">
+                         <button class="ai-btn" onclick="openAITryOn('Demon Slayer Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                         <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">FANMADE_EDITION</div>
                         <h4 style="font-size: 1.1rem; color: #fff;">Demon Slayer Tee</h4>
                         <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Polycotton Blend</p>
@@ -521,6 +656,7 @@
                         
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/bigbangtee.png" alt="Bang Bang Tee">
+                            <button class="ai-btn" onclick="openAITryOn('Bang Bang Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">नव आगमन(NEW)</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Bang Bang Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Heavyweight Graphic Streetwear</p>
@@ -536,6 +672,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/uno%20tee.jpeg" alt="Uno Fan-made">
+                            <button class="ai-btn" onclick="openAITryOn('Uno Fan-made')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">ARCHIVE_02</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">UNO Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium cotton (BACKPRINT)</p>
@@ -549,6 +686,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/hnk exclusive.jpeg" alt="H&K Exclusive Cotton Tee">
+                            <button class="ai-btn" onclick="openAITryOn('H&K Exclusive Cotton Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">ARCHIVE_02</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">H&K Exclusive Cotton Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Polycotton Blend</p>
@@ -563,6 +701,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/modi%20tee.png" alt="Modi FANMADE Tee">
+                            <button class="ai-btn" onclick="openAITryOn('Modi FANMADE Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">GEOPOLITICS_03</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Modi Fanmade Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Polycotton Halftone</p>
@@ -577,6 +716,7 @@
                         
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/harmony%20kings%20tee.jpeg" alt="Harmony Kings Tee">
+                            <button class="ai-btn" onclick="openAITryOn('Harmony Kings Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">ARCHIVE_02</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Harmony Kings Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Polycotton Blend</p>
@@ -590,6 +730,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/anime%20heavy.png" alt="Anime Heavy Print Polo">
+                            <button class="ai-btn" onclick="openAITryOn('Anime Heavy Print Polo')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">FANMADE_EDITION</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Anime Heavy Print Polo</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Pique Blend</p>
@@ -619,6 +760,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/acid-wash-tee.jpeg" alt="Acid Wash Basic">
+                            <button class="ai-btn" onclick="openAITryOn('Acid Wash Basic')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">PREMIUM WASH</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Acid Wash Black Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Heavyweight Acid Wash Cotton</p>
@@ -632,6 +774,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/acid wash exclusive tee.jpeg" alt="H&K Exclusive Acid">
+                            <button class="ai-btn" onclick="openAITryOn('H&K Exclusive Acid')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">CAPSULE_01</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">H&K Exclusive Acid Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Ultra-Premium Vintage Wash (BACKPRINT)</p>
@@ -645,6 +788,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/acid wash demon slayer tee.jpeg" alt="Demon Slayer Acid">
+                            <button class="ai-btn" onclick="openAITryOn('Demon Slayer Acid')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">FANMADE EDITION</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Demon Slayer Acid Wash</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Ultra-Premium Vintage Wash (BACKPRINT)</p>
@@ -658,6 +802,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/acid wash greek tee.jpeg" alt="Greek Style Acid">
+                            <button class="ai-btn" onclick="openAITryOn('Greek Style Acid')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">GREEK MYTHOS</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Greek Style Acid Wash</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Ultra-Premium Vintage Wash (BACKPRINT)</p>
@@ -678,7 +823,7 @@
                     <div class="promo-billboard hidden-scroll" style="height: 250px;">
                         <div class="promo-overlay" style="height: 100%; background: radial-gradient(circle at center, rgba(58,13,22,0.6) 0%, rgba(0,0,0,0.95) 100%);"></div>
                         <div class="promo-text" style="position: absolute; top: 50%; transform: translateY(-50%); text-align: center;">
-                            <h4 style="font-size: 0.8rem; color: var(--blood-red);">Rakhi Exclusive</h4>
+                            <h4 style="font-size: 0.8rem; color: var(--blood-red);">Festive Exclusive</h4>
                             <h2 style="font-size: 2.5rem; letter-spacing: 4px;">Her Archive</h2>
                         </div>
                     </div>
@@ -687,6 +832,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/lepord%20tubetop.png" alt="Lepoard Tube Top" style="object-fit: cover;">
+                            <button class="ai-btn" onclick="openAITryOn('Lepoard Tube Top')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">CROP FIT</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Leopard Tube top</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Cropped Silhouette (All over print)</p>
@@ -700,6 +846,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/GIRLS%20Toxic%20crop%20top.png" alt="Toxic Crop Top" style="object-fit: cover;">
+                            <button class="ai-btn" onclick="openAITryOn('Toxic Crop Top')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">CROP FIT</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Toxic Stamp Crop Top</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Cropped Silhouette</p>
@@ -713,6 +860,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/spill%20tea%20crop%20top.png" alt="Spill tea Crop Top" style="object-fit: cover;">
+                            <button class="ai-btn" onclick="openAITryOn('Spill tea Crop Top')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">CROP FIT</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Spill Tea Crop Top</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Cropped Silhouette</p>
@@ -726,6 +874,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/GIRLS%20buri%20nazar%20crop%20top.png" alt="Buri Nazar Crop Top" style="object-fit: cover;">
+                            <button class="ai-btn" onclick="openAITryOn('Buri Nazar Crop Top')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">CROP FIT</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Buri Nazar Crop Top</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Cropped Silhouette</p>
@@ -739,6 +888,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/GIRLS%20diva%20tee.png" alt="Diva Tee" style="object-fit: cover;">
+                            <button class="ai-btn" onclick="openAITryOn('Diva Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">RELAXED FIT</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Diva Graphic Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Heavyweight Polycotton Blend</p>
@@ -752,6 +902,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/GIRLS%20nonchalant%20tee.png" alt="Nonchalant Tee" style="object-fit: cover;">
+                            <button class="ai-btn" onclick="openAITryOn('Nonchalant Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">RELAXED FIT</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Nonchalant Tee</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Heavyweight Polycotton Blend</p>
@@ -772,7 +923,7 @@
                     <div class="promo-billboard hidden-scroll" style="height: 250px;">
                         <div class="promo-overlay" style="height: 100%; background: radial-gradient(circle at center, rgba(27,38,59,0.6) 0%, rgba(0,0,0,0.95) 100%);"></div>
                         <div class="promo-text" style="position: absolute; top: 50%; transform: translateY(-50%); text-align: center;">
-                            <h4 style="font-size: 0.8rem; color: var(--chrome);">Rakhi Exclusive</h4>
+                            <h4 style="font-size: 0.8rem; color: var(--chrome);">Festive Exclusive</h4>
                             <h2 style="font-size: 2.5rem; letter-spacing: 4px;">His Archive</h2>
                         </div>
                     </div>
@@ -781,6 +932,7 @@
 
                         <div class="suggestion-item hidden-scroll">
                             <img src="h%26K%20apperals/MEN brown umber polo.png" alt="Umber Tipping Polo" style="object-fit: cover;">
+                            <button class="ai-btn" onclick="openAITryOn('Umber Tipping Polo')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code" style="color: var(--chrome); margin: 15px 0 8px 0;">HERITAGE POLO</div>
                             <h4 style="font-size: 1.1rem; color: #fff;">Brown Umber Polo</h4>
                             <p style="font-size: 0.7rem; color: #888; margin-top: 5px; font-family: 'Space Mono', monospace;">Premium Vintage Collar Accents</p>
@@ -822,6 +974,18 @@
                 </div>
 
             </div> <!-- CLOSES WEAR TAB -->
+
+<!-- ========================================= -->
+            <!-- STEP 3B: REVIEW & SUPPORT NODE            -->
+            <!-- ========================================= -->
+            <div class="help-desk-container hidden-scroll">
+                <h3 style="letter-spacing: 4px; font-size: 1rem; margin-bottom: 15px; color: #111;">[ SUPPORT NODE ]</h3>
+                <p style="font-family: 'Space Mono', monospace; font-size: 0.7rem; margin-bottom: 20px; color: #666;">SUBMIT_INQUIRY_OR_FEEDBACK</p>
+                <input type="text" id="fb-name" class="input-box" placeholder="IDENTIFIER (NAME)" style="background: rgba(255,255,255,0.8); color: #111;">
+                <textarea id="fb-desc" class="input-box" rows="3" placeholder="YOUR TRANSMISSION..." style="resize: none; background: rgba(255,255,255,0.8); color: #111;"></textarea>
+                <button class="btn-add" onclick="alert('TRANSMISSION LOGGED. The founders will review your input.')" style="background: #111; color: #E6E4DF; width: 100%;">SUBMIT LOG</button>
+            </div>
+            
         </div> <!-- CLOSES MAIN CONTENT -->
 
         <!-- RIGHT SIDEBAR CART -->
@@ -870,6 +1034,29 @@
         </div>
     </div>
 
+
+<!-- ========================================= -->
+    <!-- STEP 3C: AI TRY-ON VTON MODAL             -->
+    <!-- ========================================= -->
+    <div id="ai-modal" class="modal">
+        <div class="modal-content-light">
+            <h3 style="color: #111; margin-bottom: 10px;">AI_FIT MODULE</h3>
+            <p style="font-family: 'Space Mono', monospace; font-size: 0.65rem; margin-bottom: 20px; color: #666;">UPLOADING SUBJECT FOR VIRTUAL DRAPE: <br><span id="ai-item-name" style="color:#9B1C1C; font-weight:bold;"></span></p>
+            
+            <div style="border: 1px dashed #111; padding: 30px; border-radius: 12px; margin-bottom: 20px; cursor: pointer; background: rgba(255,255,255,0.5);" onclick="document.getElementById('fake-upload').click()">
+                <i class="fas fa-camera" style="font-size: 2rem; color: #111; margin-bottom: 10px;"></i>
+                <p style="font-size: 0.7rem; font-weight: 600; color: #111;">TAP TO UPLOAD FULL-BODY PHOTO</p>
+                <!-- This triggers the native phone camera/gallery -->
+                <input type="file" id="fake-upload" style="display:none;" accept="image/*" onchange="startAIScan()">
+            </div>
+            
+            <div id="ai-scan-bar" class="ai-scanner"></div>
+            <p id="ai-status" style="font-family: 'Space Mono', monospace; font-size: 0.65rem; color: #9B1C1C; display:none; font-weight: 800;">CALCULATING MESH DRAPE...</p>
+            
+            <button id="ai-close-btn" class="btn-add" style="margin-top: 15px; background: #111; color: #E6E4DF;" onclick="document.getElementById('ai-modal').style.display='none'">[ ABORT ]</button>
+        </div>
+    </div>
+    
     <script>
         // ==========================================
         // 1. GLOBAL VARIABLES
@@ -1207,6 +1394,40 @@
         };
         window.addEventListener('scroll', triggerWarp, { passive: true });
         document.getElementById('main-scroll-area').addEventListener('scroll', triggerWarp, { passive: true });
+   
+    // ==========================================
+        // STEP 3D: AI VTON LOGIC
+        // ==========================================
+        function openAITryOn(itemName) {
+            document.getElementById('ai-item-name').innerText = itemName;
+            document.getElementById('ai-scan-bar').style.display = 'none';
+            document.getElementById('ai-status').style.display = 'none';
+            document.getElementById('ai-modal').style.display = 'flex';
+        }
+
+        function startAIScan() {
+            const scanBar = document.getElementById('ai-scan-bar');
+            const status = document.getElementById('ai-status');
+            const closeBtn = document.getElementById('ai-close-btn');
+            
+            scanBar.style.display = 'block';
+            status.style.display = 'block';
+            status.innerText = "EXTRACTING HUMAN MESH...";
+            status.style.color = "#9B1C1C";
+            closeBtn.style.display = 'none';
+            
+            // Simulating AI Backend Process for the Frontend
+            setTimeout(() => { status.innerText = "APPLYING CLOTHING TEXTURE & PHYSICS..."; }, 1500);
+            setTimeout(() => { 
+                scanBar.style.display = 'none';
+                status.innerText = "SUCCESS: VTON API REQUIRED FOR IMAGE OUTPUT. FRONTEND READY.";
+                status.style.color = "#111";
+                closeBtn.style.display = 'block';
+                closeBtn.innerText = "[ ACKNOWLEDGE ]";
+            }, 3500);
+        }
+    
+    
     </script>
 </body>
 </html>
