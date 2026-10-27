@@ -219,12 +219,20 @@
             }
             #hk-nav.active-menu { transform: translateX(0); }
             
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            
-            .suggestion-item { padding: 10px; border-radius: 12px; }
-            .suggestion-item h4 { font-size: 0.75rem !important; margin-bottom: 2px;}
-            .micro-code { font-size: 0.4rem !important; letter-spacing: 1px; margin: 8px 0 3px 0 !important; }
-            .suggestion-item p { display: none !important; } 
+            /* TRUE MOBILE 2-COLUMN GRID (Anti-Stretch) */
+            .product-grid { 
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important; 
+                gap: 8px !important; 
+                width: 100% !important; 
+                max-width: 100vw !important;
+                box-sizing: border-box !important;
+            }
+            .suggestion-item { 
+                min-width: 0 !important; /* Stops cards from blowing out */
+                padding: 8px !important; 
+                border-radius: 12px; 
+            } 
             
             .price-tag { flex-direction: column; gap: 0px; margin: 5px 0 10px 0; }
             .new-price { font-size: 1rem !important; }
@@ -972,22 +980,25 @@
         // ==========================================
         // CART LOGIC
         // ==========================================
-        function addToBag(name, price) {
+       function addToBag(name, price) {
             bag.push({name, price});
             updateBag();
-            const btn = event.target;
-            const originalText = btn.innerText;
-            const originalBg = btn.style.background;
-            btn.innerText = "ACQUIRED";
-            btn.style.background = "#9B1C1C";
-            btn.style.color = "#fff";
-            setTimeout(() => { 
-                btn.innerText = originalText; 
-                btn.style.background = originalBg; 
-                btn.style.color = ""; 
-            }, 1000);
+            
+            // Safe visual feedback (only affects actual buttons)
+            let btn = event.target;
+            if(btn.tagName === 'BUTTON') {
+                let originalText = btn.innerText;
+                let originalBg = btn.style.background;
+                btn.innerText = "ACQUIRED";
+                btn.style.background = "#9B1C1C";
+                btn.style.color = "#fff";
+                setTimeout(() => { 
+                    btn.innerText = originalText; 
+                    btn.style.background = originalBg; 
+                    btn.style.color = ""; 
+                }, 1000);
+            }
         }
-
         function removeFromBag(index) {
             bag.splice(index, 1);
             updateBag();
