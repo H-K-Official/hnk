@@ -5,23 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H&K | Modern Heritage Apparel Archive</title>
     <meta name="description" content="H&K is a curated Modern Heritage Archive based in Jaipur. Shop handcrafted, aesthetic, high-aura streetwear, acid wash capsules, and luxury.">
-
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* ========================================= */
-        /* COLOR ENGINE: RAW CONCRETE (LIGHT)        */
+        /* COLOR ENGINE: WASHED CHARCOAL (HIGH VIS)  */
         /* ========================================= */
         :root {
-            --bg-obsidian: #E6E4DF; 
-            --chrome: #111111; 
-            --blood-red: #9B1C1C; 
-            --text-primary: #1A1A1A; 
-            --text-muted: #444444; 
-            --panel: rgba(255, 255, 255, 0.65); 
-            --border: rgba(17, 17, 17, 0.15);
+            --bg-obsidian: #18181b; 
+            --chrome: #E5E4E2; 
+            --blood-red: #cc0000; 
+            --text-primary: #ffffff; 
+            --text-muted: #a1a1aa; 
+            --panel: rgba(39, 39, 42, 0.85); 
+            --border: rgba(229, 228, 226, 0.25); 
             --cursor-x: 50vw; --cursor-y: 50vh;
         }
 
@@ -36,11 +35,10 @@
             padding: 20px; position: relative; z-index: 1;
         }
 
-        /* 35MM FILM GRAIN */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png');
-            opacity: 0.08; pointer-events: none; z-index: 9999; mix-blend-mode: multiply;
+            opacity: 0.04; pointer-events: none; z-index: 9999; mix-blend-mode: overlay;
         }
 
         #hk-void {
@@ -50,19 +48,24 @@
 
         .heritage-watermark {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            font-size: 28vw; font-weight: 900; color: rgba(17, 17, 17, 0.03);
+            font-size: 28vw; font-weight: 900; color: rgba(229, 228, 226, 0.02);
             z-index: 0; pointer-events: none; white-space: nowrap; user-select: none;
             font-family: 'Cinzel', serif; letter-spacing: 10px;
         }
 
         /* EDITORIAL TYPOGRAPHY & VISIBILITY OVERRIDES */
         h2, h3, h4, .logo { font-family: 'Cinzel', serif !important; letter-spacing: 2px; color: var(--chrome); }
-        .micro-code, .section-header { font-family: 'Space Mono', monospace !important; text-transform: uppercase; color: var(--blood-red); font-weight: 700; }
-        .info-block, .info-block p, .quote, .suggestion-item h4 { color: #111 !important; font-weight: 800; }
-        .info-block p { margin-bottom: 16px !important; line-height: 1.7 !important; display: block; }
-        .suggestion-item p { color: #444 !important; font-weight: 600; }
-        .old-price { color: #666 !important; text-decoration: line-through; font-family: 'Space Mono', monospace; font-size: 0.8rem; }
-        .new-price { color: #9B1C1C !important; font-weight: 800; font-family: 'Space Mono', monospace; font-size: 1.4rem; }
+        .micro-code, .section-header { font-family: 'Space Mono', monospace !important; text-transform: uppercase; color: var(--blood-red) !important; font-weight: 700; }
+        
+        .info-block { color: var(--text-primary) !important; }
+        .info-block p { margin-bottom: 16px !important; line-height: 1.7 !important; color: var(--text-primary) !important; }
+        .info-block b { color: var(--chrome); font-family: 'Cinzel', serif; font-size: 1.1rem; display: block; margin-top: 15px; margin-bottom: 5px; }
+        .quote { font-style: italic; border-left: 2px solid var(--blood-red); padding-left: 15px; margin: 20px 0; color: var(--chrome); font-family: 'Cinzel', serif; font-size: 1.1rem; }
+
+        .suggestion-item h4 { color: var(--text-primary) !important; font-weight: 800; }
+        .suggestion-item p { color: var(--text-muted) !important; font-weight: 600 !important; }
+        .old-price { color: #888 !important; text-decoration: line-through; font-family: 'Space Mono', monospace; font-size: 0.8rem; }
+        .new-price { color: var(--blood-red) !important; font-weight: 800; font-family: 'Space Mono', monospace; font-size: 1.4rem; }
 
         .hidden-scroll {
             opacity: 0; transform: translateY(30px) scale(0.98); filter: blur(5px);
@@ -72,7 +75,7 @@
         .reveal-scroll { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
 
         .sale-banner {
-            position: fixed; top: 0; width: 100%; background: var(--chrome); color: var(--bg-obsidian);
+            position: fixed; top: 0; width: 100%; background: var(--chrome); color: #000;
             text-align: center; padding: 8px; font-weight: 800; font-size: 0.7rem; letter-spacing: 2px;
             z-index: 1000; text-transform: uppercase;
         }
@@ -82,15 +85,15 @@
             background: var(--panel); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
             display: grid; grid-template-columns: 220px 1fr 340px;
             border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.1); margin-top: 20px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8); margin-top: 20px;
         }
 
         .sidebar {
-            background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px);
+            background: rgba(24, 24, 27, 0.7); backdrop-filter: blur(20px);
             padding: 30px 15px; border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto;
         }
 
-        .right-bar { background: rgba(255, 255, 255, 0.6); padding: 25px; border-left: 1px solid var(--border); display: flex; flex-direction: column; }
+        .right-bar { background: rgba(24, 24, 27, 0.85); padding: 25px; border-left: 1px solid var(--border); display: flex; flex-direction: column; }
         .logo { font-size: 2rem; font-weight: 800; letter-spacing: 6px; margin-bottom: 40px; color: var(--chrome); text-align: center; }
 
         .nav-btn {
@@ -99,11 +102,11 @@
             font-family: 'Space Mono', monospace; font-size: 0.7rem; font-weight: 600;
             transition: 0.3s; border-radius: 8px; margin-bottom: 5px; width: 100%; letter-spacing: 1px;
         }
-        .nav-btn:hover, .nav-btn.active { background: rgba(17, 17, 17, 0.05); color: var(--chrome); }
+        .nav-btn:hover, .nav-btn.active { background: rgba(229, 228, 226, 0.1); color: var(--chrome); }
 
         .main-content { 
             padding: 30px; overflow-y: auto; display: flex; flex-direction: column; align-items: center; 
-            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+            background: radial-gradient(circle at center, rgba(39, 39, 42, 0.2) 0%, rgba(24, 24, 27, 0.5) 100%);
         }
 
         .tab-pane { width: 100%; display: none; animation: fadeIn 0.4s ease; }
@@ -117,18 +120,16 @@
         }
 
         .suggestion-item {
-            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px);
+            background: rgba(39, 39, 42, 0.8); backdrop-filter: blur(16px);
             border: 1px solid var(--border); border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); padding: 20px;
             display: flex; flex-direction: column; align-items: center; text-align: center;
             transition: transform 0.4s, border-color 0.4s; position: relative; width: 100%;
         }
 
-        /* PERFECT IMAGE COMPRESSION FIX */
         .img-wrapper {
-            width: 100%; position: relative; border-radius: 12px; overflow: hidden; margin-bottom: 15px;
-            aspect-ratio: 4/5; 
-            background: rgba(0,0,0,0.03);
+            width: 100%; height: 320px; position: relative; border-radius: 12px; overflow: hidden; margin-bottom: 15px;
+            background: rgba(0,0,0,0.5);
         }
         .suggestion-item img { 
             width: 100%; height: 100%; object-fit: cover; 
@@ -138,69 +139,64 @@
         .suggestion-item:hover img { filter: grayscale(0%) contrast(120%); transform: scale(1.03); }
 
         .zoom-btn {
-            position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.8);
+            position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6);
             color: var(--chrome); border-radius: 50%; width: 30px; height: 30px; display: flex;
             align-items: center; justify-content: center; cursor: pointer; border: 1px solid var(--border);
             font-size: 0.8rem; z-index: 5; transition: 0.2s; backdrop-filter: blur(4px);
         }
-        .zoom-btn:hover { background: var(--chrome); color: #fff; }
+        .zoom-btn:hover { background: var(--chrome); color: #000; }
 
         .ai-btn {
-            background: var(--chrome); color: #fff; border: none; padding: 6px 12px; border-radius: 20px;
+            background: var(--chrome); color: #000; border: none; padding: 6px 12px; border-radius: 20px;
             font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 1px; font-weight: 800;
-            cursor: pointer; margin-bottom: 15px; transition: 0.3s;
+            cursor: pointer; margin-bottom: 15px; transition: 0.3s; width: 100%;
         }
-        .ai-btn:hover { background: var(--blood-red); }
+        .ai-btn:hover { background: var(--blood-red); color: #fff; }
 
         .price-tag { display: flex; align-items: center; gap: 10px; margin: 15px 0; justify-content: center; }
-        .old-price { text-decoration: line-through; color: var(--text-muted); font-size: 0.8rem; font-family: 'Space Mono', monospace; }	
-
-
-        .new-price { font-size: 1.4rem; font-weight: 800; color: var(--chrome); font-family: 'Space Mono', monospace; }
 
         .btn-add {
-            background: var(--chrome); color: var(--bg-obsidian); padding: 12px 24px; border-radius: 8px; font-weight: 800; 
+            background: var(--chrome); color: #000; padding: 12px 24px; border-radius: 8px; font-weight: 800; 
             border: none; cursor: pointer; transition: 0.3s; text-transform: uppercase; 
             font-size: 0.75rem; font-family: 'Space Mono', monospace; letter-spacing: 1px; width: 100%;
         }
-        .btn-add:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(17,17,17,0.2); }
-        .btn-add.red-btn { background: var(--blood-red); color: #fff; }
+        .btn-add:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(229,228,226,0.2); filter: brightness(1.1); }
+        .btn-add.red-btn { background: var(--blood-red) !important; color: #fff !important; }
 
         .input-box, select {
-            width: 100%; background: rgba(255,255,255,0.8); border: 1px solid var(--border);
-            padding: 10px; color: var(--chrome); border-radius: 8px; text-align: center; margin-bottom: 15px; 
+            width: 100%; background: rgba(0,0,0,0.6); border: 1px solid var(--border);
+            padding: 10px; color: var(--text-primary); border-radius: 8px; text-align: center; margin-bottom: 15px; 
             font-size: 0.75rem; font-family: 'Space Mono', monospace; outline: none;
         }
         
         .remove-item { 
-            color: #9B1C1C; cursor: pointer; margin-left: 10px; font-weight: 900; 
-            border: 1px solid #9B1C1C; padding: 2px 6px; border-radius: 4px; transition: 0.2s;
+            color: var(--blood-red); cursor: pointer; margin-left: 10px; font-weight: 900; 
+            border: 1px solid var(--blood-red); padding: 2px 6px; border-radius: 4px; transition: 0.2s; font-size: 0.7rem;
         }
-        .remove-item:hover { background: #9B1C1C; color: #fff; }
+        .remove-item:hover { background: var(--blood-red); color: #fff; }
 
-        /* THE REVIEW / HELP DESK */
         .help-desk-container {
             width: 100%; max-width: 600px; margin: 60px auto 20px auto; padding: 30px;
-            background: rgba(255, 255, 255, 0.4); border: 1px solid var(--border);
+            background: rgba(39, 39, 42, 0.6); border: 1px solid var(--border);
             border-radius: 16px; backdrop-filter: blur(12px); text-align: center;
         }
 
         .promo-billboard { 
             position: relative; width: 100%; max-width: 1000px; height: 380px; border-radius: 16px; overflow: hidden; 
-            background: #fff; margin: 0 auto 40px auto; border: 1px solid var(--border); 
+            background: #000; margin: 0 auto 40px auto; border: 1px solid var(--border); 
         }
         .promo-track { display: flex; width: 600%; height: 100%; position: absolute; top: 0; left: 0; animation: slide 25s infinite cubic-bezier(0.77, 0, 0.175, 1); }
-        .promo-slide { width: 16.666%; height: 100%; background-size: cover; background-position: center; filter: grayscale(20%); }
+        .promo-slide { width: 16.666%; height: 100%; background-size: cover; background-position: center; filter: grayscale(10%); }
         @keyframes slide { 0%, 14% { transform: translateX(0%); } 20%, 34% { transform: translateX(-16.666%); } 40%, 54% { transform: translateX(-33.333%); } 60%, 74% { transform: translateX(-50%); } 80%, 94% { transform: translateX(-66.666%); } 100% { transform: translateX(-83.333%); } }
-        .promo-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 80%; background: linear-gradient(to top, rgba(230,228,223,1), transparent); }
+        .promo-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 80%; background: linear-gradient(to top, rgba(24,24,27,1), transparent); }
         .promo-text { position: relative; z-index: 2; padding: 30px; width: 100%; text-align: left; bottom: -200px; }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #E6E4DF; }
-        ::-webkit-scrollbar-thumb { background: rgba(17, 17, 17, 0.2); border-radius: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-obsidian); }
+        ::-webkit-scrollbar-thumb { background: rgba(229, 228, 226, 0.2); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--chrome); }
 
-        /* MOBILE OVERRIDE */
+        /* MOBILE ARCHITECTURE */
         @media (max-width: 900px) {
             body { display: block; padding-top: 70px !important; padding-left: 0; padding-right: 0; overflow-y: auto !important; }
             .container { display: block; height: auto; min-height: 100vh; border: none; margin-top: 0; border-radius: 0; box-shadow: none; background: transparent; }
@@ -208,32 +204,29 @@
             
             .mobile-header {
                 display: flex !important; justify-content: space-between; align-items: center;
-                padding: 15px 20px; background: rgba(230, 228, 223, 0.9); backdrop-filter: blur(16px);
+                padding: 15px 20px; background: rgba(24, 24, 27, 0.95); backdrop-filter: blur(16px);
                 border-bottom: 1px solid var(--border); position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;
             }
             .main-content { padding: 90px 10px 40px 10px; height: auto; overflow: visible; background: transparent; }
             
             #hk-nav {
                 position: fixed; top: 0; left: 0; transform: translateX(-100%); width: 80%; height: 100dvh;
-                background: rgba(240, 238, 233, 0.98); backdrop-filter: blur(24px); border-right: 1px solid var(--border);
-                z-index: 1900; padding-top: 100px; display: flex; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                background: rgba(24, 24, 27, 0.98); backdrop-filter: blur(24px); border-right: 1px solid var(--border);
+                z-index: 1900; padding-top: 100px; display: flex; transition: transform 0.4s ease;
             }
             #hk-nav.active-menu { transform: translateX(0); }
             
-            /* TRUE MOBILE 2-COLUMN GRID (Anti-Stretch) */
+            /* TRUE LOCKED 2-COLUMN GRID */
             .product-grid { 
-                display: grid !important;
-                grid-template-columns: repeat(2, 1fr) !important; 
-                gap: 8px !important; 
-                width: 100% !important; 
-                max-width: 100vw !important;
-                box-sizing: border-box !important;
+                display: grid !important; grid-template-columns: repeat(2, 1fr) !important; 
+                gap: 10px !important; width: 100% !important; max-width: 100vw !important; box-sizing: border-box !important;
             }
-            .suggestion-item { 
-                min-width: 0 !important; /* Stops cards from blowing out */
-                padding: 8px !important; 
-                border-radius: 12px; 
-            } 
+            .suggestion-item { padding: 10px; border-radius: 12px; min-width: 0 !important; }
+            .img-wrapper { height: 180px !important; } 
+            
+            .suggestion-item h4 { font-size: 0.75rem !important; margin-bottom: 2px;}
+            .micro-code { font-size: 0.45rem !important; margin: 8px 0 3px 0 !important; }
+            .suggestion-item p { display: none !important; } 
             
             .price-tag { flex-direction: column; gap: 0px; margin: 5px 0 10px 0; }
             .new-price { font-size: 1rem !important; }
@@ -250,12 +243,12 @@
 
         /* MODALS */
         .modal {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100dvh;
-            background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px; backdrop-filter: blur(8px);
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 3000; padding: 20px; backdrop-filter: blur(8px);
         }
         .modal-content-light {
             background: var(--bg-obsidian); padding: 30px; border-radius: 16px; 
-            border: 1px solid var(--border); width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 1px solid var(--border); width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.8);
         }
         
         #mobile-cart-modal .modal-content-light {
@@ -265,7 +258,7 @@
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
         .ai-scanner {
-            width: 100%; height: 4px; background: #ddd; margin: 20px 0; border-radius: 2px; overflow: hidden; position: relative; display: none;
+            width: 100%; height: 4px; background: #333; margin: 20px 0; border-radius: 2px; overflow: hidden; position: relative; display: none;
         }
         .ai-scanner::after {
             content: ''; position: absolute; left: -50%; width: 50%; height: 100%; background: var(--blood-red); animation: scan 1.5s infinite ease-in-out;
@@ -275,16 +268,14 @@
 </head>
 <body>
 
-    <!-- THE WATERMARK & VOID ENGINE -->
     <div class="heritage-watermark">संग्रह</div>
     <canvas id="hk-void"></canvas>
-    <div id="dark-matter-spotlight"></div>
 
     <!-- MOBILE HEADER -->
     <div class="mobile-header">
         <button onclick="document.getElementById('hk-nav').classList.toggle('active-menu')" style="background: none; border: none; color: var(--chrome); font-size: 1.5rem; cursor: pointer;">☰</button>
-        <h2 class="logo" style="margin: 0; font-size: 1.2rem; margin-bottom: 0;">H&K</h2>
-        <button onclick="document.getElementById('mobile-cart-modal').style.display='flex'" style="background: var(--chrome); border: none; color: #fff; font-size: 0.6rem; font-weight: 800; cursor: pointer; outline: none; padding: 8px 12px; border-radius: 8px; letter-spacing: 1px; font-family: 'Space Mono', monospace;">VIEW LOG</button>
+        <h2 class="logo" style="margin: 0; font-size: 1.2rem;">H&K</h2>
+        <button onclick="document.getElementById('mobile-cart-modal').style.display='flex'" style="background: var(--chrome); border: none; color: #000; font-size: 0.6rem; font-weight: 800; cursor: pointer; padding: 8px 12px; border-radius: 8px;">VIEW LOG</button>
     </div>
     
     <div class="sale-banner">FESTIVE SEASON EXCLUSIVE — 50% OFF AUTOMATICALLY APPLIED</div>
@@ -303,7 +294,7 @@
                 <button class="nav-btn" onclick="switchTab('privacy', this)">PRIVACY_PROTOCOL</button>
                 
                 <div style="margin-top: 30px; text-align: center;">
-                    <a href="https://instagram.com/stylehnk" target="_blank" style="color: var(--chrome); text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; font-family: 'Space Mono', monospace;">
+                    <a href="https://instagram.com/stylehnk" target="_blank" style="color: var(--chrome); text-decoration: none; font-size: 0.8rem; font-weight: 800;">
                         <i class="fab fa-instagram" style="font-size: 1.2rem;"></i> @STYLEHNK
                     </a>
                 </div>
@@ -319,19 +310,19 @@
                 <p class="micro-code" style="margin-top: 10px;">HANDCRAFTED_ELITE_TERRACOTTA</p>
             </div>
 
-           <!-- TAB: ACCESSORIES -->
+            <!-- TAB: ACCESSORIES -->
             <div id="tab-acc" class="tab-pane">
                 <h3 class="hidden-scroll" style="margin-bottom: 30px; letter-spacing: 4px; font-size: 1.2rem;">ESSENTIAL GEAR</h3>
                 <div class="product-grid">
                     <div class="suggestion-item hidden-scroll">
                         <div class="micro-code">CANVAS_TOTE</div>
                         <div class="new-price" style="margin-bottom: 10px;">₹199</div>
-                        <button class="btn-add" onclick="addToBag('Canvas Tote', 199)">अधिग्रहण</button>
+                        <button class="btn-add" onclick="addToBag('Canvas Tote', 199, event)">अधिग्रहण</button>
                     </div>
-                    <div class="suggestion-item hidden-scroll">	
-                        <div class="micro-code">KEYLINK</div>		
-                        <div class="new-price" style="margin-bottom: 10px;">₹149</div>	
-                        <button class="btn-add" onclick="addToBag('Founder Keylink', 149)">अधिग्रहण</button>	
+                    <div class="suggestion-item hidden-scroll">
+                        <div class="micro-code">KEYLINK</div>
+                        <div class="new-price" style="margin-bottom: 10px;">₹149</div>
+                        <button class="btn-add" onclick="addToBag('Founder Keylink', 149, event)">अधिग्रहण</button>
                     </div>
                 </div>
             </div>
@@ -341,37 +332,34 @@
                 <h3 class="hidden-scroll" style="letter-spacing: 5px; margin-bottom: 30px; font-size: 1.2rem;">[ ENTRY_001: THE WEARABLE ARCHIVE ]</h3>
                 <div class="info-block hidden-scroll">
                     <p>We didn't just want to print shirts. We wanted to dye <b>Culture</b> into heavy cotton.</p>
-                    <p>When we conceptualized <span style="color: var(--chrome); font-weight:bold;">PHASE_01</span> and the Acid Wash Capsule, factories told us our vintage treatment was too aggressive. They wanted uniform perfection. We wanted raw, industrial heritage.</p>
+                    <p>When we conceptualized <span style="color: var(--chrome); font-weight:bold;">PHASE_01</span> and the Acid Wash Capsule, factories told us our vintage treatment was too aggressive, too unpredictable. They wanted uniform perfection. We wanted raw, industrial heritage.</p>
                     <div class="quote">"A blank tee is just a uniform. An acid-washed heavy cotton drop is a statement. Every fade, every distressed hem is earned, not manufactured."</div>
-                    <p style="margin-bottom: 20px;">This Drop is an evolution of the H&K vision. From the local bazaars to the global stage, we are bridging eras and aesthetics. It’s heavy, it’s unapologetic, and it’s exclusively yours.</p>	
-                    <p style="margin-top: 30px; font-family: 'Space Mono', monospace; color: var(--blood-red); font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 20px; line-height: 2;">		
+                    <p>This Drop is an evolution of the H&K vision. From the local bazaars to the global stage, we are bridging eras and aesthetics. It’s heavy, it’s unapologetic, and it’s exclusively yours.</p>	
+                    <p style="margin-top: 30px; font-family: 'Space Mono', monospace; color: var(--blood-red); font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 20px; line-height: 2 !important;">		
                         // SIGNATURE_VERIFIED: <br>		
                         // THE ACID WASH PROCESS IS VOLATILE BY NATURE. <br>		
                         // NO TWO TEES IN CAPSULE_01 ARE IDENTICAL. YOUR FADE IS YOUR FINGERPRINT.	
                     </p>		
                     <div style="margin-top: 40px;">		
                         <span style="font-size: 0.6rem; letter-spacing: 3px; color: var(--text-muted); font-family: 'Space Mono', monospace;">EXECUTED_BY:</span>		
-                        <p style="font-weight: 800; letter-spacing: 2px; margin-top: 5px; color: #111; font-family: 'Cinzel', serif;">THE FOUNDERS</p>		
-                        <p style="font-size: 0.5rem; color: var(--chrome); letter-spacing: 1px; font-family: 'Space Mono', monospace;">H&K // MODERN HERITAGE ARCHIVE</p>		
+                        <p style="font-weight: 800; letter-spacing: 2px; margin-top: 5px; color: var(--text-primary); font-family: 'Cinzel', serif;">THE FOUNDERS</p>		
+                        <p style="font-size: 0.5rem; color: var(--chrome); letter-spacing: 1px; font-family: 'Space Mono', monospace; margin-bottom: 0 !important;">H&K // MODERN HERITAGE ARCHIVE</p>		
                     </div>
                 </div>
             </div>
             
             <!-- TAB: PRIVACY -->
-            
-           
             <div id="tab-privacy" class="tab-pane">
                 <h3 class="hidden-scroll" style="margin-bottom: 30px; letter-spacing: 4px; font-size: 1.2rem;">PRIVACY_PROTOCOL</h3>
                 <div class="info-block hidden-scroll">
                     <b>Data Collection</b>
-                    <p>H&K logs user-provided identifiers strictly for order fulfillment during this Trial Launch Phase.
-                    All the AI-TryOns are AI-Powered and H&K does not store your image data in any form, its used to create your fit in tees and deleted forever. Any such images are not saved in servers.</p>
+                    <p>H&K logs user-provided identifiers strictly for order fulfillment during this Trial Launch Phase. All the AI-TryOns are AI-Powered and H&K does not store your image data in any form, its used to create your fit in tees and deleted forever. Any such images are not saved in servers.</p>
                     <b>Transmission Security</b>
-                    <p>All checkout data is transmitted via end-to-end encrypted gateways. We do not store financial records or passwords.</p>
+                    <p>All checkout data is transmitted via end-to-end encrypted gateways. We do not store financial records or passwords on our internal servers.</p>
                     <b>Third-Party Access</b>		
-                    Your information is never sold or shared with external marketing agencies. Data is used solely by the H&K team to coordinate handcrafted production and regional delivery.		
+                    <p>Your information is never sold or shared with external marketing agencies. Data is used solely by the H&K team to coordinate handcrafted production and regional delivery.</p>		
                     <b>User Rights</b>		
-                    As a user of our Trial Phase, we currently do not handle requests of deletion of your order logs or exchanges, however we do reconfirm the orders.
+                    <p>As a user of our Trial Phase, we currently do not handle requests of deletion of your order logs or exchanges, however we do reconfirm the orders.</p>
                 </div>
             </div>
 
@@ -379,7 +367,7 @@
             <div id="tab-about" class="tab-pane">
                 <h3 class="hidden-scroll" style="margin-bottom: 30px; letter-spacing: 4px; font-size: 1.2rem;">THE_VISION</h3>
                 <div class="info-block hidden-scroll">
-                    <p><b>Musings of H&K:</b> H&K is a curated Modern Heritage Archive that is gear for the modern metropolis. H&K was never meant to be just a storefront. It was born from the raw energy, the dust, and the vibrancy of a Jaipur afternoon.It started with a simple realization: the modern market is saturated with sterile, mass-produced perfection. We wanted to build something that actually had a pulse.</p>
+                    <p><b>Musings of H&K:</b> H&K is a curated Modern Heritage Archive that is gear for the modern metropolis. H&K was never meant to be just a storefront. It was born from the raw energy, the dust, and the vibrancy of a Jaipur afternoon. It started with a simple realization: the modern market is saturated with sterile, mass-produced perfection. We wanted to build something that actually had a pulse.</p>
                     <p>We are not a "studio." We dropped that word because we don't design in sterile, corporate rooms. We are a Modern Heritage Archive—a curated, maximalist vault of culture, scent, and style. We bridge the ancient wisdom of local artisans with the high-speed aesthetic of modern luxury.</p>		
                     <p>Perfection is a machine’s game yet we master it. At H&K, unpredictable fade on an acid-washed tee is never considered a defect. It is the ultimate proof of life. It is the signature of the human hands that crafted it.</p>		
                     <p><b>Trial Launch Theory:</b> Testing scalability via handcrafted production. Access is curated to maintain quality control.</p>		
@@ -390,9 +378,7 @@
 
             <!-- TAB: WEAR (THE APPAREL ARCHIVE) -->
             <div id="tab-coming" class="tab-pane active">
-
                 <h3 style="margin-bottom: 25px; letter-spacing: 5px; font-size: 1rem;">[ THE_APPAREL_ARCHIVE ]</h3>
-                
                 <div style="display: flex; gap: 20px; margin-bottom: 35px; border-bottom: 1px solid var(--border); padding-bottom: 10px; width: 100%; max-width: 600px; justify-content: center; flex-wrap: wrap;">
                     <span id="nav-tops" onclick="switchSubTab('tops')" style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: var(--chrome); cursor: pointer; border-bottom: 2px solid var(--chrome); padding-bottom: 5px;">01_NEUTRAL</span>
                     <span id="nav-acid" onclick="switchSubTab('acid')" style="font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: var(--text-muted); cursor: pointer; padding-bottom: 5px; transition: 0.3s;">02_ACID_WASH</span>
@@ -405,7 +391,7 @@
                     <div class="promo-billboard hidden-scroll">
                         <div class="promo-track">
                             <div class="promo-slide" style="background-image: url('h%26K%20apperals/money%20a%20curse%20tee.jpeg');"></div>
-                             <div class="promo-slide" style="background-image: url('h%26K%20apperals/demon%20slayer%20tee.jpeg');"></div>
+                            <div class="promo-slide" style="background-image: url('h%26K%20apperals/demon%20slayer%20tee.jpeg');"></div>
                             <div class="promo-slide" style="background-image: url('h%26K%20apperals/lord%20krishna%20tee.png');"></div>
                             <div class="promo-slide" style="background-image: url('h%26K%20apperals/acid-wash-tee.jpeg');"></div>
                             <div class="promo-slide" style="background-image: url('h%26K%20apperals/money%20a%20curse%20tee.jpeg');"></div>
@@ -429,21 +415,22 @@
                             <p>Premium Polycotton (BACKPRINT)</p>
                             <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
                             <select id="size-money"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-money').value; if(sz) { addToBag('Money a Curse Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-money').value; if(sz) { addToBag('Money a Curse Tee - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
-                        <div class="img-wrapper">
-                            <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
-                            <img src="h%26K%20apperals/demon%20slayer%20tee.jpeg" alt="Demon Slayer Tee">
+                        <div class="suggestion-item hidden-scroll">
+                            <div class="img-wrapper">
+                                <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
+                                <img src="h%26K%20apperals/demon%20slayer%20tee.jpeg" alt="Demon Slayer Tee">
+                            </div>
+                            <button class="ai-btn" onclick="openAITryOn('Demon Slayer Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
+                            <div class="micro-code">ARCHIVE_03</div>
+                            <h4>Demon Slayer FANMADE Tee</h4>
+                            <p>Premium Tee(FANMADE)</p>
+                            <div class="price-tag"><span class="old-price">1499</span><span class="new-price">₹649</span></div>
+                            <select id="size-demonfn"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-demonfn').value; if(sz) { addToBag('Demon Slayer Fanmade Tee - '+ sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
-                        <button class="ai-btn" onclick="openAITryOn('Demon Slayer Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
-                        <div class="micro-code">ARCHIVE_03</div>
-                        <h4>Demon Slayer FANMADE Tee</h4>
-                        <p>Premium Tee(FANMADE)</p>
-                        <div class="price-tag"><span class="old-price">1499</span><span class="new-price">₹649</span></div>
-                        <select id="size-demonfn"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                        <button class="btn-add" onclick="let sz = document.getElementById('size-demonfn').value; if(sz) { addToBag('Demon Slayer Fanmade Tee - '+ sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
-                       </div>
 
                         <div class="suggestion-item hidden-scroll">
                             <div class="img-wrapper">
@@ -456,7 +443,7 @@
                             <p>poly Heavyweight French Terry</p>
                             <div class="price-tag"><span class="old-price">₹599</span><span class="new-price">₹399</span></div>
                             <select id="size-hk-exclusive"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-hk-exclusive').value; if(sz) { addToBag('H&K Exclusive Tee - ' + sz, 399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-hk-exclusive').value; if(sz) { addToBag('H&K Exclusive Tee - ' + sz, 399, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -470,13 +457,14 @@
                             <p>Premium cotton (BACKPRINT)</p>
                             <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
                             <select id="size-alleyez"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-alleyez').value; if(sz) { addToBag('All Eyez On Me Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-alleyez').value; if(sz) { addToBag('All Eyez On Me Tee - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
                             <div class="img-wrapper">
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
-                                <img src="h%26K%20apperals/car911.png" alt="911 Editorial Tee">
+                                <!-- NOTE: Image path updated for 911 Editorial Tee here -->
+                                <img src="h%26K%20apperals/Gemini_Generated_Image_h03udeh03udeh03u.png" alt="911 Editorial Tee">
                             </div>
                             <button class="ai-btn" onclick="openAITryOn('911 Editorial Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">ARCHIVE_01</div>
@@ -484,7 +472,7 @@
                             <p>Heavyweight French Terry</p>
                             <div class="price-tag"><span class="old-price">₹599</span><span class="new-price">₹399</span></div>
                             <select id="size-911"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-911').value; if(sz) { addToBag('911 Editorial Tee - ' + sz, 399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-911').value; if(sz) { addToBag('911 Editorial Tee - ' + sz, 399, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -498,10 +486,8 @@
                             <p>Premium Blend Shloka Overlay</p>
                             <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
                             <select id="size-krshn"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-krshn').value; if(sz) { addToBag('Lord Krishna Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-krshn').value; if(sz) { addToBag('Lord Krishna Tee - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
-
-                        
 
                         <div class="suggestion-item hidden-scroll">
                             <div class="img-wrapper">
@@ -514,7 +500,7 @@
                             <p>Heavyweight Graphic Streetwear</p>
                             <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
                             <select id="size-bangbang"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-bangbang').value; if(sz) { addToBag('Bang Bang Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-bangbang').value; if(sz) { addToBag('Bang Bang Tee - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -528,7 +514,7 @@
                             <p>Premium cotton (BACKPRINT)</p>
                             <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
                             <select id="size-uno"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-uno').value; if(sz) { addToBag('UNO Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-uno').value; if(sz) { addToBag('UNO Tee - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -542,7 +528,7 @@
                             <p>Premium Polycotton Blend</p>
                             <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
                             <select id="size-cottonex"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-cottonex').value; if(sz) { addToBag('H&K Exclusive Cotton Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-cottonex').value; if(sz) { addToBag('H&K Exclusive Cotton Tee - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -556,25 +542,25 @@
                             <p>Premium Polycotton Blend</p>
                             <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
                             <select id="size-harmony"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-harmony').value; if(sz) { addToBag('Harmony Kings Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-harmony').value; if(sz) { addToBag('Harmony Kings Tee - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
-                        <div class="suggestion-item hidden-scroll">
-                            <div class="img-wrapper">
-                                <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
-                                <img src="h%26K%20apperals/modi%20tee.png" alt="Modi Fanmade Tee">
-                            </div>
-                            <button class="ai-btn" onclick="openAITryOn('Modi Fanmade Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
-                            <div class="micro-code">GEOPOLITICS_03</div>
-                            <h4>Modi Fanmade Tee</h4>
-                            <p>Premium Polycotton Halftone</p>
-                            <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
-                            <select id="size-modi"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-modi').value; if(sz) { addToBag('Modi Fanmade Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
-                        </div>
+
+                        <div class="suggestion-item hidden-scroll">
+                            <div class="img-wrapper">
+                                <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
+                                <img src="h%26K%20apperals/modi%20tee.png" alt="Modi Fanmade Tee">
+                            </div>
+                            <button class="ai-btn" onclick="openAITryOn('Modi Fanmade Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
+                            <div class="micro-code">GEOPOLITICS_03</div>
+                            <h4>Modi Fanmade Tee</h4>
+                            <p>Premium Polycotton Halftone</p>
+                            <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
+                            <select id="size-modi"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-modi').value; if(sz) { addToBag('Modi Fanmade Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                        </div>
 
                         
-
                         <div class="suggestion-item hidden-scroll">
                             <div class="img-wrapper">
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
@@ -586,7 +572,7 @@
                             <p>Premium Pique Blend</p>
                             <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
                             <select id="size-animepolo"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-animepolo').value; if(sz) { addToBag('Anime Polo - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-animepolo').value; if(sz) { addToBag('Anime Polo - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                     </div>
@@ -594,9 +580,8 @@
 
                 <!-- 02: ACID WASH GRID -->
                 <div id="sub-acid" style="display: none; width: 100%;">
-                    
                     <div class="promo-billboard hidden-scroll" style="height: 250px;">
-                        <div class="promo-overlay" style="height: 100%; background: radial-gradient(circle at center, rgba(10,10,15,0.4) 0%, rgba(0,0,0,0.9) 100%);"></div>
+                        <div class="promo-overlay" style="height: 100%; background: radial-gradient(circle at center, rgba(39,39,42,0.6) 0%, rgba(24,24,27,0.95) 100%);"></div>
                         <div class="promo-text" style="position: absolute; top: 50%; transform: translateY(-50%); text-align: center;">
                             <h4 style="font-size: 0.8rem; color: var(--chrome);">Capsule // 01</h4>
                             <h2 style="font-size: 2.5rem; letter-spacing: 4px; color: #fff;">The Acid Archive</h2>
@@ -604,7 +589,6 @@
                     </div>
                     
                     <div class="product-grid">
-
                         <div class="suggestion-item hidden-scroll">
                             <div class="img-wrapper">
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
@@ -616,7 +600,7 @@
                             <p>Heavyweight Acid Wash Cotton</p>
                             <div class="price-tag"><span class="old-price">₹1999</span><span class="new-price">₹999</span></div>
                             <select id="size-acid-basic"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-basic').value; if(sz) { addToBag('Acid Wash Black Tee - ' + sz, 999); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-basic').value; if(sz) { addToBag('Acid Wash Black Tee - ' + sz, 999, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -630,7 +614,7 @@
                             <p>Ultra-Premium Vintage Wash</p>
                             <div class="price-tag"><span class="old-price">₹2499</span><span class="new-price">₹1399</span></div>
                             <select id="size-acid-hk"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add red-btn" onclick="let sz = document.getElementById('size-acid-hk').value; if(sz) { addToBag('H&K Exclusive Acid Tee - ' + sz, 1399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add red-btn" onclick="let sz = document.getElementById('size-acid-hk').value; if(sz) { addToBag('H&K Exclusive Acid Tee - ' + sz, 1399, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -644,7 +628,7 @@
                             <p>Ultra-Premium Vintage Wash</p>
                             <div class="price-tag"><span class="old-price">₹2499</span><span class="new-price">₹1399</span></div>
                             <select id="size-acid-demon"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-demon').value; if(sz) { addToBag('Demon Slayer Acid Wash - ' + sz, 1399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-demon').value; if(sz) { addToBag('Demon Slayer Acid Wash - ' + sz, 1399, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -658,17 +642,15 @@
                             <p>Ultra-Premium Vintage Wash</p>
                             <div class="price-tag"><span class="old-price">₹2499</span><span class="new-price">₹1399</span></div>
                             <select id="size-acid-greek"><option value="" disabled selected>SELECT SIZE</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-greek').value; if(sz) { addToBag('Greek Style Acid Wash - ' + sz, 1399); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-acid-greek').value; if(sz) { addToBag('Greek Style Acid Wash - ' + sz, 1399, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
-
                     </div>
                 </div>
 
                 <!-- 03: HER ARCHIVE GRID -->
                 <div id="sub-her" style="display: none; width: 100%;">
-                    
                     <div class="promo-billboard hidden-scroll" style="height: 250px;">
-                        <div class="promo-overlay" style="height: 100%; background: radial-gradient(circle at center, rgba(58,13,22,0.6) 0%, rgba(0,0,0,0.95) 100%);"></div>
+                        <div class="promo-overlay" style="height: 100%; background: radial-gradient(circle at center, rgba(58,13,22,0.6) 0%, rgba(24,24,27,0.95) 100%);"></div>
                         <div class="promo-text" style="position: absolute; top: 50%; transform: translateY(-50%); text-align: center;">
                             <h4 style="font-size: 0.8rem; color: var(--blood-red);">Festive Exclusive</h4>
                             <h2 style="font-size: 2.5rem; letter-spacing: 4px; color: #fff;">Her Archive</h2>
@@ -676,7 +658,6 @@
                     </div>
 
                     <div class="product-grid">
-
                         <div class="suggestion-item hidden-scroll">
                             <div class="img-wrapper">
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
@@ -691,7 +672,7 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add red-btn" onclick="let sz = document.getElementById('size-her-lepoard').value; if(sz) { addToBag('Leopard Tube top - ' + sz, 209); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add red-btn" onclick="let sz = document.getElementById('size-her-lepoard').value; if(sz) { addToBag('Leopard Tube top - ' + sz, 209, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -708,7 +689,7 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-toxic').value; if(sz) { addToBag('Toxic Stamp Crop Top - ' + sz, 599); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-toxic').value; if(sz) { addToBag('Toxic Stamp Crop Top - ' + sz, 599, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -725,7 +706,7 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-tea').value; if(sz) { addToBag('Spill Tea Crop Top - ' + sz, 599); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-tea').value; if(sz) { addToBag('Spill Tea Crop Top - ' + sz, 599, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -742,7 +723,7 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-buri').value; if(sz) { addToBag('Buri Nazar Crop Top - ' + sz, 599); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-buri').value; if(sz) { addToBag('Buri Nazar Crop Top - ' + sz, 599, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -759,7 +740,7 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-diva').value; if(sz) { addToBag('Diva Graphic Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-diva').value; if(sz) { addToBag('Diva Graphic Tee - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -776,17 +757,15 @@
                                 <option value="" disabled selected>SELECT HER SIZE</option>
                                 <option value="XS">XS</option><option value="S">S (Chest: 96cm)</option><option value="M">M (Chest: 101cm)</option><option value="L">L (Chest: 107cm)</option><option value="XL">XL (Chest: 112cm)</option>
                             </select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-nonchalant').value; if(sz) { addToBag('Nonchalant Tee - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-her-nonchalant').value; if(sz) { addToBag('Nonchalant Tee - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
-
                     </div>
                 </div>
 
                 <!-- 04: HIS ARCHIVE GRID -->
                 <div id="sub-his" style="display: none; width: 100%;">
-                    
                     <div class="promo-billboard hidden-scroll" style="height: 250px;">
-                        <div class="promo-overlay" style="height: 100%; background: radial-gradient(circle at center, rgba(27,38,59,0.6) 0%, rgba(0,0,0,0.95) 100%);"></div>
+                        <div class="promo-overlay" style="height: 100%; background: radial-gradient(circle at center, rgba(27,38,59,0.6) 0%, rgba(24,24,27,0.95) 100%);"></div>
                         <div class="promo-text" style="position: absolute; top: 50%; transform: translateY(-50%); text-align: center;">
                             <h4 style="font-size: 0.8rem; color: var(--chrome);">Festive Exclusive</h4>
                             <h2 style="font-size: 2.5rem; letter-spacing: 4px; color: #fff;">His Archive</h2>
@@ -794,7 +773,6 @@
                     </div>
 
                     <div class="product-grid">
-
                         <div class="suggestion-item hidden-scroll">
                             <div class="img-wrapper">
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
@@ -806,7 +784,7 @@
                             <p>Premium Vintage Collar Accents</p>
                             <div class="price-tag"><span class="old-price">₹1299</span><span class="new-price">₹649</span></div>
                             <select id="size-his-umber"><option value="" disabled selected>SELECT HIS SIZE</option><option value="S">S</option><option value="M">M</option><option value="L">L</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-umber').value; if(sz) { addToBag('Brown Umber Polo - ' + sz, 649); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-umber').value; if(sz) { addToBag('Brown Umber Polo - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
                         <div class="suggestion-item hidden-scroll">
@@ -820,7 +798,7 @@
                             <p>Heavyweight Pique Cotton</p>
                             <div class="price-tag"><span class="old-price">₹999</span><span class="new-price">₹549</span></div>
                             <select id="size-his-navy"><option value="" disabled selected>SELECT HIS SIZE</option><option value="S">S</option><option value="M">M</option><option value="L">L</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-navy').value; if(sz) { addToBag('Midnight Navy Polo - ' + sz, 549); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-navy').value; if(sz) { addToBag('Midnight Navy Polo - ' + sz, 549, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
                         
                         <div class="suggestion-item hidden-scroll">
@@ -834,21 +812,19 @@
                             <p>Heavyweight Pique Cotton</p>
                             <div class="price-tag"><span class="old-price">₹999</span><span class="new-price">₹549</span></div>
                             <select id="size-his-sky"><option value="" disabled selected>SELECT HIS SIZE</option><option value="S">S</option><option value="M">M</option><option value="L">L</option></select>
-                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-sky').value; if(sz) { addToBag('Sky Blue Polo - ' + sz, 549); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+                            <button class="btn-add" onclick="let sz = document.getElementById('size-his-sky').value; if(sz) { addToBag('Sky Blue Polo - ' + sz, 549, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
-
                     </div>
                 </div>
-
             </div> <!-- CLOSES WEAR TAB -->
 
-            <!-- REVIEW & SUPPORT NODE HARDCODED AT BOTTOM -->
-            <div class="help-desk-container hidden-scroll" style="width: 100%; max-width: 600px; margin: 60px auto 20px auto; padding: 30px; background: rgba(255, 255, 255, 0.4); border: 1px solid var(--border); border-radius: 16px; backdrop-filter: blur(12px); text-align: center;">
-                <h3 style="letter-spacing: 4px; font-size: 1rem; margin-bottom: 15px; color: #111;">[ SUPPORT NODE ]</h3>
-                <p style="font-family: 'Space Mono', monospace; font-size: 0.7rem; margin-bottom: 20px; color: #666;">SUBMIT_INQUIRY_OR_FEEDBACK</p>
-                <input type="text" id="fb-name" class="input-box" placeholder="IDENTIFIER (NAME)" style="background: rgba(255,255,255,0.8); color: #111; width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; font-family: 'Space Mono', monospace; outline: none;">
-                <textarea id="fb-desc" class="input-box" rows="3" placeholder="YOUR TRANSMISSION..." style="resize: none; background: rgba(255,255,255,0.8); color: #111; width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; font-family: 'Space Mono', monospace; outline: none;"></textarea>
-                <button class="btn-add" onclick="alert('TRANSMISSION LOGGED. The founders will review your input.')" style="background: #111; color: #E6E4DF; width: 100%; padding: 12px; border: none; border-radius: 8px; font-family: 'Space Mono', monospace; font-weight: 800; cursor: pointer;">SUBMIT LOG</button>
+            <!-- REVIEW & SUPPORT NODE -->
+            <div class="help-desk-container hidden-scroll">
+                <h3 style="letter-spacing: 4px; font-size: 1rem; margin-bottom: 15px; color: var(--chrome);">[ SUPPORT NODE ]</h3>
+                <p style="font-family: 'Space Mono', monospace; font-size: 0.7rem; margin-bottom: 20px; color: var(--text-muted);">SUBMIT_INQUIRY_OR_FEEDBACK</p>
+                <input type="text" id="fb-name" class="input-box" placeholder="IDENTIFIER (NAME)">
+                <textarea id="fb-desc" class="input-box" rows="3" placeholder="YOUR TRANSMISSION..." style="resize: none;"></textarea>
+                <button class="btn-add" onclick="alert('TRANSMISSION LOGGED. The founders will review your input.')" style="width: 100%; padding: 12px;">SUBMIT LOG</button>
             </div>
             
         </div> <!-- CLOSES MAIN CONTENT -->
@@ -857,29 +833,29 @@
         <div id="hk-cart" class="right-bar">
             <div class="section-header">SUGGESTIONS</div>
             <div id="suggestions">
-                <div class="suggestion-item" onclick="addToBag('Founder Keylink', 149)" style="padding: 15px; margin-bottom: 25px; border-radius: 8px;">
-                    <div style="font-size: 0.65rem; font-weight: 700; font-family: 'Space Mono', monospace; color: #111;">+ FOUNDER KEYLINK</div>
+                <div class="suggestion-item" onclick="addToBag('Founder Keylink', 149, event)" style="padding: 15px; margin-bottom: 25px; border-radius: 8px;">
+                    <div style="font-size: 0.65rem; font-weight: 700; font-family: 'Space Mono', monospace; color: var(--text-primary);">+ FOUNDER KEYLINK</div>
                     <div style="font-size: 0.8rem; color: var(--blood-red); font-family: 'Space Mono', monospace; margin-top: 5px; font-weight: 800;">₹149</div>
                 </div>
             </div>
 
             <div class="section-header">संग्रह वृत्तान्त (ARCHIVE LOG)</div>
             <div id="bag-list" style="flex: 1; font-size: 0.75rem; overflow-y: auto; max-height: 250px; font-family: 'Space Mono', monospace; margin-bottom: 20px;">
-                <p style="opacity: 0.4; font-style: italic; color: #111;">_VOID_EMPTY</p>
+                <p style="opacity: 0.4; font-style: italic; color: var(--text-primary);">_VOID_EMPTY</p>
             </div>
 
             <div style="border-top: 1px solid var(--border); padding-top: 15px;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                    <span style="font-size: 0.7rem; font-family: 'Space Mono', monospace; color: #111;">TOTAL</span>
-                    <span id="total-price" style="font-weight: 800; color: #111; font-size: 1.2rem; font-family: 'Space Mono', monospace;">₹0</span>
+                    <span style="font-size: 0.7rem; font-family: 'Space Mono', monospace; color: var(--text-primary);">TOTAL</span>
+                    <span id="total-price" style="font-weight: 800; color: var(--chrome); font-size: 1.2rem; font-family: 'Space Mono', monospace;">₹0</span>
                 </div>
                 
-                <div style="font-size: 0.55rem; color: var(--text-muted); text-align: center; margin-bottom: 15px; letter-spacing: 1px; padding: 10px; background: rgba(17, 17, 17, 0.05); border-radius: 6px; border: 1px dashed rgba(17, 17, 17, 0.2); font-family: 'Space Mono', monospace;">
+                <div style="font-size: 0.55rem; color: var(--text-muted); text-align: center; margin-bottom: 15px; letter-spacing: 1px; padding: 10px; background: rgba(229, 228, 226, 0.05); border-radius: 6px; border: 1px dashed rgba(229, 228, 226, 0.2); font-family: 'Space Mono', monospace;">
                     EST. FULFILLMENT: <br>
-                    <span id="delivery-date" style="font-weight: 800; color: #111; font-size: 0.7rem; letter-spacing: 2px;">CALCULATING...</span>
+                    <span id="delivery-date" style="font-weight: 800; color: var(--text-primary); font-size: 0.7rem; letter-spacing: 2px;">CALCULATING...</span>
                 </div>
 
-                <button class="btn-add" style="width: 100%; font-size: 0.7rem; background: #111; color: #E6E4DF;" onclick="openCheckout()">INITIATE_ORDER</button>
+                <button class="btn-add" style="width: 100%; font-size: 0.7rem;" onclick="openCheckout()">INITIATE_ORDER</button>
             </div>
         </div>
     </div>
@@ -890,34 +866,34 @@
 
     <!-- MOBILE CART MODAL -->
     <div id="mobile-cart-modal" class="modal">
-        <div class="modal-content-light" style="background: var(--bg-obsidian); padding: 30px; border-radius: 20px 20px 0 0; border: 1px solid var(--border); width: 100%; position: absolute; bottom: 0; box-shadow: 0 -10px 40px rgba(0,0,0,0.2); text-align: center;">
-            <h4 style="margin-bottom: 20px; font-family: 'Space Mono', monospace; color: #111; font-weight: 800;">SAṂGRAHA (LOG)</h4>
+        <div class="modal-content-light" style="background: var(--bg-obsidian); padding: 30px; border-radius: 20px 20px 0 0; border: 1px solid var(--border); width: 100%; position: absolute; bottom: 0; box-shadow: 0 -10px 40px rgba(0,0,0,0.5); text-align: center;">
+            <h4 style="margin-bottom: 20px; font-family: 'Space Mono', monospace; color: var(--text-primary); font-weight: 800;">SAṂGRAHA (LOG)</h4>
             <div id="mobile-bag-list" style="max-height: 250px; overflow-y: auto; text-align: left; font-family: 'Space Mono', monospace; font-size: 0.75rem; margin-bottom: 20px;">
-                <p style="opacity: 0.4; font-style: italic; color: #111;">_VOID_EMPTY</p>
+                <p style="opacity: 0.4; font-style: italic; color: var(--text-primary);">_VOID_EMPTY</p>
             </div>
             <div style="display: flex; justify-content: space-between; margin-bottom: 15px; border-top: 1px solid var(--border); padding-top: 15px;">
-                <span style="font-weight: bold; color: #111; font-family: 'Space Mono', monospace;">TOTAL:</span>
+                <span style="font-weight: bold; color: var(--text-primary); font-family: 'Space Mono', monospace;">TOTAL:</span>
                 <span id="mobile-total-price" style="font-weight: 800; color: var(--blood-red); font-size: 1.2rem; font-family: 'Space Mono', monospace;">₹0</span>
             </div>
             <button class="btn-add red-btn" style="width: 100%; padding: 12px; border: none; border-radius: 8px; font-family: 'Space Mono', monospace; font-weight: 800; cursor: pointer; background: var(--blood-red); color: #fff;" onclick="document.getElementById('mobile-cart-modal').style.display='none'; openCheckout();">CHECKOUT</button>
-            <p style="margin-top: 15px; font-size: 0.6rem; cursor: pointer; font-family: 'Space Mono', monospace; color: #666;" onclick="document.getElementById('mobile-cart-modal').style.display='none'">[ CLOSE ]</p>
+            <p style="margin-top: 15px; font-size: 0.6rem; cursor: pointer; font-family: 'Space Mono', monospace; color: var(--text-muted);" onclick="document.getElementById('mobile-cart-modal').style.display='none'">[ CLOSE ]</p>
         </div>
     </div>
 
     <!-- IMAGE ZOOM MODAL -->
     <div id="zoom-modal" class="modal" onclick="this.style.display='none'" style="z-index: 4000;">
-        <img id="zoomed-image" src="" style="max-width: 95%; max-height: 90vh; border-radius: 12px; border: 1px solid rgba(17,17,17,0.2);">
+        <img id="zoomed-image" src="" style="max-width: 95%; max-height: 90vh; border-radius: 12px; border: 1px solid rgba(229,228,226,0.2);">
         <p style="position: absolute; bottom: 20px; color: #fff; font-family: 'Space Mono', monospace;">[ TAP ANYWHERE TO CLOSE ]</p>
     </div>
 
     <!-- TRANSMISSION PROTOCOL (CHECKOUT) -->
     <div id="checkout-modal" class="modal">
-        <div style="background: var(--bg-obsidian); padding: 30px; border-radius: 16px; border: 1px solid #111; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
-            <h4 style="margin-bottom: 20px; letter-spacing: 3px; font-size: 1rem; color: #111; font-family: 'Cinzel', serif;">TRANSMISSION_PROTOCOL</h4>
-            <input type="text" id="cust-name" class="input-box" placeholder="YOUR NAME" style="background: rgba(255,255,255,0.8); color: #111; width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; outline: none; font-family: 'Space Mono', monospace;">
-            <input type="tel" id="cust-phone" class="input-box" placeholder="WHATSAPP NUMBER" style="background: rgba(255,255,255,0.8); color: #111; width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; outline: none; font-family: 'Space Mono', monospace;">
-            <textarea id="cust-address" class="input-box" rows="3" placeholder="FULL DELIVERY ADDRESS (WITH PINCODE)" style="resize: none; background: rgba(255,255,255,0.8); color: #111; width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; outline: none; font-family: 'Space Mono', monospace;"></textarea>
-            <input type="text" id="customlabel" class="input-box" placeholder="YOUR LABEL (IF ANY)" style="background: rgba(255,255,255,0.8); color: #111; width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; outline: none; font-family: 'Space Mono', monospace;">
+        <div style="background: var(--bg-obsidian); padding: 30px; border-radius: 16px; border: 1px solid var(--border); width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.8);">
+            <h4 style="margin-bottom: 20px; letter-spacing: 3px; font-size: 1rem; color: var(--text-primary); font-family: 'Cinzel', serif;">TRANSMISSION_PROTOCOL</h4>
+            <input type="text" id="cust-name" class="input-box" placeholder="YOUR NAME">
+            <input type="tel" id="cust-phone" class="input-box" placeholder="WHATSAPP NUMBER">
+            <textarea id="cust-address" class="input-box" rows="3" placeholder="FULL DELIVERY ADDRESS (WITH PINCODE)" style="resize: none;"></textarea>
+            <input type="text" id="customlabel" class="input-box" placeholder="YOUR LABEL (IF ANY)">
             <button class="btn-add red-btn" id="transmit-btn" style="width:100%; padding: 12px; border: none; border-radius: 8px; font-family: 'Space Mono', monospace; font-weight: 800; cursor: pointer; background: var(--blood-red); color: #fff;" onclick="sendOrder()">TRANSMIT VIA WHATSAPP</button>
             <p style="margin-top: 20px; cursor: pointer; font-size: 0.65rem; color: var(--text-muted); font-family: 'Space Mono', monospace;" onclick="document.getElementById('checkout-modal').style.display='none'">[ ABORT ]</p>
         </div>
@@ -925,22 +901,22 @@
 
     <!-- AI TRY-ON VTON MODAL -->
     <div id="ai-modal" class="modal">
-        <div style="background: var(--bg-obsidian); padding: 30px; border-radius: 16px; border: 1px solid #111; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
-            <h3 style="color: #111; margin-bottom: 10px; font-family: 'Cinzel', serif;">AI_FIT MODULE</h3>
-            <p style="font-family: 'Space Mono', monospace; font-size: 0.65rem; margin-bottom: 20px; color: #666;">UPLOADING SUBJECT FOR VIRTUAL DRAPE: <br><span id="ai-item-name" style="color:#9B1C1C; font-weight:bold;"></span></p>
+        <div style="background: var(--bg-obsidian); padding: 30px; border-radius: 16px; border: 1px solid var(--border); width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.8);">
+            <h3 style="color: var(--text-primary); margin-bottom: 10px; font-family: 'Cinzel', serif;">AI_FIT MODULE</h3>
+            <p style="font-family: 'Space Mono', monospace; font-size: 0.65rem; margin-bottom: 20px; color: var(--text-muted);">UPLOADING SUBJECT FOR VIRTUAL DRAPE: <br><span id="ai-item-name" style="color:var(--blood-red); font-weight:bold;"></span></p>
             
-            <div style="border: 1px dashed #111; padding: 30px; border-radius: 12px; margin-bottom: 20px; cursor: pointer; background: rgba(255,255,255,0.5);" onclick="document.getElementById('fake-upload').click()">
-                <i class="fas fa-camera" style="font-size: 2rem; color: #111; margin-bottom: 10px;"></i>
-                <p style="font-size: 0.7rem; font-weight: 600; color: #111; font-family: 'Inter', sans-serif;">TAP TO UPLOAD FULL-BODY PHOTO</p>
+            <div style="border: 1px dashed var(--border); padding: 30px; border-radius: 12px; margin-bottom: 20px; cursor: pointer; background: rgba(39,39,42,0.5);" onclick="document.getElementById('fake-upload').click()">
+                <i class="fas fa-camera" style="font-size: 2rem; color: var(--chrome); margin-bottom: 10px;"></i>
+                <p style="font-size: 0.7rem; font-weight: 600; color: var(--chrome); font-family: 'Inter', sans-serif;">TAP TO UPLOAD FULL-BODY PHOTO</p>
                 <input type="file" id="fake-upload" style="display:none;" accept="image/*" onchange="startAIScan()">
             </div>
             
-            <div id="ai-scan-bar" style="width: 100%; height: 4px; background: #ddd; margin: 20px 0; border-radius: 2px; overflow: hidden; position: relative; display: none;">
-                <div style="position: absolute; left: -50%; width: 50%; height: 100%; background: #9B1C1C; animation: scan 1.5s infinite ease-in-out;"></div>
+            <div id="ai-scan-bar" style="width: 100%; height: 4px; background: #333; margin: 20px 0; border-radius: 2px; overflow: hidden; position: relative; display: none;">
+                <div style="position: absolute; left: -50%; width: 50%; height: 100%; background: var(--blood-red); animation: scan 1.5s infinite ease-in-out;"></div>
             </div>
-            <p id="ai-status" style="font-family: 'Space Mono', monospace; font-size: 0.65rem; color: #9B1C1C; display:none; font-weight: 800;">CALCULATING MESH DRAPE...</p>
+            <p id="ai-status" style="font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--blood-red); display:none; font-weight: 800;">CALCULATING MESH DRAPE...</p>
             
-            <button id="ai-close-btn" class="btn-add" style="margin-top: 15px; background: #111; color: #E6E4DF; width: 100%; padding: 10px; border: none; border-radius: 8px; font-family: 'Space Mono', monospace; font-weight: 800; cursor: pointer;" onclick="document.getElementById('ai-modal').style.display='none'">[ ABORT ]</button>
+            <button id="ai-close-btn" class="btn-add" style="margin-top: 15px; width: 100%; padding: 10px; border: none; border-radius: 8px; font-family: 'Space Mono', monospace; font-weight: 800; cursor: pointer;" onclick="document.getElementById('ai-modal').style.display='none'">[ ABORT ]</button>
         </div>
     </div>
     
@@ -949,9 +925,7 @@
         let scrollObserver;
         let voidParticles = [];
 
-        // ==========================================
         // UI & INTERACTION LOGIC
-        // ==========================================
         function zoomImage(btnElement) {
             const imgSrc = btnElement.nextElementSibling.src;
             document.getElementById('zoomed-image').src = imgSrc;
@@ -973,16 +947,13 @@
             }
         }
 
-        // ==========================================
         // CART LOGIC
-        // ==========================================
-       function addToBag(name, price) {
+        function addToBag(name, price, evt) {
             bag.push({name, price});
             updateBag();
             
-            // Safe visual feedback (only affects actual buttons)
-            let btn = event.target;
-            if(btn.tagName === 'BUTTON') {
+            if(evt && evt.currentTarget) {
+                let btn = evt.currentTarget;
                 let originalText = btn.innerText;
                 let originalBg = btn.style.background;
                 btn.innerText = "ACQUIRED";
@@ -995,6 +966,7 @@
                 }, 1000);
             }
         }
+
         function removeFromBag(index) {
             bag.splice(index, 1);
             updateBag();
@@ -1007,28 +979,28 @@
             const totalMobile = document.getElementById('mobile-total-price');
             
             if(bag.length === 0) {
-                const emptyMsg = '<p style="opacity: 0.4; font-style: italic; color: #111;">_VOID_EMPTY</p>';
-                listDesktop.innerHTML = emptyMsg;
-                listMobile.innerHTML = emptyMsg;
-                totalDesktop.innerText = '₹0';
-                totalMobile.innerText = '₹0';
+                const emptyMsg = '<p style="opacity: 0.4; font-style: italic; color: var(--text-primary);">_VOID_EMPTY</p>';
+                if(listDesktop) listDesktop.innerHTML = emptyMsg;
+                if(listMobile) listMobile.innerHTML = emptyMsg;
+                if(totalDesktop) totalDesktop.innerText = '₹0';
+                if(totalMobile) totalMobile.innerText = '₹0';
                 return;
             }
             
             let total = 0;
             const cartHTML = bag.map((item, index) => {
                 total += item.price;
-                return `<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom: 1px dashed rgba(17,17,17,0.2); padding-bottom: 5px; color: #111;">
+                return `<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom: 1px dashed rgba(229,228,226,0.2); padding-bottom: 5px; color: var(--text-primary);">
                             <span style="flex:1; font-weight:600;">${item.name}</span>
-                            <b style="color:#111;">₹${item.price}</b>
-                            <span class="remove-item" onclick="removeFromBag(${index})" style="color: #9B1C1C; cursor: pointer; margin-left: 10px; font-weight: 900; border: 1px solid #9B1C1C; padding: 2px 6px; border-radius: 4px; font-size:0.7rem; transition:0.2s;">X</span>
+                            <b style="color:var(--chrome);">₹${item.price}</b>
+                            <span class="remove-item" onclick="removeFromBag(${index})">X</span>
                         </div>`;
             }).join('');
             
-            listDesktop.innerHTML = cartHTML;
-            listMobile.innerHTML = cartHTML;
-            totalDesktop.innerText = '₹' + total;
-            totalMobile.innerText = '₹' + total;
+            if(listDesktop) listDesktop.innerHTML = cartHTML;
+            if(listMobile) listMobile.innerHTML = cartHTML;
+            if(totalDesktop) totalDesktop.innerText = '₹' + total;
+            if(totalMobile) totalMobile.innerText = '₹' + total;
         }
 
         function openCheckout() {
@@ -1074,9 +1046,7 @@
             }
         }
 
-        // ==========================================
         // AI VTON LOGIC
-        // ==========================================
         function openAITryOn(itemName) {
             document.getElementById('ai-item-name').innerText = itemName;
             document.getElementById('ai-scan-bar').style.display = 'none';
@@ -1092,22 +1062,20 @@
             scanBar.style.display = 'block';
             status.style.display = 'block';
             status.innerText = "EXTRACTING HUMAN MESH...";
-            status.style.color = "#9B1C1C";
+            status.style.color = "var(--blood-red)";
             closeBtn.style.display = 'none';
             
             setTimeout(() => { status.innerText = "APPLYING CLOTHING TEXTURE & PHYSICS..."; }, 1500);
             setTimeout(() => { 
                 scanBar.style.display = 'none';
                 status.innerText = "SUCCESS: VTON API REQUIRED FOR IMAGE OUTPUT. FRONTEND READY.";
-                status.style.color = "#111";
+                status.style.color = "var(--chrome)";
                 closeBtn.style.display = 'block';
                 closeBtn.innerText = "[ ACKNOWLEDGE ]";
             }, 3500);
         }
 
-        // ==========================================
         // CORE INITIALIZATION
-        // ==========================================
         document.addEventListener('mousemove', (e) => {
             document.documentElement.style.setProperty('--cursor-x', e.clientX + 'px');
             document.documentElement.style.setProperty('--cursor-y', e.clientY + 'px');
@@ -1169,9 +1137,7 @@
             document.getElementById('hk-nav').classList.remove('active-menu');
         }
 
-        // ==========================================
         // THE VOID ENGINE
-        // ==========================================
         const canvas = document.getElementById('hk-void');
         const ctx = canvas.getContext('2d');
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
@@ -1184,16 +1150,14 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = 'rgba(17, 17, 17, 0.15)'; 
+                ctx.fillStyle = 'rgba(229, 228, 226, 0.4)'; 
                 ctx.fill();
             }
             update() {
                 if (this.x + this.size > canvas.width || this.x - this.size < 0) this.dx = -this.dx;
                 if (this.y + this.size > canvas.height || this.y - this.size < 0) this.dy = -this.dy;
                 if (this.y < 0) this.y = canvas.height;
-                
-                this.x += this.dx; this.y += this.dy;
-                this.draw();
+                this.x += this.dx; this.y += this.dy; this.draw();
             }
         }
 
@@ -1217,17 +1181,6 @@
         }
 
         initVoid(); animateVoid();
-
-        let isScrolling;
-        const triggerWarp = () => {
-            for (let i = 0; i < voidParticles.length; i++) { voidParticles[i].y -= 3.5; }
-            window.clearTimeout(isScrolling);
-            isScrolling = setTimeout(() => {
-                for (let i = 0; i < voidParticles.length; i++) { voidParticles[i].dy = (Math.random() - 0.5) * 0.4; }
-            }, 66);
-        };
-        window.addEventListener('scroll', triggerWarp, { passive: true });
-        document.getElementById('main-scroll-area').addEventListener('scroll', triggerWarp, { passive: true });
     </script>
 </body>
 </html>
