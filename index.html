@@ -59,6 +59,7 @@
         h2, h3, h4, .logo { font-family: 'Cinzel', serif !important; letter-spacing: 2px; color: var(--chrome); }
         .micro-code, .section-header { font-family: 'Space Mono', monospace !important; text-transform: uppercase; color: var(--blood-red); font-weight: 700; }
         .info-block, .info-block p, .quote, .suggestion-item h4 { color: #111 !important; font-weight: 800; }
+        .info-block p { margin-bottom: 16px !important; line-height: 1.7 !important; display: block; }
         .suggestion-item p { color: #444 !important; font-weight: 600; }
         .old-price { color: #666 !important; text-decoration: line-through; font-family: 'Space Mono', monospace; font-size: 0.8rem; }
         .new-price { color: #9B1C1C !important; font-weight: 800; font-family: 'Space Mono', monospace; font-size: 1.4rem; }
@@ -318,21 +319,20 @@
                 <p class="micro-code" style="margin-top: 10px;">HANDCRAFTED_ELITE_TERRACOTTA</p>
             </div>
 
-            <!-- TAB: ACCESSORIES -->
+           <!-- TAB: ACCESSORIES -->
             <div id="tab-acc" class="tab-pane">
                 <h3 class="hidden-scroll" style="margin-bottom: 30px; letter-spacing: 4px; font-size: 1.2rem;">ESSENTIAL GEAR</h3>
                 <div class="product-grid">
-                    <div class="suggestion-item hidden-scroll" onclick="addToBag('Canvas Tote', 199)">
+                    <div class="suggestion-item hidden-scroll">
                         <div class="micro-code">CANVAS_TOTE</div>
-                        <div class="new-price">₹199</div>
+                        <div class="new-price" style="margin-bottom: 10px;">₹199</div>
+                        <button class="btn-add" onclick="addToBag('Canvas Tote', 199)">अधिग्रहण</button>
                     </div>
-                    <div class="suggestion-item hidden-scroll" onclick="addToBag('Founder Keylink', 149)">	
-
-
-                        <div class="micro-code" style="color: var(--chrome);">KEYLINK</div>		
-                        <div class="new-price">₹149</div>		
+                    <div class="suggestion-item hidden-scroll">	
+                        <div class="micro-code">KEYLINK</div>		
+                        <div class="new-price" style="margin-bottom: 10px;">₹149</div>	
+                        <button class="btn-add" onclick="addToBag('Founder Keylink', 149)">अधिग्रहण</button>	
                     </div>
-                    
                 </div>
             </div>
 
@@ -344,26 +344,22 @@
                     <p>When we conceptualized <span style="color: var(--chrome); font-weight:bold;">PHASE_01</span> and the Acid Wash Capsule, factories told us our vintage treatment was too aggressive. They wanted uniform perfection. We wanted raw, industrial heritage.</p>
                     <div class="quote">"A blank tee is just a uniform. An acid-washed heavy cotton drop is a statement. Every fade, every distressed hem is earned, not manufactured."</div>
                     <p style="margin-bottom: 20px;">This Drop is an evolution of the H&K vision. From the local bazaars to the global stage, we are bridging eras and aesthetics. It’s heavy, it’s unapologetic, and it’s exclusively yours.</p>	
-
-
                     <p style="margin-top: 30px; font-family: 'Space Mono', monospace; color: var(--blood-red); font-size: 0.75rem; border-top: 1px solid var(--border); padding-top: 20px; line-height: 2;">		
                         // SIGNATURE_VERIFIED: <br>		
                         // THE ACID WASH PROCESS IS VOLATILE BY NATURE. <br>		
                         // NO TWO TEES IN CAPSULE_01 ARE IDENTICAL. YOUR FADE IS YOUR FINGERPRINT.	
-                        </p>		
-                    <div style="margin-top: 40px;">		
-                        <span style="font-size: 0.6rem; letter-spacing: 3px; color: var(--text-muted); font-family: 'Space Mono', monospace;">EXECUTED_BY:</span>		
-                        <p style="font-weight: 800; letter-spacing: 2px; margin-top: 5px; color: #fff; font-family: 'Cinzel', serif;">THE FOUNDERS</p>		
-                        <p style="font-size: 0.5rem; color: var(--chrome); letter-spacing: 1px; font-family: 'Space Mono', monospace;">H&K // MODERN HERITAGE ARCHIVE</p>		
-                    </div>
                     </p>		
                     <div style="margin-top: 40px;">		
-                        <span style="font-size: 0.6rem; letter-spacing: 3px; color: var(--text-muted); font-family: 'Space Mono', monospace;">EXECUTED_BY:</span>
-                    
+                        <span style="font-size: 0.6rem; letter-spacing: 3px; color: var(--text-muted); font-family: 'Space Mono', monospace;">EXECUTED_BY:</span>		
+                        <p style="font-weight: 800; letter-spacing: 2px; margin-top: 5px; color: #111; font-family: 'Cinzel', serif;">THE FOUNDERS</p>		
+                        <p style="font-size: 0.5rem; color: var(--chrome); letter-spacing: 1px; font-family: 'Space Mono', monospace;">H&K // MODERN HERITAGE ARCHIVE</p>		
+                    </div>
                 </div>
             </div>
             
             <!-- TAB: PRIVACY -->
+            
+           
             <div id="tab-privacy" class="tab-pane">
                 <h3 class="hidden-scroll" style="margin-bottom: 30px; letter-spacing: 4px; font-size: 1.2rem;">PRIVACY_PROTOCOL</h3>
                 <div class="info-block hidden-scroll">
