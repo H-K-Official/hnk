@@ -1054,25 +1054,78 @@
             document.getElementById('ai-modal').style.display = 'flex';
         }
 
-        function startAIScan() {
+        async function startAIScan() {
+            const fileInput = document.getElementById('fake-upload');
+            if(!fileInput.files || !fileInput.files[0]) return;
+            
             const scanBar = document.getElementById('ai-scan-bar');
             const status = document.getElementById('ai-status');
             const closeBtn = document.getElementById('ai-close-btn');
+            const uploadBox = document.getElementById('fake-upload-box');
+            const resultBox = document.getElementById('vton-result-box');
             
+            // 1. UI Loading State
             scanBar.style.display = 'block';
             status.style.display = 'block';
-            status.innerText = "EXTRACTING HUMAN MESH...";
+            status.innerText = "TRANSMITTING TO CLOUD GPU...";
             status.style.color = "var(--blood-red)";
             closeBtn.style.display = 'none';
+            uploadBox.style.display = 'none';
             
-            setTimeout(() => { status.innerText = "APPLYING CLOTHING TEXTURE & PHYSICS..."; }, 1500);
-            setTimeout(() => { 
-                scanBar.style.display = 'none';
-                status.innerText = "SUCCESS: VTON API REQUIRED FOR IMAGE OUTPUT. FRONTEND READY.";
-                status.style.color = "var(--chrome)";
+            // 2. Read the uploaded photo
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const userImageBase64 = e.target.result;
+                document.getElementById('user-vton-img').src = userImageBase64;
+                document.getElementById('shirt-vton-img').src = window.currentVtonSrc;
+                resultBox.style.display = 'flex'; // Show side-by-side preview immediately
+                
+                status.innerText = "AI STITCHING MESH (THIS TAKES 10-20 SECONDS)...";
+                
+                // 3. The API Ticket to Hugging Face
+                const HF_TOKEN = "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"; 
+                
+                try {
+                    // Note: This connects to an open-source VTON model.
+                    // We send the human image and the garment image.
+                    const response = await fetch("https://api-inference.huggingface.co/models/yisol/IDM-VTON", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${HF_TOKEN}`,
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            inputs: {
+                                human_image: userImageBase64,
+                                garment_image: window.currentVtonSrc
+                            }
+                        })
+                    });
+                    
+                    if (!response.ok) throw new Error("API Waking Up or Overloaded");
+                    
+                    const blob = await response.blob();
+                    const finalImageUrl = URL.createObjectURL(blob);
+                    
+                    // 4. Display the Final Result!
+                    document.getElementById('user-vton-img').src = finalImageUrl;
+                    document.getElementById('shirt-vton-img').style.display = "none"; // Hide raw shirt
+                    
+                    scanBar.style.display = 'none';
+                    status.innerText = "SUCCESS: VIRTUAL DRAPE COMPLETE.";
+                    status.style.color = "var(--chrome)";
+                    
+                } catch (error) {
+                    scanBar.style.display = 'none';
+                    status.innerText = "API SERVER ASLEEP. PLEASE TRY AGAIN IN 60 SECONDS.";
+                    status.style.color = "#9B1C1C";
+                }
+                
                 closeBtn.style.display = 'block';
                 closeBtn.innerText = "[ ACKNOWLEDGE ]";
-            }, 3500);
+            };
+            
+            reader.readAsDataURL(fileInput.files[0]);
         }
 
         // CORE INITIALIZATION
