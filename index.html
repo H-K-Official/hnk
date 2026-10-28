@@ -899,16 +899,24 @@
         </div>
     </div>
 
+    
     <!-- AI TRY-ON VTON MODAL -->
     <div id="ai-modal" class="modal">
         <div style="background: var(--bg-obsidian); padding: 30px; border-radius: 16px; border: 1px solid var(--border); width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.8);">
             <h3 style="color: var(--text-primary); margin-bottom: 10px; font-family: 'Cinzel', serif;">AI_FIT MODULE</h3>
             <p style="font-family: 'Space Mono', monospace; font-size: 0.65rem; margin-bottom: 20px; color: var(--text-muted);">UPLOADING SUBJECT FOR VIRTUAL DRAPE: <br><span id="ai-item-name" style="color:var(--blood-red); font-weight:bold;"></span></p>
             
-            <div style="border: 1px dashed var(--border); padding: 30px; border-radius: 12px; margin-bottom: 20px; cursor: pointer; background: rgba(39,39,42,0.5);" onclick="document.getElementById('fake-upload').click()">
+            <div id="fake-upload-box" style="border: 1px dashed var(--border); padding: 30px; border-radius: 12px; margin-bottom: 20px; cursor: pointer; background: rgba(39,39,42,0.5);" onclick="document.getElementById('fake-upload').click()">
                 <i class="fas fa-camera" style="font-size: 2rem; color: var(--chrome); margin-bottom: 10px;"></i>
                 <p style="font-size: 0.7rem; font-weight: 600; color: var(--chrome); font-family: 'Inter', sans-serif;">TAP TO UPLOAD FULL-BODY PHOTO</p>
                 <input type="file" id="fake-upload" style="display:none;" accept="image/*" onchange="startAIScan()">
+            </div>
+
+            <!-- THE VISUAL PREVIEW ENGINE -->
+            <div id="vton-result-box" style="display: none; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
+                <img id="user-vton-img" src="" style="width: 45%; border-radius: 8px; border: 1px solid var(--border);">
+                <i class="fas fa-plus" style="color: var(--text-muted); font-size: 1rem;"></i>
+                <img id="shirt-vton-img" src="" style="width: 45%; border-radius: 8px; border: 1px solid var(--border); background: #fff;">
             </div>
             
             <div id="ai-scan-bar" style="width: 100%; height: 4px; background: #333; margin: 20px 0; border-radius: 2px; overflow: hidden; position: relative; display: none;">
