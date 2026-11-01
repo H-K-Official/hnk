@@ -146,12 +146,7 @@
         }
         .zoom-btn:hover { background: var(--chrome); color: #000; }
 
-        .ai-btn {
-            background: var(--chrome); color: #000; border: none; padding: 6px 12px; border-radius: 20px;
-            font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 1px; font-weight: 800;
-            cursor: pointer; margin-bottom: 15px; transition: 0.3s; width: 100%;
-        }
-        .ai-btn:hover { background: var(--blood-red); color: #fff; }
+       
 
         .price-tag { display: flex; align-items: center; gap: 10px; margin: 15px 0; justify-content: center; }
 
@@ -235,7 +230,7 @@
             .btn-add { padding: 8px 10px; font-size: 0.6rem; }
             .input-box, select { padding: 6px; font-size: 0.65rem; margin-bottom: 8px; }
             .zoom-btn { width: 24px; height: 24px; font-size: 0.6rem; }
-            .ai-btn { padding: 4px 8px; font-size: 0.5rem; margin-bottom: 10px; }
+            
             
             .promo-billboard { height: 200px; margin-bottom: 20px; }
             .promo-text { bottom: -80px; padding: 15px;}
@@ -257,13 +252,7 @@
         }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
-        .ai-scanner {
-            width: 100%; height: 4px; background: #333; margin: 20px 0; border-radius: 2px; overflow: hidden; position: relative; display: none;
-        }
-        .ai-scanner::after {
-            content: ''; position: absolute; left: -50%; width: 50%; height: 100%; background: var(--blood-red); animation: scan 1.5s infinite ease-in-out;
-        }
-        @keyframes scan { 0% { left: -50%; } 100% { left: 100%; } }
+        
     </style>
 </head>
 <body>
@@ -409,7 +398,7 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/money%20a%20curse%20tee.jpeg" alt="Money a Curse Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Money a Curse Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
+            
                             <div class="micro-code">ARCHIVE_02</div>
                             <h4>Money a Curse Tee</h4>
                             <p>Premium Polycotton (BACKPRINT)</p>
@@ -423,7 +412,7 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/demon%20slayer%20tee.jpeg" alt="Demon Slayer Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Demon Slayer Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
+                            
                             <div class="micro-code">ARCHIVE_03</div>
                             <h4>Demon Slayer FANMADE Tee</h4>
                             <p>Premium Tee(FANMADE)</p>
@@ -432,12 +421,44 @@
                             <button class="btn-add" onclick="let sz = document.getElementById('size-demonfn').value; if(sz) { addToBag('Demon Slayer Fanmade Tee - '+ sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
                         </div>
 
+
+                      <div class="suggestion-item hidden-scroll">
+    <div class="img-wrapper">
+        <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
+        <!-- Main Image that changes when thumbnails are clicked -->
+        <img id="rose-main-img" src="h%26K%20apperals/rose1.jpg" alt="H&K Midnight Rose Tee">
+    </div>
+    
+    <!-- 4-Image Thumbnail Gallery -->
+    <div style="display: flex; gap: 8px; margin-bottom: 15px; width: 100%; justify-content: center;">
+        <img src="h%26K%20apperals/rose1.jpg" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 1px solid var(--border);" onclick="document.getElementById('rose-main-img').src=this.src">
+        <img src="h%26K%20apperals/rose2.jpg" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 1px solid var(--border);" onclick="document.getElementById('rose-main-img').src=this.src">
+        <img src="h%26K%20apperals/rose3.jpg" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 1px solid var(--border);" onclick="document.getElementById('rose-main-img').src=this.src">
+        <img src="h%26K%20apperals/rose4.jpg" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 1px solid var(--border);" onclick="document.getElementById('rose-main-img').src=this.src">
+    </div>
+
+    
+    <div class="micro-code">NEW_ARRIVAL(DROP_3)</div>
+    <h4>H&K Midnight Rose Tee</h4>
+    <p>Premium Cotton Fabric (BACK PRINT)</p>
+    <div class="price-tag"><span class="old-price">₹1499</span><span class="new-price">₹649</span></div>
+    <select id="size-rose">
+        <option value="" disabled selected>SELECT SIZE</option>
+        <option value="S">S (Chest: 96cm)</option>
+        <option value="M">M (Chest: 101cm)</option>
+        <option value="L">L (Chest: 107cm)</option>
+        <option value="XL">XL (Chest: 112cm)</option>
+    </select>
+    <button class="btn-add" onclick="let sz = document.getElementById('size-rose').value; if(sz) { addToBag('H&K Midnight Rose Tee - ' + sz, 649, event); } else { alert('SELECT A SIZE.'); }">अधिग्रहण (add to archive)</button>
+</div>
+            
+                        
                         <div class="suggestion-item hidden-scroll">
                             <div class="img-wrapper">
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/poly H&K exclusive.png" alt="H&K Exclusive Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('H&K Exclusive Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
+                           
                             <div class="micro-code">ARCHIVE_01</div>
                             <h4>H&K Exclusive Tee</h4>
                             <p>poly Heavyweight French Terry</p>
@@ -451,7 +472,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/all%20eyez%20on%20me%20tee.jpeg" alt="All Eyez On Me Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('All Eyez On Me Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">ARCHIVE_02</div>
                             <h4>All Eyez On Me Tee</h4>
                             <p>Premium cotton (BACKPRINT)</p>
@@ -466,7 +486,6 @@
                                 <!-- NOTE: Image path updated for 911 Editorial Tee here -->
                                 <img src="h%26K%20apperals/Gemini_Generated_Image_h03udeh03udeh03u.png" alt="911 Editorial Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('911 Editorial Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">ARCHIVE_01</div>
                             <h4>911 Editorial Tee</h4>
                             <p>Heavyweight French Terry</p>
@@ -480,7 +499,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/lord%20krishna%20tee.png" alt="Lord Krishna Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Lord Krishna Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">DIVINE_ARCHIVE</div>
                             <h4>Lord Krishna Tee</h4>
                             <p>Premium Blend Shloka Overlay</p>
@@ -494,7 +512,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/bigbangtee.png" alt="Bang Bang Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Bang Bang Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">NEW_ARRIVAL</div>
                             <h4>Bang Bang Tee</h4>
                             <p>Heavyweight Graphic Streetwear</p>
@@ -508,7 +525,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/uno%20tee.jpeg" alt="UNO Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('UNO Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">ARCHIVE_02</div>
                             <h4>UNO Tee</h4>
                             <p>Premium cotton (BACKPRINT)</p>
@@ -522,7 +538,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/hnk exclusive.jpeg" alt="H&K Exclusive Cotton Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('H&K Exclusive Cotton Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">ARCHIVE_02</div>
                             <h4>H&K Exclusive Cotton Tee</h4>
                             <p>Premium Polycotton Blend</p>
@@ -536,7 +551,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/harmony%20kings%20tee.jpeg" alt="Harmony Kings Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Harmony Kings Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">ARCHIVE_02</div>
                             <h4>Harmony Kings Tee</h4>
                             <p>Premium Polycotton Blend</p>
@@ -551,7 +565,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/modi%20tee.png" alt="Modi Fanmade Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Modi Fanmade Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">GEOPOLITICS_03</div>
                             <h4>Modi Fanmade Tee</h4>
                             <p>Premium Polycotton Halftone</p>
@@ -566,7 +579,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/anime%20heavy.png" alt="Anime Heavy Print Polo">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Anime Heavy Print Polo')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">FANMADE_EDITION</div>
                             <h4>Anime Heavy Print Polo</h4>
                             <p>Premium Pique Blend</p>
@@ -594,7 +606,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/acid-wash-tee.jpeg" alt="Acid Wash Basic">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Acid Wash Black Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">PREMIUM WASH</div>
                             <h4>Acid Wash Black Tee</h4>
                             <p>Heavyweight Acid Wash Cotton</p>
@@ -608,7 +619,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/acid wash exclusive tee.jpeg" alt="H&K Exclusive Acid">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('H&K Exclusive Acid')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">CAPSULE_01</div>
                             <h4>H&K Exclusive Acid Tee</h4>
                             <p>Ultra-Premium Vintage Wash</p>
@@ -622,7 +632,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/acid wash demon slayer tee.jpeg" alt="Demon Slayer Acid">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Demon Slayer Acid')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">FANMADE EDITION</div>
                             <h4>Demon Slayer Acid Wash</h4>
                             <p>Ultra-Premium Vintage Wash</p>
@@ -636,7 +645,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/acid wash greek tee.jpeg" alt="Greek Style Acid">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Greek Style Acid')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">GREEK MYTHOS</div>
                             <h4>Greek Style Acid Wash</h4>
                             <p>Ultra-Premium Vintage Wash</p>
@@ -663,7 +671,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/lepord%20tubetop.png" alt="Leopard Tube Top">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Leopard Tube top')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">CROP FIT</div>
                             <h4>Leopard Tube top</h4>
                             <p>Premium Cropped Silhouette</p>
@@ -680,7 +687,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/GIRLS%20Toxic%20crop%20top.png" alt="Toxic Crop Top">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Toxic Stamp Crop Top')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">CROP FIT</div>
                             <h4>Toxic Stamp Crop Top</h4>
                             <p>Premium Cropped Silhouette</p>
@@ -697,7 +703,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/spill%20tea%20crop%20top.png" alt="Spill tea Crop Top">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Spill Tea Crop Top')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">CROP FIT</div>
                             <h4>Spill Tea Crop Top</h4>
                             <p>Premium Cropped Silhouette</p>
@@ -714,7 +719,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/GIRLS%20buri%20nazar%20crop%20top.png" alt="Buri Nazar Crop Top">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Buri Nazar Crop Top')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">CROP FIT</div>
                             <h4>Buri Nazar Crop Top</h4>
                             <p>Premium Cropped Silhouette</p>
@@ -731,7 +735,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/GIRLS%20diva%20tee.png" alt="Diva Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Diva Graphic Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">RELAXED FIT</div>
                             <h4>Diva Graphic Tee</h4>
                             <p>Heavyweight Polycotton Blend</p>
@@ -748,7 +751,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/GIRLS%20nonchalant%20tee.png" alt="Nonchalant Tee">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Nonchalant Tee')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">RELAXED FIT</div>
                             <h4>Nonchalant Tee</h4>
                             <p>Heavyweight Polycotton Blend</p>
@@ -778,7 +780,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/MEN brown umber polo.png" alt="Umber Tipping Polo">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Brown Umber Polo')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">HERITAGE POLO</div>
                             <h4>Brown Umber Polo</h4>
                             <p>Premium Vintage Collar Accents</p>
@@ -792,7 +793,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/MEN navy blue polo.png" alt="Navy Polo">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Midnight Navy Polo')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">ESSENTIAL POLO</div>
                             <h4>Midnight Navy Polo</h4>
                             <p>Heavyweight Pique Cotton</p>
@@ -806,7 +806,6 @@
                                 <div class="zoom-btn" onclick="zoomImage(this)"><i class="fas fa-search"></i></div>
                                 <img src="h%26K%20apperals/MEN sky blue polo.png" alt="Sky Blue Polo">
                             </div>
-                            <button class="ai-btn" onclick="openAITryOn('Sky Blue Polo')"><i class="fas fa-magic"></i> AI_FIT MODULE</button>
                             <div class="micro-code">ESSENTIAL POLO</div>
                             <h4>Sky Blue Polo</h4>
                             <p>Heavyweight Pique Cotton</p>
@@ -900,35 +899,7 @@
     </div>
 
     
-    <!-- AI TRY-ON VTON MODAL -->
-    <div id="ai-modal" class="modal">
-        <div style="background: var(--bg-obsidian); padding: 30px; border-radius: 16px; border: 1px solid var(--border); width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.8);">
-            <h3 style="color: var(--text-primary); margin-bottom: 10px; font-family: 'Cinzel', serif;">AI_FIT MODULE</h3>
-            <p style="font-family: 'Space Mono', monospace; font-size: 0.65rem; margin-bottom: 20px; color: var(--text-muted);">UPLOADING SUBJECT FOR VIRTUAL DRAPE: <br><span id="ai-item-name" style="color:var(--blood-red); font-weight:bold;"></span></p>
-            
-            <div id="fake-upload-box" style="border: 1px dashed var(--border); padding: 30px; border-radius: 12px; margin-bottom: 20px; cursor: pointer; background: rgba(39,39,42,0.5);" onclick="document.getElementById('fake-upload').click()">
-                <i class="fas fa-camera" style="font-size: 2rem; color: var(--chrome); margin-bottom: 10px;"></i>
-                <p style="font-size: 0.7rem; font-weight: 600; color: var(--chrome); font-family: 'Inter', sans-serif;">TAP TO UPLOAD FULL-BODY PHOTO</p>
-                <input type="file" id="fake-upload" style="display:none;" accept="image/*" onchange="startAIScan()">
-            </div>
-
-            
-            <!-- THE VISUAL PREVIEW ENGINE (OVERLAY SIMULATION) -->
-            <div id="vton-result-box" style="display: none; position: relative; width: 100%; max-width: 320px; margin: 0 auto 20px auto; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
-                <!-- The User's Uploaded Photo -->
-                <img id="user-vton-img" src="" style="width: 100%; display: block; filter: contrast(1.1);">
-                <!-- The Shirt Overlaid on Top -->
-                <img id="shirt-vton-img" src="" style="position: absolute; top: 25%; left: 15%; width: 70%; mix-blend-mode: multiply; opacity: 0.95; pointer-events: none;">
-            </div>
-            
-            <div id="ai-scan-bar" style="width: 100%; height: 4px; background: #333; margin: 20px 0; border-radius: 2px; overflow: hidden; position: relative; display: none;">
-                <div style="position: absolute; left: -50%; width: 50%; height: 100%; background: var(--blood-red); animation: scan 1.5s infinite ease-in-out;"></div>
-            </div>
-            <p id="ai-status" style="font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--blood-red); display:none; font-weight: 800;">CALCULATING MESH DRAPE...</p>
-            
-            <button id="ai-close-btn" class="btn-add" style="margin-top: 15px; width: 100%; padding: 10px; border: none; border-radius: 8px; font-family: 'Space Mono', monospace; font-weight: 800; cursor: pointer;" onclick="document.getElementById('ai-modal').style.display='none'">[ ABORT ]</button>
-        </div>
-    </div>
+    
     
     <script>
         let bag = [];
@@ -1056,51 +1027,7 @@
             }
         }
 
-        // AI VTON LOGIC
-        function openAITryOn(itemName) {
-            document.getElementById('ai-item-name').innerText = itemName;
-            document.getElementById('ai-scan-bar').style.display = 'none';
-            document.getElementById('ai-status').style.display = 'none';
-            document.getElementById('ai-modal').style.display = 'flex';
-        }
-
-        function startAIScan() {
-            const fileInput = document.getElementById('fake-upload');
-            if(!fileInput.files || !fileInput.files[0]) return;
-            
-            const scanBar = document.getElementById('ai-scan-bar');
-            const status = document.getElementById('ai-status');
-            const closeBtn = document.getElementById('ai-close-btn');
-            const uploadBox = document.getElementById('fake-upload-box');
-            const resultBox = document.getElementById('vton-result-box');
-            
-            scanBar.style.display = 'block';
-            status.style.display = 'block';
-            status.innerText = "ANALYZING HUMAN PROPORTIONS...";
-            status.style.color = "var(--blood-red)";
-            closeBtn.style.display = 'none';
-            uploadBox.style.display = 'none';
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                // Instantly load both images into the overlay box
-                document.getElementById('user-vton-img').src = e.target.result;
-                document.getElementById('shirt-vton-img').src = window.currentVtonSrc;
-                
-                // Simulate AI processing time
-                setTimeout(() => { status.innerText = "ALIGNING GARMENT TEXTURE..."; }, 1000);
-                setTimeout(() => { 
-                    scanBar.style.display = 'none';
-                    status.innerText = "VIRTUAL DRAPE COMPLETE.";
-                    status.style.color = "var(--chrome)";
-                    resultBox.style.display = 'block'; // Reveal the overlay
-                    closeBtn.style.display = 'block';
-                    closeBtn.innerText = "[ ACKNOWLEDGE ]";
-                }, 2500);
-            };
-            
-            reader.readAsDataURL(fileInput.files[0]);
-        }
+        
 
         
         // CORE INITIALIZATION
